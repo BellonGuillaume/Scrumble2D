@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
-public class Player : NetworkBehaviour
+public class PlayerOld : NetworkBehaviour
 {
-    public static Player localPlayer;
+    public static PlayerOld localPlayer;
     private string ip;
     [SyncVar] public string matchId;
     NetworkMatch networkMatch;

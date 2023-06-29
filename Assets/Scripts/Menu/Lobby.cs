@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 using System.Linq;
 
@@ -21,7 +22,7 @@ public class Lobby : MonoBehaviour
     int difficulty;
     int userStory;
 
-    List<string> playersName;
+    List<string> playersName = new List<string>();
     List<GameObject> playersUI = new List<GameObject>();
 
     [SerializeField] TMP_Text serverNameOut;
@@ -58,6 +59,8 @@ public class Lobby : MonoBehaviour
             removePlayerButton.interactable = true;
             addPlayerButton.interactable = true;
         }
+
+        UpdateNames();
         
     }
 
@@ -111,6 +114,7 @@ public class Lobby : MonoBehaviour
         UIPlayer playerUI = player.GetComponent<UIPlayer>();
         playerUI.text.text = "Player " + playersUI.Count + " :";
         playerUI.inputField.placeholder.GetComponent<TMP_Text>().text = "Player " + playersUI.Count;
+        this.playersName.Add("Player " + playersUI.Count);
     }
 
     public void RemovePLayer(){
@@ -118,7 +122,40 @@ public class Lobby : MonoBehaviour
         playersUI.RemoveAt(playersUI.Count - 1);
     }
 
+    void UpdateNames(){
+        for (int i = 0; i < playersUI.Count; i++){
+            GameObject player = playersUI[i];
+            UIPlayer playerUI = player.GetComponent<UIPlayer>();
+            string name = playerUI.inputField.text;
+            string placeholder = playerUI.inputField.placeholder.GetComponent<TMP_Text>().text;
+            if (string.IsNullOrWhiteSpace(name)){
+                this.playersName[i] = placeholder;
+            } else {
+                this.playersName[i] = name;
+            }
+        }
+    }
+
     public void LaunchGame(){
-        
+        StateManager.difficulty = this.difficultyOut.text;
+        StateManager.userStory = this.userStoryOut.text;
+        StateManager.gameName = this.serverNameOut.text;
+        StateManager.pokerPlanning = this.pokerPlanning;
+        StateManager.playerNames = this.playersName;
+        if(this.pokerPlanning){
+            StateManager.state = "POKER PLANNING";
+        } else {
+            StateManager.state = "INIT";
+        }
+
+        Debug.Log($"Here are the values :\n" +
+                    $"Difficulty : {StateManager.difficulty}\n" +
+                    $"UserStory : {StateManager.userStory}\n" +
+                    $"GameName : {StateManager.gameName}\n" +
+                    $"PokerPlanning : {StateManager.pokerPlanning}\n" +
+                    $"PlayerNames : {StateManager.playerNames}\n" +
+                    $"State  : {StateManager.state}\n"
+                );
+        SceneManager.LoadScene("Game");
     }
 }

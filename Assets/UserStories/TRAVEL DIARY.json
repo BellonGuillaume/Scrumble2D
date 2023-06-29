@@ -1,0 +1,109 @@
+[
+    {
+        "id" : 1,
+        "category" : "TRAVEL DIARY",
+        "description" : "En tant qu'utilisateur enregistré, je veux tenir un carnet de voyage et y lister mes lieux visités",
+        "defaultStars" : 1,
+        "defaultSize" : "XL",
+        "restriction" : 4
+    },
+    {
+        "id" : 2,
+        "category" : "TRAVEL DIARY",
+        "description" : "En tant qu'utilisateur enregistré, je veux ajouter des photos et notes à mon carnet de voyage pour chaque lieu visité.",
+        "defaultStars" : 4,
+        "defaultSize" : "XL",
+        "restriction" : 4
+    },
+    {
+        "id" : 3,
+        "category" : "TRAVEL DIARY",
+        "description" : "En tant que visiteur, je veux consulter les carnets de voyage et de route des utilisateurs, rendus publiques.",
+        "defaultStars" : 5,
+        "defaultSize" : "XL",
+        "restriction" : 12
+    },{
+        "id" : 4,
+        "category" : "TRAVEL DIARY",
+        "description" : "En tant qu'utilisateur régulier, je veux gérer un compte minimal QuickTrip pour y stocker des informations.",
+        "defaultStars" : 4,
+        "defaultSize" : "XL"
+    },{
+        "id" : 5,
+        "category" : "TRAVEL DIARY",
+        "description" : "En tant que visiteur, je veux consulter des offres touristiques dans la région.",
+        "defaultStars" : 4,
+        "defaultSize" : "XL"
+    },{
+        "id" : 6,
+        "category" : "TRAVEL DIARY",
+        "description" : "En tant que visiteur, je veux générer des parcours touristiques journaliers dans un rayon limité de 200km et pour un coût de moins de 500$.",
+        "defaultStars" : 3,
+        "defaultSize" : "XL"
+    },{
+        "id" : 7,
+        "category" : "TRAVEL DIARY",
+        "description" : "En tant qu'utilisateur enregistré, je veux générer des parcours touristiques d'une durée jusqu'à deux mois.",
+        "defaultStars" : 5,
+        "defaultSize" : "XL",
+        "restriction" : 4
+    },{
+        "id" : 8,
+        "category" : "TRAVEL DIARY",
+        "description" : "En tant qu'utilisateur enregistré, je veux générer des parcours touristiques à des étapes personnalisées, partout dans le monde.",
+        "defaultStars" : 3,
+        "defaultSize" : "XL",
+        "restriction" : 4
+    },{
+        "id" : 9,
+        "category" : "TRAVEL DIARY",
+        "description" : "En tant qu'utilisateur enregistré, je veux restreindre mon budget pour les parcours générés.",
+        "defaultStars" : 3,
+        "defaultSize" : "XL",
+        "restriction" : 4
+    },{
+        "id" : 10,
+        "category" : "TRAVEL DIARY",
+        "description" : "En tant qu'utilisateur enregistré, je veux rédiger des carnets de route.",
+        "defaultStars" : 2,
+        "defaultSize" : "XL",
+        "restriction" : 4
+    },{
+        "id" : 11,
+        "category" : "TRAVEL DIARY",
+        "description" : "En tant qu'utilisateur enregistré, je veux extraire des parcours générés pour les éditer comme mes propres carnets de route.",
+        "defaultStars" : 1,
+        "defaultSize" : "XL",
+        "restriction" : 4
+    },{
+        "id" : 12,
+        "category" : "TRAVEL DIARY",
+        "description" : "En tant qu'utilisateur enregistré, je veux rendre publiques mes carnets de route et de voyage.",
+        "defaultStars" : 3,
+        "defaultSize" : "XL",
+        "restriction" : 4
+    },
+    {
+        "id" : 13,
+        "category" : "TRAVEL DIARY",
+        "description" : "En tant qu'utilisateur enregistré, je veux me voir suggérer un nouveau parcours par mail selon mon expérience après un mois d'inactivité.",
+        "defaultStars" : 3,
+        "defaultSize" : "XL",
+        "restriction" : 4
+    },
+    {
+        "id" : 14,
+        "category" : "TRAVEL DIARY",
+        "description" : "En tant qu'utilisateur enregistré, je veux que QuickTrip réserve tout pour un carnet de route, sur paiement global.",
+        "defaultStars" : 1,
+        "defaultSize" : "XL",
+        "restriction" : 4
+    },
+    {
+        "id" : 15,
+        "category" : "TRAVEL DIARY",
+        "description" : "En tant que visiteur, je veux voir les lieux les plus prisés d'une localité choisie.",
+        "defaultStars" : 3,
+        "defaultSize" : "XL"
+    }
+]

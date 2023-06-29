@@ -23,12 +23,12 @@ public class UILobby : MonoBehaviour
         NetworkManager.singleton.networkAddress = ipText.text;
         Debug.Log($"About to start the server with address : {ipText.text}");
         NetworkManager.singleton.StartHost();
-        Player.localPlayer.HostGame();
+        PlayerOld.localPlayer.HostGame();
     }
 
     public void Join(){
         string text = ipToJoin.text;
-        Player.localPlayer.JoinGame(text);
+        PlayerOld.localPlayer.JoinGame(text);
     }
 
     public void HostSuccess(bool success){
