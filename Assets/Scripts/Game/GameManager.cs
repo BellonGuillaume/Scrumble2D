@@ -8,12 +8,18 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject userStoryUIPrefab;
     List<UserStory> userStories;
+    List<Card> dailyCards;
+    List<Card> problemCards;
+    List<Card> reviewCards;
 
 
     // Start is called before the first frame update
     void Start()
     {
         CreateUserStories(StateManager.userStory);
+        // CreateDailyCards();
+        CreateProblemCards();
+        // CreateReviewCards();
     }
 
     // Update is called once per frame
@@ -23,22 +29,45 @@ public class GameManager : MonoBehaviour
     }
 
     void CreateUserStories(string userStory){
-        string cheminFichierJSON = Application.dataPath;
+        string path = Application.dataPath;
         if (StateManager.userStory == "GIFT SHOP"){
-            cheminFichierJSON += "/UserStories/GIFT SHOP.json";
+            path += "/UserStories/GIFT SHOP.json";
         } else if (StateManager.userStory == "DIET COACH"){
-            cheminFichierJSON += "/UserStories/DIET COACH.json";
+            path += "/UserStories/DIET COACH.json";
         } else if (StateManager.userStory == "TRAVEL DIARY"){
-            cheminFichierJSON += "/UserStories/TRAVEL DIARY.json";
+            path += "/UserStories/TRAVEL DIARY.json";
         } else {
-            throw new System.Exception();
+            path += "/UserStories/GIFT SHOP.json";
+            // throw new System.Exception();
         }
-        string contenuJSON = File.ReadAllText(cheminFichierJSON);
-        this.userStories = JsonConvert.DeserializeObject<List<UserStory>>(contenuJSON);
+        string userStoriesStr = File.ReadAllText(path);
+        this.userStories = JsonConvert.DeserializeObject<List<UserStory>>(userStoriesStr);
 
         Debug.Log("Values of the user stories :\n");
         for (int i = 0; i < userStories.Count; i++){
             Debug.Log(userStories[i].ToString());
         }
+    }
+    void CreateDailyCards(){
+        string path = Application.dataPath + "/Cards/DailyCards.json";
+        string dailyCardsStr = File.ReadAllText(path);
+        this.dailyCards = JsonConvert.DeserializeObject<List<Card>>(dailyCardsStr);
+    }
+
+    void CreateProblemCards(){
+        string path = Application.dataPath + "/Cards/ProblemCards.json";
+        string problemCardsStr = File.ReadAllText(path);
+        this.problemCards = JsonConvert.DeserializeObject<List<Card>>(problemCardsStr);
+
+        Debug.Log("Here are the problem cards");
+        for (int i = 0; i < problemCards.Count; i++){
+            Debug.Log(problemCards[i].ToString());
+        }
+    }
+
+    void CreateReviewCards(){
+        string path = Application.dataPath + "/Cards/ReviewCards.json";
+        string reviewCardsStr = File.ReadAllText(path);
+        this.reviewCards = JsonConvert.DeserializeObject<List<Card>>(reviewCardsStr);
     }
 }

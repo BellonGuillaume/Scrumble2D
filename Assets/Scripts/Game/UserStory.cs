@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static GameManager;
 
-public class UserStory : MonoBehaviour
+public class UserStory
 {
     public enum State{
         NEW,
