@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject popUpGO;
     [SerializeField] GameObject cardPick;
+    [SerializeField] GameObject turn;
+    [SerializeField] GameObject roll;
     [SerializeField] GameObject userStoryUIPrefab;
     List<UserStory> userStories;
     List<Card> dailyCards;
@@ -45,10 +47,10 @@ public class GameManager : MonoBehaviour
         string userStoriesStr = File.ReadAllText(path);
         this.userStories = JsonConvert.DeserializeObject<List<UserStory>>(userStoriesStr);
 
-        Debug.Log("Values of the user stories :\n");
-        for (int i = 0; i < userStories.Count; i++){
-            Debug.Log(userStories[i].ToString());
-        }
+        // Debug.Log("Values of the user stories :\n");
+        // for (int i = 0; i < userStories.Count; i++){
+        //     Debug.Log(userStories[i].ToString());
+        // }
     }
     void CreateDailyCards(){
         string path = Application.dataPath + "/Cards/DailyCards.json";
@@ -61,10 +63,10 @@ public class GameManager : MonoBehaviour
         string problemCardsStr = File.ReadAllText(path);
         this.problemCards = JsonConvert.DeserializeObject<List<Card>>(problemCardsStr);
 
-        Debug.Log("Here are the problem cards");
-        for (int i = 0; i < problemCards.Count; i++){
-            Debug.Log(problemCards[i].ToString());
-        }
+        // Debug.Log("Here are the problem cards");
+        // for (int i = 0; i < problemCards.Count; i++){
+        //     Debug.Log(problemCards[i].ToString());
+        // }
     }
 
     void CreateReviewCards(){
@@ -89,5 +91,20 @@ public class GameManager : MonoBehaviour
         CardPicker.typeOfCard = "REVIEW";
         this.cardPick.SetActive(true);
         this.popUpGO.SetActive(true);
+    }
+
+    public void PlayTurn(){
+        this.turn.SetActive(true);
+        this.popUpGO.SetActive(true);
+    }
+
+    public void ChooseTaskOrDebt(string choice){
+        this.turn.SetActive(false);
+        this.roll.SetActive(true);
+    }
+
+    public void RollDice(){
+        int result = Random.Range(1, 7);
+        UIDice.currentFace = result;
     }
 }

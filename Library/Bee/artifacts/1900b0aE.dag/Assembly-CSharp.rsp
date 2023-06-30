@@ -403,6 +403,7 @@
 "Assets/Scripts/Game/GameManager.cs"
 "Assets/Scripts/Game/Player.cs"
 "Assets/Scripts/Game/UICard.cs"
+"Assets/Scripts/Game/UIDice.cs"
 "Assets/Scripts/Game/UserStory.cs"
 "Assets/Scripts/Menu/Lobby.cs"
 "Assets/Scripts/Menu/LocalNextButton.cs"
