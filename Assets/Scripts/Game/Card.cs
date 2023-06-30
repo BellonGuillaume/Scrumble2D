@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Card
 {
+
+
     public int id;
     public string category;
     public string description;

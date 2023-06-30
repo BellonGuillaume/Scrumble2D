@@ -6,6 +6,8 @@ using Newtonsoft.Json;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] GameObject popUpGO;
+    [SerializeField] GameObject cardPick;
     [SerializeField] GameObject userStoryUIPrefab;
     List<UserStory> userStories;
     List<Card> dailyCards;
@@ -69,5 +71,23 @@ public class GameManager : MonoBehaviour
         string path = Application.dataPath + "/Cards/ReviewCards.json";
         string reviewCardsStr = File.ReadAllText(path);
         this.reviewCards = JsonConvert.DeserializeObject<List<Card>>(reviewCardsStr);
+    }
+
+    public void PickDailyCard(){
+        CardPicker.typeOfCard = "DAILY";
+        this.cardPick.SetActive(true);
+        this.popUpGO.SetActive(true);
+    }
+
+    public void PickProblemCard(){
+        CardPicker.typeOfCard = "PROBLEM";
+        this.cardPick.SetActive(true);
+        this.popUpGO.SetActive(true);
+    }
+
+    public void PickReviewCard(){
+        CardPicker.typeOfCard = "REVIEW";
+        this.cardPick.SetActive(true);
+        this.popUpGO.SetActive(true);
     }
 }
