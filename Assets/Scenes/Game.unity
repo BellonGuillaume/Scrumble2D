@@ -410,7 +410,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &36043426
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4278,7 +4278,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1770712062
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4353,6 +4353,7 @@ MonoBehaviour:
   dailyVerso: {fileID: 21300000, guid: e4a1de1974b6d7043a8bda07badd3784, type: 3}
   problemVerso: {fileID: 21300000, guid: a2450924e15f6b54c9f46baeefa80375, type: 3}
   reviewVerso: {fileID: 21300000, guid: f308da0c57e00614887f7fe17279de7b, type: 3}
+  cardPicker: {fileID: 0}
 --- !u!1 &1788975686
 GameObject:
   m_ObjectHideFlags: 0

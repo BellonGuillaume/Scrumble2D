@@ -63,4 +63,13 @@ public class CardPicker : MonoBehaviour
     public void ChooseCard(UICard clickedCard){
 
     }
+
+    public void flipToVersoAll(){
+        if (cardOne is null || cardTwo is null || cardThree is null){
+            return;
+        }
+        cardOne.flipToVerso();
+        cardTwo.flipToVerso();
+        cardThree.flipToVerso();
+    }
 }

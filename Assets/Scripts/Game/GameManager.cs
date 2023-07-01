@@ -18,11 +18,14 @@ public class GameManager : MonoBehaviour
     List<Card> reviewCards;
 
     Player currentPlayer;
+    CardPicker cardPicker;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        this.cardPicker = cardPick.GetComponent<CardPicker>();
+        Debug.Log(this.cardPicker is null);
         CreateUsers();
         CreateUserStories(StateManager.userStory);
         // CreateDailyCards();
@@ -106,18 +109,21 @@ public class GameManager : MonoBehaviour
     public void PickDailyCard(){
         CardPicker.typeOfCard = "DAILY";
         this.cardPick.SetActive(true);
+        cardPicker.flipToVersoAll();
         this.popUpGO.SetActive(true);
     }
 
     public void PickProblemCard(){
         CardPicker.typeOfCard = "PROBLEM";
         this.cardPick.SetActive(true);
+        cardPicker.flipToVersoAll();
         this.popUpGO.SetActive(true);
     }
 
     public void PickReviewCard(){
         CardPicker.typeOfCard = "REVIEW";
         this.cardPick.SetActive(true);
+        cardPicker.flipToVersoAll();
         this.popUpGO.SetActive(true);
     }
 

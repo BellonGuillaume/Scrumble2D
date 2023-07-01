@@ -29,6 +29,12 @@ public class UICard : MonoBehaviour
         }
     }
 
+    public void flipToVerso(){
+        recto.enabled = false;
+        verso.enabled = true;
+        isRecto = false;
+    }
+
     public UICard Click(){
         return this;
     }
