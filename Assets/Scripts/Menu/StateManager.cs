@@ -30,12 +30,14 @@ public class StateManager : MonoBehaviour
     public static Player currentPlayer;
     public static string taskOrDebt;
     public static int diceResult;
+    public static bool alreadyReRoll;
     public static TurnState turnState;
 
     public static void ClearTurnState(){
         currentPlayer = null;
         taskOrDebt = null;
         diceResult = 0;
+        alreadyReRoll = false;
         turnState = TurnState.CHOICE;
     }
     #endregion

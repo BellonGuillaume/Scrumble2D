@@ -117,6 +117,10 @@ public class GameManager : MonoBehaviour
         Debug.Log($"DICE ROLLED : {StateManager.diceResult}");
         this.popUpAnimator.ResetTrigger("ROLL");
         Debug.Log("-END ROLL");
+        
+        StartCoroutine(PopUpAnimateOut(this.roll));
+
+        StartCoroutine(EndPopUp());
 
     }
     #endregion
@@ -246,6 +250,7 @@ public class GameManager : MonoBehaviour
         yield break;
     }
     IEnumerator EndPopUp(){
+        yield return new WaitForSeconds(0.5f);
         this.cardPick.SetActive(false);
         this.turn.SetActive(false);
         this.roll.SetActive(false);
