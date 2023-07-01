@@ -11,6 +11,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject turn;
     [SerializeField] GameObject roll;
     [SerializeField] GameObject userStoryUIPrefab;
+
+    string GAME_STATE;
+
+    Animator popUpAnimator;
+
     List<UserStory> userStories;
     List<Player> players = new List<Player>();
     List<Card> dailyCards;
@@ -24,23 +29,94 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("ENTERRING START");
+        Debug.Log("CHECKING STATE_MANAGER");
+        if (StateManager.gameState != StateManager.GameState.INITIALISATION &&
+            StateManager.gameState != StateManager.GameState.POKER_PLANNING){
+            InitState();
+        }
+        Debug.Log("INITIALIZING ASSETS");
+        this.popUpAnimator = popUpGO.GetComponent<Animator>();
         this.cardPicker = cardPick.GetComponent<CardPicker>();
-        Debug.Log(this.cardPicker is null);
         CreateUsers();
         CreateUserStories(StateManager.userStory);
         // CreateDailyCards();
         CreateProblemCards();
         // CreateReviewCards();
+        Debug.Log("ASSETS INITIALIZED");
+        StateManager.gameState = StateManager.GameState.PLAYER_TURN;
+        Debug.Log("BEGIN FIRST TURN");
         BeginTurn(players[0]);
     }
 
     #region Turn
     void BeginTurn(Player player){
         this.currentPlayer = player;
-        // StartTurnAnimation();
-        // StartChoiceTaskDebt();
-        // --> StartRollDice();
-        //
+        // StartTurnAnimation(player);
+        StartCoroutine(StartChoiceTaskDebt());
+        // UpdateRollView();
+        StartCoroutine(StartRollDice());
+        // if result == 1 and alreadyReRoll == false
+        // --> StartRerollAnimation();
+        // -> back to StartChoiceTaskDebt();
+        // else if result == 6
+        // --> StartProblemAnimation();
+        // --> PickProblemCard();
+        // if choice == debt
+        // --> StartChangeDebtAnimation();
+        // else
+        // --> UpdateTasksView();
+        // --> WaitForValidation();
+    }
+
+    IEnumerator StartChoiceTaskDebt(){
+        while(StateManager.gameState != StateManager.GameState.PLAYER_TURN || StateManager.turnState != StateManager.TurnState.CHOICE){
+            yield return null;
+        }
+        Debug.Log("-STARTING CHOICE");
+
+        StartCoroutine(PopUpAnimateIn(this.turn));
+
+        while(this.popUpAnimator.GetBool("TASK") == false && this.popUpAnimator.GetBool("DEBT") == false){
+            yield return null;
+        }
+        if (this.popUpAnimator.GetBool("TASK")){
+            this.popUpAnimator.ResetTrigger("TASK");
+
+            StateManager.taskOrDebt = "TASK";
+        } else if (this.popUpAnimator.GetBool("DEBT")){
+            this.popUpAnimator.ResetTrigger("DEBT");
+
+            StateManager.taskOrDebt = "DEBT";
+        } else {
+            Debug.Log("Nor Task nor debt are clicked");
+            this.popUpAnimator.ResetTrigger("TASK");
+            this.popUpAnimator.ResetTrigger("DEBT");
+        }
+        Debug.Log($"-CHOICE MADE : {StateManager.taskOrDebt}");
+        
+        StartCoroutine(PopUpAnimateOut(this.turn));
+        Debug.Log("-END OF CHOICE");
+
+        StateManager.turnState = StateManager.TurnState.ROLL;
+    }
+    IEnumerator StartRollDice(){
+        while(StateManager.gameState != StateManager.GameState.PLAYER_TURN || StateManager.turnState != StateManager.TurnState.ROLL ){
+            yield return null;
+        }
+        Debug.Log("-START ROLLING DICE");
+
+        StartCoroutine(PopUpAnimateIn(this.roll));
+
+        while(this.popUpAnimator.GetBool("ROLL") == false){
+            yield return null;
+        }
+        Debug.Log("-DICE READY TO ROLL");
+
+        StateManager.diceResult = this.roll.GetComponent<UIDice>().RollDice();
+        Debug.Log($"DICE ROLLED : {StateManager.diceResult}");
+        this.popUpAnimator.ResetTrigger("ROLL");
+        Debug.Log("-END ROLL");
 
     }
     #endregion
@@ -106,6 +182,7 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    #region Utils
     public void PickDailyCard(){
         CardPicker.typeOfCard = "DAILY";
         this.cardPick.SetActive(true);
@@ -133,13 +210,8 @@ public class GameManager : MonoBehaviour
     }
 
     public void ChooseTaskOrDebt(string choice){
-        this.turn.SetActive(false);
-        this.roll.SetActive(true);
-    }
-
-    public void RollDice(){
-        int result = Random.Range(1, 7);
-        UIDice.currentFace = result;
+        // this.turn.SetActive(false);
+        // this.roll.SetActive(true);
     }
 
     public void OutClick(){
@@ -148,4 +220,37 @@ public class GameManager : MonoBehaviour
         this.turn.SetActive(false);
         this.roll.SetActive(false);
     }
+
+    void InitState(){
+        Debug.Log("-STATE_MANAGER INITIALIAZING");
+        // StateManager.difficulty = StateManager.difficulty.EASY; TODO
+        StateManager.difficulty = "EASY";
+        StateManager.userStory = "GIFT SHOP";
+        StateManager.gameName = "";
+        StateManager.pokerPlanning = false;
+        StateManager.playerNames = new List<string>{"Alice", "Bob", "Charles"};
+
+        StateManager.gameState = StateManager.GameState.INITIALISATION;
+        Debug.Log("-STATE_MANAGER INITIALIZED");
+    }
+    #endregion
+
+    #region Animations
+    IEnumerator PopUpAnimateIn(GameObject go){
+        go.SetActive(true);
+        this.popUpGO.SetActive(true);
+        yield break;
+    }
+    IEnumerator PopUpAnimateOut(GameObject go){
+        go.SetActive(false);
+        yield break;
+    }
+    IEnumerator EndPopUp(){
+        this.cardPick.SetActive(false);
+        this.turn.SetActive(false);
+        this.roll.SetActive(false);
+        this.popUpGO.SetActive(false);
+        yield break;
+    }
+    #endregion
 }

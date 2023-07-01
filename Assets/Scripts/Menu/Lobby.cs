@@ -143,9 +143,9 @@ public class Lobby : MonoBehaviour
         StateManager.pokerPlanning = this.pokerPlanning;
         StateManager.playerNames = this.playersName;
         if(this.pokerPlanning){
-            StateManager.state = "POKER PLANNING";
+            StateManager.gameState = StateManager.GameState.POKER_PLANNING;
         } else {
-            StateManager.state = "INIT";
+            StateManager.gameState = StateManager.GameState.INITIALISATION;
         }
 
         Debug.Log($"Here are the values :\n" +
@@ -154,7 +154,7 @@ public class Lobby : MonoBehaviour
                     $"GameName : {StateManager.gameName}\n" +
                     $"PokerPlanning : {StateManager.pokerPlanning}\n" +
                     $"PlayerNames : {StateManager.playerNames}\n" +
-                    $"State  : {StateManager.state}\n"
+                    $"State  : {StateManager.gameState}\n"
                 );
         SceneManager.LoadScene("Game");
     }

@@ -404,13 +404,14 @@ GameObject:
   - component: {fileID: 36043426}
   - component: {fileID: 36043429}
   - component: {fileID: 36043428}
+  - component: {fileID: 36043430}
   m_Layer: 5
   m_Name: UIPopUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &36043426
 RectTransform:
   m_ObjectHideFlags: 0
@@ -474,6 +475,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 36043425}
   m_CullTransparentMesh: 1
+--- !u!95 &36043430
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36043425}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bcca8a0957b6e5744b2c07726a7c05e2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &43828194
 GameObject:
   m_ObjectHideFlags: 0
@@ -932,6 +953,7 @@ MonoBehaviour:
   face5: {fileID: 21300000, guid: 4bedbd909addc424c919309130c003d5, type: 3}
   face6: {fileID: 21300000, guid: 016807b793e875b48b84cc6b7bc3a1b2, type: 3}
   dice: {fileID: 174764553}
+  currentFace: 0
 --- !u!114 &159583269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1467,6 +1489,18 @@ MonoBehaviour:
         - m_Target: {fileID: 58451857}
           m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
           m_MethodName: ChooseTaskOrDebt
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: DEBT
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 36043430}
+          m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+          m_MethodName: SetTrigger
           m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -2417,6 +2451,18 @@ MonoBehaviour:
         - m_Target: {fileID: 58451857}
           m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
           m_MethodName: ChooseTaskOrDebt
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: TASK
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 36043430}
+          m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+          m_MethodName: SetTrigger
           m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -4278,7 +4324,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1770712062
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4353,7 +4399,6 @@ MonoBehaviour:
   dailyVerso: {fileID: 21300000, guid: e4a1de1974b6d7043a8bda07badd3784, type: 3}
   problemVerso: {fileID: 21300000, guid: a2450924e15f6b54c9f46baeefa80375, type: 3}
   reviewVerso: {fileID: 21300000, guid: f308da0c57e00614887f7fe17279de7b, type: 3}
-  cardPicker: {fileID: 0}
 --- !u!1 &1788975686
 GameObject:
   m_ObjectHideFlags: 0
@@ -4438,16 +4483,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 58451857}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: RollDice
-        m_Mode: 1
+      - m_Target: {fileID: 36043430}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: ROLL
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1788975689
