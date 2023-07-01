@@ -12,24 +12,51 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject roll;
     [SerializeField] GameObject userStoryUIPrefab;
     List<UserStory> userStories;
+    List<Player> players = new List<Player>();
     List<Card> dailyCards;
     List<Card> problemCards;
     List<Card> reviewCards;
+
+    Player currentPlayer;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        CreateUsers();
         CreateUserStories(StateManager.userStory);
         // CreateDailyCards();
         CreateProblemCards();
         // CreateReviewCards();
+        BeginTurn(players[0]);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    #region Turn
+    void BeginTurn(Player player){
+        this.currentPlayer = player;
+        // StartTurnAnimation();
+        // StartChoiceTaskDebt();
+        // --> StartRollDice();
+        //
+
+    }
+    #endregion
+
+    #region Initialisation
+    void CreateUsers(){
+        if (StateManager.playerNames is null){
+            this.players.Add(new Player("Alice", 1, 2));
+            this.players.Add(new Player("Bob", 2, 3));
+            this.players.Add(new Player("Charles", 3, 1));
+            return;
+        }
+        for (int i = 0; i < StateManager.playerNames.Count; i++){
+            if(i + 1 == StateManager.playerNames.Count){
+                this.players.Add(new Player(StateManager.playerNames[i], i+1, 1));
+            } else {
+                this.players.Add(new Player(StateManager.playerNames[i], i+1, i+2));
+            }
+        }
     }
 
     void CreateUserStories(string userStory){
@@ -74,6 +101,7 @@ public class GameManager : MonoBehaviour
         string reviewCardsStr = File.ReadAllText(path);
         this.reviewCards = JsonConvert.DeserializeObject<List<Card>>(reviewCardsStr);
     }
+    #endregion
 
     public void PickDailyCard(){
         CardPicker.typeOfCard = "DAILY";
@@ -106,5 +134,12 @@ public class GameManager : MonoBehaviour
     public void RollDice(){
         int result = Random.Range(1, 7);
         UIDice.currentFace = result;
+    }
+
+    public void OutClick(){
+        this.popUpGO.SetActive(false);
+        this.cardPick.SetActive(false);
+        this.turn.SetActive(false);
+        this.roll.SetActive(false);
     }
 }
