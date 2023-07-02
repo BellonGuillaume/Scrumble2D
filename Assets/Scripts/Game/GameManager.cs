@@ -46,11 +46,13 @@ public class GameManager : MonoBehaviour
         Debug.Log("ASSETS INITIALIZED");
         StateManager.gameState = StateManager.GameState.PLAYER_TURN;
         Debug.Log("BEGIN FIRST TURN");
-        BeginTurn(players[0]);
+        // BeginTurn(players[0]);
     }
 
     #region Turn
-    void BeginTurn(Player player){
+    // void BeginTurn(Player player){
+    public void BeginTurn(){
+        Player player = players[0];
         this.currentPlayer = player;
         // StartTurnAnimation(player);
         StartCoroutine(StartChoiceTaskDebt());
@@ -189,22 +191,28 @@ public class GameManager : MonoBehaviour
     #region Utils
     public void PickDailyCard(){
         CardPicker.typeOfCard = "DAILY";
+        int index = Random.Range(0, this.dailyCards.Count);
+        CardPicker.cardDescription = this.dailyCards[index].description;
+        CardPicker.cardResult = this.dailyCards[index].result;
         this.cardPick.SetActive(true);
-        cardPicker.flipToVersoAll();
         this.popUpGO.SetActive(true);
     }
 
     public void PickProblemCard(){
         CardPicker.typeOfCard = "PROBLEM";
+        int index = Random.Range(0, this.problemCards.Count);
+        CardPicker.cardDescription = this.problemCards[index].description;
+        CardPicker.cardResult = this.problemCards[index].result;
         this.cardPick.SetActive(true);
-        cardPicker.flipToVersoAll();
         this.popUpGO.SetActive(true);
     }
 
     public void PickReviewCard(){
         CardPicker.typeOfCard = "REVIEW";
+        int index = Random.Range(0, this.reviewCards.Count);
+        CardPicker.cardDescription = this.reviewCards[index].description;
+        CardPicker.cardResult = this.reviewCards[index].result;
         this.cardPick.SetActive(true);
-        cardPicker.flipToVersoAll();
         this.popUpGO.SetActive(true);
     }
 
@@ -220,8 +228,11 @@ public class GameManager : MonoBehaviour
 
     public void OutClick(){
         this.popUpGO.SetActive(false);
+        this.cardPick.GetComponent<CardPicker>().Reset();
         this.cardPick.SetActive(false);
+        // this.turn.Reset();
         this.turn.SetActive(false);
+        // this.roll.Reset();
         this.roll.SetActive(false);
     }
 
