@@ -27,6 +27,7 @@ public class CardPicker : MonoBehaviour
     public static string typeOfCard;
     public static string cardDescription;
     public static string cardResult;
+    public static bool initialized;
 
 
     // Start is called before the first frame update
@@ -37,6 +38,7 @@ public class CardPicker : MonoBehaviour
         this.versoTwoImage = this.versoTwo.transform.GetChild(0).GetComponent<Image>();
         this.versoThreeImage = this.versoThree.transform.GetChild(0).GetComponent<Image>();
         versosImages = new List<Image>{versoOneImage, versoTwoImage, versoThreeImage};
+        initialized = true;
     }
 
     // Update is called once per frame
@@ -113,7 +115,8 @@ public class CardPicker : MonoBehaviour
 
     public IEnumerator ShowRecto(){
         this.recto.SetActive(true);
-        yield break;
+        yield return new WaitForSeconds(4);
+        StateManager.turnState = StateManager.TurnState.RESULT;
     }
     #endregion
 }

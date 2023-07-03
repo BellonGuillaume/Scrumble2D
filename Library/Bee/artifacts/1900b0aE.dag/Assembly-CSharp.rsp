@@ -402,6 +402,7 @@
 "Assets/Scripts/Game/CardPicker.cs"
 "Assets/Scripts/Game/GameManager.cs"
 "Assets/Scripts/Game/Player.cs"
+"Assets/Scripts/Game/Results.cs"
 "Assets/Scripts/Game/UIDice.cs"
 "Assets/Scripts/Game/UIRecto.cs"
 "Assets/Scripts/Game/UserStory.cs"

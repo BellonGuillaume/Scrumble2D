@@ -24,20 +24,29 @@ public class StateManager : MonoBehaviour
     #region Turn State
     public enum TurnState{
         CHOICE,
-        ROLL
+        ROLL,
+        RESULT,
+        PROBLEM,
+        END_OF_TURN
 
     }
     public static Player currentPlayer;
-    public static string taskOrDebt;
-    public static int diceResult;
+    public static string firstTaskOrDebtChoice;
+    public static int firstDiceResult;
     public static bool alreadyReRoll;
+    public static string secondTaskOrDebtChoice;
+    public static int secondDiceResult;
+    public static string optionalResult;
     public static TurnState turnState;
 
     public static void ClearTurnState(){
         currentPlayer = null;
-        taskOrDebt = null;
-        diceResult = 0;
+        firstTaskOrDebtChoice = null;
+        firstDiceResult = 0;
         alreadyReRoll = false;
+        secondDiceResult = 0;
+        secondTaskOrDebtChoice = null;
+        optionalResult = null;
         turnState = TurnState.CHOICE;
     }
     #endregion
