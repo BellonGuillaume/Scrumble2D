@@ -138,10 +138,11 @@ public class Lobby : MonoBehaviour
 
     public void LaunchGame(){
         StateManager.difficulty = this.difficultyOut.text;
-        StateManager.userStory = this.userStoryOut.text;
+        StateManager.category = this.userStoryOut.text;
         StateManager.gameName = this.serverNameOut.text;
         StateManager.pokerPlanning = this.pokerPlanning;
-        StateManager.playerNames = this.playersName;
+        StateManager.CreateUserStories(StateManager.category);
+        StateManager.CreatePlayers(this.playersName);
         if(this.pokerPlanning){
             StateManager.gameState = StateManager.GameState.POKER_PLANNING;
         } else {
@@ -150,10 +151,9 @@ public class Lobby : MonoBehaviour
 
         Debug.Log($"Here are the values :\n" +
                     $"Difficulty : {StateManager.difficulty}\n" +
-                    $"UserStory : {StateManager.userStory}\n" +
+                    $"Category : {StateManager.category}\n" +
                     $"GameName : {StateManager.gameName}\n" +
                     $"PokerPlanning : {StateManager.pokerPlanning}\n" +
-                    $"PlayerNames : {StateManager.playerNames}\n" +
                     $"State  : {StateManager.gameState}\n"
                 );
         SceneManager.LoadScene("Game");

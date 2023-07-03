@@ -2,14 +2,14 @@
     {
         "id" : 1,
         "category" : "DIET COACH",
-        "description" : "En tant qu'utilisateur régulier, je veux utiliser l'application selon un compte correspondant à mon profil.",
+        "description" : "En tant qu'utilisateur régulier\n, je veux utiliser l'application selon un compte correspondant à mon profil.",
         "defaultStars" : 1,
         "defaultSize" : "XL"
     },
     {
         "id" : 2,
         "category" : "DIET COACH",
-        "description" : "En tant qu'utilisateur enregistré, je veux désigner mon diététicien qui sera alors mon coach pour le suivi.",
+        "description" : "En tant qu'utilisateur enregistré\n, je veux désigner mon diététicien qui sera alors mon coach pour le suivi.",
         "defaultStars" : 4,
         "defaultSize" : "XL",
         "restriction" : 1
@@ -17,73 +17,73 @@
     {
         "id" : 3,
         "category" : "DIET COACH",
-        "description" : "En tant que diététicien enregistré, je veux consulter toutes les informations d'une personne dont je suis le suiveur.",
+        "description" : "En tant que diététicien enregistré\n, je veux consulter toutes les informations d'une personne dont je suis le suiveur.",
         "defaultStars" : 5,
         "defaultSize" : "XL",
         "restriction" : 2
     },{
         "id" : 4,
         "category" : "DIET COACH",
-        "description" : "En tant qu'utilisateur enregistré, je veux me fixer des objectifs personnalisés en un temps donné.",
+        "description" : "En tant qu'utilisateur enregistré\n, je veux me fixer des objectifs personnalisés en un temps donné.",
         "defaultStars" : 4,
         "defaultSize" : "XL",
         "restriction" : 1
     },{
         "id" : 5,
         "category" : "DIET COACH",
-        "description" : "En tant qu'utilisateur, je veux consulter les régimes valables les plus connus.",
+        "description" : "En tant qu'utilisateur\n, je veux consulter les régimes valables les plus connus.",
         "defaultStars" : 4,
         "defaultSize" : "XL"
     },{
         "id" : 6,
         "category" : "DIET COACH",
-        "description" : "En tant qu'utilisateur, je veux consulter les attributs nutritifs et caloriques de tout aliment.",
+        "description" : "En tant qu'utilisateur\n, je veux consulter les attributs nutritifs et caloriques de tout aliment.",
         "defaultStars" : 3,
         "defaultSize" : "XL"
     },{
         "id" : 7,
         "category" : "DIET COACH",
-        "description" : "En tant que diététicien enregistré, je veux transmettre des objectifs et des conseils aux utilisateurs que je suis.",
+        "description" : "En tant que diététicien enregistré\n, je veux transmettre des objectifs et des conseils aux utilisateurs que je suis.",
         "defaultStars" : 5,
         "defaultSize" : "XL",
         "restriction" : 2
     },{
         "id" : 8,
         "category" : "DIET COACH",
-        "description" : "En tant qu'utilisateur enregistré, je veux renseigner mes informations personnelles utiles à mon suivi.",
+        "description" : "En tant qu'utilisateur enregistré\n, je veux renseigner mes informations personnelles utiles à mon suivi.",
         "defaultStars" : 3,
         "defaultSize" : "XL",
         "restriction" : 1
     },{
         "id" : 9,
         "category" : "DIET COACH",
-        "description" : "En tant qu'utilisateur enregistré, je veux recevoir des offres régulières et personnalisées pour améliorer ma santé.",
+        "description" : "En tant qu'utilisateur enregistré\n, je veux recevoir des offres régulières et personnalisées pour améliorer ma santé.",
         "defaultStars" : 3,
         "defaultSize" : "XL",
         "restriction" : 1
     },{
         "id" : 10,
         "category" : "DIET COACH",
-        "description" : "En tant qu'utilisateur, je veux recevoir fréquemment des encouragements automatiques pour me motiver.",
+        "description" : "En tant qu'utilisateur\n, je veux recevoir fréquemment des encouragements automatiques pour me motiver.",
         "defaultStars" : 2,
         "defaultSize" : "XL"
     },{
         "id" : 11,
         "category" : "DIET COACH",
-        "description" : "En tant qu'utilisateur, je veux me voir recommander chaque jour un nouvel aliment bénéfique pour ma santé.",
+        "description" : "En tant qu'utilisateur\n, je veux me voir recommander chaque jour un nouvel aliment bénéfique pour ma santé.",
         "defaultStars" : 1,
         "defaultSize" : "XL"
     },{
         "id" : 12,
         "category" : "DIET COACH",
-        "description" : "En tant qu'utilisateur, je veux me voir présenter chaque semaine un nouveau sport et des clubs à proximité.",
+        "description" : "En tant qu'utilisateur\n, je veux me voir présenter chaque semaine un nouveau sport et des clubs à proximité.",
         "defaultStars" : 3,
         "defaultSize" : "XL"
     },
     {
         "id" : 13,
         "category" : "DIET COACH",
-        "description" : "En tant qu'utilisateur enregistré, je veux me voir suggérer un programme de nutrition selon mon profil et mes objectifs.",
+        "description" : "En tant qu'utilisateur enregistré\n, je veux me voir suggérer un programme de nutrition selon mon profil et mes objectifs.",
         "defaultStars" : 3,
         "defaultSize" : "XL",
         "restriction" : 1
@@ -91,14 +91,14 @@
     {
         "id" : 14,
         "category" : "DIET COACH",
-        "description" : "En tant qu'utilisateur, je veux trouver les bonnes adresses de diététique dans la région.",
+        "description" : "En tant qu'utilisateur\n, je veux trouver les bonnes adresses de diététique dans la région.",
         "defaultStars" : 1,
         "defaultSize" : "XL"
     },
     {
         "id" : 15,
         "category" : "DIET COACH",
-        "description" : "En tant qu'utilisateur enregistré, je veux enregistrer mes journaux de repas et d'activités.",
+        "description" : "En tant qu'utilisateur enregistré\n, je veux enregistrer mes journaux de repas et d'activités.",
         "defaultStars" : 3,
         "defaultSize" : "XL",
         "restriction" : 1

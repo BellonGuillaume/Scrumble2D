@@ -17,12 +17,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Slider debtSlider;
     [SerializeField] Slider daySlider;
 
-    string GAME_STATE;
-
     Animator popUpAnimator;
-
-    List<UserStory> userStories;
-    List<Player> players = new List<Player>();
     List<Card> dailyCards;
     List<Card> problemCards;
     List<Card> reviewCards;
@@ -43,8 +38,6 @@ public class GameManager : MonoBehaviour
         Debug.Log("INITIALIZING ASSETS");
         this.popUpAnimator = popUpGO.GetComponent<Animator>();
         this.cardPicker = cardPick.GetComponent<CardPicker>();
-        CreateUsers();
-        CreateUserStories(StateManager.userStory);
         // CreateDailyCards();
         CreateProblemCards();
         // CreateReviewCards();
@@ -58,7 +51,7 @@ public class GameManager : MonoBehaviour
     // void BeginTurn(Player player){
     public void BeginTurn(){
         StateManager.turnState = StateManager.TurnState.CHOICE;
-        Player player = players[0];
+        Player player = StateManager.players[0];
         this.currentPlayer = player;
         // StartTurnAnimation(player);
         StartCoroutine(StartChoiceTaskDebt());
@@ -198,9 +191,9 @@ public class GameManager : MonoBehaviour
         Debug.Log("-END RESULTS");
 
         StartCoroutine(PopUpAnimateOut(this.results));
-
-        StartCoroutine(AddToDebt(0-debtCounter));
-
+        if (debtCounter > 0){
+            StartCoroutine(AddToDebt(0-debtCounter));
+        }
         StateManager.turnState = StateManager.TurnState.END_OF_TURN;
         
     }
@@ -234,42 +227,6 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region --------------------------------- Initialisation ---------------------------------
-    void CreateUsers(){
-        if (StateManager.playerNames is null){
-            this.players.Add(new Player("Alice", 1, 2));
-            this.players.Add(new Player("Bob", 2, 3));
-            this.players.Add(new Player("Charles", 3, 1));
-            return;
-        }
-        for (int i = 0; i < StateManager.playerNames.Count; i++){
-            if(i + 1 == StateManager.playerNames.Count){
-                this.players.Add(new Player(StateManager.playerNames[i], i+1, 1));
-            } else {
-                this.players.Add(new Player(StateManager.playerNames[i], i+1, i+2));
-            }
-        }
-    }
-
-    void CreateUserStories(string userStory){
-        string path = Application.dataPath;
-        if (StateManager.userStory == "GIFT SHOP"){
-            path += "/UserStories/GIFT SHOP.json";
-        } else if (StateManager.userStory == "DIET COACH"){
-            path += "/UserStories/DIET COACH.json";
-        } else if (StateManager.userStory == "TRAVEL DIARY"){
-            path += "/UserStories/TRAVEL DIARY.json";
-        } else {
-            path += "/UserStories/GIFT SHOP.json";
-            // throw new System.Exception();
-        }
-        string userStoriesStr = File.ReadAllText(path);
-        this.userStories = JsonConvert.DeserializeObject<List<UserStory>>(userStoriesStr);
-
-        // Debug.Log("Values of the user stories :\n");
-        // for (int i = 0; i < userStories.Count; i++){
-        //     Debug.Log(userStories[i].ToString());
-        // }
-    }
     void CreateDailyCards(){
         string path = Application.dataPath + "/Cards/DailyCards.json";
         string dailyCardsStr = File.ReadAllText(path);
@@ -362,10 +319,10 @@ public class GameManager : MonoBehaviour
         Debug.Log("-STATE_MANAGER INITIALIAZING");
         // StateManager.difficulty = StateManager.difficulty.EASY; TODO
         StateManager.difficulty = "EASY";
-        StateManager.userStory = "GIFT SHOP";
+        StateManager.category = "GIFT SHOP";
         StateManager.gameName = "";
         StateManager.pokerPlanning = false;
-        StateManager.playerNames = new List<string>{"Alice", "Bob", "Charles"};
+        StateManager.CreatePlayers(new List<string>{"Alice", "Bob", "Charles"});
 
         StateManager.gameState = StateManager.GameState.INITIALISATION;
         Debug.Log("-STATE_MANAGER INITIALIZED");
