@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PokerPlanningManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class PokerPlanningManager : MonoBehaviour
     [SerializeField] UserStoryUI centralUS;
     [SerializeField] UserStoryUI rightUS;
     [SerializeField] GameObject preciseUI;
+    // [SerializeField] TMP_Text xs, s, m, l, xl;
     List<GameObject> userStoriesUI;
 
     UserStory leftCurrent, centralCurrent, rightCurrent;
@@ -96,6 +98,36 @@ public class PokerPlanningManager : MonoBehaviour
         this.leftUS.Fill(this.leftCurrent);
         this.centralUS.Fill(this.centralCurrent);
         this.rightUS.Fill(this.rightCurrent);
+    }
+
+    public void OnSizeClick(string size){
+        switch (size){
+            case "XS":
+                StateManager.userStories[this.centralCurrent.id-1].size = UserStory.Size.XS;
+                this.centralUS.SetSize(UserStory.Size.XS);
+                this.userStoriesUI[this.centralCurrent.id-1].GetComponent<UserStoryUI>().SetSize(UserStory.Size.XS);
+                break;
+            case "S":
+                StateManager.userStories[this.centralCurrent.id-1].size = UserStory.Size.S;
+                this.centralUS.SetSize(UserStory.Size.S);
+                this.userStoriesUI[this.centralCurrent.id-1].GetComponent<UserStoryUI>().SetSize(UserStory.Size.S);
+                break;
+            case "M":
+                StateManager.userStories[this.centralCurrent.id-1].size = UserStory.Size.M;
+                this.centralUS.SetSize(UserStory.Size.M);
+                this.userStoriesUI[this.centralCurrent.id-1].GetComponent<UserStoryUI>().SetSize(UserStory.Size.M);
+                break;
+            case "L":
+                StateManager.userStories[this.centralCurrent.id-1].size = UserStory.Size.L;
+                this.centralUS.SetSize(UserStory.Size.L);
+                this.userStoriesUI[this.centralCurrent.id-1].GetComponent<UserStoryUI>().SetSize(UserStory.Size.L);
+                break;
+            case "XL":
+                StateManager.userStories[this.centralCurrent.id-1].size = UserStory.Size.XL;
+                this.centralUS.SetSize(UserStory.Size.XL);
+                this.userStoriesUI[this.centralCurrent.id-1].GetComponent<UserStoryUI>().SetSize(UserStory.Size.XL);
+                break;
+        }
     }
 
 

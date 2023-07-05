@@ -45,6 +45,11 @@ public class UserStoryUI : MonoBehaviour
             pokerPlanningManager.OnUserStoryClick(this.userStory.id);
         }
     }
+
+    public void SetSize(UserStory.Size size){
+        this.userStory.size = size;
+        this.sizeTXT.text = size.ToString();
+    }
 }
 
 public class UserStory{
