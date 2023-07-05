@@ -425,6 +425,7 @@
 "Assets/Scripts/Old/TextSlider.cs"
 "Assets/Scripts/Old/UILobby.cs"
 "Assets/Scripts/PokerPlanning/PokerPlanningManager.cs"
+"Assets/Scripts/Ressources/AutoSizeText.cs"
 "Assets/Scripts/Ressources/FlexibleGridLayout.cs"
 "Assets/Scripts/Ressources/UserStoryUI.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs"

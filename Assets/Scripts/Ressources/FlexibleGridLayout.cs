@@ -21,8 +21,6 @@ public class FlexibleGridLayout : LayoutGroup
         base.CalculateLayoutInputHorizontal();
 
         if (this.fitType == FitType.Uniform || this.fitType == FitType.Height || this.fitType == FitType.Width){
-            this.fitX = true;
-            this.fitY = true;
             float sqrt = Mathf.Sqrt(transform.childCount);
             rows = Mathf.CeilToInt(sqrt);
             columns = Mathf.CeilToInt(sqrt);
@@ -48,7 +46,7 @@ public class FlexibleGridLayout : LayoutGroup
 
         for (int i = 0; i < rectChildren.Count; i++){
             rowCount = i / columns;
-            columnCount = i % rows;
+            columnCount = i % columns;
 
             var item = rectChildren[i];
 
@@ -62,16 +60,16 @@ public class FlexibleGridLayout : LayoutGroup
     }
     public override void CalculateLayoutInputVertical()
     {
-        throw new System.NotImplementedException();
+
     }
 
     public override void SetLayoutHorizontal()
     {
-        throw new System.NotImplementedException();
+
     }
 
     public override void SetLayoutVertical()
     {
-        throw new System.NotImplementedException();
+
     }
 }
