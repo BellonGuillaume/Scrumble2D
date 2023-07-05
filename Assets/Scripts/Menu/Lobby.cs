@@ -64,17 +64,6 @@ public class Lobby : MonoBehaviour
         
     }
 
-    (List<string>, List<GameObject>) CreatePlayers(int playerNumber){
-        List<string> players = new List<string>();
-        List<GameObject> playersUI = new List<GameObject>();
-        for (int i = 0; i < playerNumber; i++){
-            // GameObject player = Instantiate(playerUIPrefab);
-            // playersUI.Add(player);
-            players.Add("Player " + i.ToString());
-        }
-        return (players, null);
-    }
-
     string GetDifficulty(int difficulty){
         switch (difficulty){
             case 0:
