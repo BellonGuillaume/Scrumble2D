@@ -73,5 +73,30 @@ public class PokerPlanningManager : MonoBehaviour
         this.preciseUI.SetActive(true);        
     }
 
+    public void OnRightClick(){
+        this.leftCurrent = this.centralCurrent;
+        this.centralCurrent = this.rightCurrent;
+        if(this.rightCurrent.id == StateManager.userStories.Count){
+            this.rightCurrent = StateManager.userStories[0];
+        } else {
+            this.rightCurrent = StateManager.userStories[this.rightCurrent.id];
+        }
+        this.leftUS.Fill(this.leftCurrent);
+        this.centralUS.Fill(this.centralCurrent);
+        this.rightUS.Fill(this.rightCurrent);
+    }
+    public void OnLeftClick(){
+        this.rightCurrent = this.centralCurrent;
+        this.centralCurrent = this.leftCurrent;
+        if(this.leftCurrent.id == 1){
+            this.leftCurrent = StateManager.userStories[StateManager.userStories.Count - 1];
+        } else {
+            this.leftCurrent = StateManager.userStories[this.leftCurrent.id - 2];
+        }
+        this.leftUS.Fill(this.leftCurrent);
+        this.centralUS.Fill(this.centralCurrent);
+        this.rightUS.Fill(this.rightCurrent);
+    }
+
 
 }

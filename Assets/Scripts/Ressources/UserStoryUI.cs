@@ -19,11 +19,11 @@ public class UserStoryUI : MonoBehaviour
         this.userStory = userStory;
         this.idTXT.text = userStory.id.ToString();
         if (userStory.restriction == 0){
-            this.preRestrictionTXT.text = "";
             this.preRestrictionTXT.enabled = false;
-            this.restrictionTXT.text = "";
             this.restrictionTXT.enabled = false;
         } else {
+            this.preRestrictionTXT.enabled = true;
+            this.restrictionTXT.enabled = true;
             this.restrictionTXT.text = userStory.restriction.ToString();
         }
         this.descriptionTXT.text = userStory.description;
