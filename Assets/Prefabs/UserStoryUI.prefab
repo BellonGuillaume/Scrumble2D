@@ -860,6 +860,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idTXT: {fileID: 8801162081939751543}
+  preRestrictionTXT: {fileID: 8801162080558101290}
   restrictionTXT: {fileID: 8801162081839564688}
   descriptionTXT: {fileID: 8801162081629767293}
   starsTXT: {fileID: 8801162080103367620}

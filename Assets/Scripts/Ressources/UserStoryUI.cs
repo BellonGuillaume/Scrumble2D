@@ -7,19 +7,33 @@ using TMPro;
 public class UserStoryUI : MonoBehaviour
 {
     [SerializeField] TMP_Text idTXT;
+    [SerializeField] TMP_Text preRestrictionTXT;
     [SerializeField] TMP_Text restrictionTXT;
     [SerializeField] TMP_Text descriptionTXT;
     [SerializeField] TMP_Text starsTXT;
     [SerializeField] TMP_Text sizeTXT;
     UserStory userStory;
+    PokerPlanningManager pokerPlanningManager;
 
     public void Fill(UserStory userStory){
         this.userStory = userStory;
         this.idTXT.text = userStory.id.ToString();
-        this.restrictionTXT.text = userStory.restriction.ToString();
+        if (userStory.restriction == 0){
+            this.preRestrictionTXT.text = "";
+            this.preRestrictionTXT.enabled = false;
+            this.restrictionTXT.text = "";
+            this.restrictionTXT.enabled = false;
+        } else {
+            this.restrictionTXT.text = userStory.restriction.ToString();
+        }
         this.descriptionTXT.text = userStory.description;
         this.starsTXT.text = userStory.stars.ToString();
         this.sizeTXT.text = userStory.size.ToString();
+    }
+    public void Connect(Object manager){
+        if (manager is PokerPlanningManager){
+            this.pokerPlanningManager = (PokerPlanningManager) manager;
+        }
     }
 
     public UserStory GetUserStory(){
@@ -28,7 +42,7 @@ public class UserStoryUI : MonoBehaviour
 
     public void OnClick(){
         if (StateManager.gameState == StateManager.GameState.POKER_PLANNING){
-            PokerPlanningManager.OnUserStoryClick(this.userStory.id);
+            pokerPlanningManager.OnUserStoryClick(this.userStory.id);
         }
     }
 }
