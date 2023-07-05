@@ -228,24 +228,19 @@ public class GameManager : MonoBehaviour
 
     #region --------------------------------- Initialisation ---------------------------------
     void CreateDailyCards(){
-        string path = Application.dataPath + "/Cards/DailyCards.json";
+        string path = Application.streamingAssetsPath + "/Cards/DailyCards.json";
         string dailyCardsStr = File.ReadAllText(path);
         this.dailyCards = JsonConvert.DeserializeObject<List<Card>>(dailyCardsStr);
     }
 
     void CreateProblemCards(){
-        string path = Application.dataPath + "/Cards/ProblemCards.json";
+        string path = Application.streamingAssetsPath + "/Cards/ProblemCards.json";
         string problemCardsStr = File.ReadAllText(path);
         this.problemCards = JsonConvert.DeserializeObject<List<Card>>(problemCardsStr);
-
-        // Debug.Log("Here are the problem cards");
-        // for (int i = 0; i < problemCards.Count; i++){
-        //     Debug.Log(problemCards[i].ToString());
-        // }
     }
 
     void CreateReviewCards(){
-        string path = Application.dataPath + "/Cards/ReviewCards.json";
+        string path = Application.streamingAssetsPath + "/Cards/ReviewCards.json";
         string reviewCardsStr = File.ReadAllText(path);
         this.reviewCards = JsonConvert.DeserializeObject<List<Card>>(reviewCardsStr);
     }

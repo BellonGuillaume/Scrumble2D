@@ -11,7 +11,6 @@ public class PokerPlanningManager : MonoBehaviour
     [SerializeField] UserStoryUI centralUS;
     [SerializeField] UserStoryUI rightUS;
     [SerializeField] GameObject preciseUI;
-    // [SerializeField] TMP_Text xs, s, m, l, xl;
     List<GameObject> userStoriesUI;
 
     UserStory leftCurrent, centralCurrent, rightCurrent;
@@ -20,6 +19,7 @@ public class PokerPlanningManager : MonoBehaviour
         if (StateManager.userStories is null){
             InitState();
         }
+        StateManager.pokerPlanningState = StateManager.PokerPlanningState.GLOBAL;
         FillUserStoriesUI();
     }
     public void FillUserStoriesUI(){
@@ -72,6 +72,7 @@ public class PokerPlanningManager : MonoBehaviour
         this.centralUS.Fill(this.centralCurrent);
         this.rightUS.Fill(this.rightCurrent);
 
+        StateManager.pokerPlanningState = StateManager.PokerPlanningState.PRECISE;
         this.preciseUI.SetActive(true);        
     }
 
@@ -101,33 +102,32 @@ public class PokerPlanningManager : MonoBehaviour
     }
 
     public void OnSizeClick(string size){
+        UserStory.Size sizeUS = UserStory.Size.XL;
         switch (size){
             case "XS":
-                StateManager.userStories[this.centralCurrent.id-1].size = UserStory.Size.XS;
-                this.centralUS.SetSize(UserStory.Size.XS);
-                this.userStoriesUI[this.centralCurrent.id-1].GetComponent<UserStoryUI>().SetSize(UserStory.Size.XS);
+                sizeUS = UserStory.Size.XS;
                 break;
             case "S":
-                StateManager.userStories[this.centralCurrent.id-1].size = UserStory.Size.S;
-                this.centralUS.SetSize(UserStory.Size.S);
-                this.userStoriesUI[this.centralCurrent.id-1].GetComponent<UserStoryUI>().SetSize(UserStory.Size.S);
+                sizeUS = UserStory.Size.S;
                 break;
             case "M":
-                StateManager.userStories[this.centralCurrent.id-1].size = UserStory.Size.M;
-                this.centralUS.SetSize(UserStory.Size.M);
-                this.userStoriesUI[this.centralCurrent.id-1].GetComponent<UserStoryUI>().SetSize(UserStory.Size.M);
+                sizeUS = UserStory.Size.M;
                 break;
             case "L":
-                StateManager.userStories[this.centralCurrent.id-1].size = UserStory.Size.L;
-                this.centralUS.SetSize(UserStory.Size.L);
-                this.userStoriesUI[this.centralCurrent.id-1].GetComponent<UserStoryUI>().SetSize(UserStory.Size.L);
+                sizeUS = UserStory.Size.L;
                 break;
             case "XL":
-                StateManager.userStories[this.centralCurrent.id-1].size = UserStory.Size.XL;
-                this.centralUS.SetSize(UserStory.Size.XL);
-                this.userStoriesUI[this.centralCurrent.id-1].GetComponent<UserStoryUI>().SetSize(UserStory.Size.XL);
+                sizeUS = UserStory.Size.XL;
                 break;
         }
+            StateManager.userStories[this.centralCurrent.id-1].size = sizeUS;
+            this.centralUS.SetSize(sizeUS);
+            this.userStoriesUI[this.centralCurrent.id-1].GetComponent<UserStoryUI>().SetSize(sizeUS);
+    }
+
+    public void OnBackClick(){
+        StateManager.pokerPlanningState = StateManager.PokerPlanningState.GLOBAL;
+        this.preciseUI.SetActive(false);
     }
 
 

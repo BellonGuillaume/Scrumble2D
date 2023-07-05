@@ -1,23 +1,24 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - AutoSizeText
     - BarScroller
     - CardPicker
     - ConnexionManager
     - ExitButton
     - GameManager
-    - HostJoinUI
     - Lobby
     - LocalNextButton
-    - MatchMaker
     - PlayerOld
+    - PokerPlanningManager
+    - Results
     - ScrollingManager
     - TextSlider
     - TrueFalseScrollbar
-    - UICard
     - UIDice
-    - UILobby
     - UIPlayer
+    - UIRecto
+    - UserStoryUI
     Mirror.Components.dll:
     - Mirror.NetworkMatch
     Mirror.Transports.dll:
@@ -83,6 +84,7 @@ ScriptsOnlyBuild:
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     Unity.ShaderGraph.Editor.dll:
+    - UnityEditor.ShaderGraph.ShaderGraphProjectSettings
     - UnityEditor.ShaderGraph.SubGraphAsset
     Unity.TextMeshPro.dll:
     - TMPro.TMP_ColorGradient
@@ -96,10 +98,8 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -284,20 +284,41 @@ ScriptsOnlyBuild:
     fullTypeName: UnityEngine.Rendering.UI.DebugUIHandlerPanel
     methodName: ResetDebugManager
   - assembly: Assembly-CSharp
-    fullTypeName: UILobby
-    methodName: Join
+    fullTypeName: UserStoryUI
+    methodName: OnClick
   - assembly: Assembly-CSharp
-    fullTypeName: UILobby
-    methodName: Host
-  - assembly: UnityEngine.CoreModule
-    fullTypeName: UnityEngine.GameObject
-    methodName: SetActive
+    fullTypeName: PokerPlanningManager
+    methodName: OnSizeClick
   - assembly: Assembly-CSharp
-    fullTypeName: UICard
-    methodName: flipCard
+    fullTypeName: PokerPlanningManager
+    methodName: OnLeftClick
+  - assembly: Assembly-CSharp
+    fullTypeName: PokerPlanningManager
+    methodName: OnSizeClick
+  - assembly: Assembly-CSharp
+    fullTypeName: PokerPlanningManager
+    methodName: OnSizeClick
+  - assembly: Assembly-CSharp
+    fullTypeName: PokerPlanningManager
+    methodName: OnRightClick
+  - assembly: Assembly-CSharp
+    fullTypeName: PokerPlanningManager
+    methodName: OnSizeClick
+  - assembly: Assembly-CSharp
+    fullTypeName: PokerPlanningManager
+    methodName: OnBackClick
+  - assembly: Assembly-CSharp
+    fullTypeName: PokerPlanningManager
+    methodName: OnSizeClick
   - assembly: Assembly-CSharp
     fullTypeName: ExitButton
     methodName: QuitGame
+  - assembly: Assembly-CSharp
+    fullTypeName: CardPicker
+    methodName: ChooseCard
+  - assembly: UnityEngine.AnimationModule
+    fullTypeName: UnityEngine.Animator
+    methodName: SetTrigger
   - assembly: Assembly-CSharp
     fullTypeName: GameManager
     methodName: ChooseTaskOrDebt
@@ -307,6 +328,18 @@ ScriptsOnlyBuild:
   - assembly: Assembly-CSharp
     fullTypeName: GameManager
     methodName: ChooseTaskOrDebt
+  - assembly: UnityEngine.AnimationModule
+    fullTypeName: UnityEngine.Animator
+    methodName: SetTrigger
+  - assembly: Assembly-CSharp
+    fullTypeName: CardPicker
+    methodName: ChooseCard
+  - assembly: UnityEngine.AnimationModule
+    fullTypeName: UnityEngine.Animator
+    methodName: SetTrigger
+  - assembly: Assembly-CSharp
+    fullTypeName: CardPicker
+    methodName: ChooseCard
   - assembly: UnityEngine.AnimationModule
     fullTypeName: UnityEngine.Animator
     methodName: SetTrigger
@@ -324,7 +357,7 @@ ScriptsOnlyBuild:
     methodName: SetTrigger
   - assembly: Assembly-CSharp
     fullTypeName: GameManager
-    methodName: PlayTurn
+    methodName: BeginTurn
   - assembly: Assembly-CSharp
     fullTypeName: GameManager
     methodName: PickProblemCard
@@ -353,43 +386,45 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1740}
+      Script: {instanceID: 12676}
     - Class: 114
-      Script: {instanceID: 1742}
+      Script: {instanceID: 13560}
     - Class: 114
-      Script: {instanceID: 2690}
+      Script: {instanceID: 13596}
     - Class: 114
-      Script: {instanceID: 2726}
+      Script: {instanceID: 13962}
     - Class: 114
-      Script: {instanceID: 3098}
+      Script: {instanceID: 14202}
     - Class: 114
-      Script: {instanceID: 3712}
+      Script: {instanceID: 14466}
     - Class: 114
-      Script: {instanceID: 3746}
+      Script: {instanceID: 14568}
     - Class: 114
-      Script: {instanceID: 3814}
+      Script: {instanceID: 14602}
     - Class: 114
-      Script: {instanceID: 4112}
+      Script: {instanceID: 14670}
     - Class: 114
-      Script: {instanceID: 5134}
+      Script: {instanceID: 14968}
     - Class: 114
-      Script: {instanceID: 6030}
+      Script: {instanceID: 15974}
     - Class: 114
-      Script: {instanceID: 6262}
+      Script: {instanceID: 16864}
     - Class: 114
-      Script: {instanceID: 6378}
+      Script: {instanceID: 17096}
     - Class: 114
-      Script: {instanceID: 7172}
+      Script: {instanceID: 17210}
     - Class: 114
-      Script: {instanceID: 7366}
+      Script: {instanceID: 18000}
     - Class: 114
-      Script: {instanceID: 7806}
+      Script: {instanceID: 18192}
     - Class: 114
-      Script: {instanceID: 7942}
+      Script: {instanceID: 18628}
     - Class: 114
-      Script: {instanceID: 8708}
+      Script: {instanceID: 18764}
     - Class: 114
-      Script: {instanceID: 9812}
+      Script: {instanceID: 19526}
+    - Class: 114
+      Script: {instanceID: 20606}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -428,137 +463,137 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1736}
+      Script: {instanceID: 12632}
     - Class: 114
-      Script: {instanceID: 1738}
+      Script: {instanceID: 12676}
     - Class: 114
-      Script: {instanceID: 1740}
+      Script: {instanceID: 12802}
     - Class: 114
-      Script: {instanceID: 1742}
+      Script: {instanceID: 12826}
     - Class: 114
-      Script: {instanceID: 1744}
+      Script: {instanceID: 13386}
     - Class: 114
-      Script: {instanceID: 1746}
+      Script: {instanceID: 13464}
     - Class: 114
-      Script: {instanceID: 1752}
+      Script: {instanceID: 13576}
     - Class: 114
-      Script: {instanceID: 1922}
+      Script: {instanceID: 13700}
     - Class: 114
-      Script: {instanceID: 2512}
+      Script: {instanceID: 13962}
     - Class: 114
-      Script: {instanceID: 2592}
+      Script: {instanceID: 13982}
     - Class: 114
-      Script: {instanceID: 2706}
+      Script: {instanceID: 14202}
     - Class: 114
-      Script: {instanceID: 2830}
+      Script: {instanceID: 14568}
     - Class: 114
-      Script: {instanceID: 3098}
+      Script: {instanceID: 14670}
     - Class: 114
-      Script: {instanceID: 3118}
+      Script: {instanceID: 14676}
     - Class: 114
-      Script: {instanceID: 3712}
+      Script: {instanceID: 14690}
     - Class: 114
-      Script: {instanceID: 3814}
+      Script: {instanceID: 14770}
     - Class: 114
-      Script: {instanceID: 3820}
+      Script: {instanceID: 14800}
     - Class: 114
-      Script: {instanceID: 3834}
+      Script: {instanceID: 14874}
     - Class: 114
-      Script: {instanceID: 3914}
+      Script: {instanceID: 15034}
     - Class: 114
-      Script: {instanceID: 3944}
+      Script: {instanceID: 15166}
     - Class: 114
-      Script: {instanceID: 4018}
+      Script: {instanceID: 15550}
     - Class: 114
-      Script: {instanceID: 4180}
+      Script: {instanceID: 15682}
     - Class: 114
-      Script: {instanceID: 4314}
+      Script: {instanceID: 15720}
     - Class: 114
-      Script: {instanceID: 4702}
+      Script: {instanceID: 15834}
     - Class: 114
-      Script: {instanceID: 4842}
+      Script: {instanceID: 15856}
     - Class: 114
-      Script: {instanceID: 4880}
+      Script: {instanceID: 15996}
     - Class: 114
-      Script: {instanceID: 4994}
+      Script: {instanceID: 16088}
     - Class: 114
-      Script: {instanceID: 5016}
+      Script: {instanceID: 16188}
     - Class: 114
-      Script: {instanceID: 5156}
+      Script: {instanceID: 16216}
     - Class: 114
-      Script: {instanceID: 5248}
+      Script: {instanceID: 16694}
     - Class: 114
-      Script: {instanceID: 5348}
+      Script: {instanceID: 16780}
     - Class: 114
-      Script: {instanceID: 5376}
+      Script: {instanceID: 16832}
     - Class: 114
-      Script: {instanceID: 5860}
+      Script: {instanceID: 16934}
     - Class: 114
-      Script: {instanceID: 5946}
+      Script: {instanceID: 17020}
     - Class: 114
-      Script: {instanceID: 5998}
+      Script: {instanceID: 17096}
     - Class: 114
-      Script: {instanceID: 6102}
+      Script: {instanceID: 17112}
     - Class: 114
-      Script: {instanceID: 6262}
+      Script: {instanceID: 17130}
     - Class: 114
-      Script: {instanceID: 6278}
+      Script: {instanceID: 17210}
     - Class: 114
-      Script: {instanceID: 6296}
+      Script: {instanceID: 17218}
     - Class: 114
-      Script: {instanceID: 6378}
+      Script: {instanceID: 17476}
     - Class: 114
-      Script: {instanceID: 6388}
+      Script: {instanceID: 17478}
     - Class: 114
-      Script: {instanceID: 6648}
+      Script: {instanceID: 17502}
     - Class: 114
-      Script: {instanceID: 6650}
+      Script: {instanceID: 17586}
     - Class: 114
-      Script: {instanceID: 6674}
+      Script: {instanceID: 17850}
     - Class: 114
-      Script: {instanceID: 7024}
+      Script: {instanceID: 18000}
     - Class: 114
-      Script: {instanceID: 7172}
+      Script: {instanceID: 18184}
     - Class: 114
-      Script: {instanceID: 7358}
+      Script: {instanceID: 18192}
     - Class: 114
-      Script: {instanceID: 7366}
+      Script: {instanceID: 18210}
     - Class: 114
-      Script: {instanceID: 7384}
+      Script: {instanceID: 18300}
     - Class: 114
-      Script: {instanceID: 7474}
+      Script: {instanceID: 18308}
     - Class: 114
-      Script: {instanceID: 7482}
+      Script: {instanceID: 18446}
     - Class: 114
-      Script: {instanceID: 7622}
+      Script: {instanceID: 18484}
     - Class: 114
-      Script: {instanceID: 7660}
+      Script: {instanceID: 18550}
     - Class: 114
-      Script: {instanceID: 7726}
+      Script: {instanceID: 18628}
     - Class: 114
-      Script: {instanceID: 7806}
+      Script: {instanceID: 18642}
     - Class: 114
-      Script: {instanceID: 7820}
+      Script: {instanceID: 18774}
     - Class: 114
-      Script: {instanceID: 7952}
+      Script: {instanceID: 18930}
     - Class: 114
-      Script: {instanceID: 8112}
+      Script: {instanceID: 19082}
     - Class: 114
-      Script: {instanceID: 8266}
+      Script: {instanceID: 19160}
     - Class: 114
-      Script: {instanceID: 8536}
+      Script: {instanceID: 19354}
     - Class: 114
-      Script: {instanceID: 8602}
+      Script: {instanceID: 19420}
     - Class: 114
-      Script: {instanceID: 8708}
+      Script: {instanceID: 19526}
     - Class: 114
-      Script: {instanceID: 9136}
+      Script: {instanceID: 19942}
     - Class: 114
-      Script: {instanceID: 9546}
+      Script: {instanceID: 20350}
     - Class: 114
-      Script: {instanceID: 9892}
+      Script: {instanceID: 20686}
     - Class: 114
-      Script: {instanceID: 10096}
+      Script: {instanceID: 20890}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -575,7 +610,7 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 224
       Script: {instanceID: 0}
-    Assets/Scenes/Old/Lobby.unity:
+    Assets/Scenes/PokerPlanning.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -593,37 +628,39 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1740}
+      Script: {instanceID: 12676}
     - Class: 114
-      Script: {instanceID: 1742}
+      Script: {instanceID: 13962}
     - Class: 114
-      Script: {instanceID: 1746}
+      Script: {instanceID: 14202}
     - Class: 114
-      Script: {instanceID: 2178}
+      Script: {instanceID: 14670}
     - Class: 114
-      Script: {instanceID: 3098}
+      Script: {instanceID: 14800}
     - Class: 114
-      Script: {instanceID: 3712}
+      Script: {instanceID: 15550}
     - Class: 114
-      Script: {instanceID: 3814}
+      Script: {instanceID: 16694}
     - Class: 114
-      Script: {instanceID: 4994}
+      Script: {instanceID: 16988}
     - Class: 114
-      Script: {instanceID: 5002}
+      Script: {instanceID: 17210}
     - Class: 114
-      Script: {instanceID: 5348}
+      Script: {instanceID: 17890}
     - Class: 114
-      Script: {instanceID: 6102}
+      Script: {instanceID: 18000}
     - Class: 114
-      Script: {instanceID: 6378}
+      Script: {instanceID: 18192}
     - Class: 114
-      Script: {instanceID: 7172}
+      Script: {instanceID: 18628}
     - Class: 114
-      Script: {instanceID: 7366}
+      Script: {instanceID: 18642}
     - Class: 114
-      Script: {instanceID: 7806}
+      Script: {instanceID: 19526}
     - Class: 114
-      Script: {instanceID: 9782}
+      Script: {instanceID: 19732}
+    - Class: 114
+      Script: {instanceID: 19942}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -643,42 +680,6 @@ ScriptsOnlyBuild:
   scriptHashData:
   - hash:
       serializedVersion: 2
-      Hash: 3164bc883ff663a5cdb32d1ef7e7c0c5
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: VerticalLayoutGroup
-  - hash:
-      serializedVersion: 2
-      Hash: bcaee4c2a83047257b5f47d6ed264b75
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Toggle
-  - hash:
-      serializedVersion: 2
-      Hash: a6e561615949734e9f12f9b61661f43e
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Image
-  - hash:
-      serializedVersion: 2
-      Hash: ae83e830e7a90c0aff918c4c2e520825
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: GraphicRaycaster
-  - hash:
-      serializedVersion: 2
-      Hash: 699619b86d9359741a4f58540298c80b
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Text
-  - hash:
-      serializedVersion: 2
-      Hash: 0dbc3be398b4869a5c8d0d8481ee402c
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: LayoutElement
-  - hash:
-      serializedVersion: 2
       Hash: f69dfc6409fbbd89d3689368e99688a8
     assemblyName: Unity.RenderPipelines.Core.Runtime.dll
     namespaceName: UnityEngine.Rendering.UI
@@ -695,6 +696,12 @@ ScriptsOnlyBuild:
     assemblyName: Mirror.Examples.dll
     namespaceName: Mirror.Examples.MultipleMatch
     className: MatchGUI
+  - hash:
+      serializedVersion: 2
+      Hash: a6e561615949734e9f12f9b61661f43e
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Image
   - hash:
       serializedVersion: 2
       Hash: ca0b8ad3987cd33b3209a508b6e1562e
@@ -731,6 +738,12 @@ ScriptsOnlyBuild:
     assemblyName: Mirror.Examples.dll
     namespaceName: Mirror.Examples.AdditiveLevels
     className: PlayerController
+  - hash:
+      serializedVersion: 2
+      Hash: 0dbc3be398b4869a5c8d0d8481ee402c
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: LayoutElement
   - hash:
       serializedVersion: 2
       Hash: eff992cd35724308edd23e57bda17cff
@@ -871,10 +884,10 @@ ScriptsOnlyBuild:
     className: DebugUIHandlerToggle
   - hash:
       serializedVersion: 2
-      Hash: a64c61b840b06d117c05ed01eda8dc28
+      Hash: 3c814ed161fb57ff9ccb48362e86821e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: UICard
+    className: UIRecto
   - hash:
       serializedVersion: 2
       Hash: cfdd0010efd7b54c2b7512656dbc9119
@@ -899,6 +912,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.2D.Animation.Runtime.dll
     namespaceName: UnityEngine.U2D.Animation
     className: SkeletonAsset
+  - hash:
+      serializedVersion: 2
+      Hash: e20d5ccbe9007fad9f6b5eea465ef89c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: FlexibleGridLayout
   - hash:
       serializedVersion: 2
       Hash: 9057f1da6e48e4f85c7129fdeb977e2e
@@ -997,6 +1016,12 @@ ScriptsOnlyBuild:
     className: NetworkLerpRigidbody
   - hash:
       serializedVersion: 2
+      Hash: ae83e830e7a90c0aff918c4c2e520825
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: GraphicRaycaster
+  - hash:
+      serializedVersion: 2
       Hash: f40fedccd4adbc76605bea6d67537e4b
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -1043,6 +1068,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.RenderPipelines.Universal.Runtime.dll
     namespaceName: UnityEngine.Rendering.Universal
     className: ShadowCaster2D
+  - hash:
+      serializedVersion: 2
+      Hash: e0766a0e8938b34dbdc572ce4b274d5c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Results
   - hash:
       serializedVersion: 2
       Hash: cf95add559be53ae8bfdfcea86c5a18f
@@ -1165,7 +1196,7 @@ ScriptsOnlyBuild:
     className: PlayerQuitHandler
   - hash:
       serializedVersion: 2
-      Hash: 6a08f091ab26ccb15a24a97c7e65893b
+      Hash: 4db702444048a63502767fdf2dd1d675
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CardPicker
@@ -1429,7 +1460,7 @@ ScriptsOnlyBuild:
     className: ChromaticAberration
   - hash:
       serializedVersion: 2
-      Hash: 13a894e7c501a2c3df5af69ad12084e5
+      Hash: ded51f64fe29ef9dc37e5e350d0656b6
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -1699,10 +1730,22 @@ ScriptsOnlyBuild:
     className: ShaderPropAnimator
   - hash:
       serializedVersion: 2
+      Hash: 9e5c5078e73eb10a6dd7997c1b374efc
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: UserStoryUI
+  - hash:
+      serializedVersion: 2
       Hash: 55a9c0e4ce8d04e0c3369f1f4c85e544
     assemblyName: Unity.RenderPipelines.Universal.Runtime.dll
     namespaceName: UnityEngine.Rendering.Universal
     className: Tonemapping
+  - hash:
+      serializedVersion: 2
+      Hash: bcaee4c2a83047257b5f47d6ed264b75
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Toggle
   - hash:
       serializedVersion: 2
       Hash: 3b3bf14021899a113dbb5c9e4f0d86ad
@@ -1861,6 +1904,12 @@ ScriptsOnlyBuild:
     className: Player
   - hash:
       serializedVersion: 2
+      Hash: 699619b86d9359741a4f58540298c80b
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Text
+  - hash:
+      serializedVersion: 2
       Hash: d17f8a6c5382f5422b60b87552ec75d1
     assemblyName: Mirror.Examples.dll
     namespaceName: Mirror.Examples.AdditiveScenes
@@ -1895,6 +1944,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.RenderPipelines.Core.Runtime.dll
     namespaceName: UnityEngine.Rendering.UI
     className: UIFoldout
+  - hash:
+      serializedVersion: 2
+      Hash: ce2c5fbb9300c745362f9fef88ff6781
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AutoSizeText
   - hash:
       serializedVersion: 2
       Hash: 4f60ff347d4efee4ef8cc7f627735018
@@ -2191,6 +2246,12 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   - hash:
       serializedVersion: 2
+      Hash: 3164bc883ff663a5cdb32d1ef7e7c0c5
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: VerticalLayoutGroup
+  - hash:
+      serializedVersion: 2
       Hash: 435b91cde8a03bad1d5c99895fa46992
     assemblyName: Unity.RenderPipelines.Core.Runtime.dll
     namespaceName: UnityEngine.Experimental.Rendering
@@ -2257,7 +2318,7 @@ ScriptsOnlyBuild:
     className: AudioPlayableAsset
   - hash:
       serializedVersion: 2
-      Hash: e87638060baae80086a48cda1c0bf915
+      Hash: 16edc2a98da29f53a689154cd905102a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Lobby
@@ -2339,6 +2400,12 @@ ScriptsOnlyBuild:
     assemblyName: Mirror.Examples.dll
     namespaceName: Mirror.Examples.MultipleAdditiveScenes
     className: PlayerScore
+  - hash:
+      serializedVersion: 2
+      Hash: e4e3d2a816f1a7a9ec34079828603bd1
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PokerPlanningManager
   - hash:
       serializedVersion: 2
       Hash: 5fcfd9ce4cdd017cc723c5beba66ef81
@@ -2630,6 +2697,6 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/MainMenu.unity
-  - Assets/Scenes/Old/Lobby.unity
+  - Assets/Scenes/PokerPlanning.unity
   - Assets/Scenes/Game.unity
   playerPath: C:/Users/guill/Bureau/Memoire - Scrumble/Scrumble2D/Build/Scrumble2D.exe

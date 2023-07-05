@@ -31,6 +31,8 @@ public class Lobby : MonoBehaviour
     [SerializeField] TMP_Text userStoryOut;
     [SerializeField] TMP_Text playerNumberOut;
 
+    [SerializeField] TMP_Text TEST;
+
     // Update is called once per frame
     void Start() {
         
@@ -130,21 +132,22 @@ public class Lobby : MonoBehaviour
         StateManager.category = this.userStoryOut.text;
         StateManager.gameName = this.serverNameOut.text;
         StateManager.pokerPlanning = this.pokerPlanning;
+        this.TEST.text = "CLICKED END";
         StateManager.CreateUserStories(StateManager.category);
+        this.TEST.text = "AFTER THE END";
         StateManager.CreatePlayers(this.playersName);
+        this.TEST.text = "NEW BEGINING";
         if(this.pokerPlanning){
+            this.TEST.text = "DOING POKER";
             StateManager.gameState = StateManager.GameState.POKER_PLANNING;
+            SceneManager.LoadSceneAsync("PokerPlanning");
+            this.TEST.text = "POKER DONE";
         } else {
+            this.TEST.text = "DOING GAME";
             StateManager.gameState = StateManager.GameState.INITIALISATION;
+            SceneManager.LoadSceneAsync("Game");
+            this.TEST.text = "GAME DONE";
         }
-
-        Debug.Log($"Here are the values :\n" +
-                    $"Difficulty : {StateManager.difficulty}\n" +
-                    $"Category : {StateManager.category}\n" +
-                    $"GameName : {StateManager.gameName}\n" +
-                    $"PokerPlanning : {StateManager.pokerPlanning}\n" +
-                    $"State  : {StateManager.gameState}\n"
-                );
-        SceneManager.LoadScene("Game");
+        
     }
 }

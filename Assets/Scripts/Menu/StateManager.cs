@@ -44,7 +44,7 @@ public class StateManager : MonoBehaviour
         turnState = TurnState.CHOICE;
     }
     #endregion
-    #region Planing Poker State
+    #region Planning Poker State
     
     public enum PokerPlanningState{
         GLOBAL, PRECISE
@@ -63,7 +63,7 @@ public class StateManager : MonoBehaviour
         }
     }
     public static void CreateUserStories(string userStory){
-        string path = Application.dataPath;
+        string path = Application.streamingAssetsPath;
         if (StateManager.category == "GIFT SHOP"){
             path += "/UserStories/GIFT SHOP.json";
         } else if (StateManager.category == "DIET COACH"){
