@@ -9,10 +9,6 @@ public class AutoSizeText : MonoBehaviour
     TMP_Text textComponent;
     public float defaultImageWidth;
     public float defaultImageHeight;
-
-    public float defaultTextWidth;
-    public float defaultTextHeight;
-    public float defaultFontSize;
     public Vector2 defaultPos;
     float scaleFactorX;
     float scaleFactorY;
@@ -26,7 +22,6 @@ public class AutoSizeText : MonoBehaviour
             scaleFactorX = imageRect.rect.width / defaultImageWidth;
             scaleFactorY = imageRect.rect.height / defaultImageHeight;
 
-            // textComponent.fontSize = defaultFontSize * Mathf.Min(scaleFactorX, scaleFactorY);
             textComponent.rectTransform.localScale = new Vector3(scaleFactorX, scaleFactorY, 1f);
             textComponent.rectTransform.localPosition = new Vector3(defaultPos.x * scaleFactorX, defaultPos.y * scaleFactorY, 0f);
         }

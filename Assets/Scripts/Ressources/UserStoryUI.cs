@@ -25,6 +25,12 @@ public class UserStoryUI : MonoBehaviour
     public UserStory GetUserStory(){
         return this.userStory;
     }
+
+    public void OnClick(){
+        if (StateManager.gameState == StateManager.GameState.POKER_PLANNING){
+            PokerPlanningManager.OnUserStoryClick(this.userStory.id);
+        }
+    }
 }
 
 public class UserStory{

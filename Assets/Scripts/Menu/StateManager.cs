@@ -44,6 +44,13 @@ public class StateManager : MonoBehaviour
         turnState = TurnState.CHOICE;
     }
     #endregion
+    #region Planing Poker State
+    
+    public enum PokerPlanningState{
+        GLOBAL, PRECISE
+    }
+    public static PokerPlanningState pokerPlanningState;
+    #endregion
 
     public static void CreatePlayers(List<string> usernames){
         players = new List<Player>();

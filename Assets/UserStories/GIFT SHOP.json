@@ -2,7 +2,7 @@
     {
         "id" : 1,
         "category" : "GIFT SHOP",
-        "description" : "En tant que commerçant\n, je veux ajouter et éditer de nouveaux produits dans ma boutique.",
+        "description" : "En tant que commerçant,\nje veux ajouter et éditer de nouveaux produits dans ma boutique.",
         "defaultStars" : 5,
         "defaultSize" : "XL",
         "restriction" : 13
@@ -10,7 +10,7 @@
     {
         "id" : 2,
         "category" : "GIFT SHOP",
-        "description" : "En tant que commerçant\n, je veux empêcher les nouvelles commandes pendant mes congés.",
+        "description" : "En tant que commerçant,\nje veux empêcher les nouvelles commandes pendant mes congés.",
         "defaultStars" : 1,
         "defaultSize" : "XL",
         "restriction" : 13
@@ -18,76 +18,76 @@
     {
         "id" : 3,
         "category" : "GIFT SHOP",
-        "description" : "En tant que visiteur\n, je veux voir la liste de produits phares.",
+        "description" : "En tant que visiteur,\nje veux voir la liste de produits phares.",
         "defaultStars" : 1,
         "defaultSize" : "XL"
     },{
         "id" : 4,
         "category" : "GIFT SHOP",
-        "description" : "En tant que client\n, je veux éditer mes coordonnées postales et bancaires.",
+        "description" : "En tant que client,\nje veux éditer mes coordonnées postales et bancaires.",
         "defaultStars" : 4,
         "defaultSize" : "XL",
         "restriction" : 11
     },{
         "id" : 5,
         "category" : "GIFT SHOP",
-        "description" : "En tant que client fidèle\n, je veux recevoir des suggestions de cadeaux par mail.",
+        "description" : "En tant que client fidèle,\nje veux recevoir des suggestions de cadeaux par mail.",
         "defaultStars" : 2,
         "defaultSize" : "XL"
     },{
         "id" : 6,
         "category" : "GIFT SHOP",
-        "description" : "En tant que visiteur\n, je veux indiquer un souhait sur les réseaux sociaux.",
+        "description" : "En tant que visiteur,\nje veux indiquer un souhait sur les réseaux sociaux.",
         "defaultStars" : 5,
         "defaultSize" : "XL"
     },{
         "id" : 7,
         "category" : "GIFT SHOP",
-        "description" : "En tant que client\n, je veux payer par Paypal, Visa, virement ou chèque.",
+        "description" : "En tant que client,\nje veux payer par Paypal, Visa, virement ou chèque.",
         "defaultStars" : 4,
         "defaultSize" : "XL"
     },{
         "id" : 8,
         "category" : "GIFT SHOP",
-        "description" : "En tant que visiteur\n, je veux chercher des cadeaux selon leur prix.",
+        "description" : "En tant que visiteur,\nje veux chercher des cadeaux selon leur prix.",
         "defaultStars" : 2,
         "defaultSize" : "XL"
     },{
         "id" : 9,
         "category" : "GIFT SHOP",
-        "description" : "En tant que visiteur\n, je veux chercher des cadeaux selon un thème, des couleurs et des matières.",
+        "description" : "En tant que visiteur,\nje veux chercher des cadeaux selon un thème, des couleurs et des matières.",
         "defaultStars" : 4,
         "defaultSize" : "XL"
     },{
         "id" : 10,
         "category" : "GIFT SHOP",
-        "description" : "En tant que client\n, je veux obtenir une facture et un suivi de mes commandes.",
+        "description" : "En tant que client,\nje veux obtenir une facture et un suivi de mes commandes.",
         "defaultStars" : 3,
         "defaultSize" : "XL"
     },{
         "id" : 11,
         "category" : "GIFT SHOP",
-        "description" : "En tant que visiteur régulier ou acheteur\n, je veux pouvoir créer un compte client.",
+        "description" : "En tant que visiteur régulier ou acheteur,\nje veux pouvoir créer un compte client.",
         "defaultStars" : 2,
         "defaultSize" : "XL"
     },{
         "id" : 12,
         "category" : "GIFT SHOP",
-        "description" : "En tant que commerçant\n, je veux des indicateurs clés sur la consultation des pages et les intérêts des visiteurs.",
+        "description" : "En tant que commerçant,\nje veux des indicateurs clés sur la consultation des pages et les intérêts des visiteurs.",
         "defaultStars" : 4,
         "defaultSize" : "XL"
     },
     {
         "id" : 13,
         "category" : "GIFT SHOP",
-        "description" : "En tant que commerçant\n, je veux un espace sécurisé pour administrer mon site.",
+        "description" : "En tant que commerçant,\nje veux un espace sécurisé pour administrer mon site.",
         "defaultStars" : 2,
         "defaultSize" : "XL"
     },
     {
         "id" : 14,
         "category" : "GIFT SHOP",
-        "description" : "En tant que commerçant\n, je veux annuler toute commande erronée ou frauduleuse et procéder au dédommagement depuis l'espace sécurisé.",
+        "description" : "En tant que commerçant,\nje veux annuler toute commande erronée ou frauduleuse et procéder au dédommagement depuis l'espace sécurisé.",
         "defaultStars" : 5,
         "defaultSize" : "XL",
         "restriction" : 13
@@ -95,7 +95,7 @@
     {
         "id" : 15,
         "category" : "GIFT SHOP",
-        "description" : "En tant que visiteur\n, je veux proposer des idées d'articles à la boutique.",
+        "description" : "En tant que visiteur,\nje veux proposer des idées d'articles à la boutique.",
         "defaultStars" : 1,
         "defaultSize" : "XL"
     }

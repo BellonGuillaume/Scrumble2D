@@ -151,9 +151,6 @@ MonoBehaviour:
   imageRect: {fileID: 8801162080858401777}
   defaultImageWidth: 600
   defaultImageHeight: 600
-  defaultTextWidth: 140
-  defaultTextHeight: 40
-  defaultFontSize: 36
   defaultPos: {x: 260, y: -260}
 --- !u!1 &8801162080103367622
 GameObject:
@@ -306,9 +303,6 @@ MonoBehaviour:
   imageRect: {fileID: 8801162080858401777}
   defaultImageWidth: 600
   defaultImageHeight: 600
-  defaultTextWidth: 160
-  defaultTextHeight: 40
-  defaultFontSize: 36
   defaultPos: {x: -260, y: -260}
 --- !u!1 &8801162080522927112
 GameObject:
@@ -461,9 +455,6 @@ MonoBehaviour:
   imageRect: {fileID: 8801162080858401777}
   defaultImageWidth: 600
   defaultImageHeight: 600
-  defaultTextWidth: 50
-  defaultTextHeight: 40
-  defaultFontSize: 36
   defaultPos: {x: -260, y: 260}
 --- !u!1 &8801162080558101292
 GameObject:
@@ -616,9 +607,6 @@ MonoBehaviour:
   imageRect: {fileID: 8801162080858401777}
   defaultImageWidth: 600
   defaultImageHeight: 600
-  defaultTextWidth: 210
-  defaultTextHeight: 40
-  defaultFontSize: 36
   defaultPos: {x: 210, y: 260}
 --- !u!1 &8801162080615257932
 GameObject:
@@ -771,9 +759,6 @@ MonoBehaviour:
   imageRect: {fileID: 8801162080858401777}
   defaultImageWidth: 600
   defaultImageHeight: 600
-  defaultTextWidth: 140
-  defaultTextHeight: 40
-  defaultFontSize: 36
   defaultPos: {x: -260, y: -220}
 --- !u!1 &8801162080858401776
 GameObject:
@@ -787,6 +772,7 @@ GameObject:
   - component: {fileID: 8801162080858401791}
   - component: {fileID: 8801162080858401790}
   - component: {fileID: 8668357153701333387}
+  - component: {fileID: 6122551803963895313}
   m_Layer: 0
   m_Name: UserStoryUI
   m_TagString: Untagged
@@ -878,6 +864,35 @@ MonoBehaviour:
   descriptionTXT: {fileID: 8801162081629767293}
   starsTXT: {fileID: 8801162080103367620}
   sizeTXT: {fileID: 9163228141969807977}
+--- !u!114 &6122551803963895313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8801162080858401776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8668357153701333387}
+          m_TargetAssemblyTypeName: UserStoryUI, Assembly-CSharp
+          m_MethodName: OnClick
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &8801162081266139354
 GameObject:
   m_ObjectHideFlags: 0
@@ -1029,9 +1044,6 @@ MonoBehaviour:
   imageRect: {fileID: 8801162080858401777}
   defaultImageWidth: 600
   defaultImageHeight: 600
-  defaultTextWidth: 140
-  defaultTextHeight: 40
-  defaultFontSize: 36
   defaultPos: {x: 260, y: -220}
 --- !u!1 &8801162081629767295
 GameObject:
@@ -1184,9 +1196,6 @@ MonoBehaviour:
   imageRect: {fileID: 8801162080858401777}
   defaultImageWidth: 600
   defaultImageHeight: 600
-  defaultTextWidth: 500
-  defaultTextHeight: 350
-  defaultFontSize: 36
   defaultPos: {x: 0, y: 20}
 --- !u!1 &8801162081839564690
 GameObject:
@@ -1339,9 +1348,6 @@ MonoBehaviour:
   imageRect: {fileID: 8801162080858401777}
   defaultImageWidth: 600
   defaultImageHeight: 600
-  defaultTextWidth: 50
-  defaultTextHeight: 40
-  defaultFontSize: 36
   defaultPos: {x: 260, y: 260}
 --- !u!1 &8801162081939751561
 GameObject:
@@ -1494,7 +1500,4 @@ MonoBehaviour:
   imageRect: {fileID: 8801162080858401777}
   defaultImageWidth: 600
   defaultImageHeight: 600
-  defaultTextWidth: 50
-  defaultTextHeight: 40
-  defaultFontSize: 36
   defaultPos: {x: -210, y: 260}
