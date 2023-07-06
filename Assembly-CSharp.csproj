@@ -100,6 +100,9 @@
      <Compile Include="Assets\Scripts\Old\TextSlider.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\Scripts\Old\StateNameController.cs" />
+     <Compile Include="Assets\Scripts\PokerPlanning\CustomPokerPlanningManager.cs" />
+     <Compile Include="Assets\Scripts\Ressources\UserStory.cs" />
+     <Compile Include="Assets\Scripts\Ressources\CustomUserStoryUI.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\ScriptTemplates\51-Mirror__Network Authenticator-NewNetworkAuthenticator.cs.txt" />

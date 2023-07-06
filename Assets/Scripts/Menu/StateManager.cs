@@ -16,7 +16,7 @@ public class StateManager : MonoBehaviour
     public static GameState gameState;
 
     public enum GameState{
-        MENU, INITIALISATION, POKER_PLANNING, PLAYER_TURN,
+        MENU, INITIALISATION, POKER_PLANNING, CUSTOM_POKER_PLANNING, PLAYER_TURN,
     }
     #endregion
 
@@ -50,6 +50,13 @@ public class StateManager : MonoBehaviour
         GLOBAL, PRECISE
     }
     public static PokerPlanningState pokerPlanningState;
+    #endregion
+    #region Custom Planning Poker State
+    public enum CustomPokerPlanningState
+    {
+        GLOBAL, PRECISE
+    }
+    public static CustomPokerPlanningState customPokerPlanningState;
     #endregion
 
     public static void CreatePlayers(List<string> usernames){
