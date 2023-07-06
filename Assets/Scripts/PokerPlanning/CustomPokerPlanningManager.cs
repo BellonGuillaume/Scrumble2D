@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class CustomPokerPlanningManager : MonoBehaviour
 {
@@ -99,6 +100,7 @@ public class CustomPokerPlanningManager : MonoBehaviour
         go.transform.SetParent(this.scrollPannel.transform);
         go.GetComponent<UserStoryUI>().Connect(this);
         go.GetComponent<UserStoryUI>().Fill(userStory);
+        go.GetComponent<UserStoryUI>().ChangeOutlineColor(UserStoryUI.OutlineColor.RED);
         this.userStoriesUI.Add(go);
         for (int i = 0; i < this.userStories.Count; i++){
             Debug.Log(this.userStories[i].ToString());
@@ -106,5 +108,47 @@ public class CustomPokerPlanningManager : MonoBehaviour
     }
     public void UpdateUserStoryUI(int id){
         this.userStoriesUI[id-1].GetComponent<UserStoryUI>().Fill(this.userStories[id-1]);
+        if (IsEmpty(this.userStories[id-1])){
+            Debug.Log("IS EMPTY");
+            this.userStoriesUI[id-1].GetComponent<UserStoryUI>().ChangeOutlineColor(UserStoryUI.OutlineColor.RED);
+        }
+        else if (IsNotFinished(this.userStories[id-1])){
+            Debug.Log("IS NOT FINISHED");
+            this.userStoriesUI[id-1].GetComponent<UserStoryUI>().ChangeOutlineColor(UserStoryUI.OutlineColor.ORANGE);
+        }
+        else if (IsComplete(this.userStories[id-1])){
+            Debug.Log("IS FINISHED");
+            this.userStoriesUI[id-1].GetComponent<UserStoryUI>().ChangeOutlineColor(UserStoryUI.OutlineColor.GREEN);
+        }
+        else {
+            Debug.Log("IS OTHER");
+            this.userStoriesUI[id-1].GetComponent<UserStoryUI>().ChangeOutlineColor(UserStoryUI.OutlineColor.YELLOW);
+        }
+    }
+    public bool IsEmpty(UserStory userStory){
+        if (userStory.asA == "" && userStory.iWant == "" && userStory.stars == 0 && userStory.size == UserStory.Size.NOT_DEFINED && userStory.restriction == 0){
+            return true;
+        }
+        return false;
+    }
+    public bool IsNotFinished(UserStory userStory){
+        int asa = Convert.ToInt32(userStory.asA == "");
+        int iwant = Convert.ToInt32(userStory.iWant == "");
+        int stars = Convert.ToInt32(userStory.stars == 0);
+        int size = Convert.ToInt32(userStory.size == UserStory.Size.NOT_DEFINED);
+        int sum = asa + iwant + stars + size;
+        if (sum > 0 && sum < 4){
+            return true;
+        }
+        if (sum == 4 && userStory.restriction != 0){
+            return true;
+        }
+        return false;
+    }
+    public bool IsComplete(UserStory userStory){
+        if (userStory.asA != "" && userStory.iWant != "" && userStory.stars != 0 && userStory.size != UserStory.Size.NOT_DEFINED){
+            return true;
+        }
+        return false;
     }
 }

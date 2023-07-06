@@ -12,9 +12,17 @@ public class UserStoryUI : MonoBehaviour
     [SerializeField] TMP_Text descriptionTXT;
     [SerializeField] TMP_Text starsTXT;
     [SerializeField] TMP_Text sizeTXT;
+    [SerializeField] Image outline;
     UserStory userStory;
     PokerPlanningManager pokerPlanningManager;
     CustomPokerPlanningManager customPokerPlanningManager;
+    public enum OutlineColor{
+        GREEN, RED, ORANGE, YELLOW
+    }
+    Color yellow = new Color32(255, 208, 0, 255);
+    Color red = new Color32(255, 31, 0, 255);
+    Color orange = new Color32(255, 117, 0, 255);
+    Color green = new Color32(124, 215, 70, 255);
 
     public void Fill(UserStory userStory){
         this.userStory = userStory;
@@ -60,5 +68,25 @@ public class UserStoryUI : MonoBehaviour
     public void SetSize(UserStory.Size size){
         this.userStory.size = size;
         this.sizeTXT.text = size.ToString();
+    }
+
+    public void ChangeOutlineColor(OutlineColor outlineColor){
+        switch (outlineColor){
+            case OutlineColor.YELLOW :
+                this.outline.color = this.yellow;
+                break;
+            case OutlineColor.RED :
+                this.outline.color = this.red;
+                break;
+            case OutlineColor.ORANGE :
+                this.outline.color = this.orange;
+                break;
+            case OutlineColor.GREEN :
+                this.outline.color = this.green;
+                break;
+            default :
+                this.outline.color = this.yellow;
+                break;
+        }
     }
 }

@@ -42,6 +42,7 @@
      <Compile Include="Assets\Scripts\Old\HostJoinUI.cs" />
      <Compile Include="Assets\Scripts\Game\UIRecto.cs" />
      <Compile Include="Assets\Scripts\Ressources\FlexibleGridLayout.cs" />
+     <Compile Include="Assets\Scripts\PokerPlanning\CustomPokerPlanningManager.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
      <Compile Include="Assets\Scripts\Old\BackButtonScript.cs" />
@@ -83,7 +84,9 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
      <Compile Include="Assets\Scripts\Menu\LocalNextButton.cs" />
      <Compile Include="Assets\Scripts\Menu\Lobby.cs" />
+     <Compile Include="Assets\Scripts\Ressources\CustomUserStoryUI.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
+     <Compile Include="Assets\Scripts\Ressources\UserStory.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
      <Compile Include="Assets\Scripts\PokerPlanning\PokerPlanningManager.cs" />
      <Compile Include="Assets\Scripts\Menu\StateManager.cs" />
@@ -100,9 +103,6 @@
      <Compile Include="Assets\Scripts\Old\TextSlider.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\Scripts\Old\StateNameController.cs" />
-     <Compile Include="Assets\Scripts\PokerPlanning\CustomPokerPlanningManager.cs" />
-     <Compile Include="Assets\Scripts\Ressources\UserStory.cs" />
-     <Compile Include="Assets\Scripts\Ressources\CustomUserStoryUI.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\ScriptTemplates\51-Mirror__Network Authenticator-NewNetworkAuthenticator.cs.txt" />

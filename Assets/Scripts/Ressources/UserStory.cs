@@ -24,6 +24,8 @@ public class UserStory{
 
     public UserStory(int id, string category, string description, int defaultStars, Size defaultSize, int restriction)
     {
+        this.asA = "";
+        this.iWant = "";
         this.id = id;
         this.category = category;
         this.restriction = restriction;
