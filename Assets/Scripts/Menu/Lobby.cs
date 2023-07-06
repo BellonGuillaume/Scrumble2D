@@ -31,8 +31,6 @@ public class Lobby : MonoBehaviour
     [SerializeField] TMP_Text userStoryOut;
     [SerializeField] TMP_Text playerNumberOut;
 
-    [SerializeField] TMP_Text TEST;
-
     // Update is called once per frame
     void Start() {
         
@@ -85,8 +83,10 @@ public class Lobby : MonoBehaviour
                 return "DIET COACH";
             case 2:
                 return "TRAVEL DIARY";
-            default:
+            case 3:
                 return "CUSTOM";
+            default:
+                return "";
         }
     }
 
@@ -132,21 +132,19 @@ public class Lobby : MonoBehaviour
         StateManager.category = this.userStoryOut.text;
         StateManager.gameName = this.serverNameOut.text;
         StateManager.pokerPlanning = this.pokerPlanning;
-        this.TEST.text = "CLICKED END";
-        StateManager.CreateUserStories(StateManager.category);
-        this.TEST.text = "AFTER THE END";
         StateManager.CreatePlayers(this.playersName);
-        this.TEST.text = "NEW BEGINING";
-        if(this.pokerPlanning){
-            this.TEST.text = "DOING POKER";
-            StateManager.gameState = StateManager.GameState.POKER_PLANNING;
-            SceneManager.LoadSceneAsync("PokerPlanning");
-            this.TEST.text = "POKER DONE";
+        if (StateManager.category == "CUSTOM"){
+            StateManager.gameState = StateManager.GameState.CUSTOM_POKER_PLANNING;
+            SceneManager.LoadSceneAsync("CustomPokerPlanning");
         } else {
-            this.TEST.text = "DOING GAME";
-            StateManager.gameState = StateManager.GameState.INITIALISATION;
-            SceneManager.LoadSceneAsync("Game");
-            this.TEST.text = "GAME DONE";
+            StateManager.CreateUserStories(StateManager.category);
+            if(this.pokerPlanning){
+                StateManager.gameState = StateManager.GameState.POKER_PLANNING;
+                SceneManager.LoadSceneAsync("PokerPlanning");
+            } else {
+                StateManager.gameState = StateManager.GameState.INITIALISATION;
+                SceneManager.LoadSceneAsync("Game");
+            }
         }
         
     }

@@ -23,7 +23,7 @@ public class LocalNextButton : MonoBehaviour
         if (string.IsNullOrWhiteSpace(serverNameIn.text)) {
             return false;
         }
-        if (userStoryIn.value < 0 | userStoryIn.value > 2){
+        if (userStoryIn.value < 0 | userStoryIn.value > 3){
             return false;
         }
         serverName = serverNameIn.text;
