@@ -1143,6 +1143,7 @@ MonoBehaviour:
   centralUS: {fileID: 1575960323}
   rightUS: {fileID: 969377073}
   preciseUI: {fileID: 45150502}
+  userStoryTitle: {fileID: 169923842}
 --- !u!1001 &503411830
 PrefabInstance:
   m_ObjectHideFlags: 0

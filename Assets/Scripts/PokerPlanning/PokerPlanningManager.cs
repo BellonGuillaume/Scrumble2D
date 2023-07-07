@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class PokerPlanningManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class PokerPlanningManager : MonoBehaviour
     [SerializeField] UserStoryUI centralUS;
     [SerializeField] UserStoryUI rightUS;
     [SerializeField] GameObject preciseUI;
+    [SerializeField] TMP_Text userStoryTitle;
     List<GameObject> userStoriesUI;
 
     UserStory leftCurrent, centralCurrent, rightCurrent;
@@ -19,6 +21,7 @@ public class PokerPlanningManager : MonoBehaviour
         if (StateManager.userStories is null){
             InitState();
         }
+        this.userStoryTitle.text = StateManager.category;
         StateManager.pokerPlanningState = StateManager.PokerPlanningState.GLOBAL;
         FillUserStoriesUI();
     }
@@ -29,6 +32,7 @@ public class PokerPlanningManager : MonoBehaviour
             go.GetComponent<UserStoryUI>().Fill(StateManager.userStories[i]);
             go.transform.SetParent(scrollPannel.transform);
             go.GetComponent<UserStoryUI>().Connect(this);
+            go.GetComponent<UserStoryUI>().ChangeOutlineColor(UserStory.OutlineColor.RED);
             userStoriesUI.Add(go);
         }
     }
@@ -71,6 +75,9 @@ public class PokerPlanningManager : MonoBehaviour
         this.leftUS.Fill(this.leftCurrent);
         this.centralUS.Fill(this.centralCurrent);
         this.rightUS.Fill(this.rightCurrent);
+        ColorUserStoryUI(this.leftUS);
+        ColorUserStoryUI(this.centralUS);
+        ColorUserStoryUI(this.rightUS);
 
         StateManager.pokerPlanningState = StateManager.PokerPlanningState.PRECISE;
         this.preciseUI.SetActive(true);        
@@ -87,6 +94,9 @@ public class PokerPlanningManager : MonoBehaviour
         this.leftUS.Fill(this.leftCurrent);
         this.centralUS.Fill(this.centralCurrent);
         this.rightUS.Fill(this.rightCurrent);
+        ColorUserStoryUI(this.leftUS);
+        ColorUserStoryUI(this.centralUS);
+        ColorUserStoryUI(this.rightUS);
     }
     public void OnLeftClick(){
         this.rightCurrent = this.centralCurrent;
@@ -99,6 +109,9 @@ public class PokerPlanningManager : MonoBehaviour
         this.leftUS.Fill(this.leftCurrent);
         this.centralUS.Fill(this.centralCurrent);
         this.rightUS.Fill(this.rightCurrent);
+        ColorUserStoryUI(this.leftUS);
+        ColorUserStoryUI(this.centralUS);
+        ColorUserStoryUI(this.rightUS);
     }
 
     public void OnSizeClick(string size){
@@ -123,12 +136,29 @@ public class PokerPlanningManager : MonoBehaviour
             StateManager.userStories[this.centralCurrent.id-1].size = sizeUS;
             this.centralUS.SetSize(sizeUS);
             this.userStoriesUI[this.centralCurrent.id-1].GetComponent<UserStoryUI>().SetSize(sizeUS);
+            ColorUserStoryUI(this.centralUS);
+            ColorUserStoryUI(this.userStoriesUI[this.centralCurrent.id-1].GetComponent<UserStoryUI>());
     }
 
     public void OnBackClick(){
         StateManager.pokerPlanningState = StateManager.PokerPlanningState.GLOBAL;
         this.preciseUI.SetActive(false);
     }
+
+    public void ColorUserStoryUI(UserStoryUI userStoryUI){
+        if (IsComplete(userStoryUI.userStory)){
+            userStoryUI.GetComponent<UserStoryUI>().ChangeOutlineColor(UserStory.OutlineColor.GREEN);
+        } else {
+            userStoryUI.GetComponent<UserStoryUI>().ChangeOutlineColor(UserStory.OutlineColor.RED);
+        }
+    }
+    public bool IsComplete(UserStory userStory){
+        if (userStory.size != UserStory.Size.NOT_DEFINED){
+            return true;
+        }
+        return false;
+    }
+
 
 
 }
