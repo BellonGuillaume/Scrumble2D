@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CustomPokerPlanningManager : MonoBehaviour
 {
@@ -13,19 +15,24 @@ public class CustomPokerPlanningManager : MonoBehaviour
     [SerializeField] CustomUserStoryUI rightUS;
     [SerializeField] GameObject preciseUI;
     [SerializeField] TMP_Text numberOfRemainingStars;
+    [SerializeField] Button play;
     public List<GameObject> userStoriesUI;
     public List<UserStory> userStories;
+    public List<bool> ready;
 
     UserStory leftCurrent, centralCurrent, rightCurrent;
     int remainingStars;
 
     void Start(){
+        this.play.interactable = false;
         StateManager.gameState = StateManager.GameState.CUSTOM_POKER_PLANNING;
         StateManager.customPokerPlanningState = StateManager.CustomPokerPlanningState.GLOBAL;
         userStories = new List<UserStory>();
         userStoriesUI = new List<GameObject>();
+        ready = new List<bool>();
         for (int i = 0; i < 15; i++){
             AddUserStoryUI();
+            ready.Add(false);
         }
         remainingStars = 45;
     }
@@ -33,33 +40,18 @@ public class CustomPokerPlanningManager : MonoBehaviour
     void Update(){
         if(StateManager.customPokerPlanningState == StateManager.CustomPokerPlanningState.PRECISE){
             if (this.remainingStars + this.centralUS.userStory.stars <= 0){
-                Debug.Log("0 remaining stars");
                 this.centralUS.BlockStars(5);
             } else if (this.remainingStars + this.centralUS.userStory.stars == 1){
-                Debug.Log("1 remaining stars");
                 this.centralUS.BlockStars(4);
             } else if (this.remainingStars + this.centralUS.userStory.stars == 2){
-                Debug.Log("2 remaining stars");
                 this.centralUS.BlockStars(3);
             } else if (this.remainingStars + this.centralUS.userStory.stars == 3){
-                Debug.Log("3 remaining stars");
                 this.centralUS.BlockStars(2);
             } else if (this.remainingStars + this.centralUS.userStory.stars == 4){
-                Debug.Log("4 remaining stars");
                 this.centralUS.BlockStars(1);
             } else {
                 this.centralUS.FreeStars();
             }
-        }
-    }
-    public void FillUserStoriesUI(){
-        userStoriesUI = new List<GameObject>();
-        for (int i = 0; i < StateManager.userStories.Count; i++){
-            GameObject go = Instantiate(userStoryPrefab);
-            go.GetComponent<UserStoryUI>().Fill(StateManager.userStories[i]);
-            go.transform.SetParent(scrollPannel.transform);
-            go.GetComponent<UserStoryUI>().Connect(this);
-            userStoriesUI.Add(go);
         }
     }
 
@@ -67,7 +59,9 @@ public class CustomPokerPlanningManager : MonoBehaviour
     {
         string temp = "Valeur des UserStories : ";
         for (int i = 0; i < this.userStoriesUI.Count; i++){
-            temp += this.userStoriesUI[i].GetComponent<UserStoryUI>().GetUserStory().ToString();
+            temp += "--- User Story n°" + i.ToString() + "---\n" + this.userStoriesUI[i].GetComponent<UserStoryUI>().GetUserStory().ToString()+ "\n";
+            // temp += "--- User Story n°" + i.ToString() + "---\n" + this.userStories[i].ToString()+ "\n";
+
         }
         return temp;
     }
@@ -128,6 +122,11 @@ public class CustomPokerPlanningManager : MonoBehaviour
         ColorCustomUserStoryUI(this.rightUS);
     }
     public void OnBackClick(){
+        if (AllReady() && this.remainingStars == 0) {
+            this.play.interactable = true;
+        } else {
+            this.play.interactable = false;
+        }
         StateManager.customPokerPlanningState = StateManager.CustomPokerPlanningState.GLOBAL;
         this.preciseUI.SetActive(false);
     }
@@ -142,10 +141,12 @@ public class CustomPokerPlanningManager : MonoBehaviour
         this.userStoriesUI.Add(go);
     }
     public void UpdateUserStoryUI(int id){
-        this.userStoriesUI[id-1].GetComponent<UserStoryUI>().Fill(this.userStories[id-1]);
-        this.centralUS.Fill(this.userStories[id-1]);
-        ColorUserStoryUI(this.userStoriesUI[id-1].GetComponent<UserStoryUI>());
-        ColorCustomUserStoryUI(this.centralUS);
+        if (id == this.centralCurrent.id){
+            this.userStoriesUI[id-1].GetComponent<UserStoryUI>().Fill(this.userStories[id-1]);
+            this.centralUS.Fill(this.centralCurrent);
+            ColorUserStoryUI(this.userStoriesUI[id-1].GetComponent<UserStoryUI>());
+            ColorCustomUserStoryUI(this.centralUS);
+        }
     }
     public void UpdateStarsCount(){
         int tempStars = 0;
@@ -185,15 +186,19 @@ public class CustomPokerPlanningManager : MonoBehaviour
     public void ColorUserStoryUI(UserStoryUI userStoryUI){
         if (IsEmpty(userStoryUI.userStory)){
             userStoryUI.GetComponent<UserStoryUI>().ChangeOutlineColor(UserStory.OutlineColor.RED);
+            this.ready[userStoryUI.userStory.id-1] = false;
         }
         else if (IsNotFinished(userStoryUI.userStory)){
             userStoryUI.GetComponent<UserStoryUI>().ChangeOutlineColor(UserStory.OutlineColor.ORANGE);
+            this.ready[userStoryUI.userStory.id-1] = false;
         }
         else if (IsComplete(userStoryUI.userStory)){
             userStoryUI.GetComponent<UserStoryUI>().ChangeOutlineColor(UserStory.OutlineColor.GREEN);
+            this.ready[userStoryUI.userStory.id-1] = true;
         }
         else {
             userStoryUI.GetComponent<UserStoryUI>().ChangeOutlineColor(UserStory.OutlineColor.YELLOW);
+            this.ready[userStoryUI.userStory.id-1] = false;
         }
     }
     public void ColorCustomUserStoryUI(CustomUserStoryUI customUserStoryUI){
@@ -209,5 +214,19 @@ public class CustomPokerPlanningManager : MonoBehaviour
         else {
             customUserStoryUI.GetComponent<CustomUserStoryUI>().ChangeOutlineColor(UserStory.OutlineColor.YELLOW);
         }
+    }
+
+    public bool AllReady(){
+        for (int i = 0; i < this.ready.Count; i++){
+            if (!this.ready[i]){
+                return false;
+            }
+        }
+        return true;
+    }
+    public void Play(){
+        StateManager.userStories = this.userStories;
+        StateManager.gameState = StateManager.GameState.INITIALISATION;
+        SceneManager.LoadSceneAsync("Game");
     }
 }

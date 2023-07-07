@@ -35,6 +35,9 @@ public class GameManager : MonoBehaviour
             StateManager.gameState != StateManager.GameState.POKER_PLANNING){
             InitState();
         }
+        for (int i = 0; i < StateManager.userStories.Count; i++){
+            Debug.Log(StateManager.userStories[i].ToString());
+        }
         Debug.Log("INITIALIZING ASSETS");
         this.popUpAnimator = popUpGO.GetComponent<Animator>();
         this.cardPicker = cardPick.GetComponent<CardPicker>();

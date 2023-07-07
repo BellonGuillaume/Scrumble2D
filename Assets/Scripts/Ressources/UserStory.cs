@@ -46,13 +46,13 @@ public class UserStory{
 
     public override string ToString()
     {
-        return  "id : " + this.id +
-                ", category : " + this.category +
-                ", default stars : " + this.defaultStars +
-                ", stars : " + this.stars +
-                ", default size : " + this.defaultSize +
-                ", size : " + this.size +
-                ", restriction : " + this.restriction +
-                ", description : " + this.description;
+        return  $"Id : {this.id.ToString()}\n" +
+                $"Category : {this.category}\n" +
+                $"Description : {this.description}\n" +
+                $"Default Stars : {this.defaultStars.ToString()}\n" +
+                $"Stars : {this.stars.ToString()}\n" +
+                $"Default Size : {this.defaultSize.ToString()}\n" +
+                $"Size : {this.size.ToString()}\n" +
+                $"State : {this.state.ToString()}\n";
     }
 }

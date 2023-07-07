@@ -4,7 +4,7 @@
         "category" : "GIFT SHOP",
         "description" : "En tant que commerçant,\nje veux ajouter et éditer de nouveaux produits dans ma boutique.",
         "defaultStars" : 5,
-        "defaultSize" : "XL",
+        "defaultSize" : "NOT_DEFINED",
         "restriction" : 13
     },
     {
@@ -12,7 +12,7 @@
         "category" : "GIFT SHOP",
         "description" : "En tant que commerçant,\nje veux empêcher les nouvelles commandes pendant mes congés.",
         "defaultStars" : 1,
-        "defaultSize" : "XL",
+        "defaultSize" : "NOT_DEFINED",
         "restriction" : 13
     },
     {
@@ -20,76 +20,76 @@
         "category" : "GIFT SHOP",
         "description" : "En tant que visiteur,\nje veux voir la liste de produits phares.",
         "defaultStars" : 1,
-        "defaultSize" : "XL"
+        "defaultSize" : "NOT_DEFINED"
     },{
         "id" : 4,
         "category" : "GIFT SHOP",
         "description" : "En tant que client,\nje veux éditer mes coordonnées postales et bancaires.",
         "defaultStars" : 4,
-        "defaultSize" : "XL",
+        "defaultSize" : "NOT_DEFINED",
         "restriction" : 11
     },{
         "id" : 5,
         "category" : "GIFT SHOP",
         "description" : "En tant que client fidèle,\nje veux recevoir des suggestions de cadeaux par mail.",
         "defaultStars" : 2,
-        "defaultSize" : "XL"
+        "defaultSize" : "NOT_DEFINED"
     },{
         "id" : 6,
         "category" : "GIFT SHOP",
         "description" : "En tant que visiteur,\nje veux indiquer un souhait sur les réseaux sociaux.",
         "defaultStars" : 5,
-        "defaultSize" : "XL"
+        "defaultSize" : "NOT_DEFINED"
     },{
         "id" : 7,
         "category" : "GIFT SHOP",
         "description" : "En tant que client,\nje veux payer par Paypal, Visa, virement ou chèque.",
         "defaultStars" : 4,
-        "defaultSize" : "XL"
+        "defaultSize" : "NOT_DEFINED"
     },{
         "id" : 8,
         "category" : "GIFT SHOP",
         "description" : "En tant que visiteur,\nje veux chercher des cadeaux selon leur prix.",
         "defaultStars" : 2,
-        "defaultSize" : "XL"
+        "defaultSize" : "NOT_DEFINED"
     },{
         "id" : 9,
         "category" : "GIFT SHOP",
         "description" : "En tant que visiteur,\nje veux chercher des cadeaux selon un thème, des couleurs et des matières.",
         "defaultStars" : 4,
-        "defaultSize" : "XL"
+        "defaultSize" : "NOT_DEFINED"
     },{
         "id" : 10,
         "category" : "GIFT SHOP",
         "description" : "En tant que client,\nje veux obtenir une facture et un suivi de mes commandes.",
         "defaultStars" : 3,
-        "defaultSize" : "XL"
+        "defaultSize" : "NOT_DEFINED"
     },{
         "id" : 11,
         "category" : "GIFT SHOP",
         "description" : "En tant que visiteur régulier ou acheteur,\nje veux pouvoir créer un compte client.",
         "defaultStars" : 2,
-        "defaultSize" : "XL"
+        "defaultSize" : "NOT_DEFINED"
     },{
         "id" : 12,
         "category" : "GIFT SHOP",
         "description" : "En tant que commerçant,\nje veux des indicateurs clés sur la consultation des pages et les intérêts des visiteurs.",
         "defaultStars" : 4,
-        "defaultSize" : "XL"
+        "defaultSize" : "NOT_DEFINED"
     },
     {
         "id" : 13,
         "category" : "GIFT SHOP",
         "description" : "En tant que commerçant,\nje veux un espace sécurisé pour administrer mon site.",
         "defaultStars" : 2,
-        "defaultSize" : "XL"
+        "defaultSize" : "NOT_DEFINED"
     },
     {
         "id" : 14,
         "category" : "GIFT SHOP",
         "description" : "En tant que commerçant,\nje veux annuler toute commande erronée ou frauduleuse et procéder au dédommagement depuis l'espace sécurisé.",
         "defaultStars" : 5,
-        "defaultSize" : "XL",
+        "defaultSize" : "NOT_DEFINED",
         "restriction" : 13
     },
     {
@@ -97,6 +97,6 @@
         "category" : "GIFT SHOP",
         "description" : "En tant que visiteur,\nje veux proposer des idées d'articles à la boutique.",
         "defaultStars" : 1,
-        "defaultSize" : "XL"
+        "defaultSize" : "NOT_DEFINED"
     }
 ]
