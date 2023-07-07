@@ -21,6 +21,13 @@ public class UserStory{
     public Size defaultSize;
     public Size size;
     public State state;
+    public enum OutlineColor{
+        GREEN, RED, ORANGE, YELLOW
+    }
+    public static Color yellow = new Color32(255, 208, 0, 255);
+    public static Color red = new Color32(255, 31, 0, 255);
+    public static Color orange = new Color32(255, 117, 0, 255);
+    public static Color green = new Color32(124, 215, 70, 255);
 
     public UserStory(int id, string category, string description, int defaultStars, Size defaultSize, int restriction)
     {

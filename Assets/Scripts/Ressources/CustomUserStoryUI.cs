@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class CustomUserStoryUI : MonoBehaviour
 {
+    [SerializeField] Image outline;
     [SerializeField] TMP_Text idTXT;
     [SerializeField] TMP_Text restrictionTXT;
     [SerializeField] TMP_InputField restrictionIn;
@@ -16,12 +18,13 @@ public class CustomUserStoryUI : MonoBehaviour
 
     public int id;
 
-    UserStory userStory;
+    public UserStory userStory;
 
     [SerializeField] CustomPokerPlanningManager customPokerPlanningManager;
 
     public void Fill(UserStory userStory){
         this.id = userStory.id;
+        this.userStory = userStory;
         this.idTXT.text = userStory.id.ToString();
         if (userStory.restriction == 0){
             this.restrictionIn.text = "";
@@ -74,6 +77,7 @@ public class CustomUserStoryUI : MonoBehaviour
     public void OnStarsChange(){
         this.customPokerPlanningManager.userStories[this.id-1].stars = this.starsIn.value;
         this.customPokerPlanningManager.UpdateUserStoryUI(this.id);
+        this.customPokerPlanningManager.UpdateStarsCount();
     }
     public void OnSizeChange(){
         UserStory.Size size = UserStory.Size.XL;
@@ -99,5 +103,38 @@ public class CustomUserStoryUI : MonoBehaviour
         }
         this.customPokerPlanningManager.userStories[this.id-1].size = size;
         this.customPokerPlanningManager.UpdateUserStoryUI(this.id);
+    }
+    public void ChangeOutlineColor(UserStory.OutlineColor outlineColor){
+        switch (outlineColor){
+            case UserStory.OutlineColor.YELLOW :
+                this.outline.color = UserStory.yellow;
+                break;
+            case UserStory.OutlineColor.RED :
+                this.outline.color = UserStory.red;
+                break;
+            case UserStory.OutlineColor.ORANGE :
+                this.outline.color = UserStory.orange;
+                break;
+            case UserStory.OutlineColor.GREEN :
+                this.outline.color = UserStory.green;
+                break;
+            default :
+                this.outline.color = UserStory.yellow;
+                break;
+        }
+    }
+
+    public void BlockStars(int num){
+        for (int i = 0; i < num; i++){
+            this.starsIn.GetComponent<DropDownController>().EnableOption(5-i+1, false);
+        }
+        for (int i = num; i < 5; i++){
+            this.starsIn.GetComponent<DropDownController>().EnableOption(5-i+1, true);
+        }
+    }
+    public void FreeStars(){
+        for (int i = 1; i <= 5; i++){
+            this.starsIn.GetComponent<DropDownController>().EnableOption(i, true);
+        }
     }
 }
