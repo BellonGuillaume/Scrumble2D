@@ -137,4 +137,12 @@ public class CustomUserStoryUI : MonoBehaviour
             this.starsIn.GetComponent<DropDownController>().EnableOption(i, true);
         }
     }
+
+    public void DisableInputs(){
+        this.starsIn.enabled = false;
+        this.sizeIn.enabled = false;
+        this.restrictionIn.enabled = false;
+        this.asAIn.enabled = false;
+        this.iWantIn.enabled = false;
+    }
 }

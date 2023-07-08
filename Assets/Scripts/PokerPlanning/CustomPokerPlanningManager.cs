@@ -35,6 +35,8 @@ public class CustomPokerPlanningManager : MonoBehaviour
             ready.Add(false);
         }
         remainingStars = 45;
+        this.leftUS.DisableInputs();
+        this.rightUS.DisableInputs();
     }
 
     void Update(){
@@ -51,6 +53,12 @@ public class CustomPokerPlanningManager : MonoBehaviour
                 this.centralUS.BlockStars(1);
             } else {
                 this.centralUS.FreeStars();
+            }
+            if (Input.GetKeyDown (KeyCode.LeftArrow)) {
+                OnLeftClick();
+            }
+            if (Input.GetKeyDown (KeyCode.RightArrow)) {
+                OnRightClick();
             }
         }
     }
