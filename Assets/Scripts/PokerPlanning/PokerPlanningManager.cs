@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using System;
+using UnityEngine.SceneManagement;
 
 public class PokerPlanningManager : MonoBehaviour
 {
@@ -13,11 +15,14 @@ public class PokerPlanningManager : MonoBehaviour
     [SerializeField] UserStoryUI rightUS;
     [SerializeField] GameObject preciseUI;
     [SerializeField] TMP_Text userStoryTitle;
+    [SerializeField] Button play;
     List<GameObject> userStoriesUI;
+    List<bool> ready;
 
     UserStory leftCurrent, centralCurrent, rightCurrent;
 
     void Start(){
+        this.play.interactable = false;
         if (StateManager.userStories is null){
             InitState();
         }
@@ -25,8 +30,19 @@ public class PokerPlanningManager : MonoBehaviour
         StateManager.pokerPlanningState = StateManager.PokerPlanningState.GLOBAL;
         FillUserStoriesUI();
     }
+    void Update(){
+        if(StateManager.pokerPlanningState == StateManager.PokerPlanningState.PRECISE){
+            if (Input.GetKeyDown (KeyCode.LeftArrow)) {
+                OnLeftClick();
+            }
+            if (Input.GetKeyDown (KeyCode.RightArrow)) {
+                OnRightClick();
+            }
+        }
+    }
     public void FillUserStoriesUI(){
         userStoriesUI = new List<GameObject>();
+        ready = new List<bool>();
         for (int i = 0; i < StateManager.userStories.Count; i++){
             GameObject go = Instantiate(userStoryPrefab);
             go.GetComponent<UserStoryUI>().Fill(StateManager.userStories[i]);
@@ -34,6 +50,7 @@ public class PokerPlanningManager : MonoBehaviour
             go.GetComponent<UserStoryUI>().Connect(this);
             go.GetComponent<UserStoryUI>().ChangeOutlineColor(UserStory.OutlineColor.RED);
             userStoriesUI.Add(go);
+            ready.Add(false);
         }
     }
 
@@ -138,9 +155,15 @@ public class PokerPlanningManager : MonoBehaviour
             this.userStoriesUI[this.centralCurrent.id-1].GetComponent<UserStoryUI>().SetSize(sizeUS);
             ColorUserStoryUI(this.centralUS);
             ColorUserStoryUI(this.userStoriesUI[this.centralCurrent.id-1].GetComponent<UserStoryUI>());
+            this.ready[this.centralCurrent.id-1] = true;
     }
 
     public void OnBackClick(){
+        if (AllReady()){
+            this.play.interactable = true;
+        } else {
+            this.play.interactable = false;
+        }
         StateManager.pokerPlanningState = StateManager.PokerPlanningState.GLOBAL;
         this.preciseUI.SetActive(false);
     }
@@ -158,7 +181,19 @@ public class PokerPlanningManager : MonoBehaviour
         }
         return false;
     }
-
+    public bool AllReady(){
+        for (int i = 0; i < this.ready.Count; i++){
+            if (!this.ready[i]){
+                return false;
+            }
+        }
+        return true;
+    }
+    public void Play(){
+        StateManager.pokerPlanningState = StateManager.PokerPlanningState.FINISHED;
+        StateManager.gameState = StateManager.GameState.INITIALISATION;
+        SceneManager.LoadSceneAsync("Game");
+    }
 
 
 }

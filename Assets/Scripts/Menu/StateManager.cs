@@ -47,14 +47,14 @@ public class StateManager : MonoBehaviour
     #region Planning Poker State
     
     public enum PokerPlanningState{
-        GLOBAL, PRECISE
+        GLOBAL, PRECISE, FINISHED
     }
     public static PokerPlanningState pokerPlanningState;
     #endregion
     #region Custom Planning Poker State
     public enum CustomPokerPlanningState
     {
-        GLOBAL, PRECISE
+        GLOBAL, PRECISE, FINISHED
     }
     public static CustomPokerPlanningState customPokerPlanningState;
     #endregion

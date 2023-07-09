@@ -234,6 +234,7 @@ public class CustomPokerPlanningManager : MonoBehaviour
     }
     public void Play(){
         StateManager.userStories = this.userStories;
+        StateManager.customPokerPlanningState = StateManager.CustomPokerPlanningState.FINISHED;
         StateManager.gameState = StateManager.GameState.INITIALISATION;
         SceneManager.LoadSceneAsync("Game");
     }
