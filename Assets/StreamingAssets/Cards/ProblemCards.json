@@ -9,7 +9,7 @@
         "id" : 2,
         "category" : "PROBLEM",
         "description" : "Oups, vous avez cassé le build !",
-        "result" : "Votre équipe perd 1 tâche par membre"
+        "result" : "Votre équipe perd 1 tâche par membre."
     },
     {
         "id" : 3,
