@@ -8,7 +8,7 @@ public class UserStory{
         XS, S, M, L, XL, NOT_DEFINED
     }
     public enum State{
-        NEW, PROGRESS, FINISHED
+        TODO, DOING, DONE
     }
 
     public int id;
@@ -85,7 +85,7 @@ public class UserStory{
         this.stars = defaultStars;
         this.defaultSize = defaultSize;
         this.size = defaultSize;
-        this.state = State.NEW;
+        this.state = State.TODO;
         this.currentTask = 0;
     }
 

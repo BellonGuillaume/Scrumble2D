@@ -38,6 +38,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Old\PlayerOld.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
+     <Compile Include="Assets\Scripts\Ressources\DropCase.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
      <Compile Include="Assets\Scripts\Old\HostJoinUI.cs" />
      <Compile Include="Assets\Scripts\Game\UIRecto.cs" />
@@ -45,6 +46,7 @@
      <Compile Include="Assets\Scripts\PokerPlanning\CustomPokerPlanningManager.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
+     <Compile Include="Assets\Scripts\Ressources\AutoSizeScrollView.cs" />
      <Compile Include="Assets\Scripts\Old\BackButtonScript.cs" />
      <Compile Include="Assets\Scripts\Game\Results.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
@@ -79,6 +81,7 @@
      <Compile Include="Assets\Scripts\Ressources\AutoSizeText.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
+     <Compile Include="Assets\Scripts\Ressources\DraggableItem.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
      <Compile Include="Assets\Scripts\Game\Player.cs" />
      <Compile Include="Assets\Scripts\Game\UIDice.cs" />
@@ -105,9 +108,7 @@
      <Compile Include="Assets\Scripts\Old\TextSlider.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\Scripts\Old\StateNameController.cs" />
-     <Compile Include="Assets\Scripts\Ressources\AutoSizeScrollView.cs" />
-     <Compile Include="Assets\Scripts\Ressources\DraggableItem.cs" />
-     <Compile Include="Assets\Scripts\Ressources\USSlot.cs" />
+     <Compile Include="Assets\Scripts\Ressources\DropContent.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\ScriptTemplates\51-Mirror__Network Authenticator-NewNetworkAuthenticator.cs.txt" />
