@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject popUpGO;
+    [SerializeField] GameObject sidePopUp;
     [SerializeField] GameObject cardPick;
     [SerializeField] GameObject turn;
     [SerializeField] GameObject roll;
@@ -303,14 +304,7 @@ public class GameManager : MonoBehaviour
 
     public void OutClick(){
         StateManager.ClearTurnState();
-        this.cardPick.GetComponent<CardPicker>().Reset();
-        this.cardPick.SetActive(false);
-        // this.turn.Reset();
-        this.turn.SetActive(false);
-        // this.roll.Reset();
-        this.roll.SetActive(false);
-        this.results.SetActive(false);
-        this.popUpGO.SetActive(false);
+        this.sidePopUp.SetActive(false);
     }
 
     void InitState(){
@@ -325,6 +319,10 @@ public class GameManager : MonoBehaviour
 
         StateManager.gameState = StateManager.GameState.INITIALISATION;
         Debug.Log("-STATE_MANAGER INITIALIZED");
+    }
+
+    public void OnSideClick(){
+        this.sidePopUp.SetActive(true);
     }
     #endregion
 

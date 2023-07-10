@@ -48,6 +48,7 @@
      <Compile Include="Assets\Scripts\Old\BackButtonScript.cs" />
      <Compile Include="Assets\Scripts\Game\Results.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
+     <Compile Include="Assets\Scripts\Ressources\ArrowedUS.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
      <Compile Include="Assets\Scripts\Old\ScrollingManager.cs" />
      <Compile Include="Assets\Scripts\Menu\UIPlayer.cs" />
@@ -104,7 +105,9 @@
      <Compile Include="Assets\Scripts\Old\TextSlider.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\Scripts\Old\StateNameController.cs" />
-     <Compile Include="Assets\Scripts\Ressources\ArrowedUS.cs" />
+     <Compile Include="Assets\Scripts\Ressources\AutoSizeScrollView.cs" />
+     <Compile Include="Assets\Scripts\Ressources\DraggableItem.cs" />
+     <Compile Include="Assets\Scripts\Ressources\USSlot.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\ScriptTemplates\51-Mirror__Network Authenticator-NewNetworkAuthenticator.cs.txt" />
