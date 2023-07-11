@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class ArrowedUS : MonoBehaviour
 {
     [SerializeField] Image outline;
-    // [SerializeField] Button arrowUp;
-    // [SerializeField] Button arrowDown;
+    [SerializeField] Button arrowUp;
+    [SerializeField] Button arrowDown;
 
 
     [HideInInspector] public UserStory userStory;
@@ -76,5 +76,26 @@ public class ArrowedUS : MonoBehaviour
         openAngle = newOpenAngle;
         modifiedMaterial.SetFloat("_StartAngle", startAngle);
         modifiedMaterial.SetFloat("_OpenAngle", openAngle);
+    }
+
+    public void ShowUpArrow(){
+        this.arrowUp.gameObject.SetActive(true);
+    }
+    public void HideUpArrow(){
+        this.arrowUp.gameObject.SetActive(false);
+    }
+    public void ShowDownArrow(){
+        this.arrowDown.gameObject.SetActive(true);
+    }
+    public void HideDownArrow(){
+        this.arrowDown.gameObject.SetActive(false);
+    }
+    public void ShowArrows(){
+        this.arrowUp.gameObject.SetActive(true);
+        this.arrowDown.gameObject.SetActive(true);
+    }
+    public void HideArrows(){
+        this.arrowUp.gameObject.SetActive(false);
+        this.arrowDown.gameObject.SetActive(false);
     }
 }

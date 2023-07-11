@@ -58,7 +58,9 @@ public class StateManager : MonoBehaviour
     }
     public static CustomPokerPlanningState customPokerPlanningState;
     #endregion
-
+    #region Day State
+    public static int currentDay = 0;
+    #endregion
     public static void CreatePlayers(List<string> usernames){
         players = new List<Player>();
         for (int i = 0; i < usernames.Count; i++){

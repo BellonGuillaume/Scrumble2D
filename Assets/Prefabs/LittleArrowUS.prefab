@@ -1524,10 +1524,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outline: {fileID: 7828185031358223019}
+  arrowUp: {fileID: 5695609698197945413}
+  arrowDown: {fileID: 5514297930651178430}
   baseColor: {r: 1, g: 0.8156863, b: 0, a: 1}
   color: {r: 1, g: 0.12156863, b: 0, a: 1}
   startAngle: 0
-  openAngle: 90
+  openAngle: 0
 --- !u!1 &8801162081266139354
 GameObject:
   m_ObjectHideFlags: 0

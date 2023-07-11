@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
     public void BeginSprint(int n){
         StateManager.gameState = StateManager.GameState.TDTD;
         StartCoroutine(ChooseToDoToDoing());
-        // BeginDay(1);
+        BeginDay(1);
         // for (int j = 2; j <= 9; j++){
         //     PickDailyCard();
         //     BeginDay(j);
@@ -103,6 +103,7 @@ public class GameManager : MonoBehaviour
                 if (child.childCount == 0){
                     GameObject go = Instantiate(littleArrowUSPrefab);
                     go.GetComponent<UserStoryUI>().Fill(userStory);
+                    go.GetComponent<ArrowedUS>().HideArrows();
                     go.transform.SetParent(child.transform);
                     go.transform.localPosition = Vector3.zero;
                     break;
@@ -110,12 +111,15 @@ public class GameManager : MonoBehaviour
             }
         }
         workingOn.Clear();
+        StateManager.currentDay++;
     }
     #endregion
 
     #region --------------------------------- Day ---------------------------------
-    public void BeginDay(int n){
-
+    IEnumerator BeginDay(int n){
+        while (StateManager.gameState != StateManager.GameState.DAY && StateManager.currentDay != n){
+            yield return null;
+        }
     }
     #endregion
 
