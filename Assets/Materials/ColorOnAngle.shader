@@ -10,8 +10,13 @@ Shader "Custom/ColorOnAngle"
  
     SubShader
     {
-        Tags { "RenderType" = "Opaque" }
+        Tags { "Queue" = "Transparent" "RenderType" = "Transparent" }
         LOD 100
+
+        Stencil{
+            Ref 1
+            Comp Less
+        }
  
         Pass
         {

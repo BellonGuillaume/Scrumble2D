@@ -39,9 +39,15 @@ Material:
     m_Ints: []
     m_Floats:
     - _Angle: 360
+    - _ColorMask: 15
     - _EnableExternalAlpha: 0
-    - _OpenAngle: 360
+    - _OpenAngle: 0
     - _StartAngle: 0
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
     m_Colors:
     - _BaseColor: {r: 0.9960785, g: 0.8117648, b: 0, a: 1}
     - _Color: {r: 0.26273656, g: 1, b: 0, a: 1}
