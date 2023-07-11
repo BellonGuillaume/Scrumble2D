@@ -10,46 +10,56 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     [HideInInspector] public UserStory userStory;
     public void OnBeginDrag(PointerEventData eventData)
     {
-        parentAfterDrag = transform.parent;
-        transform.SetParent(transform.root);
-        transform.SetAsLastSibling();
-        DisableRaycastTargetsRecursively(transform);
+        if(StateManager.gameState == StateManager.GameState.TDTD && userStory.state == UserStory.State.TODO){
+            parentAfterDrag = transform.parent;
+            transform.SetParent(transform.root);
+            transform.SetAsLastSibling();
+            DisableRaycastTargetsRecursively(transform);
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        transform.position = Input.mousePosition;
+        if(StateManager.gameState == StateManager.GameState.TDTD && userStory.state == UserStory.State.TODO){
+            transform.position = Input.mousePosition;
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        transform.SetParent(parentAfterDrag);
-        EnableRaycastTargetsRecursively(transform);
+        if(StateManager.gameState == StateManager.GameState.TDTD && userStory.state == UserStory.State.TODO){
+            transform.SetParent(parentAfterDrag);
+            EnableRaycastTargetsRecursively(transform);
+        }
     }
     private void DisableRaycastTargetsRecursively(Transform parent)
     {
-        foreach (Transform child in parent)
-        {
-            Graphic graphic = child.GetComponent<Graphic>();
-            if (graphic != null)
+        if(StateManager.gameState == StateManager.GameState.TDTD && userStory.state == UserStory.State.TODO){
+            foreach (Transform child in parent)
             {
-                graphic.raycastTarget = false;
-            }
+                Graphic graphic = child.GetComponent<Graphic>();
+                if (graphic != null)
+                {
+                    graphic.raycastTarget = false;
+                }
 
-            DisableRaycastTargetsRecursively(child);
+                DisableRaycastTargetsRecursively(child);
+            }
         }
     }
     private void EnableRaycastTargetsRecursively(Transform parent)
     {
-        foreach (Transform child in parent)
-        {
-            Graphic graphic = child.GetComponent<Graphic>();
-            if (graphic != null)
+        if(StateManager.gameState == StateManager.GameState.TDTD && userStory.state == UserStory.State.TODO){
+            foreach (Transform child in parent)
             {
-                graphic.raycastTarget = true;
-            }
+                Graphic graphic = child.GetComponent<Graphic>();
+                if (graphic != null)
+                {
+                    graphic.raycastTarget = true;
+                }
 
-            EnableRaycastTargetsRecursively(child);
+                EnableRaycastTargetsRecursively(child);
+            }
         }
     }
 }

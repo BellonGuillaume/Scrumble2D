@@ -55,7 +55,6 @@ public class ArrowedUS : MonoBehaviour
         UpdateColor(this.userStory.currentTask);
     }
     public void UpdateColor(int currentTask){
-        Debug.Log($"Valeur de currentTask : {this.userStory.currentTask} et de maxTask : {this.userStory.maxTask}");
         float approximation = ((float) currentTask) / ((float) this.userStory.maxTask);
 
         float angle = Mathf.RoundToInt(approximation * 360);

@@ -13,7 +13,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject turn;
     [SerializeField] GameObject roll;
     [SerializeField] GameObject results;
+    [SerializeField] GameObject tddd;
+    [SerializeField] Transform placeHolders;
     [SerializeField] GameObject userStoryUIPrefab;
+    [SerializeField] GameObject littleArrowUSPrefab;
 
     [SerializeField] Slider debtSlider;
     [SerializeField] Slider daySlider;
@@ -25,6 +28,7 @@ public class GameManager : MonoBehaviour
 
     Player currentPlayer;
     CardPicker cardPicker;
+    public static List<UserStory> workingOn;
 
 
     // Start is called before the first frame update
@@ -42,18 +46,83 @@ public class GameManager : MonoBehaviour
         Debug.Log("INITIALIZING ASSETS");
         this.popUpAnimator = popUpGO.GetComponent<Animator>();
         this.cardPicker = cardPick.GetComponent<CardPicker>();
-        // CreateDailyCards();
+        CreateDailyCards();
         CreateProblemCards();
         // CreateReviewCards();
         Debug.Log("ASSETS INITIALIZED");
+        workingOn = new List<UserStory>();
         StateManager.gameState = StateManager.GameState.PLAYER_TURN;
         Debug.Log("BEGIN FIRST TURN");
         // BeginTurn(players[0]);
     }
 
+    #region --------------------------------- Sprint ---------------------------------
+    public void BeginSprint(int n){
+        StateManager.gameState = StateManager.GameState.TDTD;
+        StartCoroutine(ChooseToDoToDoing());
+        // BeginDay(1);
+        // for (int j = 2; j <= 9; j++){
+        //     PickDailyCard();
+        //     BeginDay(j);
+        // }
+        // BeginReview();
+        // BeginRetrospective();
+    }
+
+    public void BeginReview(){
+        // ShowResults();
+        PickReviewCard();
+        // UpdateDetteEndTurn();
+        // IncreaseScore();
+    }
+
+    IEnumerator ChooseToDoToDoing(){
+        while(StateManager.gameState != StateManager.GameState.TDTD){
+            yield return null;
+        }
+
+        StartCoroutine(PopUpAnimateIn(this.tddd));
+
+        while(this.popUpAnimator.GetBool("TDTD") == false){
+            yield return null;
+        }
+        this.popUpAnimator.ResetTrigger("TDTD");
+
+        AddDoingToWorking();
+        StartCoroutine(PopUpAnimateOut(this.tddd));
+        StartCoroutine(EndPopUp());
+
+        StateManager.gameState = StateManager.GameState.DAY;
+
+        yield break;
+    }
+
+    public void AddDoingToWorking(){
+        foreach (UserStory userStory in workingOn){
+            foreach (Transform child in this.placeHolders){
+                if (child.childCount == 0){
+                    GameObject go = Instantiate(littleArrowUSPrefab);
+                    go.GetComponent<UserStoryUI>().Fill(userStory);
+                    go.transform.SetParent(child.transform);
+                    go.transform.localPosition = Vector3.zero;
+                    break;
+                }
+            }
+        }
+        workingOn.Clear();
+    }
+    #endregion
+
+    #region --------------------------------- Day ---------------------------------
+    public void BeginDay(int n){
+
+    }
+    #endregion
+
     #region --------------------------------- Turn ---------------------------------
     // void BeginTurn(Player player){
     public void BeginTurn(){
+        BeginSprint(0);
         StateManager.turnState = StateManager.TurnState.CHOICE;
         Player player = StateManager.players[0];
         this.currentPlayer = player;

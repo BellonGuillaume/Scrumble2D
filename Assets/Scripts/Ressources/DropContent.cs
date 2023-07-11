@@ -8,6 +8,7 @@ public class DropContent : MonoBehaviour, IDropHandler
     [HideInInspector] public List<DropCase> cases;
     [SerializeField] GameObject casePrefab;
     [SerializeField] Transform content;
+    [SerializeField] UserStory.State type;
     
     void Start(){
         cases = new List<DropCase>();
@@ -21,13 +22,31 @@ public class DropContent : MonoBehaviour, IDropHandler
     }
     public void OnDrop(PointerEventData eventData)
     {
-        Debug.Log($"Drop on Content");
-        int count = 0;
+        if(StateManager.gameState == StateManager.GameState.TDTD){
+            foreach (Transform child in content.transform){
+                if (child.childCount == 0){
+                    child.GetComponent<DropCase>().OnDrop(eventData);
+                    return;
+                }
+            }
+            GameObject go1 = Instantiate(casePrefab);
+            GameObject go2 = Instantiate(casePrefab);
+            go1.transform.SetParent(content.transform);
+            go2.transform.SetParent(content.transform);
+            go1.AddComponent<DropCase>();
+            go2.AddComponent<DropCase>();
+            go1.GetComponent<DropCase>().userStoryUI = eventData.pointerDrag.GetComponent<UserStoryUI>();
+            go1.GetComponent<DropCase>().dropContent = this;
+            go2.GetComponent<DropCase>().dropContent = this;
+            cases.Add(go1.GetComponent<DropCase>());
+            cases.Add(go2.GetComponent<DropCase>());
+            go1.GetComponent<DropCase>().OnDrop(eventData);
+        }
+    }
+    public void AddUsUI(GameObject userStoryUI){
         foreach (Transform child in content.transform){
-            Debug.Log($"Checking for Child {count}");
             if (child.childCount == 0){
-                Debug.Log($"Found at Child {count}");
-                child.GetComponent<DropCase>().OnDrop(eventData);
+                child.GetComponent<DropCase>().AddUsUI(userStoryUI);
                 return;
             }
         }
@@ -37,11 +56,32 @@ public class DropContent : MonoBehaviour, IDropHandler
         go2.transform.SetParent(content.transform);
         go1.AddComponent<DropCase>();
         go2.AddComponent<DropCase>();
-        go1.GetComponent<DropCase>().userStoryUI = eventData.pointerDrag.GetComponent<UserStoryUI>();
         go1.GetComponent<DropCase>().dropContent = this;
         go2.GetComponent<DropCase>().dropContent = this;
         cases.Add(go1.GetComponent<DropCase>());
         cases.Add(go2.GetComponent<DropCase>());
-        go1.GetComponent<DropCase>().OnDrop(eventData);
+        go1.GetComponent<DropCase>().AddUsUI(userStoryUI);
+    }
+    public List<UserStory> GetUserStories(){
+        List<UserStory> userStories = new List<UserStory>();
+        foreach (Transform child in content.transform){
+                if (child.childCount != 0){
+                    userStories.Add(child.GetChild(0).GetComponent<UserStoryUI>().userStory);
+                }
+            }
+        return userStories;
+    }
+
+    public List<UserStory> GetNewUserStories(){
+        List<UserStory> userStories = new List<UserStory>();
+        foreach (Transform child in content.transform){
+                if (child.childCount != 0){
+                    UserStory userStory = child.GetChild(0).GetComponent<UserStoryUI>().userStory;
+                    if(userStory.state != this.type){
+                        userStories.Add(child.GetChild(0).GetComponent<UserStoryUI>().userStory);
+                    }
+                }
+            }
+        return userStories;
     }
 }

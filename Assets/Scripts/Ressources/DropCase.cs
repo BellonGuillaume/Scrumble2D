@@ -10,16 +10,23 @@ public class DropCase : MonoBehaviour, IDropHandler
     
     public void OnDrop(PointerEventData eventData)
     {
-        Debug.Log($"Drop on Case");
-        if (eventData.pointerDrag.GetComponent<DraggableItem>() == null){
-            return;
+        if(StateManager.gameState == StateManager.GameState.TDTD){
+            if (eventData.pointerDrag.GetComponent<DraggableItem>() == null){
+                return;
+            }
+            if (transform.childCount == 0){
+                GameObject dropped = eventData.pointerDrag;
+                dropped.GetComponent<DraggableItem>().parentAfterDrag = transform;
+                userStoryUI = dropped.GetComponent<UserStoryUI>();
+            } else {
+                dropContent.OnDrop(eventData);
+            }
         }
+    }
+    public void AddUsUI(GameObject userStoryUI){
         if (transform.childCount == 0){
-            GameObject dropped = eventData.pointerDrag;
-            dropped.GetComponent<DraggableItem>().parentAfterDrag = transform;
-            userStoryUI = dropped.GetComponent<UserStoryUI>();
-        } else {
-            dropContent.OnDrop(eventData);
+            userStoryUI.transform.SetParent(this.transform);
+            this.userStoryUI = userStoryUI.GetComponent<UserStoryUI>();
         }
     }
 }

@@ -16,7 +16,7 @@ public class StateManager : MonoBehaviour
     public static GameState gameState;
 
     public enum GameState{
-        MENU, INITIALISATION, POKER_PLANNING, CUSTOM_POKER_PLANNING, PLAYER_TURN,
+        MENU, INITIALISATION, POKER_PLANNING, CUSTOM_POKER_PLANNING, PLAYER_TURN, TDTD, DAY, 
     }
     #endregion
 
