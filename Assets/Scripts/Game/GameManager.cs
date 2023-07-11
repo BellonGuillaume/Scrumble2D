@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using Newtonsoft.Json;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Transform placeHolders;
     [SerializeField] GameObject userStoryUIPrefab;
     [SerializeField] GameObject littleArrowUSPrefab;
+    [SerializeField] Image infoTxt;
 
     [SerializeField] Slider debtSlider;
     [SerializeField] Slider daySlider;
@@ -51,16 +53,16 @@ public class GameManager : MonoBehaviour
         // CreateReviewCards();
         Debug.Log("ASSETS INITIALIZED");
         workingOn = new List<UserStory>();
-        StateManager.gameState = StateManager.GameState.PLAYER_TURN;
-        Debug.Log("BEGIN FIRST TURN");
-        // BeginTurn(players[0]);
+        BeginSprint(1);
     }
 
     #region --------------------------------- Sprint ---------------------------------
     public void BeginSprint(int n){
+        Debug.Log("BEGIN FIRST SPRINT");
         StateManager.gameState = StateManager.GameState.TDTD;
+        StateManager.currentDay = 0;
         StartCoroutine(ChooseToDoToDoing());
-        BeginDay(1);
+        StartCoroutine(BeginDay(1));
         // for (int j = 2; j <= 9; j++){
         //     PickDailyCard();
         //     BeginDay(j);
@@ -80,7 +82,7 @@ public class GameManager : MonoBehaviour
         while(StateManager.gameState != StateManager.GameState.TDTD){
             yield return null;
         }
-
+        Debug.Log("BEGIN TDTD");
         StartCoroutine(PopUpAnimateIn(this.tddd));
 
         while(this.popUpAnimator.GetBool("TDTD") == false){
@@ -91,7 +93,8 @@ public class GameManager : MonoBehaviour
         AddDoingToWorking();
         StartCoroutine(PopUpAnimateOut(this.tddd));
         StartCoroutine(EndPopUp());
-
+        
+        Debug.Log("END TDTD");
         StateManager.gameState = StateManager.GameState.DAY;
 
         yield break;
@@ -120,15 +123,26 @@ public class GameManager : MonoBehaviour
         while (StateManager.gameState != StateManager.GameState.DAY && StateManager.currentDay != n){
             yield return null;
         }
+        Debug.Log($"BEGIN Day {n}");
+        StartCoroutine(StartInfoAnimation($"Voici le jour {n}"));
+        yield return new WaitForSeconds(1);
+        if (n != 1){
+            PickDailyCard();
+        }
+        StateManager.gameState = StateManager.GameState.PLAYER_TURN;
+        foreach (Player player in StateManager.players){
+            BeginTurn(player);
+            // TODO : wait the end of turn
+        }
+        // StartCoroutine(StartTourAnimation)
     }
     #endregion
 
     #region --------------------------------- Turn ---------------------------------
     // void BeginTurn(Player player){
-    public void BeginTurn(){
-        BeginSprint(0);
+    IEnumerator BeginTurn(Player player){
+        StartCoroutine(StartInfoAnimation($"C'est le tour de {player.userName}"));
         StateManager.turnState = StateManager.TurnState.CHOICE;
-        Player player = StateManager.players[0];
         this.currentPlayer = player;
         // StartTurnAnimation(player);
         StartCoroutine(StartChoiceTaskDebt());
@@ -141,6 +155,7 @@ public class GameManager : MonoBehaviour
         // --> UpdateTasksView();
         // --> WaitForValidation();
         StartCoroutine(EndOfTurn());
+        yield return null;
     }
 
     IEnumerator StartChoiceTaskDebt(){
@@ -430,6 +445,23 @@ public class GameManager : MonoBehaviour
         Debug.Log("--DEBT SLIDER REMOVED AND RESCALED");
         Debug.Log("--END DEBT ANIMATION");
         yield break;
+    }
+
+    IEnumerator StartDayAnimation(int n){
+        yield break;
+    }
+
+    IEnumerator StartInfoAnimation(string message){
+        while (this.popUpAnimator.GetBool("INFO") == true){
+            yield return null;
+        }
+        this.popUpAnimator.SetTrigger("INFO");
+        this.infoTxt.gameObject.transform.GetChild(0).GetComponent<TMP_Text>().text = message;
+        StartCoroutine(PopUpAnimateIn(this.infoTxt.gameObject));
+        yield return new WaitForSeconds(2);
+        StartCoroutine(PopUpAnimateOut(this.infoTxt.gameObject));
+        StartCoroutine(EndPopUp());
+        this.popUpAnimator.ResetTrigger("INFO");
     }
     #endregion
 }
