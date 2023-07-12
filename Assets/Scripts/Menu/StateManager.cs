@@ -16,13 +16,13 @@ public class StateManager : MonoBehaviour
     public static GameState gameState;
 
     public enum GameState{
-        MENU, INITIALISATION, POKER_PLANNING, CUSTOM_POKER_PLANNING, PLAYER_TURN, TDTD, DAY, 
+        MENU, POKER_PLANNING, CUSTOM_POKER_PLANNING, INITIALISATION, BEGIN_GAME, TDTD, BEGIN_DAY, PICK_DAILY, PLAYER_TURN, END_OF_DAY, END_OF_SPRINT,
     }
     #endregion
 
     #region Turn State
     public enum TurnState{
-        CHOICE, ROLL, RESULT, PROBLEM, END_OF_TURN
+        BEGIN_TURN, CHOICE, ROLL, RESULT, PROBLEM, END_OF_TURN
     }
     public static Player currentPlayer;
     public static string firstTaskOrDebtChoice;
@@ -41,7 +41,6 @@ public class StateManager : MonoBehaviour
         secondDiceResult = 0;
         secondTaskOrDebtChoice = null;
         optionalResult = null;
-        turnState = TurnState.CHOICE;
     }
     #endregion
     #region Planning Poker State
