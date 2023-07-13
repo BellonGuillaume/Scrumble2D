@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: MainMenu Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: MainMenu
+  m_TableCollectionNameGuidString: ac7114d88eae14f4a90500655aa264d7
+  m_Entries:
+  - m_Id: 12791345152
+    m_Key: SettingsButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5328060837888
+    m_Key: LocalButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5434206089216
+    m_Key: OnlineButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6242217783296
+    m_Key: LocalTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6709916233728
+    m_Key: BackButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6819614060544
+    m_Key: NextButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7549972410368
+    m_Key: GameNameText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7789630746624
+    m_Key: DifficultyText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7848871096320
+    m_Key: PokerPlanningText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8110062989312
+    m_Key: UserStoryToUseText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8418675683328
+    m_Key: TMP_InputPlaceholder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14112204288000
+    m_Key: DifficultyEasy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19401607507968
+    m_Key: DifficultyNormal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19457496608768
+    m_Key: DifficultyHard
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 1431151025369382936
+  references:
+    version: 2
+    RefIds:
+    - rid: 1431151025369382936
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1689237095714

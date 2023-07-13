@@ -42,8 +42,8 @@
      <Compile Include="Assets\Mirror\Transports\SimpleWeb\SimpleWeb\Server\ServerSslHelper.cs" />
      <Compile Include="Assets\Mirror\Transports\SimpleWeb\SimpleWeb\Common\Utils.cs" />
      <Compile Include="Assets\Mirror\Transports\SimpleWeb\SimpleWeb\Client\StandAlone\ClientHandshake.cs" />
-     <Compile Include="Assets\Mirror\Transports\SimpleWeb\SimpleWeb\Server\SimpleWebServer.cs" />
      <Compile Include="Assets\Mirror\Transports\SimpleWeb\SimpleWeb\Common\EventType.cs" />
+     <Compile Include="Assets\Mirror\Transports\SimpleWeb\SimpleWeb\Server\SimpleWebServer.cs" />
      <Compile Include="Assets\Mirror\Transports\SimpleWeb\SimpleWeb\Server\ServerHandshake.cs" />
      <Compile Include="Assets\Mirror\Transports\SimpleWeb\SimpleWeb\Client\StandAlone\ClientSslHelper.cs" />
      <Compile Include="Assets\Mirror\Transports\SimpleWeb\SimpleWeb\Common\BufferPool.cs" />

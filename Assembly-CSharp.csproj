@@ -44,6 +44,7 @@
      <Compile Include="Assets\Scripts\Game\UIRecto.cs" />
      <Compile Include="Assets\Scripts\Ressources\FlexibleGridLayout.cs" />
      <Compile Include="Assets\Scripts\PokerPlanning\CustomPokerPlanningManager.cs" />
+     <Compile Include="Assets\Scripts\Ressources\Content.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
      <Compile Include="Assets\Scripts\Game\Animation\AnimationManager.cs" />
@@ -113,7 +114,7 @@
      <Compile Include="Assets\Scripts\Old\TextSlider.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\Scripts\Old\StateNameController.cs" />
-     <Compile Include="Assets\Scripts\Ressources\Content.cs" />
+     <Compile Include="Assets\Scripts\Menu\DropDownLocalize.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\ScriptTemplates\51-Mirror__Network Authenticator-NewNetworkAuthenticator.cs.txt" />
@@ -806,8 +807,14 @@
     <Reference Include="Unity.RenderPipelines.Universal.Shaders">
         <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.CacheServer">
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\UnityEditor.CacheServer.dll</HintPath>
+    </Reference>
     <Reference Include="PsdPlugin">
         <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\PsdPlugin.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Addressables">
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.Addressables.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
         <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
@@ -839,11 +846,17 @@
     <Reference Include="Unity.ShaderGraph.Editor">
         <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Localization.Editor">
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.Localization.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
         <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics.Editor">
         <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Addressables.Editor">
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.Addressables.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Common.Editor">
         <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.2D.Common.Editor.dll</HintPath>
@@ -862,6 +875,9 @@
     </Reference>
     <Reference Include="PPv2URPConverters">
         <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\PPv2URPConverters.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Localization">
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.Localization.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
         <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
@@ -886,6 +902,9 @@
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime">
         <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ResourceManager">
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PlasticSCM.Editor">
         <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
@@ -926,8 +945,14 @@
     <Reference Include="Unity.2D.Common.Runtime">
         <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.2D.Common.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.ScriptableBuildPipeline">
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.ScriptableBuildPipeline.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.2D.SpriteShape.Editor">
         <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.2D.SpriteShape.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ScriptableBuildPipeline.Editor">
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.ScriptableBuildPipeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Editor">
         <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>

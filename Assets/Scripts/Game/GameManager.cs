@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
         this.cardPicker = cardPick.GetComponent<CardPicker>();
         CreateDailyCards();
         CreateProblemCards();
-        // CreateReviewCards();
+        CreateReviewCards();
         workingOn = new List<UserStory>();
         StateManager.gameState = StateManager.GameState.BEGIN_GAME;
         StartCoroutine(StartGame());
