@@ -14,18 +14,23 @@ public class DropCase : MonoBehaviour, IDropHandler
             if (eventData.pointerDrag.GetComponent<DraggableItem>() == null){
                 return;
             }
+            if (dropContent == null){
+                return;
+            }
             if (transform.childCount == 0){
                 GameObject dropped = eventData.pointerDrag;
                 dropped.GetComponent<DraggableItem>().parentAfterDrag = transform;
                 userStoryUI = dropped.GetComponent<UserStoryUI>();
             } else {
-                dropContent.OnDrop(eventData);
+                if (dropContent != null){
+                    dropContent.OnDrop(eventData);
+                }
             }
         }
     }
     public void AddUsUI(GameObject userStoryUI){
         if (transform.childCount == 0){
-            userStoryUI.transform.SetParent(this.transform);
+            userStoryUI.transform.SetParent(this.gameObject.transform);
             this.userStoryUI = userStoryUI.GetComponent<UserStoryUI>();
         }
     }

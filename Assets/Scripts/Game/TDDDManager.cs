@@ -6,13 +6,41 @@ public class TDDDManager : MonoBehaviour
 {
     [SerializeField] DropContent toDoDropContent;
     [SerializeField] DropContent doingDropContent;
+    [SerializeField] Content doneContent;
     [SerializeField] GameObject littleUserStoryUSPrefab;
 
-
-    void Start(){
+    void Awake(){
+        StartCoroutine(OnAwake());
+    }
+    IEnumerator OnAwake(){
+        yield return new WaitForSeconds(0f);
         foreach (UserStory userStory in StateManager.userStories){
             GameObject userStoryUI = CreateUserStoryUI(userStory);
-            toDoDropContent.AddUsUI(userStoryUI);
+            if (userStory.state == UserStory.State.TODO){
+                toDoDropContent.AddUsUI(userStoryUI);
+            } else if (userStory.state == UserStory.State.DOING){
+                doingDropContent.AddUsUI(userStoryUI);
+            } else {
+                doneContent.AddUsUI(userStoryUI);
+            }
+        }
+        foreach (DropCase dropCase in toDoDropContent.cases){
+            if (dropCase.transform.childCount == 0){
+                continue;
+            }
+            dropCase.transform.GetChild(0).localScale = Vector3.one;
+        }
+        foreach (DropCase dropCase in doingDropContent.cases){
+            if (dropCase.transform.childCount == 0){
+                continue;
+            }
+            dropCase.transform.GetChild(0).localScale = Vector3.one;
+        }
+        foreach (DropCase dropCase in doneContent.cases){
+            if (dropCase.transform.childCount == 0){
+                continue;
+            }
+            dropCase.transform.GetChild(0).localScale = Vector3.one;
         }
     }
 
