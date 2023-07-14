@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 using UnityEngine.UI;
 
 public class AnimationManager : MonoBehaviour
@@ -43,7 +44,8 @@ public class AnimationManager : MonoBehaviour
 
     public void StartDayAnimation(int n){
         this.animator.SetBool("ANIMATE", true);
-        this.textDayPopUp.GetComponent<TMP_Text>().text = "Day " + n.ToString();
+        string text = LocalizationSettings.StringDatabase.GetTable("Game").GetEntry("Day").GetLocalizedString();
+        this.textDayPopUp.GetComponent<TMP_Text>().text = text + " " + n.ToString();
         this.dayPopUp.SetActive(true);
         Vector2 startPosition = this.dayAnimationStartPosition;
         Vector2 endPosition = this.dayAnimationEndPosition;
@@ -63,7 +65,8 @@ public class AnimationManager : MonoBehaviour
 
     public void StartTurnAnimation(Player player){
         this.animator.SetBool("ANIMATE", true);
-        this.textDayPopUp.GetComponent<TMP_Text>().text = "Turn of " + player.userName;
+        string text = LocalizationSettings.StringDatabase.GetTable("Game").GetEntry("TurnOf").GetLocalizedString();
+        this.textDayPopUp.GetComponent<TMP_Text>().text = text + " " + player.userName;
         this.dayPopUp.SetActive(true);
         Vector2 startPosition = this.dayAnimationStartPosition;
         Vector2 endPosition = this.dayAnimationEndPosition;

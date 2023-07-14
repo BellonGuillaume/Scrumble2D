@@ -23,6 +23,24 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-en
     - Preload
+  - m_GUID: 7436e1c524697db478317f0acc09f42f
+    m_Address: PokerPlanning_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Preload
+  - m_GUID: 465681e65e08a9449a8cd068a3a7f723
+    m_Address: UserStoryPrefab_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Preload
+  - m_GUID: 43ca58f456ac5b34787a22b6f639c9d4
+    m_Address: Game_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Preload
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 26a6664dd23377d4083dc5668f1a2d57, type: 2}
   m_SchemaSet:

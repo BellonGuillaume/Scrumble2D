@@ -7,35 +7,27 @@ ScriptsOnlyBuild:
     - AutoSizeText
     - BarScroller
     - CardPicker
-    - ConnexionManager
     - Content
     - CustomPokerPlanningManager
     - CustomUserStoryUI
     - DropContent
     - DropDownController
+    - DropDownLocalize
     - ExitButton
     - FlexibleGridLayout
     - GameManager
     - Lobby
-    - LocalNextButton
-    - PlayerOld
+    - Local
+    - Menu
     - PokerPlanningManager
     - Results
     - ScrollingManager
     - TDDDManager
-    - TextSlider
     - TrueFalseScrollbar
     - UIDice
     - UIPlayer
     - UIRecto
     - UserStoryUI
-    Mirror.Components.dll:
-    - Mirror.NetworkMatch
-    Mirror.Transports.dll:
-    - kcp2k.KcpTransport
-    Mirror.dll:
-    - Mirror.NetworkIdentity
-    - Mirror.NetworkManager
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.IK.Editor.dll:
@@ -55,6 +47,27 @@ ScriptsOnlyBuild:
     - UnityEditor.Tilemaps.GroupBrush
     - UnityEditor.Tilemaps.LineBrush
     - UnityEditor.Tilemaps.RandomBrush
+    Unity.Addressables.Editor.dll:
+    - UnityEditor.AddressableAssets.AddressableAssetSettingsDefaultObject
+    - UnityEditor.AddressableAssets.Build.DataBuilders.BuildScriptFastMode
+    - UnityEditor.AddressableAssets.Build.DataBuilders.BuildScriptPackedMode
+    - UnityEditor.AddressableAssets.Build.DataBuilders.BuildScriptPackedPlayMode
+    - UnityEditor.AddressableAssets.Build.DataBuilders.BuildScriptVirtualMode
+    - UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+    - UnityEditor.AddressableAssets.Settings.AddressableAssetGroupTemplate
+    - UnityEditor.AddressableAssets.Settings.AddressableAssetSettings
+    - UnityEditor.AddressableAssets.Settings.GroupSchemas.BundledAssetGroupSchema
+    - UnityEditor.AddressableAssets.Settings.GroupSchemas.ContentUpdateGroupSchema
+    - UnityEditor.AddressableAssets.Settings.GroupSchemas.PlayerDataGroupSchema
+    Unity.Localization.Editor.dll:
+    - UnityEditor.Localization.StringTableCollection
+    - UnityEditor.Localization.UI.LocalizationTablesWindow
+    Unity.Localization.dll:
+    - UnityEngine.Localization.Components.LocalizeStringEvent
+    - UnityEngine.Localization.Locale
+    - UnityEngine.Localization.Settings.LocalizationSettings
+    - UnityEngine.Localization.Tables.SharedTableData
+    - UnityEngine.Localization.Tables.StringTable
     Unity.RenderPipelines.Core.Runtime.dll:
     - UnityEngine.Rendering.UI.DebugUIHandlerBitField
     - UnityEngine.Rendering.UI.DebugUIHandlerButton
@@ -136,8 +149,37 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Toggle
     - UnityEngine.UI.VerticalLayoutGroup
   serializedClasses:
-    Mirror:
-    - Mirror.SnapshotInterpolationSettings
+    Unity.Localization:
+    - UnityEngine.Localization.Events.UnityEventString
+    - UnityEngine.Localization.LocaleIdentifier
+    - UnityEngine.Localization.LocalizedString
+    - UnityEngine.Localization.Metadata.MetadataCollection
+    - UnityEngine.Localization.Settings.CommandLineLocaleSelector
+    - UnityEngine.Localization.Settings.LocalesProvider
+    - UnityEngine.Localization.Settings.LocalizedAssetDatabase
+    - UnityEngine.Localization.Settings.LocalizedStringDatabase
+    - UnityEngine.Localization.Settings.SpecificLocaleSelector
+    - UnityEngine.Localization.Settings.SystemLocaleSelector
+    - UnityEngine.Localization.SmartFormat.Core.Parsing.Parser
+    - UnityEngine.Localization.SmartFormat.Core.Settings.SmartSettings
+    - UnityEngine.Localization.SmartFormat.Extensions.ChooseFormatter
+    - UnityEngine.Localization.SmartFormat.Extensions.ConditionalFormatter
+    - UnityEngine.Localization.SmartFormat.Extensions.DefaultFormatter
+    - UnityEngine.Localization.SmartFormat.Extensions.DefaultSource
+    - UnityEngine.Localization.SmartFormat.Extensions.DictionarySource
+    - UnityEngine.Localization.SmartFormat.Extensions.IsMatchFormatter
+    - UnityEngine.Localization.SmartFormat.Extensions.ListFormatter
+    - UnityEngine.Localization.SmartFormat.Extensions.PersistentVariablesSource
+    - UnityEngine.Localization.SmartFormat.Extensions.PluralLocalizationFormatter
+    - UnityEngine.Localization.SmartFormat.Extensions.ReflectionSource
+    - UnityEngine.Localization.SmartFormat.Extensions.SubStringFormatter
+    - UnityEngine.Localization.SmartFormat.Extensions.TimeFormatter
+    - UnityEngine.Localization.SmartFormat.Extensions.ValueTupleSource
+    - UnityEngine.Localization.SmartFormat.Extensions.XElementFormatter
+    - UnityEngine.Localization.SmartFormat.Extensions.XmlSource
+    - UnityEngine.Localization.SmartFormat.SmartFormatter
+    - UnityEngine.Localization.Tables.TableEntryReference
+    - UnityEngine.Localization.Tables.TableReference
     Unity.RenderPipelines.Core.Runtime:
     - UnityEngine.Rendering.UI.DebugUIPrefabBundle
     Unity.RenderPipelines.Universal.Runtime:
@@ -193,6 +235,21 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.SpriteState
     - UnityEngine.UI.Toggle/ToggleEvent
   methodsToPreserve:
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
   - assembly: UnityEngine.CoreModule
     fullTypeName: UnityEngine.GameObject
     methodName: SetActive
@@ -202,75 +259,81 @@ ScriptsOnlyBuild:
   - assembly: Assembly-CSharp
     fullTypeName: Lobby
     methodName: LaunchGame
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
   - assembly: Assembly-CSharp
     fullTypeName: TrueFalseScrollbar
     methodName: Click
-  - assembly: Assembly-CSharp
-    fullTypeName: ConnexionManager
-    methodName: JoinWan
-  - assembly: Assembly-CSharp
-    fullTypeName: ConnexionManager
-    methodName: GoToLobby
-  - assembly: Assembly-CSharp
-    fullTypeName: TextSlider
-    methodName: setNumberText
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
   - assembly: UnityEngine.CoreModule
     fullTypeName: UnityEngine.GameObject
     methodName: SetActive
   - assembly: UnityEngine.CoreModule
     fullTypeName: UnityEngine.GameObject
     methodName: SetActive
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
   - assembly: Assembly-CSharp
-    fullTypeName: ConnexionManager
-    methodName: JoinLan
-  - assembly: Assembly-CSharp
-    fullTypeName: ConnexionManager
-    methodName: GoToLobby
+    fullTypeName: Menu
+    methodName: OnEnglishClick
   - assembly: UnityEngine.CoreModule
     fullTypeName: UnityEngine.GameObject
     methodName: SetActive
   - assembly: UnityEngine.CoreModule
     fullTypeName: UnityEngine.GameObject
     methodName: SetActive
-  - assembly: Assembly-CSharp
-    fullTypeName: ConnexionManager
-    methodName: JoinLocal
-  - assembly: Assembly-CSharp
-    fullTypeName: ConnexionManager
-    methodName: GoToLobby
   - assembly: UnityEngine.CoreModule
     fullTypeName: UnityEngine.GameObject
     methodName: SetActive
   - assembly: UnityEngine.CoreModule
     fullTypeName: UnityEngine.GameObject
     methodName: SetActive
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
   - assembly: Assembly-CSharp
     fullTypeName: Lobby
     methodName: AddPlayer
-  - assembly: UnityEngine.CoreModule
-    fullTypeName: UnityEngine.GameObject
-    methodName: SetActive
-  - assembly: Assembly-CSharp
-    fullTypeName: TextSlider
-    methodName: setNumberText
-  - assembly: UnityEngine.CoreModule
-    fullTypeName: UnityEngine.GameObject
-    methodName: SetActive
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
   - assembly: Assembly-CSharp
     fullTypeName: Lobby
     methodName: RemovePLayer
-  - assembly: Unity.RenderPipelines.Core.Runtime
-    fullTypeName: UnityEngine.Rendering.UI.DebugUIHandlerUIntField
-    methodName: OnDecrement
-  - assembly: Unity.RenderPipelines.Core.Runtime
-    fullTypeName: UnityEngine.Rendering.UI.DebugUIHandlerUIntField
-    methodName: OnIncrement
-  - assembly: Unity.RenderPipelines.Core.Runtime
-    fullTypeName: UnityEngine.Rendering.UI.DebugUIHandlerUIntField
-    methodName: OnIncrement
-  - assembly: Unity.RenderPipelines.Core.Runtime
-    fullTypeName: UnityEngine.Rendering.UI.DebugUIHandlerUIntField
-    methodName: OnDecrement
+  - assembly: Assembly-CSharp
+    fullTypeName: Menu
+    methodName: OnFrenchClick
   - assembly: Unity.RenderPipelines.Core.Runtime
     fullTypeName: UnityEngine.Rendering.UI.DebugUIHandlerPanel
     methodName: OnScrollbarClicked
@@ -289,30 +352,81 @@ ScriptsOnlyBuild:
   - assembly: Unity.RenderPipelines.Core.Runtime
     fullTypeName: UnityEngine.Rendering.UI.DebugUIHandlerIntField
     methodName: OnIncrement
+  - assembly: Unity.RenderPipelines.Core.Runtime
+    fullTypeName: UnityEngine.Rendering.UI.DebugUIHandlerUIntField
+    methodName: OnDecrement
+  - assembly: Unity.RenderPipelines.Core.Runtime
+    fullTypeName: UnityEngine.Rendering.UI.DebugUIHandlerUIntField
+    methodName: OnIncrement
+  - assembly: Unity.RenderPipelines.Core.Runtime
+    fullTypeName: UnityEngine.Rendering.UI.DebugUIHandlerUIntField
+    methodName: OnIncrement
+  - assembly: Unity.RenderPipelines.Core.Runtime
+    fullTypeName: UnityEngine.Rendering.UI.DebugUIHandlerUIntField
+    methodName: OnDecrement
   - assembly: Unity.RenderPipelines.Core.Runtime
     fullTypeName: UnityEngine.Rendering.UI.DebugUIHandlerPanel
     methodName: ResetDebugManager
   - assembly: Assembly-CSharp
     fullTypeName: UserStoryUI
     methodName: OnClick
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
   - assembly: Assembly-CSharp
     fullTypeName: UserStoryUI
     methodName: OnClick
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
   - assembly: Assembly-CSharp
     fullTypeName: UserStoryUI
     methodName: OnClick
-  - assembly: Assembly-CSharp
-    fullTypeName: UserStoryUI
-    methodName: OnClick
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
   - assembly: Assembly-CSharp
     fullTypeName: PokerPlanningManager
     methodName: OnSizeClick
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
   - assembly: Assembly-CSharp
     fullTypeName: PokerPlanningManager
     methodName: OnLeftClick
   - assembly: Assembly-CSharp
     fullTypeName: PokerPlanningManager
     methodName: OnSizeClick
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
   - assembly: Assembly-CSharp
     fullTypeName: PokerPlanningManager
     methodName: OnSizeClick
@@ -332,56 +446,152 @@ ScriptsOnlyBuild:
     fullTypeName: PokerPlanningManager
     methodName: OnSizeClick
   - assembly: Assembly-CSharp
-    fullTypeName: CustomUserStoryUI
-    methodName: OnSizeChange
-  - assembly: Assembly-CSharp
-    fullTypeName: CustomUserStoryUI
-    methodName: OnStarsChange
-  - assembly: Assembly-CSharp
-    fullTypeName: CustomUserStoryUI
-    methodName: OnIWantChange
-  - assembly: Assembly-CSharp
-    fullTypeName: CustomUserStoryUI
-    methodName: OnAsAChange
-  - assembly: Assembly-CSharp
-    fullTypeName: CustomUserStoryUI
-    methodName: OnRestrictionChange
-  - assembly: Assembly-CSharp
-    fullTypeName: CustomUserStoryUI
-    methodName: OnSizeChange
-  - assembly: Assembly-CSharp
-    fullTypeName: CustomUserStoryUI
-    methodName: OnStarsChange
-  - assembly: Assembly-CSharp
-    fullTypeName: CustomUserStoryUI
-    methodName: OnIWantChange
-  - assembly: Assembly-CSharp
-    fullTypeName: CustomUserStoryUI
-    methodName: OnAsAChange
-  - assembly: Assembly-CSharp
-    fullTypeName: CustomUserStoryUI
-    methodName: OnRestrictionChange
+    fullTypeName: UserStoryUI
+    methodName: OnClick
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
   - assembly: Assembly-CSharp
     fullTypeName: CustomUserStoryUI
     methodName: OnSizeChange
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
   - assembly: Assembly-CSharp
     fullTypeName: CustomUserStoryUI
     methodName: OnStarsChange
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
   - assembly: Assembly-CSharp
     fullTypeName: CustomUserStoryUI
     methodName: OnIWantChange
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
   - assembly: Assembly-CSharp
     fullTypeName: CustomUserStoryUI
     methodName: OnAsAChange
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
   - assembly: Assembly-CSharp
     fullTypeName: CustomUserStoryUI
     methodName: OnRestrictionChange
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Assembly-CSharp
+    fullTypeName: CustomUserStoryUI
+    methodName: OnSizeChange
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Assembly-CSharp
+    fullTypeName: CustomUserStoryUI
+    methodName: OnStarsChange
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Assembly-CSharp
+    fullTypeName: CustomUserStoryUI
+    methodName: OnIWantChange
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Assembly-CSharp
+    fullTypeName: CustomUserStoryUI
+    methodName: OnAsAChange
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Assembly-CSharp
+    fullTypeName: CustomUserStoryUI
+    methodName: OnRestrictionChange
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Assembly-CSharp
+    fullTypeName: CustomUserStoryUI
+    methodName: OnSizeChange
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Assembly-CSharp
+    fullTypeName: CustomUserStoryUI
+    methodName: OnStarsChange
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Assembly-CSharp
+    fullTypeName: CustomUserStoryUI
+    methodName: OnIWantChange
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Assembly-CSharp
+    fullTypeName: CustomUserStoryUI
+    methodName: OnAsAChange
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Assembly-CSharp
+    fullTypeName: CustomUserStoryUI
+    methodName: OnRestrictionChange
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
   - assembly: Assembly-CSharp
     fullTypeName: UserStoryUI
     methodName: OnClick
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
   - assembly: Assembly-CSharp
     fullTypeName: CustomPokerPlanningManager
     methodName: OnLeftClick
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
   - assembly: Assembly-CSharp
     fullTypeName: CustomPokerPlanningManager
     methodName: OnRightClick
@@ -391,6 +601,9 @@ ScriptsOnlyBuild:
   - assembly: Assembly-CSharp
     fullTypeName: CustomPokerPlanningManager
     methodName: Play
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
   - assembly: Assembly-CSharp
     fullTypeName: ArrowedUS
     methodName: ClickUp
@@ -400,9 +613,33 @@ ScriptsOnlyBuild:
   - assembly: Assembly-CSharp
     fullTypeName: UserStoryUI
     methodName: OnClick
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
   - assembly: Assembly-CSharp
     fullTypeName: UserStoryUI
     methodName: OnClick
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
   - assembly: Assembly-CSharp
     fullTypeName: ExitButton
     methodName: QuitGame
@@ -412,6 +649,9 @@ ScriptsOnlyBuild:
   - assembly: UnityEngine.AnimationModule
     fullTypeName: UnityEngine.Animator
     methodName: SetTrigger
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
   - assembly: Assembly-CSharp
     fullTypeName: GameManager
     methodName: OnSideClick
@@ -427,15 +667,24 @@ ScriptsOnlyBuild:
   - assembly: UnityEngine.AnimationModule
     fullTypeName: UnityEngine.Animator
     methodName: SetTrigger
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
   - assembly: Assembly-CSharp
     fullTypeName: CardPicker
     methodName: ChooseCard
   - assembly: UnityEngine.AnimationModule
     fullTypeName: UnityEngine.Animator
     methodName: SetTrigger
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
   - assembly: Assembly-CSharp
     fullTypeName: GameManager
     methodName: PickDailyCard
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
   - assembly: Assembly-CSharp
     fullTypeName: TDDDManager
     methodName: OnClick
@@ -448,12 +697,18 @@ ScriptsOnlyBuild:
   - assembly: UnityEngine.AnimationModule
     fullTypeName: UnityEngine.Animator
     methodName: SetTrigger
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
   - assembly: Assembly-CSharp
     fullTypeName: GameManager
     methodName: BeginTurn
   - assembly: Assembly-CSharp
     fullTypeName: GameManager
     methodName: PickProblemCard
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
   sceneClasses:
     Assets/Scenes/CustomPokerPlanning.unity:
     - Class: 1
@@ -473,55 +728,57 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1740}
-    - Class: 114
-      Script: {instanceID: 1742}
-    - Class: 114
-      Script: {instanceID: 1744}
-    - Class: 114
       Script: {instanceID: 1748}
     - Class: 114
-      Script: {instanceID: 2896}
+      Script: {instanceID: 1750}
     - Class: 114
-      Script: {instanceID: 3106}
+      Script: {instanceID: 1752}
     - Class: 114
-      Script: {instanceID: 3126}
+      Script: {instanceID: 1756}
     - Class: 114
-      Script: {instanceID: 3730}
+      Script: {instanceID: 3142}
     - Class: 114
-      Script: {instanceID: 3832}
+      Script: {instanceID: 3396}
     - Class: 114
-      Script: {instanceID: 3962}
+      Script: {instanceID: 3416}
     - Class: 114
-      Script: {instanceID: 4162}
+      Script: {instanceID: 4140}
     - Class: 114
-      Script: {instanceID: 4724}
+      Script: {instanceID: 4262}
     - Class: 114
-      Script: {instanceID: 5016}
+      Script: {instanceID: 4428}
     - Class: 114
-      Script: {instanceID: 5882}
+      Script: {instanceID: 4680}
     - Class: 114
-      Script: {instanceID: 6124}
+      Script: {instanceID: 5382}
     - Class: 114
-      Script: {instanceID: 6180}
+      Script: {instanceID: 5730}
     - Class: 114
-      Script: {instanceID: 6402}
+      Script: {instanceID: 6780}
     - Class: 114
-      Script: {instanceID: 7088}
+      Script: {instanceID: 7076}
     - Class: 114
-      Script: {instanceID: 7198}
+      Script: {instanceID: 7146}
     - Class: 114
-      Script: {instanceID: 7394}
+      Script: {instanceID: 7428}
     - Class: 114
-      Script: {instanceID: 7834}
+      Script: {instanceID: 7908}
     - Class: 114
-      Script: {instanceID: 7848}
+      Script: {instanceID: 8288}
     - Class: 114
-      Script: {instanceID: 8632}
+      Script: {instanceID: 8426}
     - Class: 114
-      Script: {instanceID: 8740}
+      Script: {instanceID: 8676}
     - Class: 114
-      Script: {instanceID: 9170}
+      Script: {instanceID: 9234}
+    - Class: 114
+      Script: {instanceID: 9250}
+    - Class: 114
+      Script: {instanceID: 10226}
+    - Class: 114
+      Script: {instanceID: 10362}
+    - Class: 114
+      Script: {instanceID: 10896}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -562,71 +819,73 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1742}
+      Script: {instanceID: 1750}
     - Class: 114
-      Script: {instanceID: 1744}
+      Script: {instanceID: 1752}
     - Class: 114
-      Script: {instanceID: 2694}
+      Script: {instanceID: 2880}
     - Class: 114
-      Script: {instanceID: 2730}
+      Script: {instanceID: 2930}
     - Class: 114
-      Script: {instanceID: 2818}
+      Script: {instanceID: 3036}
     - Class: 114
-      Script: {instanceID: 3080}
+      Script: {instanceID: 3366}
     - Class: 114
-      Script: {instanceID: 3106}
+      Script: {instanceID: 3396}
     - Class: 114
-      Script: {instanceID: 3328}
-    - Class: 114
-      Script: {instanceID: 3388}
-    - Class: 114
-      Script: {instanceID: 3626}
-    - Class: 114
-      Script: {instanceID: 3674}
+      Script: {instanceID: 3656}
     - Class: 114
       Script: {instanceID: 3730}
     - Class: 114
-      Script: {instanceID: 3764}
+      Script: {instanceID: 4016}
     - Class: 114
-      Script: {instanceID: 3832}
+      Script: {instanceID: 4072}
     - Class: 114
-      Script: {instanceID: 4130}
+      Script: {instanceID: 4140}
     - Class: 114
-      Script: {instanceID: 4336}
+      Script: {instanceID: 4180}
     - Class: 114
-      Script: {instanceID: 4724}
+      Script: {instanceID: 4262}
     - Class: 114
-      Script: {instanceID: 5156}
+      Script: {instanceID: 4642}
     - Class: 114
-      Script: {instanceID: 5882}
+      Script: {instanceID: 4898}
     - Class: 114
-      Script: {instanceID: 6052}
+      Script: {instanceID: 5382}
     - Class: 114
-      Script: {instanceID: 6180}
+      Script: {instanceID: 5908}
     - Class: 114
-      Script: {instanceID: 6286}
+      Script: {instanceID: 6780}
     - Class: 114
-      Script: {instanceID: 6402}
+      Script: {instanceID: 6984}
     - Class: 114
-      Script: {instanceID: 7088}
+      Script: {instanceID: 7146}
     - Class: 114
-      Script: {instanceID: 7198}
+      Script: {instanceID: 7286}
     - Class: 114
-      Script: {instanceID: 7394}
+      Script: {instanceID: 7428}
     - Class: 114
-      Script: {instanceID: 7834}
+      Script: {instanceID: 7908}
     - Class: 114
-      Script: {instanceID: 7848}
+      Script: {instanceID: 8288}
     - Class: 114
-      Script: {instanceID: 7970}
+      Script: {instanceID: 8426}
     - Class: 114
-      Script: {instanceID: 8740}
+      Script: {instanceID: 8676}
     - Class: 114
-      Script: {instanceID: 9170}
+      Script: {instanceID: 9234}
     - Class: 114
-      Script: {instanceID: 9788}
+      Script: {instanceID: 9250}
     - Class: 114
-      Script: {instanceID: 9848}
+      Script: {instanceID: 9430}
+    - Class: 114
+      Script: {instanceID: 10362}
+    - Class: 114
+      Script: {instanceID: 10896}
+    - Class: 114
+      Script: {instanceID: 11632}
+    - Class: 114
+      Script: {instanceID: 11704}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -665,137 +924,129 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1738}
-    - Class: 114
-      Script: {instanceID: 1740}
-    - Class: 114
-      Script: {instanceID: 1742}
-    - Class: 114
-      Script: {instanceID: 1744}
-    - Class: 114
       Script: {instanceID: 1746}
     - Class: 114
       Script: {instanceID: 1748}
     - Class: 114
+      Script: {instanceID: 1750}
+    - Class: 114
+      Script: {instanceID: 1752}
+    - Class: 114
       Script: {instanceID: 1754}
     - Class: 114
-      Script: {instanceID: 1924}
+      Script: {instanceID: 1756}
     - Class: 114
-      Script: {instanceID: 2516}
+      Script: {instanceID: 1762}
     - Class: 114
-      Script: {instanceID: 2596}
+      Script: {instanceID: 2672}
     - Class: 114
-      Script: {instanceID: 2710}
+      Script: {instanceID: 2766}
     - Class: 114
-      Script: {instanceID: 2836}
+      Script: {instanceID: 2908}
     - Class: 114
-      Script: {instanceID: 3106}
+      Script: {instanceID: 3058}
     - Class: 114
-      Script: {instanceID: 3126}
+      Script: {instanceID: 3396}
     - Class: 114
-      Script: {instanceID: 3730}
+      Script: {instanceID: 3416}
     - Class: 114
-      Script: {instanceID: 3832}
+      Script: {instanceID: 4140}
     - Class: 114
-      Script: {instanceID: 3838}
+      Script: {instanceID: 4262}
     - Class: 114
-      Script: {instanceID: 3852}
+      Script: {instanceID: 4268}
     - Class: 114
-      Script: {instanceID: 3932}
+      Script: {instanceID: 4390}
     - Class: 114
-      Script: {instanceID: 3962}
+      Script: {instanceID: 4428}
     - Class: 114
-      Script: {instanceID: 4036}
+      Script: {instanceID: 4522}
     - Class: 114
-      Script: {instanceID: 4200}
+      Script: {instanceID: 4726}
     - Class: 114
-      Script: {instanceID: 4334}
+      Script: {instanceID: 4896}
     - Class: 114
-      Script: {instanceID: 4724}
+      Script: {instanceID: 5382}
     - Class: 114
-      Script: {instanceID: 4864}
+      Script: {instanceID: 5550}
     - Class: 114
-      Script: {instanceID: 4902}
+      Script: {instanceID: 5596}
     - Class: 114
-      Script: {instanceID: 5016}
+      Script: {instanceID: 5730}
     - Class: 114
-      Script: {instanceID: 5038}
+      Script: {instanceID: 5756}
     - Class: 114
-      Script: {instanceID: 5178}
+      Script: {instanceID: 5944}
     - Class: 114
-      Script: {instanceID: 5270}
+      Script: {instanceID: 6048}
     - Class: 114
-      Script: {instanceID: 5370}
+      Script: {instanceID: 6214}
     - Class: 114
-      Script: {instanceID: 5398}
+      Script: {instanceID: 6396}
     - Class: 114
-      Script: {instanceID: 5882}
+      Script: {instanceID: 6780}
     - Class: 114
-      Script: {instanceID: 5968}
+      Script: {instanceID: 7076}
     - Class: 114
-      Script: {instanceID: 6020}
+      Script: {instanceID: 7286}
     - Class: 114
-      Script: {instanceID: 6124}
+      Script: {instanceID: 7302}
     - Class: 114
-      Script: {instanceID: 6286}
+      Script: {instanceID: 7330}
     - Class: 114
-      Script: {instanceID: 6302}
+      Script: {instanceID: 7428}
     - Class: 114
-      Script: {instanceID: 6320}
+      Script: {instanceID: 7442}
     - Class: 114
-      Script: {instanceID: 6402}
+      Script: {instanceID: 7778}
     - Class: 114
-      Script: {instanceID: 6412}
+      Script: {instanceID: 7780}
     - Class: 114
-      Script: {instanceID: 6672}
+      Script: {instanceID: 7806}
     - Class: 114
-      Script: {instanceID: 6674}
+      Script: {instanceID: 7908}
     - Class: 114
-      Script: {instanceID: 6698}
+      Script: {instanceID: 8240}
     - Class: 114
-      Script: {instanceID: 7048}
+      Script: {instanceID: 8426}
     - Class: 114
-      Script: {instanceID: 7198}
+      Script: {instanceID: 8674}
     - Class: 114
-      Script: {instanceID: 7386}
+      Script: {instanceID: 8676}
     - Class: 114
-      Script: {instanceID: 7394}
+      Script: {instanceID: 8826}
     - Class: 114
-      Script: {instanceID: 7412}
+      Script: {instanceID: 8834}
     - Class: 114
-      Script: {instanceID: 7502}
+      Script: {instanceID: 9004}
     - Class: 114
-      Script: {instanceID: 7510}
+      Script: {instanceID: 9064}
     - Class: 114
-      Script: {instanceID: 7650}
+      Script: {instanceID: 9142}
     - Class: 114
-      Script: {instanceID: 7688}
+      Script: {instanceID: 9234}
     - Class: 114
-      Script: {instanceID: 7754}
+      Script: {instanceID: 9250}
     - Class: 114
-      Script: {instanceID: 7834}
+      Script: {instanceID: 9416}
     - Class: 114
-      Script: {instanceID: 7848}
+      Script: {instanceID: 9614}
     - Class: 114
-      Script: {instanceID: 7980}
+      Script: {instanceID: 9812}
     - Class: 114
-      Script: {instanceID: 8140}
+      Script: {instanceID: 9916}
     - Class: 114
-      Script: {instanceID: 8294}
+      Script: {instanceID: 10148}
     - Class: 114
-      Script: {instanceID: 8564}
+      Script: {instanceID: 10224}
     - Class: 114
-      Script: {instanceID: 8630}
+      Script: {instanceID: 10362}
     - Class: 114
-      Script: {instanceID: 8740}
+      Script: {instanceID: 10896}
     - Class: 114
-      Script: {instanceID: 9170}
+      Script: {instanceID: 11382}
     - Class: 114
-      Script: {instanceID: 9580}
-    - Class: 114
-      Script: {instanceID: 9930}
-    - Class: 114
-      Script: {instanceID: 10134}
+      Script: {instanceID: 11868}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -830,41 +1081,43 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1742}
+      Script: {instanceID: 1750}
     - Class: 114
-      Script: {instanceID: 1744}
+      Script: {instanceID: 1752}
     - Class: 114
-      Script: {instanceID: 3106}
+      Script: {instanceID: 3396}
     - Class: 114
-      Script: {instanceID: 3730}
+      Script: {instanceID: 4140}
     - Class: 114
-      Script: {instanceID: 3832}
+      Script: {instanceID: 4262}
     - Class: 114
-      Script: {instanceID: 3962}
+      Script: {instanceID: 4428}
     - Class: 114
-      Script: {instanceID: 4724}
+      Script: {instanceID: 5382}
     - Class: 114
-      Script: {instanceID: 5882}
+      Script: {instanceID: 6780}
     - Class: 114
-      Script: {instanceID: 6180}
+      Script: {instanceID: 7146}
     - Class: 114
-      Script: {instanceID: 6402}
+      Script: {instanceID: 7428}
     - Class: 114
-      Script: {instanceID: 7088}
+      Script: {instanceID: 7908}
     - Class: 114
-      Script: {instanceID: 7198}
+      Script: {instanceID: 8288}
     - Class: 114
-      Script: {instanceID: 7394}
+      Script: {instanceID: 8426}
     - Class: 114
-      Script: {instanceID: 7834}
+      Script: {instanceID: 8676}
     - Class: 114
-      Script: {instanceID: 7848}
+      Script: {instanceID: 9234}
     - Class: 114
-      Script: {instanceID: 8740}
+      Script: {instanceID: 9250}
     - Class: 114
-      Script: {instanceID: 8958}
+      Script: {instanceID: 10362}
     - Class: 114
-      Script: {instanceID: 9170}
+      Script: {instanceID: 10610}
+    - Class: 114
+      Script: {instanceID: 10896}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1034,6 +1287,18 @@ ScriptsOnlyBuild:
     className: SimpleScript
   - hash:
       serializedVersion: 2
+      Hash: 9ba0a7138d2b6a81941060b1c93ed0d7
+    assemblyName: Unity.Localization.dll
+    namespaceName: UnityEngine.Localization.Tables
+    className: SharedTableData
+  - hash:
+      serializedVersion: 2
+      Hash: 70e02acc79bb78aeaf22757f080a67c4
+    assemblyName: Unity.Localization.dll
+    namespaceName: UnityEngine.Localization.SmartFormat.PersistentVariables
+    className: VariablesGroupAsset
+  - hash:
+      serializedVersion: 2
       Hash: 314e23eec67b8715d6e57ad385d05ba0
     assemblyName: Mirror.Examples.dll
     namespaceName: Mirror.Examples.NetworkRoom
@@ -1122,6 +1387,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UIRecto
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Unity.ResourceManager.dll
+    namespaceName: UnityEngine.ResourceManagement.Util
+    className: DelayedActionManager
   - hash:
       serializedVersion: 2
       Hash: cfdd0010efd7b54c2b7512656dbc9119
@@ -1314,6 +1585,12 @@ ScriptsOnlyBuild:
     assemblyName: Mirror.Examples.dll
     namespaceName: Mirror.Examples.AdditiveScenes
     className: AdditiveNetworkManager
+  - hash:
+      serializedVersion: 2
+      Hash: 9ce274ef3fe866ccf1d2bb3d82ee9728
+    assemblyName: Unity.Localization.dll
+    namespaceName: UnityEngine.Localization.Components
+    className: LocalizedGameObjectEvent
   - hash:
       serializedVersion: 2
       Hash: 822b017f69be67cea86453aabd841187
@@ -1544,6 +1821,12 @@ ScriptsOnlyBuild:
     className: DropContent
   - hash:
       serializedVersion: 2
+      Hash: 62070cc3e895da888d8eb9857eb88320
+    assemblyName: Unity.Localization.dll
+    namespaceName: UnityEngine.Localization
+    className: Locale
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Mirror.Components.dll
     namespaceName: Mirror
@@ -1592,6 +1875,12 @@ ScriptsOnlyBuild:
     className: EnvMapAnimator
   - hash:
       serializedVersion: 2
+      Hash: f3f82dda4648252b73c89956be81712d
+    assemblyName: Unity.Localization.dll
+    namespaceName: UnityEngine.Localization.Components
+    className: LocalizeSpriteEvent
+  - hash:
+      serializedVersion: 2
       Hash: 314e23eec67b8715d6e57ad385d05ba0
     assemblyName: Mirror.Examples.dll
     namespaceName: Mirror.Examples.AdditiveScenes
@@ -1632,6 +1921,12 @@ ScriptsOnlyBuild:
     assemblyName: Mirror.Components.dll
     namespaceName: Mirror
     className: GUIConsole
+  - hash:
+      serializedVersion: 2
+      Hash: 33fe0e3c3862efbb5daa2941fde49ad4
+    assemblyName: Unity.Localization.dll
+    namespaceName: UnityEngine.Localization.Components
+    className: LocalizeTextureEvent
   - hash:
       serializedVersion: 2
       Hash: 9ac327467393cb6c8045a2fd90ff67e2
@@ -1790,6 +2085,12 @@ ScriptsOnlyBuild:
     className: NetworkRigidbody2D
   - hash:
       serializedVersion: 2
+      Hash: 82da9a261e8c0b497ac9b2d720c52902
+    assemblyName: Unity.Localization.dll
+    namespaceName: UnityEngine.Localization.Tables
+    className: AssetTable
+  - hash:
+      serializedVersion: 2
       Hash: 8caea48748813991f136eea2629b9a11
     assemblyName: Mirror.Examples.dll
     namespaceName: Mirror.Examples.AdditiveLevels
@@ -1844,16 +2145,22 @@ ScriptsOnlyBuild:
     className: NetworkManagerHUD
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: TMPro.Examples
+    className: TextConsoleSimulator
+  - hash:
+      serializedVersion: 2
       Hash: e261274cc1b3eab9f65f3c57169c19fa
     assemblyName: Mirror.Components.dll
     namespaceName: Mirror.Experimental
     className: NetworkRigidbody
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 5dd182ca91d9aab725467611cfab37ec
     assemblyName: Assembly-CSharp.dll
-    namespaceName: TMPro.Examples
-    className: TextConsoleSimulator
+    namespaceName: 
+    className: DropDownLocalize
   - hash:
       serializedVersion: 2
       Hash: cf88009ab7db4b3ae90b7724325819b4
@@ -1976,6 +2283,12 @@ ScriptsOnlyBuild:
     className: Ball
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Unity.Localization.dll
+    namespaceName: UnityEngine.Localization
+    className: LocalizationBehaviour
+  - hash:
+      serializedVersion: 2
       Hash: 9780bd9ffda4d63b9aed9c254b197574
     assemblyName: Mirror.Components.dll
     namespaceName: Mirror
@@ -2006,6 +2319,12 @@ ScriptsOnlyBuild:
     className: UserStoryUI
   - hash:
       serializedVersion: 2
+      Hash: c8fe9a90d9a5c59b334126a9d5508619
+    assemblyName: Unity.Localization.dll
+    namespaceName: UnityEngine.Localization.Pseudo
+    className: PseudoLocale
+  - hash:
+      serializedVersion: 2
       Hash: 55a9c0e4ce8d04e0c3369f1f4c85e544
     assemblyName: Unity.RenderPipelines.Universal.Runtime.dll
     namespaceName: UnityEngine.Rendering.Universal
@@ -2030,16 +2349,16 @@ ScriptsOnlyBuild:
     className: Light2D
   - hash:
       serializedVersion: 2
-      Hash: fa24b65e7a5295906a4cae6f29cdcbfe
-    assemblyName: Mirror.Examples.dll
-    namespaceName: Mirror.Examples.Tanks
-    className: Projectile
-  - hash:
-      serializedVersion: 2
       Hash: 0f247354951f04ddbeded0ae0027ee3f
     assemblyName: Mirror.Components.dll
     namespaceName: Mirror
     className: NetworkLobbyPlayer
+  - hash:
+      serializedVersion: 2
+      Hash: fa24b65e7a5295906a4cae6f29cdcbfe
+    assemblyName: Mirror.Examples.dll
+    namespaceName: Mirror.Examples.Tanks
+    className: Projectile
   - hash:
       serializedVersion: 2
       Hash: 21a9c6dbf300fc1f6dc15ca7e2c39a37
@@ -2168,6 +2487,12 @@ ScriptsOnlyBuild:
     className: Player
   - hash:
       serializedVersion: 2
+      Hash: f6f8da509924ed4e5a8ce5d2d86938a2
+    assemblyName: Unity.Localization.dll
+    namespaceName: UnityEngine.Localization.Components
+    className: LocalizeStringEvent
+  - hash:
+      serializedVersion: 2
       Hash: d17f8a6c5382f5422b60b87552ec75d1
     assemblyName: Mirror.Examples.dll
     namespaceName: Mirror.Examples.AdditiveScenes
@@ -2196,6 +2521,12 @@ ScriptsOnlyBuild:
     assemblyName: Mirror.Examples.dll
     namespaceName: Mirror.Examples.MultipleMatch
     className: RoomGUI
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Unity.ResourceManager.dll
+    namespaceName: 
+    className: MonoBehaviourCallbackHooks
   - hash:
       serializedVersion: 2
       Hash: 6b3057497eb6f0e52612476af702bf8c
@@ -2270,10 +2601,22 @@ ScriptsOnlyBuild:
     className: TextMeshProUGUI
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Unity.Localization.dll
+    namespaceName: UnityEngine.Localization
+    className: VariantsPropertyDriver
+  - hash:
+      serializedVersion: 2
       Hash: 5085c149ae898c11398927898b806b9c
     assemblyName: Mirror.Components.dll
     namespaceName: Mirror
     className: NetworkMatch
+  - hash:
+      serializedVersion: 2
+      Hash: 09679b0712709f515cef3bd759697f6c
+    assemblyName: Unity.Localization.dll
+    namespaceName: UnityEngine.Localization.Settings
+    className: LocalizationSettings
   - hash:
       serializedVersion: 2
       Hash: f0ce768896a586b728f194b39cc97138
@@ -2414,12 +2757,6 @@ ScriptsOnlyBuild:
     className: BeforeAfterTestCommandState
   - hash:
       serializedVersion: 2
-      Hash: 06c51bbd1830595454f5da4824336cb3
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: UIDice
-  - hash:
-      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.RenderPipelines.Core.Runtime.dll
     namespaceName: UnityEngine.Rendering
@@ -2430,6 +2767,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.RenderPipelines.Core.Runtime.dll
     namespaceName: UnityEngine.Rendering.UI
     className: DebugUIHandlerCanvas
+  - hash:
+      serializedVersion: 2
+      Hash: 06c51bbd1830595454f5da4824336cb3
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: UIDice
   - hash:
       serializedVersion: 2
       Hash: fc29f975ab35a5033d05bcfda3c82435
@@ -2474,6 +2817,12 @@ ScriptsOnlyBuild:
     className: TMP_FrameRateCounter
   - hash:
       serializedVersion: 2
+      Hash: d49151ccf70073fd65936efffe380a1c
+    assemblyName: Unity.Localization.dll
+    namespaceName: UnityEngine.Localization.PropertyVariants
+    className: GameObjectLocalizer
+  - hash:
+      serializedVersion: 2
       Hash: 361f3edf1c87ede3c7d7eacefea855e0
     assemblyName: Unity.RenderPipelines.Universal.Runtime.dll
     namespaceName: UnityEngine.Rendering.Universal
@@ -2484,6 +2833,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.2D.Tilemap.Extras.dll
     namespaceName: UnityEngine
     className: HexagonalRuleTile
+  - hash:
+      serializedVersion: 2
+      Hash: 535341d785be7c3e8e4dec8d32184fde
+    assemblyName: Unity.Localization.dll
+    namespaceName: UnityEngine.Localization.Components
+    className: LocalizeAudioClipEvent
   - hash:
       serializedVersion: 2
       Hash: caa533b001ae39b864ba8425019e2268
@@ -2514,6 +2869,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.RenderPipelines.Core.Runtime.dll
     namespaceName: UnityEngine.Experimental.Rendering
     className: ProbeVolume
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Menu
   - hash:
       serializedVersion: 2
       Hash: c5bf757e45517373f48138682b6cc89f
@@ -2558,10 +2919,10 @@ ScriptsOnlyBuild:
     className: PlayModeRunnerCallback
   - hash:
       serializedVersion: 2
-      Hash: cda2605414fd95a0b9fa312d5eee733b
+      Hash: 333253d4b2538ccd6f5c21f0af5e734f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: LocalNextButton
+    className: Local
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -2576,7 +2937,7 @@ ScriptsOnlyBuild:
     className: AudioPlayableAsset
   - hash:
       serializedVersion: 2
-      Hash: e87638060baae80086a48cda1c0bf915
+      Hash: eb7a5be060940c20af9efe4056b53a34
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Lobby
@@ -2666,10 +3027,16 @@ ScriptsOnlyBuild:
     className: PlayerScore
   - hash:
       serializedVersion: 2
-      Hash: d57522328fde1c90f068edc60ed713b9
+      Hash: 2d51e66a8067ba987fa955c74522ae8a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PokerPlanningManager
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Unity.Localization.dll
+    namespaceName: UnityEngine.Localization.Components
+    className: LocalizedMonoBehaviour
   - hash:
       serializedVersion: 2
       Hash: 5fcfd9ce4cdd017cc723c5beba66ef81
@@ -2736,6 +3103,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.RenderPipelines.Universal.Runtime.dll
     namespaceName: UnityEngine.Rendering.Universal
     className: DecalProjector
+  - hash:
+      serializedVersion: 2
+      Hash: 54a5082489fad547766d3d4d7635df12
+    assemblyName: Unity.ScriptableBuildPipeline.dll
+    namespaceName: UnityEngine.Build.Pipeline
+    className: CompatibilityAssetBundleManifest
   - hash:
       serializedVersion: 2
       Hash: 5085c149ae898c11398927898b806b9c
@@ -2832,6 +3205,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: AutoHostClient
+  - hash:
+      serializedVersion: 2
+      Hash: 82da9a261e8c0b497ac9b2d720c52902
+    assemblyName: Unity.Localization.dll
+    namespaceName: UnityEngine.Localization.Tables
+    className: StringTable
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -2946,6 +3325,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.2D.IK.Runtime.dll
     namespaceName: UnityEngine.U2D.IK
     className: FabrikSolver2D
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Unity.ResourceManager.dll
+    namespaceName: UnityEngine.ResourceManagement.Diagnostics
+    className: DiagnosticEventCollector
   - hash:
       serializedVersion: 2
       Hash: 0e68c7511d0bb7746e68316200e21bb0

@@ -6,6 +6,7 @@ using System.IO;
 using Newtonsoft.Json;
 using TMPro;
 using UnityEngine.Localization.Settings;
+using UnityEngine.Localization.Tables;
 
 public class GameManager : MonoBehaviour
 {
@@ -35,6 +36,8 @@ public class GameManager : MonoBehaviour
     private Coroutine dayAnimationRoutine;
     public static List<UserStory> workingOn;
 
+    private StringTable table;
+
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +49,7 @@ public class GameManager : MonoBehaviour
             StateManager.gameState = StateManager.GameState.INITIALISATION;
             InitState();
         }
+        table = LocalizationSettings.StringDatabase.GetTable("Game");
         this.popUpAnimator = popUpGO.GetComponent<Animator>();
         this.cardPicker = cardPick.GetComponent<CardPicker>();
         CreateDailyCards();
@@ -84,10 +88,10 @@ public class GameManager : MonoBehaviour
             yield return new WaitUntil(() => StateManager.gameState == StateManager.GameState.END_OF_DAY);
             Debug.Log($"End of day {j} reached");
         }
-        animationManager.ShowInfo("Phase de Review");
+        animationManager.ShowInfo(table.GetEntry("Phase de Review").GetLocalizedString());
         yield return new WaitUntil(() => animationManager.animator.GetBool("ANIMATE") == false);
         // BeginReview();
-        animationManager.ShowInfo("Phase de Rétrospective");
+        animationManager.ShowInfo(table.GetEntry("Phase de Rétrospective").GetLocalizedString());
         yield return new WaitUntil(() => animationManager.animator.GetBool("ANIMATE") == false);
         // BeginRetrospective();
         StateManager.gameState = StateManager.GameState.END_OF_SPRINT;
@@ -239,7 +243,7 @@ public class GameManager : MonoBehaviour
         if (StateManager.firstDiceResult == 1 && !StateManager.alreadyReRoll){
             Debug.Log("--RESULT => REROLL");
             // StartCoroutine(ReRollAnimation());
-            animationManager.ShowInfo("ROLL 1 => REROLL");
+            animationManager.ShowInfo(table.GetEntry("Reroll").GetLocalizedString());
             yield return new WaitUntil(() => animationManager.animator.GetBool("ANIMATE") == false);
             StateManager.alreadyReRoll = true;
             StateManager.turnState = StateManager.TurnState.CHOICE;
@@ -256,7 +260,7 @@ public class GameManager : MonoBehaviour
         if (StateManager.firstDiceResult == 6 || StateManager.secondDiceResult == 6) {
             Debug.Log("--RESULT => PROBLEM");
             // StartCoroutine(ProblemAnimation());
-            animationManager.ShowInfo("ROLL 6 => PROBLEM");
+            animationManager.ShowInfo(table.GetEntry("ProblemCard").GetLocalizedString());
             yield return new WaitUntil(() => animationManager.animator.GetBool("ANIMATE") == false);
             animationManager.ZoomOutPopUp(this.results);
             yield return new WaitUntil(() => animationManager.animator.GetBool("ANIMATE") == false);
@@ -297,33 +301,6 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(2);
         StateManager.turnState = StateManager.TurnState.END_OF_TURN;
     }
-    // IEnumerator EndOfTurn(){
-    //     while(StateManager.gameState != StateManager.GameState.PLAYER_TURN || StateManager.turnState != StateManager.TurnState.END_OF_TURN ){
-    //         yield return null;
-    //     }
-    //     Debug.Log("-START END OF TURN");
-    //     if (CardPicker.initialized){
-    //         Debug.Log("--RESETING CARDPICKER");
-    //         this.cardPick.GetComponent<CardPicker>().Reset();
-    //         this.cardPick.SetActive(false);
-    //         Debug.Log("--CARDPICKER RESETED");
-    //     }
-    //     this.turn.SetActive(false);
-    //     this.roll.SetActive(false);
-    //     if (Results.initialized){
-    //         Debug.Log("--RESETING RESULTS");
-    //         this.results.GetComponent<Results>().Reset();
-    //         this.results.SetActive(false);
-    //         Debug.Log("--RESULTS RESETED");
-    //     }
-    //     Debug.Log("--RESETING TURNSTATE");
-    //     StateManager.ClearTurnState();
-    //     Debug.Log("--TURNSTATE RESETED");
-
-    //     Debug.Log("-END OF TURN");
-        
-    //     StartCoroutine(EndPopUp());
-    // }
     #endregion
 
     #region --------------------------------- Initialisation ---------------------------------

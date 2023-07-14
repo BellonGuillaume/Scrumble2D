@@ -91,6 +91,7 @@ public class PokerPlanningManager : MonoBehaviour
             this.rightCurrent =  StateManager.userStories[id];
         }
         this.centralCurrent = StateManager.userStories[id-1];
+        this.preciseUI.SetActive(true);        
         this.leftUS.Fill(this.leftCurrent);
         this.centralUS.Fill(this.centralCurrent);
         this.rightUS.Fill(this.rightCurrent);
@@ -99,7 +100,7 @@ public class PokerPlanningManager : MonoBehaviour
         ColorUserStoryUI(this.rightUS);
 
         StateManager.pokerPlanningState = StateManager.PokerPlanningState.PRECISE;
-        this.preciseUI.SetActive(true);        
+        
     }
 
     public void OnRightClick(){

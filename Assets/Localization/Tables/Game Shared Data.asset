@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Game Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Game
+  m_TableCollectionNameGuidString: 40f28a1c2bc4c0f4699eaf9ac1dc13f7
+  m_Entries:
+  - m_Id: 9662394368
+    m_Key: TurnButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 800469053440
+    m_Key: ChoiceTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025535406080
+    m_Key: Roll
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099040583680
+    m_Key: Reroll
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1252879265792
+    m_Key: ProblemCard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1690093514752
+    m_Key: Day
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1728932769792
+    m_Key: TurnOf
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2306245160960
+    m_Key: Todo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2365854609408
+    m_Key: Doing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2402605101056
+    m_Key: Done
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 1431151053299777554
+  references:
+    version: 2
+    RefIds:
+    - rid: 1431151053299777554
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1689346947038

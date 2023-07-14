@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Game_fr
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: fr
+  m_SharedData: {fileID: 11400000, guid: 40f28a1c2bc4c0f4699eaf9ac1dc13f7, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 9662394368
+    m_Localized: Jouer un tour
+    m_Metadata:
+      m_Items: []
+  - m_Id: 800469053440
+    m_Localized: "Choisissez entre augmenter le nombre de t\xE2ches ou diminuer la
+      dette"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025535406080
+    m_Localized: "Lancer le d\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099040583680
+    m_Localized: "Vous pouvez relancer le d\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1252879265792
+    m_Localized: "Piochez une carte probl\xE8me"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1690093514752
+    m_Localized: Jour
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1728932769792
+    m_Localized: C'est le tour de
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2306245160960
+    m_Localized: A faire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2365854609408
+    m_Localized: En cours
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2402605101056
+    m_Localized: "Termin\xE9"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []
