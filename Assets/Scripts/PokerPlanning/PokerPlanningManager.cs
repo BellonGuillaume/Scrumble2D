@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using UnityEngine.SceneManagement;
+using UnityEngine.Localization;
 
 public class PokerPlanningManager : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class PokerPlanningManager : MonoBehaviour
     [SerializeField] UserStoryUI rightUS;
     [SerializeField] GameObject preciseUI;
     [SerializeField] TMP_Text userStoryTitle;
+    [SerializeField] LocalizedString[] userStoryOptions;
     [SerializeField] Button play;
     List<GameObject> userStoriesUI;
     List<bool> ready;
@@ -26,7 +28,7 @@ public class PokerPlanningManager : MonoBehaviour
         if (StateManager.userStories is null){
             InitState();
         }
-        this.userStoryTitle.text = StateManager.category;
+        this.userStoryTitle.text = CatToString(StateManager.category);
         StateManager.pokerPlanningState = StateManager.PokerPlanningState.GLOBAL;
         FillUserStoriesUI();
     }
@@ -65,8 +67,8 @@ public class PokerPlanningManager : MonoBehaviour
 
     void InitState(){
         // StateManager.difficulty = StateManager.difficulty.EASY; TODO
-        StateManager.difficulty = "EASY";
-        StateManager.category = "GIFT SHOP";
+        StateManager.difficulty = StateManager.Difficulty.EASY;
+        StateManager.category = StateManager.Category.GIFT_SHOP;
         StateManager.gameName = "";
         StateManager.pokerPlanning = false;
         StateManager.CreateUserStories(StateManager.category);
@@ -194,6 +196,19 @@ public class PokerPlanningManager : MonoBehaviour
         StateManager.gameState = StateManager.GameState.INITIALISATION;
         SceneManager.LoadSceneAsync("Game");
     }
-
+    public string CatToString(StateManager.Category category){
+        switch(category){
+            case StateManager.Category.GIFT_SHOP:
+                return userStoryOptions[0].GetLocalizedString();
+            case StateManager.Category.DIET_COACH:
+                return userStoryOptions[1].GetLocalizedString();
+            case StateManager.Category.TRAVEL_DIARY:
+                return userStoryOptions[2].GetLocalizedString();
+            case StateManager.Category.CUSTOM:
+                return userStoryOptions[3].GetLocalizedString();
+            default:
+                return userStoryOptions[0].GetLocalizedString();
+        }
+    }
 
 }

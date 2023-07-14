@@ -5,22 +5,28 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 using System.Linq;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 
 public class Lobby : MonoBehaviour
 {
 
-    [SerializeField] LocalNextButton localNextButton;
+    [SerializeField] Local local;
     [SerializeField] GameObject playerUIPrefab;
     [SerializeField] GameObject gridLayout;
     [SerializeField] Button playButton;
     [SerializeField] Button removePlayerButton;
     [SerializeField] Button addPlayerButton;
+    [SerializeField] LocalizedString[] difficultyOptions;
+    [SerializeField] LocalizedString[] userStoryOptions;
+    [SerializeField] LocalizedString[] pokerPlanningOptions;
+    [SerializeField] LocalizedString playerText;
 
     string serverName;
     int playerNumber;
     bool pokerPlanning;
-    int difficulty;
-    int userStory;
+    StateManager.Difficulty difficulty;
+    StateManager.Category userStory;
 
     List<string> playersName = new List<string>();
     List<GameObject> playersUI = new List<GameObject>();
@@ -37,11 +43,15 @@ public class Lobby : MonoBehaviour
     }
     void Update()
     {
-        this.serverName = localNextButton.GetServerName();
+        if (StateManager.language != LocalizationSettings.SelectedLocale){
+            RefreshPlayersUI();
+            StateManager.language = LocalizationSettings.SelectedLocale;
+        }
+        this.serverName = local.GetServerName();
         this.playerNumber = playersUI.Count;
-        this.pokerPlanning = localNextButton.GetPokerPlanning();
-        this.difficulty = localNextButton.GetDifficulty();
-        this.userStory = localNextButton.GetUserStory();
+        this.pokerPlanning = local.GetPokerPlanning();
+        this.difficulty = local.GetDifficulty();
+        this.userStory = local.GetUserStory();
 
         this.serverNameOut.text = this.serverName;
         this.pokerPlanningOut.text = GetPokerPlanning(this.pokerPlanning);
@@ -64,27 +74,27 @@ public class Lobby : MonoBehaviour
         
     }
 
-    string GetDifficulty(int difficulty){
+    string GetDifficulty(StateManager.Difficulty difficulty){
         switch (difficulty){
-            case 0:
-                return "EASY";
-            case 1:
-                return "MEDIUM";
+            case StateManager.Difficulty.EASY:
+                return difficultyOptions[0].GetLocalizedString();
+            case StateManager.Difficulty.HARD:
+                return difficultyOptions[2].GetLocalizedString();
             default:
-                return "HARD";
+                return difficultyOptions[1].GetLocalizedString();
         }
     }
 
-    string GetUserStory(int userStory){
+    string GetUserStory(StateManager.Category userStory){
         switch (userStory){
-            case 0:
-                return "GIFT SHOP";
-            case 1:
-                return "DIET COACH";
-            case 2:
-                return "TRAVEL DIARY";
-            case 3:
-                return "CUSTOM";
+            case StateManager.Category.GIFT_SHOP:
+                return userStoryOptions[0].GetLocalizedString();
+            case StateManager.Category.DIET_COACH:
+                return userStoryOptions[1].GetLocalizedString();
+            case StateManager.Category.TRAVEL_DIARY:
+                return userStoryOptions[2].GetLocalizedString();
+            case StateManager.Category.CUSTOM:
+                return userStoryOptions[3].GetLocalizedString();
             default:
                 return "";
         }
@@ -92,9 +102,9 @@ public class Lobby : MonoBehaviour
 
     string GetPokerPlanning(bool pokerPlanning){
         if (pokerPlanning){
-            return "True";
+            return pokerPlanningOptions[0].GetLocalizedString();
         }
-        return "False";
+        return pokerPlanningOptions[1].GetLocalizedString();
     }
 
     public void AddPlayer(){
@@ -103,9 +113,9 @@ public class Lobby : MonoBehaviour
         playersUI.Add(player);
 
         UIPlayer playerUI = player.GetComponent<UIPlayer>();
-        playerUI.text.text = "Player " + playersUI.Count + " :";
-        playerUI.inputField.placeholder.GetComponent<TMP_Text>().text = "Player " + playersUI.Count;
-        this.playersName.Add("Player " + playersUI.Count);
+        playerUI.text.text = playerText.GetLocalizedString() + " " + playersUI.Count + " :";
+        playerUI.inputField.placeholder.GetComponent<TMP_Text>().text = playerText.GetLocalizedString() + " " + playersUI.Count;
+        this.playersName.Add(playerText.GetLocalizedString() + " " + playersUI.Count);
     }
 
     public void RemovePLayer(){
@@ -128,12 +138,12 @@ public class Lobby : MonoBehaviour
     }
 
     public void LaunchGame(){
-        StateManager.difficulty = this.difficultyOut.text;
-        StateManager.category = this.userStoryOut.text;
+        StateManager.difficulty = this.difficulty;
+        StateManager.category = this.userStory;
         StateManager.gameName = this.serverNameOut.text;
         StateManager.pokerPlanning = this.pokerPlanning;
         StateManager.CreatePlayers(this.playersName);
-        if (StateManager.category == "CUSTOM"){
+        if (StateManager.category == StateManager.Category.CUSTOM){
             StateManager.gameState = StateManager.GameState.CUSTOM_POKER_PLANNING;
             SceneManager.LoadSceneAsync("CustomPokerPlanning");
         } else {
@@ -147,5 +157,17 @@ public class Lobby : MonoBehaviour
             }
         }
         
+    }
+
+    public void RefreshPlayersUI(){
+        int count = 1;
+        foreach (GameObject playerUI in playersUI){
+            playerUI.transform.GetChild(1).GetComponent<TMP_Text>().text = playerText.GetLocalizedString() + " " + count.ToString() + " :";
+            if (playerUI.transform.GetChild(0).GetComponent<TMP_InputField>().text == ""){
+
+                playerUI.transform.GetChild(0).GetComponent<TMP_InputField>().placeholder.GetComponent<TMP_Text>().text = playerText.GetLocalizedString() + " " + count.ToString();
+            }
+            count++;
+        }
     }
 }

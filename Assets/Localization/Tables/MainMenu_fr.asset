@@ -74,6 +74,50 @@ MonoBehaviour:
     m_Localized: Difficile
     m_Metadata:
       m_Items: []
+  - m_Id: 342681161854976
+    m_Localized: Boutique Cadeau
+    m_Metadata:
+      m_Items: []
+  - m_Id: 342776703905792
+    m_Localized: "Coach Di\xE9t\xE9tique"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 342873512636416
+    m_Localized: Journal de Voyage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 343008007188480
+    m_Localized: "Personnalis\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 345607284486144
+    m_Localized: 'Nombre de joueurs :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 345938319929344
+    m_Localized: Jouer !
+    m_Metadata:
+      m_Items: []
+  - m_Id: 346130268057600
+    m_Localized: Joueur
+    m_Metadata:
+      m_Items: []
+  - m_Id: 346254763388928
+    m_Localized: Ajouter un joueur
+    m_Metadata:
+      m_Items: []
+  - m_Id: 346348111818752
+    m_Localized: Retirer un joueur
+    m_Metadata:
+      m_Items: []
+  - m_Id: 361077039460352
+    m_Localized: Oui
+    m_Metadata:
+      m_Items: []
+  - m_Id: 362031923097600
+    m_Localized: Non
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

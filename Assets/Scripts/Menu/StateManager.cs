@@ -3,12 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using Newtonsoft.Json;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 
 public class StateManager : MonoBehaviour
 {
+    #region Menu
+        public static Locale language;
+        public enum Difficulty{
+            EASY, NORMAL, HARD
+        }
+        public static Difficulty difficulty;
+        public enum Category{
+            GIFT_SHOP, DIET_COACH, TRAVEL_DIARY, CUSTOM
+        }
+        public static Category category;
+    #endregion
     #region Game State
-    public static string difficulty;
-    public static string category;
     public static List<UserStory> userStories;
     public static string gameName;
     public static List<Player> players;
@@ -19,7 +30,6 @@ public class StateManager : MonoBehaviour
         MENU, POKER_PLANNING, CUSTOM_POKER_PLANNING, INITIALISATION, BEGIN_GAME, TDTD, BEGIN_DAY, PICK_DAILY, PLAYER_TURN, END_OF_DAY, END_OF_SPRINT,
     }
     #endregion
-
     #region Turn State
     public enum TurnState{
         BEGIN_TURN, CHOICE, ROLL, RESULT, PROBLEM, END_OF_TURN
@@ -70,17 +80,30 @@ public class StateManager : MonoBehaviour
             }
         }
     }
-    public static void CreateUserStories(string userStory){
+    public static void CreateUserStories(StateManager.Category userStory){
         string path = Application.streamingAssetsPath;
-        if (StateManager.category == "GIFT SHOP"){
-            path += "/UserStories/GIFT SHOP.json";
-        } else if (StateManager.category == "DIET COACH"){
-            path += "/UserStories/DIET COACH.json";
-        } else if (StateManager.category == "TRAVEL DIARY"){
-            path += "/UserStories/TRAVEL DIARY.json";
+        if (StateManager.language == LocalizationSettings.AvailableLocales.GetLocale("en")){
+            if (userStory == StateManager.Category.GIFT_SHOP){
+                path += "/UserStories/GiftShop_EN.json";
+            } else if (userStory == StateManager.Category.DIET_COACH){
+                path += "/UserStories/DietCoach_EN.json";
+            } else if (userStory == StateManager.Category.TRAVEL_DIARY){
+                path += "/UserStories/TravelDiary_EN.json";
+            } else {
+                path += "/UserStories/GiftShop_EN.json";
+                // throw new System.Exception();
+            }
         } else {
-            path += "/UserStories/GIFT SHOP.json";
-            // throw new System.Exception();
+            if (userStory == StateManager.Category.GIFT_SHOP){
+                path += "/UserStories/GiftShop_FR.json";
+            } else if (userStory == StateManager.Category.DIET_COACH){
+                path += "/UserStories/DietCoach_FR.json";
+            } else if (userStory == StateManager.Category.TRAVEL_DIARY){
+                path += "/UserStories/TravelDiary_FR.json";
+            } else {
+                path += "/UserStories/GiftShop_FR.json";
+                // throw new System.Exception();
+            }
         }
         string userStoriesStr = File.ReadAllText(path);
         StateManager.userStories = JsonConvert.DeserializeObject<List<UserStory>>(userStoriesStr);

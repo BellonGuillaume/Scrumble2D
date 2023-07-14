@@ -19,13 +19,4 @@ public class DropDownLocalize : MonoBehaviour
         }
         dropdown.AddOptions(localizedOptions);
     }
-    void Awake(){
-        dropdown.ClearOptions();
-        var localizedOptions = new List<string>();
-        foreach (var option in options){
-            string localizedText = option.GetLocalizedString();
-            localizedOptions.Add(localizedText);
-        }
-        dropdown.AddOptions(localizedOptions);
-    }
 }

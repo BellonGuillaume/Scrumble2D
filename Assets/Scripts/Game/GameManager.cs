@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System.IO;
 using Newtonsoft.Json;
 using TMPro;
+using UnityEngine.Localization.Settings;
 
 public class GameManager : MonoBehaviour
 {
@@ -327,21 +328,39 @@ public class GameManager : MonoBehaviour
 
     #region --------------------------------- Initialisation ---------------------------------
     void CreateDailyCards(){
-        string path = Application.streamingAssetsPath + "/Cards/DailyCards.json";
-        string dailyCardsStr = File.ReadAllText(path);
-        this.dailyCards = JsonConvert.DeserializeObject<List<Card>>(dailyCardsStr);
+        if (StateManager.language == LocalizationSettings.AvailableLocales.GetLocale("en")){
+            string path = Application.streamingAssetsPath + "/Cards/DailyCards_EN.json";
+            string dailyCardsStr = File.ReadAllText(path);
+            this.dailyCards = JsonConvert.DeserializeObject<List<Card>>(dailyCardsStr);
+        } else {
+            string path = Application.streamingAssetsPath + "/Cards/DailyCards_FR.json";
+            string dailyCardsStr = File.ReadAllText(path);
+            this.dailyCards = JsonConvert.DeserializeObject<List<Card>>(dailyCardsStr);
+        }
     }
 
     void CreateProblemCards(){
-        string path = Application.streamingAssetsPath + "/Cards/ProblemCards.json";
-        string problemCardsStr = File.ReadAllText(path);
-        this.problemCards = JsonConvert.DeserializeObject<List<Card>>(problemCardsStr);
+        if (StateManager.language == LocalizationSettings.AvailableLocales.GetLocale("en")){
+            string path = Application.streamingAssetsPath + "/Cards/ProblemCards_EN.json";
+            string problemCardsStr = File.ReadAllText(path);
+            this.problemCards = JsonConvert.DeserializeObject<List<Card>>(problemCardsStr);
+        } else {
+            string path = Application.streamingAssetsPath + "/Cards/ProblemCards_FR.json";
+            string problemCardsStr = File.ReadAllText(path);
+            this.problemCards = JsonConvert.DeserializeObject<List<Card>>(problemCardsStr);
+        }
     }
 
     void CreateReviewCards(){
-        string path = Application.streamingAssetsPath + "/Cards/ReviewCards.json";
-        string reviewCardsStr = File.ReadAllText(path);
-        this.reviewCards = JsonConvert.DeserializeObject<List<Card>>(reviewCardsStr);
+        if (StateManager.language == LocalizationSettings.AvailableLocales.GetLocale("en")){
+            string path = Application.streamingAssetsPath + "/Cards/ReviewCards_EN.json";
+            string reviewCardsStr = File.ReadAllText(path);
+            this.reviewCards = JsonConvert.DeserializeObject<List<Card>>(reviewCardsStr);
+        } else {
+            string path = Application.streamingAssetsPath + "/Cards/ReviewCards_FR.json";
+            string reviewCardsStr = File.ReadAllText(path);
+            this.reviewCards = JsonConvert.DeserializeObject<List<Card>>(reviewCardsStr);
+        }
     }
     #endregion
 
@@ -396,12 +415,12 @@ public class GameManager : MonoBehaviour
     void InitState(){
         Debug.Log("-STATE_MANAGER INITIALIAZING");
         // StateManager.difficulty = StateManager.difficulty.EASY; TODO
-        StateManager.difficulty = "EASY";
-        StateManager.category = "GIFT SHOP";
+        StateManager.difficulty = StateManager.Difficulty.EASY;
+        StateManager.category = StateManager.Category.GIFT_SHOP;
         StateManager.gameName = "";
         StateManager.pokerPlanning = false;
         StateManager.CreatePlayers(new List<string>{"Alice", "Bob", "Charles"});
-        StateManager.CreateUserStories("GIFT SHOP");
+        StateManager.CreateUserStories(StateManager.Category.GIFT_SHOP);
 
         StateManager.gameState = StateManager.GameState.INITIALISATION;
         Debug.Log("-STATE_MANAGER INITIALIZED");

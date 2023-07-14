@@ -71,6 +71,50 @@ MonoBehaviour:
     m_Key: DifficultyHard
     m_Metadata:
       m_Items: []
+  - m_Id: 342681161854976
+    m_Key: USGIftShop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 342776703905792
+    m_Key: USDietCoach
+    m_Metadata:
+      m_Items: []
+  - m_Id: 342873512636416
+    m_Key: USTravelDiary
+    m_Metadata:
+      m_Items: []
+  - m_Id: 343008007188480
+    m_Key: USCustom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 345607284486144
+    m_Key: NumberOfPlayer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 345938319929344
+    m_Key: Play_txt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 346130268057600
+    m_Key: PlayerPrefabPlaceholder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 346254763388928
+    m_Key: AddPlayerButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 346348111818752
+    m_Key: RemovePlayerButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 361077039460352
+    m_Key: Yes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 362031923097600
+    m_Key: No
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

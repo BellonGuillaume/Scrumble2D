@@ -74,6 +74,50 @@ MonoBehaviour:
     m_Localized: Hard
     m_Metadata:
       m_Items: []
+  - m_Id: 342681161854976
+    m_Localized: Gift Shop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 342776703905792
+    m_Localized: Diet Coach
+    m_Metadata:
+      m_Items: []
+  - m_Id: 342873512636416
+    m_Localized: Travel Diary
+    m_Metadata:
+      m_Items: []
+  - m_Id: 343008007188480
+    m_Localized: Custom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 345607284486144
+    m_Localized: 'Number of players : '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 345938319929344
+    m_Localized: Play !
+    m_Metadata:
+      m_Items: []
+  - m_Id: 346130268057600
+    m_Localized: Player
+    m_Metadata:
+      m_Items: []
+  - m_Id: 346254763388928
+    m_Localized: Add player
+    m_Metadata:
+      m_Items: []
+  - m_Id: 346348111818752
+    m_Localized: Remove player
+    m_Metadata:
+      m_Items: []
+  - m_Id: 361077039460352
+    m_Localized: Yes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 362031923097600
+    m_Localized: No
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
