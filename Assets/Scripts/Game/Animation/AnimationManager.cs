@@ -28,6 +28,9 @@ public class AnimationManager : MonoBehaviour
     [SerializeField] GameObject dayPopUp;
     [SerializeField] GameObject textDayPopUp;
 
+    [SerializeField] Slider debtSlider;
+    [SerializeField] Slider daySlider;
+
     [SerializeField] Vector2 sideMenuShowPos;
     [SerializeField] Vector2 sideMenuHidePos;
     [SerializeField] byte blurValue;
@@ -53,7 +56,7 @@ public class AnimationManager : MonoBehaviour
             dayAnimationDuration,
             delegate(float progress){
                 float easedProgress = Easing.clerp(0, 1, progress);
-                Vector2 pos = Vector2.Lerp(startPosition, endPosition, progress);
+                Vector2 pos = Vector2.Lerp(startPosition, endPosition, easedProgress);
                 textDayPopUp.transform.localPosition = pos;
             },
             delegate {
@@ -74,7 +77,7 @@ public class AnimationManager : MonoBehaviour
             dayAnimationDuration,
             delegate(float progress){
                 float easedProgress = Easing.clerp(0, 1, progress);
-                Vector2 pos = Vector2.Lerp(startPosition, endPosition, progress);
+                Vector2 pos = Vector2.Lerp(startPosition, endPosition, easedProgress);
                 textDayPopUp.transform.localPosition = pos;
             },
             delegate {
@@ -96,8 +99,8 @@ public class AnimationManager : MonoBehaviour
             popUpInDuration,
             delegate(float progress){
                 float easedProgress = Easing.easeInExpo(0, 1, progress);
-                Vector2 scale = Vector2.Lerp(startScale, endScale, progress);
-                byte blur = (byte) Mathf.Lerp(startBlur, endBlur, progress);
+                Vector2 scale = Vector2.Lerp(startScale, endScale, easedProgress);
+                byte blur = (byte) Mathf.Lerp(startBlur, endBlur, easedProgress);
                 Color32 temp = backgroundPopUp.GetComponent<Image>().color;
                 temp.a = blur;
                 backgroundPopUp.GetComponent<Image>().color = temp;
@@ -120,8 +123,8 @@ public class AnimationManager : MonoBehaviour
             popUpInDuration,
             delegate(float progress){
                 float easedProgress = Easing.easeInExpo(0, 1, progress);
-                Vector2 scale = Vector2.Lerp(startScale, endScale, progress);
-                byte blur = (byte) Mathf.Lerp(startBlur, endBlur, progress);
+                Vector2 scale = Vector2.Lerp(startScale, endScale, easedProgress);
+                byte blur = (byte) Mathf.Lerp(startBlur, endBlur, easedProgress);
                 Color32 temp = backgroundPopUp.GetComponent<Image>().color;
                 temp.a = blur;
                 backgroundPopUp.GetComponent<Image>().color = temp;
@@ -146,7 +149,7 @@ public class AnimationManager : MonoBehaviour
             startGameScreenDuration,
             delegate(float progress){
                 float easedProgress = Easing.easeInBack(0, 1, progress);
-                byte blur = (byte) Mathf.Lerp(startBlur, endBlur, progress);
+                byte blur = (byte) Mathf.Lerp(startBlur, endBlur, easedProgress);
                 Color32 temp = coverImage.color;
                 temp.a = blur;
                 coverImage.color = temp;
@@ -168,7 +171,7 @@ public class AnimationManager : MonoBehaviour
             dayAnimationDuration,
             delegate(float progress){
                 float easedProgress = Easing.clerp(0, 1, progress);
-                Vector2 pos = Vector2.Lerp(startPosition, endPosition, progress);
+                Vector2 pos = Vector2.Lerp(startPosition, endPosition, easedProgress);
                 textDayPopUp.transform.localPosition = pos;
             },
             delegate {
@@ -190,8 +193,8 @@ public class AnimationManager : MonoBehaviour
             popUpInDuration,
             delegate(float progress){
                 float easedProgress = Easing.easeInExpo(0, 1, progress);
-                Vector2 scale = Vector2.Lerp(startScale, endScale, progress);
-                byte blur = (byte) Mathf.Lerp(startBlur, endBlur, progress);
+                Vector2 scale = Vector2.Lerp(startScale, endScale, easedProgress);
+                byte blur = (byte) Mathf.Lerp(startBlur, endBlur, easedProgress);
                 Color32 temp = backgroundPopUp.GetComponent<Image>().color;
                 temp.a = blur;
                 backgroundPopUp.GetComponent<Image>().color = temp;
@@ -215,8 +218,8 @@ public class AnimationManager : MonoBehaviour
             popUpInDuration,
             delegate(float progress){
                 float easedProgress = Easing.easeInExpo(0, 1, progress);
-                Vector2 scale = Vector2.Lerp(startScale, endScale, progress);
-                byte blur = (byte) Mathf.Lerp(startBlur, endBlur, progress);
+                Vector2 scale = Vector2.Lerp(startScale, endScale, easedProgress);
+                byte blur = (byte) Mathf.Lerp(startBlur, endBlur, easedProgress);
                 Color32 temp = backgroundPopUp.GetComponent<Image>().color;
                 temp.a = blur;
                 backgroundPopUp.GetComponent<Image>().color = temp;
@@ -241,7 +244,7 @@ public class AnimationManager : MonoBehaviour
             popUpInDuration,
             delegate(float progress){
                 float easedProgress = Easing.easeInExpo(0, 1, progress);
-                Vector2 scale = Vector2.Lerp(startScale, endScale, progress);
+                Vector2 scale = Vector2.Lerp(startScale, endScale, easedProgress);
                 gameObject.transform.localScale = scale;
             },
             delegate{
@@ -258,7 +261,7 @@ public class AnimationManager : MonoBehaviour
             popUpInDuration,
             delegate(float progress){
                 float easedProgress = Easing.easeInExpo(0, 1, progress);
-                Vector2 scale = Vector2.Lerp(startScale, endScale, progress);
+                Vector2 scale = Vector2.Lerp(startScale, endScale, easedProgress);
                 gameObject.transform.localScale = scale;
             },
             delegate{
@@ -267,6 +270,52 @@ public class AnimationManager : MonoBehaviour
             }
         );
 
+    }
+
+    public void UpdateDebtScrollBar(float newValue){
+        this.animator.SetBool("ANIMATE", true);
+        Vector2 startPos = this.debtSlider.transform.localPosition;
+        Vector2 startScale = this.debtSlider.transform.localScale;
+        float startValue = this.debtSlider.value;
+        Vector2 endPos = Vector2.zero;
+        Vector2 endScale = new Vector2(4f, 4f);
+        float endValue = newValue;
+        animationCoroutine = this.CreateAnimationRoutine(
+            0.5f,
+            delegate(float progress){
+                float easedProgress = Easing.easeInCubic(0, 1, progress);
+                Vector2 pos = Vector2.Lerp(startPos, endPos, easedProgress);
+                Vector2 scale = Vector2.Lerp(startScale, endScale, easedProgress);
+                this.debtSlider.transform.localPosition = pos;
+                this.debtSlider.transform.localScale = scale;
+            },
+            delegate{
+                this.CreateAnimationRoutine(
+                    1.5f,
+                    delegate(float progress){
+                        float easedProgress = Easing.easeInOutQuad(0, 1, progress);
+                        float value = Mathf.Lerp(startValue, endValue, easedProgress);
+                        this.debtSlider.value = value;
+                    },
+                    delegate{
+                        this.debtSlider.value = endValue;
+                        this.CreateAnimationRoutine(
+                            0.5f,
+                            delegate(float progress){
+                                float easedProgress = Easing.easeOutCubic(0, 1, progress);
+                                Vector2 pos = Vector2.Lerp(endPos, startPos, easedProgress);
+                                Vector2 scale = Vector2.Lerp(endScale, startScale, easedProgress);
+                                this.debtSlider.transform.localPosition = pos;
+                                this.debtSlider.transform.localScale = scale;
+                            },
+                            delegate{
+                                this.animator.SetBool("ANIMATE", false);
+                            }
+                        );
+                    }
+                );
+            }
+        );
     }
 
 }
