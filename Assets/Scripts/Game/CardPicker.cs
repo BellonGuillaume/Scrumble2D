@@ -6,117 +6,74 @@ using TMPro;
 
 public class CardPicker : MonoBehaviour
 {
-    [SerializeField] UIRecto uiCardPrefab;
-    [SerializeField] Sprite dailyVerso;
-    [SerializeField] Sprite problemVerso;
-    [SerializeField] Sprite reviewVerso;
-    [SerializeField] GameObject versoOne;
-    Image versoOneImage;
-    [SerializeField] GameObject versoTwo;
-    Image versoTwoImage;
-    [SerializeField] GameObject versoThree;
-    Image versoThreeImage;
-    List<GameObject> versos;
-    List<Image> versosImages;
-    [SerializeField] GameObject recto;
+    [SerializeField] GameObject cardUIPrefab;
 
-    Color RED = new Color32(202, 95, 95, 255);
-    Color BLUE = new Color32(88, 136, 199, 255);
-    Color GREEN = new Color32(113, 203, 99, 255);
+    [SerializeField] AnimationManager animationManager;
+    [SerializeField] GameObject content;
 
-    public static string typeOfCard;
-    public static string cardDescription;
-    public static string cardResult;
-    public static bool initialized;
+    public Card.CategoryOfCard typeOfCard;
+    public List<GameObject> cards = new List<GameObject>();
+    public bool initialized;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        versos = new List<GameObject>{versoOne, versoTwo, versoThree};
-        this.versoOneImage = this.versoOne.transform.GetChild(0).GetComponent<Image>();
-        this.versoTwoImage = this.versoTwo.transform.GetChild(0).GetComponent<Image>();
-        this.versoThreeImage = this.versoThree.transform.GetChild(0).GetComponent<Image>();
-        versosImages = new List<Image>{versoOneImage, versoTwoImage, versoThreeImage};
-        initialized = true;
+    public void AddCart(Card card){
+        Debug.Log($"Try to add the card {card.id.ToString()}");
+        if (cards.Count == 0){
+            this.typeOfCard = card.category;
+        } else {
+            if (card.category != this.typeOfCard){
+                return;
+            }
+        }
+        GameObject go = Instantiate(cardUIPrefab);
+        go.transform.SetParent(content.transform);
+        go.GetComponent<UICard>().Fill(card, this);
+        this.cards.Add(go);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(typeOfCard == "PROBLEM"){
-            this.versoOneImage.sprite = problemVerso;
-            this.versoTwoImage.sprite = problemVerso;
-            this.versoThreeImage.sprite = problemVerso;
-            this.recto.GetComponent<Image>().color = RED;
-        }
-        else if (typeOfCard == "DAILY"){
-            this.versoOneImage.sprite = dailyVerso;
-            this.versoTwoImage.sprite = dailyVerso;
-            this.versoThreeImage.sprite = dailyVerso;
-            this.recto.GetComponent<Image>().color = BLUE;
-        }
-        else {
-            this.versoOneImage.sprite = reviewVerso;
-            this.versoTwoImage.sprite = reviewVerso;
-            this.versoThreeImage.sprite = reviewVerso;
-            this.recto.GetComponent<Image>().color = GREEN;
-        }
-        this.recto.transform.GetChild(0).GetComponent<TMP_Text>().text = cardDescription;
-        this.recto.transform.GetChild(1).GetComponent<TMP_Text>().text = cardResult;
-    }
+    public void ChooseCard(int id){
+        int cardToPick;
+        if (this.typeOfCard == Card.CategoryOfCard.DAILY)
+            cardToPick = EventManager.dailyCardsToPick;
+        else if (this.typeOfCard == Card.CategoryOfCard.PROBLEM)
+            cardToPick = EventManager.problemCardsToPick;
+        else
+            cardToPick = EventManager.reviewCardsToPick;
 
-    public void ChooseCard(int versoNum){
-        if (versoNum == 1){
-            StartCoroutine(RemoveCard(0));
-            StartCoroutine(DisableCard(1));
-            StartCoroutine(DisableCard(2));
-            StartCoroutine(ShowRecto());
+        if (cardToPick <= 0){
+            return;
         }
-        else if (versoNum == 2){
-            StartCoroutine(DisableCard(0));
-            StartCoroutine(RemoveCard(1));
-            StartCoroutine(DisableCard(2));
-            StartCoroutine(ShowRecto());
-        }
-        else {
-            StartCoroutine(DisableCard(0));
-            StartCoroutine(DisableCard(1));
-            StartCoroutine(RemoveCard(2));
-            StartCoroutine(ShowRecto());
+        // animationManager.FlipCard(cards[id].GetComponent<UICard>());
+        Debug.Log(id.ToString());
+        Debug.Log(this.cards.Count.ToString());
+        this.cards[id].GetComponent<UICard>().RemoveVerso();
+        this.cards[id].GetComponent<UICard>().card.flipped = true;
+
+        cardToPick--;
+        if (this.typeOfCard == Card.CategoryOfCard.DAILY)
+            EventManager.dailyCardsToPick = cardToPick;
+        else if (this.typeOfCard == Card.CategoryOfCard.PROBLEM)
+            EventManager.problemCardsToPick = cardToPick;
+        else
+            EventManager.reviewCardsToPick = cardToPick;
+
+        if (cardToPick <= 0){
+            foreach(GameObject go in this.cards){
+                if (go.GetComponent<UICard>().card.flipped == false){
+                    // animationManager.DeselectCard(go);
+                    go.GetComponent<UICard>().Disable();
+                }
+            }
         }
     }
 
     public void Reset(){
-        for (int i = 0; i < this.versos.Count; i++){
-            this.versos[i].SetActive(true);
-            this.versosImages[i].sprite = null;
-            this.versos[i].transform.GetChild(1).GetComponent<Button>().interactable = true;
-            Color tempColor = this.versos[i].transform.GetChild(1).GetComponent<Button>().image.color;
-            tempColor.a = 0f;
-            this.versos[i].transform.GetChild(1).GetComponent<Button>().image.color = tempColor;
+        foreach (GameObject go in cards){
+            Destroy(go);
         }
-        this.recto.SetActive(false);
+        cards = new List<GameObject>();
+        EventManager.dailyCardsToPick = 0;
+        EventManager.problemCardsToPick = 0;
+        EventManager.reviewCardsToPick = 0;
+        UICard.count = 0;
     }
-
-    #region Animations
-    public IEnumerator DisableCard(int i){
-        this.versos[i].transform.GetChild(1).GetComponent<Button>().interactable = false;
-        Color tempColor = this.versos[i].transform.GetChild(1).GetComponent<Button>().image.color;
-        tempColor.a = 0.8f;
-        this.versos[i].transform.GetChild(1).GetComponent<Button>().image.color = tempColor;
-        yield break;
-    }
-
-    public IEnumerator RemoveCard(int i){
-        this.versos[i].SetActive(false);
-        yield break;
-    }
-
-    public IEnumerator ShowRecto(){
-        this.recto.SetActive(true);
-        yield return new WaitForSeconds(4);
-        StateManager.turnState = StateManager.TurnState.RESULT;
-    }
-    #endregion
 }

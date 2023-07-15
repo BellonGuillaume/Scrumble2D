@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class AnimationManager : MonoBehaviour
 {
-    public static bool animated;
     public Animator animator;
     
     [SerializeField] Image coverImage;
@@ -46,7 +45,7 @@ public class AnimationManager : MonoBehaviour
     private Coroutine animationCoroutine;
 
     public void StartDayAnimation(int n){
-        this.animator.SetBool("ANIMATE", true);
+        EventManager.animate = true;
         string text = LocalizationSettings.StringDatabase.GetTable("Game").GetEntry("Day").GetLocalizedString();
         this.textDayPopUp.GetComponent<TMP_Text>().text = text + " " + n.ToString();
         this.dayPopUp.SetActive(true);
@@ -61,13 +60,13 @@ public class AnimationManager : MonoBehaviour
             },
             delegate {
                 this.dayPopUp.SetActive(false);
-                this.animator.SetBool("ANIMATE", false);
+                EventManager.animate = false;
             }
         );
     }
 
     public void StartTurnAnimation(Player player){
-        this.animator.SetBool("ANIMATE", true);
+                EventManager.animate = true;
         string text = LocalizationSettings.StringDatabase.GetTable("Game").GetEntry("TurnOf").GetLocalizedString();
         this.textDayPopUp.GetComponent<TMP_Text>().text = text + " " + player.userName;
         this.dayPopUp.SetActive(true);
@@ -82,13 +81,13 @@ public class AnimationManager : MonoBehaviour
             },
             delegate {
                 this.dayPopUp.SetActive(false);
-                this.animator.SetBool("ANIMATE", false);
+                EventManager.animate = false;
             }
         );
     }
 
     public void ShowChoice(){
-        this.animator.SetBool("ANIMATE", true);
+        EventManager.animate = true;
         byte startBlur = 0;
         byte endBlur = this.blurValue;
         Vector2 startScale = new Vector2(0f, 0f);
@@ -108,13 +107,13 @@ public class AnimationManager : MonoBehaviour
                 choicePopUp.transform.localScale = scale;
             },
             delegate{
-                this.animator.SetBool("ANIMATE", false);
+                EventManager.animate = false;
             }
         );
     }
 
     public void HideResults(){
-        this.animator.SetBool("ANIMATE", true);
+        EventManager.animate = true;
         byte startBlur = this.blurValue;
         byte endBlur = 0;
         Vector2 startScale = this.popUpScale;
@@ -134,13 +133,13 @@ public class AnimationManager : MonoBehaviour
             delegate{
                 this.popUp.SetActive(false);
                 this.resultPopUp.SetActive(false);
-                this.animator.SetBool("ANIMATE", false);
+                EventManager.animate = false;
             }
         );
     }
 
     public void StartGame(){
-        this.animator.SetBool("ANIMATE", true);
+        EventManager.animate = true;
         this.coverImage.color = Color.white;
         this.coverImage.gameObject.SetActive(true);
         byte startBlur = 255;
@@ -156,13 +155,13 @@ public class AnimationManager : MonoBehaviour
             },
             delegate {
                 this.coverImage.gameObject.SetActive(false);
-                this.animator.SetBool("ANIMATE", false);
+                EventManager.animate = false;
             }
         );
     }
 
     public void ShowInfo(string info){
-        this.animator.SetBool("ANIMATE", true);
+        EventManager.animate = true;
         this.textDayPopUp.GetComponent<TMP_Text>().text = info;
         this.dayPopUp.SetActive(true);
         Vector2 startPosition = this.dayAnimationStartPosition;
@@ -176,13 +175,13 @@ public class AnimationManager : MonoBehaviour
             },
             delegate {
                 this.dayPopUp.SetActive(false);
-                this.animator.SetBool("ANIMATE", false);
+                EventManager.animate = false;
             }
         );
     }
 
     public void ShowTDDD(){
-        this.animator.SetBool("ANIMATE", true);
+        EventManager.animate = true;
         byte startBlur = 0;
         byte endBlur = this.blurValue;
         Vector2 startScale = new Vector2(0f, 0f);
@@ -202,14 +201,14 @@ public class AnimationManager : MonoBehaviour
                 tdddPopUp.transform.localScale = scale;
             },
             delegate{
-                this.animator.SetBool("ANIMATE", false);
+                EventManager.animate = false;
             }
         );
 
     }
 
     public void HideTDDD(){
-        this.animator.SetBool("ANIMATE", true);
+        EventManager.animate = true;
         byte startBlur = this.blurValue;
         byte endBlur = 0;
         Vector2 startScale = this.popUpScale;
@@ -229,14 +228,14 @@ public class AnimationManager : MonoBehaviour
             delegate{
                 this.popUp.SetActive(false);
                 this.tdddPopUp.SetActive(false);
-                this.animator.SetBool("ANIMATE", false);
+                EventManager.animate = false;
             }
         );
 
     }
 
     public void ZoomInPopUp(GameObject gameObject){
-        this.animator.SetBool("ANIMATE", true);
+        EventManager.animate = true;
         Vector2 startScale = new Vector2(0f, 0f);
         Vector2 endScale = this.popUpScale;
         gameObject.SetActive(true);
@@ -248,13 +247,13 @@ public class AnimationManager : MonoBehaviour
                 gameObject.transform.localScale = scale;
             },
             delegate{
-                this.animator.SetBool("ANIMATE", false);
+                EventManager.animate = false;
             }
         );
     }
 
     public void ZoomOutPopUp(GameObject gameObject){
-        this.animator.SetBool("ANIMATE", true);
+        EventManager.animate = true;
         Vector2 startScale = this.popUpScale;
         Vector2 endScale = new Vector2(0f, 0f);
         animationCoroutine = this.CreateAnimationRoutine(
@@ -266,14 +265,14 @@ public class AnimationManager : MonoBehaviour
             },
             delegate{
                 gameObject.SetActive(false);
-                this.animator.SetBool("ANIMATE", false);
+                EventManager.animate = false;
             }
         );
 
     }
 
     public void UpdateDebtScrollBar(float newValue){
-        this.animator.SetBool("ANIMATE", true);
+        EventManager.animate = true;
         Vector2 startPos = this.debtSlider.transform.localPosition;
         Vector2 startScale = this.debtSlider.transform.localScale;
         float startValue = this.debtSlider.value;
@@ -309,7 +308,7 @@ public class AnimationManager : MonoBehaviour
                                 this.debtSlider.transform.localScale = scale;
                             },
                             delegate{
-                                this.animator.SetBool("ANIMATE", false);
+                                EventManager.animate = false;
                             }
                         );
                     }

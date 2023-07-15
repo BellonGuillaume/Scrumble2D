@@ -31,6 +31,14 @@ public class GameManager : MonoBehaviour
     List<Card> problemCards;
     List<Card> reviewCards;
 
+    List<Card> remainingDailyCards;
+    List<Card> remainingProblemCards;
+    List<Card> remainingReviewCards;
+
+    List<Card> discardedDailyCards;
+    List<Card> discardedProblemCards;
+    List<Card> discardedReviewCards;
+
     Player currentPlayer;
     CardPicker cardPicker;
     private Coroutine dayAnimationRoutine;
@@ -73,7 +81,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(() => StateManager.gameState == StateManager.GameState.BEGIN_GAME);
         Debug.Log("Begin Game");
         animationManager.StartGame();
-        yield return new WaitUntil(() => animationManager.animator.GetBool("ANIMATE") == false);
+        yield return new WaitUntil(() => EventManager.animate == false);
         yield return new WaitForSeconds(2);
         int i = 1;
         while (true){
@@ -98,17 +106,17 @@ public class GameManager : MonoBehaviour
             Debug.Log($"End of day {j} reached");
         }
         animationManager.ShowInfo(table.GetEntry("Phase de Review").GetLocalizedString());
-        yield return new WaitUntil(() => animationManager.animator.GetBool("ANIMATE") == false);
+        yield return new WaitUntil(() => EventManager.animate == false);
         // BeginReview();
         animationManager.ShowInfo(table.GetEntry("Phase de Rétrospective").GetLocalizedString());
-        yield return new WaitUntil(() => animationManager.animator.GetBool("ANIMATE") == false);
+        yield return new WaitUntil(() => EventManager.animate == false);
         // BeginRetrospective();
         StateManager.gameState = StateManager.GameState.END_OF_SPRINT;
     }
 
     public void BeginReview(){
         // ShowResults();
-        PickReviewCard();
+        // PickReviewCard();
         // UpdateDetteEndTurn();
         // IncreaseScore();
     }
@@ -121,7 +129,7 @@ public class GameManager : MonoBehaviour
 
         AddDoingToWorking();
         animationManager.HideTDDD();
-        yield return new WaitUntil(() => animationManager.animator.GetBool("ANIMATE") == false);
+        yield return new WaitUntil(() => EventManager.animate == false);
         StateManager.gameState = StateManager.GameState.BEGIN_DAY;
     }
 
@@ -147,7 +155,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(() => StateManager.gameState == StateManager.GameState.BEGIN_DAY);
         Debug.Log($"BEGIN Day {n}");
         animationManager.StartDayAnimation(n);
-        yield return new WaitUntil(() => animationManager.animator.GetBool("ANIMATE") == false);
+        yield return new WaitUntil(() => EventManager.animate == false);
         if (n != 1){
             StateManager.gameState = StateManager.GameState.PICK_DAILY;
             // PickDailyCard();
@@ -173,7 +181,7 @@ public class GameManager : MonoBehaviour
         Debug.Log($"Begin turn of {player.userName}");
         this.currentPlayer = player;
         animationManager.StartTurnAnimation(player);
-        yield return new WaitUntil(() => animationManager.animator.GetBool("ANIMATE") == false);
+        yield return new WaitUntil(() => EventManager.animate == false);
         StateManager.turnState = StateManager.TurnState.CHOICE;
         StartCoroutine(StartChoiceTaskDebt());
         yield return new WaitUntil(() => StateManager.turnState == StateManager.TurnState.ROLL);
@@ -187,7 +195,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("STARTING CHOICE");
         
         animationManager.ShowChoice();
-        yield return new WaitUntil(() => animationManager.animator.GetBool("ANIMATE") == false);
+        yield return new WaitUntil(() => EventManager.animate == false);
 
         while(this.popUpAnimator.GetBool("TASK") == false && this.popUpAnimator.GetBool("DEBT") == false){
             yield return null;
@@ -213,7 +221,7 @@ public class GameManager : MonoBehaviour
         }
         
         animationManager.ZoomOutPopUp(this.turn);
-        yield return new WaitUntil(() => animationManager.animator.GetBool("ANIMATE") == false);
+        yield return new WaitUntil(() => EventManager.animate == false);
 
         Debug.Log("-END OF CHOICE");
         StateManager.turnState = StateManager.TurnState.ROLL;
@@ -223,7 +231,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("STARTING ROLL");
 
         animationManager.ZoomInPopUp(this.roll);
-        yield return new WaitUntil(() => animationManager.animator.GetBool("ANIMATE") == false);
+        yield return new WaitUntil(() => EventManager.animate == false);
 
         while(this.popUpAnimator.GetBool("ROLL") == false){
             yield return null;
@@ -242,7 +250,7 @@ public class GameManager : MonoBehaviour
         this.popUpAnimator.ResetTrigger("ROLL");
         
         animationManager.ZoomOutPopUp(this.roll);
-        yield return new WaitUntil(() => animationManager.animator.GetBool("ANIMATE") == false);
+        yield return new WaitUntil(() => EventManager.animate == false);
         Debug.Log("-END ROLL");
         StateManager.turnState = StateManager.TurnState.RESULT;
     }
@@ -253,7 +261,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("--RESULT => REROLL");
             // StartCoroutine(ReRollAnimation());
             animationManager.ShowInfo(table.GetEntry("Reroll").GetLocalizedString());
-            yield return new WaitUntil(() => animationManager.animator.GetBool("ANIMATE") == false);
+            yield return new WaitUntil(() => EventManager.animate == false);
             StateManager.alreadyReRoll = true;
             StateManager.turnState = StateManager.TurnState.CHOICE;
             StartCoroutine(StartChoiceTaskDebt());
@@ -265,20 +273,20 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("-SHOWING RESULTS");
         animationManager.ZoomInPopUp(this.results);
-        yield return new WaitUntil(() => animationManager.animator.GetBool("ANIMATE") == false);
+        yield return new WaitUntil(() => EventManager.animate == false);
         if (StateManager.firstDiceResult == 6 || StateManager.secondDiceResult == 6) {
             Debug.Log("--RESULT => PROBLEM");
             // StartCoroutine(ProblemAnimation());
             animationManager.ShowInfo(table.GetEntry("ProblemCard").GetLocalizedString());
-            yield return new WaitUntil(() => animationManager.animator.GetBool("ANIMATE") == false);
+            yield return new WaitUntil(() => EventManager.animate == false);
             animationManager.ZoomOutPopUp(this.results);
-            yield return new WaitUntil(() => animationManager.animator.GetBool("ANIMATE") == false);
+            yield return new WaitUntil(() => EventManager.animate == false);
             StateManager.turnState = StateManager.TurnState.PROBLEM;
-            StartCoroutine(PickProblemCard());
+            StartCoroutine(PickProblemCards(1));
             yield return new WaitUntil(() => StateManager.turnState == StateManager.TurnState.RESULT);
             animationManager.ZoomInPopUp(this.results);
             cardPicker.Reset();
-            yield return new WaitUntil(() => animationManager.animator.GetBool("ANIMATE") == false);
+            yield return new WaitUntil(() => EventManager.animate == false);
             // TODO : HANDLE PROBLEM RESULT
             Debug.Log("--END PROBLEM");
         }
@@ -302,94 +310,88 @@ public class GameManager : MonoBehaviour
         Debug.Log("-END RESULTS");
 
         animationManager.HideResults();
-        yield return new WaitUntil(() => animationManager.animator.GetBool("ANIMATE") == false);
+        yield return new WaitUntil(() => EventManager.animate == false);
 
         if (debtCounter > 0){
             // StartCoroutine(AddToDebt(0-debtCounter));
             animationManager.UpdateDebtScrollBar(this.debtSlider.value - debtCounter);
-            yield return new WaitUntil(() => this.animationManager.animator.GetBool("ANIMATE") == false);
+            yield return new WaitUntil(() => EventManager.animate == false);
         }
         yield return new WaitForSeconds(2);
         StateManager.turnState = StateManager.TurnState.END_OF_TURN;
+    }
+    IEnumerator HandleProblemCard(){
+        yield break;
     }
     #endregion
 
     #region --------------------------------- Initialisation ---------------------------------
     void CreateDailyCards(){
+        string path = "";
         if (StateManager.language == LocalizationSettings.AvailableLocales.GetLocale("en")){
-            string path = Application.streamingAssetsPath + "/Cards/DailyCards_EN.json";
-            string dailyCardsStr = File.ReadAllText(path);
-            this.dailyCards = JsonConvert.DeserializeObject<List<Card>>(dailyCardsStr);
+            path = Application.streamingAssetsPath + "/Cards/DailyCards_EN.json";
         } else {
-            string path = Application.streamingAssetsPath + "/Cards/DailyCards_FR.json";
-            string dailyCardsStr = File.ReadAllText(path);
-            this.dailyCards = JsonConvert.DeserializeObject<List<Card>>(dailyCardsStr);
+            path = Application.streamingAssetsPath + "/Cards/DailyCards_FR.json";
         }
+        string dailyCardsStr = File.ReadAllText(path);
+        this.dailyCards = JsonConvert.DeserializeObject<List<Card>>(dailyCardsStr);
+        this.discardedDailyCards = new List<Card>();
     }
 
     void CreateProblemCards(){
+        string path = "";
         if (StateManager.language == LocalizationSettings.AvailableLocales.GetLocale("en")){
-            string path = Application.streamingAssetsPath + "/Cards/ProblemCards_EN.json";
-            string problemCardsStr = File.ReadAllText(path);
-            this.problemCards = JsonConvert.DeserializeObject<List<Card>>(problemCardsStr);
+            path = Application.streamingAssetsPath + "/Cards/ProblemCards_EN.json";
         } else {
-            string path = Application.streamingAssetsPath + "/Cards/ProblemCards_FR.json";
-            string problemCardsStr = File.ReadAllText(path);
-            this.problemCards = JsonConvert.DeserializeObject<List<Card>>(problemCardsStr);
+            path = Application.streamingAssetsPath + "/Cards/ProblemCards_FR.json";
         }
+        string problemCardsStr = File.ReadAllText(path);
+        this.problemCards = JsonConvert.DeserializeObject<List<Card>>(problemCardsStr);
+        this.discardedProblemCards = new List<Card>();
     }
 
     void CreateReviewCards(){
+        string path = "";
         if (StateManager.language == LocalizationSettings.AvailableLocales.GetLocale("en")){
-            string path = Application.streamingAssetsPath + "/Cards/ReviewCards_EN.json";
-            string reviewCardsStr = File.ReadAllText(path);
-            this.reviewCards = JsonConvert.DeserializeObject<List<Card>>(reviewCardsStr);
+            path = Application.streamingAssetsPath + "/Cards/ReviewCards_EN.json";
         } else {
-            string path = Application.streamingAssetsPath + "/Cards/ReviewCards_FR.json";
-            string reviewCardsStr = File.ReadAllText(path);
-            this.reviewCards = JsonConvert.DeserializeObject<List<Card>>(reviewCardsStr);
+            path = Application.streamingAssetsPath + "/Cards/ReviewCards_FR.json";
         }
+        string reviewCardsStr = File.ReadAllText(path);
+        this.reviewCards = JsonConvert.DeserializeObject<List<Card>>(reviewCardsStr);
+        this.discardedReviewCards = new List<Card>();
     }
     #endregion
 
     #region --------------------------------- Cards ---------------------------------
-    public void PickDailyCard(){
-        CardPicker.typeOfCard = "DAILY";
-        int index = Random.Range(0, this.dailyCards.Count);
-        CardPicker.cardDescription = this.dailyCards[index].description;
-        CardPicker.cardResult = this.dailyCards[index].result;
+    public void PickDailyCard(int n){
+        EventManager.dailyCardsToPick += n;
+        for (int i = 0; i < Mathf.Max(3, n); i++){
+            if (this.dailyCards.Count < 1){
+                this.dailyCards.AddRange(this.discardedDailyCards);
+                this.discardedDailyCards = new List<Card>();
+            }
+            int index = Random.Range(0, this.dailyCards.Count);
+            Card choosenCard = this.dailyCards[i];
+            this.discardedDailyCards.Add(choosenCard);
+            this.dailyCards.Remove(choosenCard);
+        }
         this.cardPick.SetActive(true);
         this.popUpGO.SetActive(true);
     }
 
-    IEnumerator PickProblemCard(){
-        Debug.Log("--START PICKPROBLEMCARD");
-        CardPicker.typeOfCard = "PROBLEM";
-        int index = Random.Range(0, this.problemCards.Count);
-        CardPicker.cardDescription = this.problemCards[index].description;
-        CardPicker.cardResult = this.problemCards[index].result;
-        Debug.Log("--PROBLEM CARD CHOOSED");
-
-        StartCoroutine(PopUpAnimateIn(this.cardPick));
-
-        while(this.popUpAnimator.GetBool("PICKED") == false){
-            yield return null;
+    public void PickReviewCard(int n){
+        EventManager.reviewCardsToPick += n;
+        for (int i = 0; i < Mathf.Max(3, n); i++){
+            if (this.reviewCards.Count < 1){
+                this.reviewCards.AddRange(this.discardedReviewCards);
+                this.discardedReviewCards = new List<Card>();
+            }
+            int index = Random.Range(0, this.reviewCards.Count);
+            Card choosenCard = this.reviewCards[i];
+            this.discardedReviewCards.Add(choosenCard);
+            this.reviewCards.Remove(choosenCard);
         }
-        Debug.Log("--PROBLEM CARD PICKED");
-        yield return new WaitForSeconds(3);
-        this.popUpAnimator.ResetTrigger("PICKED");
-
-        StartCoroutine(PopUpAnimateOut(this.cardPick));
-
-        Debug.Log("--END PICKPROBLEMCARD");
-        StateManager.turnState = StateManager.TurnState.RESULT;
-    }
-
-    public void PickReviewCard(){
-        CardPicker.typeOfCard = "REVIEW";
-        int index = Random.Range(0, this.reviewCards.Count);
-        CardPicker.cardDescription = this.reviewCards[index].description;
-        CardPicker.cardResult = this.reviewCards[index].result;
         this.cardPick.SetActive(true);
         this.popUpGO.SetActive(true);
     }
@@ -403,43 +405,43 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator IncreaseDebt(int n){
         animationManager.UpdateDebtScrollBar(this.debtSlider.value + n);
-        yield return new WaitUntil(() => animationManager.animator.GetBool("ANIMATE") == false);
+        yield return new WaitUntil(() => EventManager.animate == false);
     }
     IEnumerator DecreaseDebt(int n){
         animationManager.UpdateDebtScrollBar(this.debtSlider.value - n);
-        yield return new WaitUntil(() => animationManager.animator.GetBool("ANIMATE") == false);
+        yield return new WaitUntil(() => EventManager.animate == false);
     }
     IEnumerator IncreaseTaskPerPlayer(int n){
         yield break;
     }
     IEnumerator IncreaseDebtPerPlayer(int n){
         animationManager.UpdateDebtScrollBar(this.debtSlider.value + (n * StateManager.players.Count + 2));
-        yield return new WaitUntil(() => animationManager.animator.GetBool("ANIMATE") == false);
+        yield return new WaitUntil(() => EventManager.animate == false);
     }
     IEnumerator DecreaseTaskPerPlayer(int n){
         yield break;
     }
     IEnumerator DecreaseDebtPerPlayer(int n){
         animationManager.UpdateDebtScrollBar(this.debtSlider.value - (n * StateManager.players.Count + 2));
-        yield return new WaitUntil(() => animationManager.animator.GetBool("ANIMATE") == false);
+        yield return new WaitUntil(() => EventManager.animate == false);
     }
     IEnumerator IncreaseTaskPerDevelopper(int n){
         yield break;
     }
     IEnumerator IncreaseDebtPerDevelopper(int n){
         animationManager.UpdateDebtScrollBar(this.debtSlider.value + (n * StateManager.players.Count));
-        yield return new WaitUntil(() => animationManager.animator.GetBool("ANIMATE") == false);
+        yield return new WaitUntil(() => EventManager.animate == false);
     }
     IEnumerator DecreaseTaskPerDevelopper(int n){
         yield break;
     }
     IEnumerator DecreaseDebtPerDevelopper(int n){
         animationManager.UpdateDebtScrollBar(this.debtSlider.value - (n * StateManager.players.Count));
-        yield return new WaitUntil(() => animationManager.animator.GetBool("ANIMATE") == false);
+        yield return new WaitUntil(() => EventManager.animate == false);
     }
     IEnumerator MultiplieDebt(float n){
         animationManager.UpdateDebtScrollBar(this.debtSlider.value * n);
-        yield return new WaitUntil(() => animationManager.animator.GetBool("ANIMATE") == false);
+        yield return new WaitUntil(() => EventManager.animate == false);
     }
     IEnumerator RaiseTaskPerCurrentDebt(){
         yield break;
@@ -459,7 +461,33 @@ public class GameManager : MonoBehaviour
         yield break;
     }
     IEnumerator PickProblemCards(int n){
-        yield break;
+        Debug.Log("--START PICKPROBLEMCARD");
+        EventManager.problemCardsToPick += n;
+        for (int i = 0; i < Mathf.Max(3, n); i++){
+            if (this.problemCards.Count < 1){
+                this.problemCards.AddRange(this.discardedProblemCards);
+                this.discardedProblemCards = new List<Card>();
+            }
+            int index = Random.Range(0, this.problemCards.Count);
+            Card choosenCard = this.problemCards[i];
+            this.cardPicker.AddCart(choosenCard);
+            this.discardedProblemCards.Add(choosenCard);
+            this.problemCards.Remove(choosenCard);
+        }
+        Debug.Log("--PROBLEM DISPLAYED");
+
+        StartCoroutine(PopUpAnimateIn(this.cardPick));
+
+        yield return new WaitUntil(() => EventManager.problemCardsToPick == 0);
+
+        Debug.Log("--PROBLEM CARD PICKED");
+        yield return new WaitForSeconds(3);
+        this.popUpAnimator.ResetTrigger("PICKED");
+
+        StartCoroutine(PopUpAnimateOut(this.cardPick));
+
+        Debug.Log("--END PICKPROBLEMCARD");
+        StateManager.turnState = StateManager.TurnState.RESULT;
     }
     IEnumerator PickDailycards(int n){
         yield break;

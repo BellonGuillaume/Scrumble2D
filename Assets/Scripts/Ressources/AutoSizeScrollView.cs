@@ -34,17 +34,11 @@ public class AutoSizeScrollView : MonoBehaviour
 
     private float CalculateContentHeight()
     {
-        int countCase = 0;
-        int countSpace = 0;
         float totalHeight = 0f;
         float spacing = 0f;
-        int valueToBegin = this.numberOfObjectsAlreadyShowed / flex.columns;
-        valueToBegin = (valueToBegin - 1) * flex.columns;
         for (int i = 0; i < content.childCount; i++)
         {
             if (i % flex.columns == 0){
-                countCase++;
-                countSpace++;
                 RectTransform child = content.GetChild(i) as RectTransform;
                 totalHeight += child.sizeDelta.y;
                 spacing += flex.spacing.y;
