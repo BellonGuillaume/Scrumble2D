@@ -55,6 +55,15 @@ public class GameManager : MonoBehaviour
         CreateDailyCards();
         CreateProblemCards();
         CreateReviewCards();
+        foreach (Card card in problemCards){
+            Debug.Log(card.ToString());
+        }
+        foreach (Card card in dailyCards){
+            Debug.Log(card.ToString());
+        }
+        foreach (Card card in reviewCards){
+            Debug.Log(card.ToString());
+        }
         workingOn = new List<UserStory>();
         StateManager.gameState = StateManager.GameState.BEGIN_GAME;
         StartCoroutine(StartGame());
@@ -296,7 +305,9 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(() => animationManager.animator.GetBool("ANIMATE") == false);
 
         if (debtCounter > 0){
-            StartCoroutine(AddToDebt(0-debtCounter));
+            // StartCoroutine(AddToDebt(0-debtCounter));
+            animationManager.UpdateDebtScrollBar(this.debtSlider.value - debtCounter);
+            yield return new WaitUntil(() => this.animationManager.animator.GetBool("ANIMATE") == false);
         }
         yield return new WaitForSeconds(2);
         StateManager.turnState = StateManager.TurnState.END_OF_TURN;
@@ -341,7 +352,7 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    #region --------------------------------- Utils ---------------------------------
+    #region --------------------------------- Cards ---------------------------------
     public void PickDailyCard(){
         CardPicker.typeOfCard = "DAILY";
         int index = Random.Range(0, this.dailyCards.Count);
@@ -382,8 +393,86 @@ public class GameManager : MonoBehaviour
         this.cardPick.SetActive(true);
         this.popUpGO.SetActive(true);
     }
-
-    void ClearTurn(){
+    #region - - - - - - - - - - - - - - - - - Card Effects - - - - - - - - - - - - - - - - -
+    #region -    -    -    -    -    -    -    - Simple Effects -    -    -    -    -    -    -
+    IEnumerator IncreaseTask(int n){
+        yield break;
+    }
+    IEnumerator DecreaseTask(int n){
+        yield break;
+    }
+    IEnumerator IncreaseDebt(int n){
+        animationManager.UpdateDebtScrollBar(this.debtSlider.value + n);
+        yield return new WaitUntil(() => animationManager.animator.GetBool("ANIMATE") == false);
+    }
+    IEnumerator DecreaseDebt(int n){
+        animationManager.UpdateDebtScrollBar(this.debtSlider.value - n);
+        yield return new WaitUntil(() => animationManager.animator.GetBool("ANIMATE") == false);
+    }
+    IEnumerator IncreaseTaskPerPlayer(int n){
+        yield break;
+    }
+    IEnumerator IncreaseDebtPerPlayer(int n){
+        animationManager.UpdateDebtScrollBar(this.debtSlider.value + (n * StateManager.players.Count + 2));
+        yield return new WaitUntil(() => animationManager.animator.GetBool("ANIMATE") == false);
+    }
+    IEnumerator DecreaseTaskPerPlayer(int n){
+        yield break;
+    }
+    IEnumerator DecreaseDebtPerPlayer(int n){
+        animationManager.UpdateDebtScrollBar(this.debtSlider.value - (n * StateManager.players.Count + 2));
+        yield return new WaitUntil(() => animationManager.animator.GetBool("ANIMATE") == false);
+    }
+    IEnumerator IncreaseTaskPerDevelopper(int n){
+        yield break;
+    }
+    IEnumerator IncreaseDebtPerDevelopper(int n){
+        animationManager.UpdateDebtScrollBar(this.debtSlider.value + (n * StateManager.players.Count));
+        yield return new WaitUntil(() => animationManager.animator.GetBool("ANIMATE") == false);
+    }
+    IEnumerator DecreaseTaskPerDevelopper(int n){
+        yield break;
+    }
+    IEnumerator DecreaseDebtPerDevelopper(int n){
+        animationManager.UpdateDebtScrollBar(this.debtSlider.value - (n * StateManager.players.Count));
+        yield return new WaitUntil(() => animationManager.animator.GetBool("ANIMATE") == false);
+    }
+    IEnumerator MultiplieDebt(float n){
+        animationManager.UpdateDebtScrollBar(this.debtSlider.value * n);
+        yield return new WaitUntil(() => animationManager.animator.GetBool("ANIMATE") == false);
+    }
+    IEnumerator RaiseTaskPerCurrentDebt(){
+        yield break;
+    }
+    IEnumerator CurrentPlayerPassATurn(int n){
+        StateManager.players[currentPlayer.playerNumber-1].turnToPass = n;
+        yield break;
+    }
+    IEnumerator NextPlayerPassATurn(int n){
+        StateManager.players[currentPlayer.nextPlayerNumber-1].turnToPass = n;
+        yield break;
+    }
+    IEnumerator AllPlayersPassATurn(int n){
+        foreach (Player player in StateManager.players){
+            player.turnToPass = n;
+        }
+        yield break;
+    }
+    IEnumerator PickProblemCards(int n){
+        yield break;
+    }
+    IEnumerator PickDailycards(int n){
+        yield break;
+    }
+    IEnumerator PickReviewCards(int n){
+        yield break;
+    }
+    #endregion
+    #endregion
+    #endregion
+    
+    #region --------------------------------- Utils ---------------------------------
+        void ClearTurn(){
         Debug.Log("Begin the clear");
         StateManager.ClearTurnState();
         this.results.GetComponent<Results>().ChangeText("");

@@ -2088,7 +2088,7 @@ RectTransform:
   - {fileID: 1149573533}
   - {fileID: 2109424837}
   m_Father: {fileID: 1909948240}
-  m_RootOrder: 5
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2762,7 +2762,7 @@ RectTransform:
   m_Children:
   - {fileID: 1376133878}
   m_Father: {fileID: 1909948240}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
@@ -3122,7 +3122,7 @@ RectTransform:
   m_Children:
   - {fileID: 1724279613}
   m_Father: {fileID: 1909948240}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4331,7 +4331,7 @@ RectTransform:
   - {fileID: 1350912351}
   - {fileID: 102289197}
   m_Father: {fileID: 1909948240}
-  m_RootOrder: 4
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4384,7 +4384,7 @@ MonoBehaviour:
   m_Direction: 0
   m_MinValue: 0
   m_MaxValue: 50
-  m_WholeNumbers: 1
+  m_WholeNumbers: 0
   m_Value: 14
   m_OnValueChanged:
     m_PersistentCalls:
@@ -8617,6 +8617,8 @@ MonoBehaviour:
   windowSideMenu: {fileID: 232542364}
   dayPopUp: {fileID: 1016401303}
   textDayPopUp: {fileID: 372858927}
+  debtSlider: {fileID: 519452435}
+  daySlider: {fileID: 181623025}
   sideMenuShowPos: {x: 0, y: 0}
   sideMenuHidePos: {x: 1450, y: 0}
   blurValue: 169
@@ -12330,7 +12332,7 @@ RectTransform:
   m_Children:
   - {fileID: 1758256795}
   m_Father: {fileID: 1909948240}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
@@ -14477,11 +14479,11 @@ RectTransform:
   - {fileID: 2037321533}
   - {fileID: 1689388461}
   - {fileID: 2005273971}
-  - {fileID: 519452434}
-  - {fileID: 181623024}
   - {fileID: 346787011}
   - {fileID: 275244547}
   - {fileID: 1662953966}
+  - {fileID: 519452434}
+  - {fileID: 181623024}
   m_Father: {fileID: 1868922178}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

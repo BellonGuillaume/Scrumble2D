@@ -142,7 +142,6 @@
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
      <None Include="Assets\Mirror\Notice.txt" />
-     <None Include="Assets\AddressableAssetsData\link.xml" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
      <None Include="Assets\Materials\ColorOnAngle.shader" />
      <None Include="Assets\Mirror\Plugins\Mono.Cecil\License.txt" />
