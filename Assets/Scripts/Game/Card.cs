@@ -86,7 +86,7 @@ public class Card
         [EnumMember(Value = "MultiplieDebt")]
         MultiplieDebt,
         [EnumMember(Value = "DecreaseTaskPerCurrentDebt")]
-        RaiseTaskPerCurrentDebt,
+        DecreaseTaskPerCurrentDebt,
         [EnumMember(Value = "CurrentPlayerPassATurn")]
         CurrentPlayerPassATurn,
         [EnumMember(Value = "NextPlayerPassATurn")]

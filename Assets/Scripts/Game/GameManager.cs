@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
     public static List<UserStory> workingOn;
 
     private StringTable table;
+    private System.Random random;
 
 
     // Start is called before the first frame update
@@ -57,6 +58,7 @@ public class GameManager : MonoBehaviour
             StateManager.gameState = StateManager.GameState.INITIALISATION;
             InitState();
         }
+        random = new System.Random();
         table = LocalizationSettings.StringDatabase.GetTable("Game");
         this.popUpAnimator = popUpGO.GetComponent<Animator>();
         this.cardPicker = cardPick.GetComponent<CardPicker>();
@@ -172,6 +174,12 @@ public class GameManager : MonoBehaviour
     // void BeginTurn(Player player){
     IEnumerator BeginTurn(Player player){
         yield return new WaitUntil(() => StateManager.turnState == StateManager.TurnState.BEGIN_TURN);
+        if (StateManager.players[player.playerNumber-1].turnToPass > 0){
+            animationManager.ShowInfo($"{player.userName} passe son tour");
+            StateManager.players[player.playerNumber-1].turnToPass--;
+            yield return new WaitUntil(() => EventManager.animate == false);
+            yield break;
+        }
         Debug.Log($"Begin turn of {player.userName}");
         this.currentPlayer = player;
         animationManager.StartTurnAnimation(player);
@@ -270,7 +278,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("-SHOWING RESULTS");
         animationManager.ZoomInPopUp(this.results);
         yield return new WaitUntil(() => EventManager.animate == false);
-        if (StateManager.firstDiceResult == 6 || StateManager.secondDiceResult == 6) {
+        if (StateManager.firstDiceResult == 6 || StateManager.secondDiceResult == 6 || true) {
             // animationManager.ProblemAnimation();
             // yield return new WaitUntil(() => EventManager.animate == false);
             animationManager.ShowInfo(table.GetEntry("ProblemCard").GetLocalizedString());
@@ -373,8 +381,8 @@ public class GameManager : MonoBehaviour
                 this.dailyCards.AddRange(this.discardedDailyCards);
                 this.discardedDailyCards = new List<Card>();
             }
-            int index = Random.Range(0, this.dailyCards.Count);
-            Card choosenCard = this.dailyCards[i];
+            int index = random.Next(0, this.dailyCards.Count);
+            Card choosenCard = this.dailyCards[index];
             this.cardPicker.AddCart(choosenCard);
             this.discardedDailyCards.Add(choosenCard);
             this.dailyCards.Remove(choosenCard);
@@ -392,8 +400,8 @@ public class GameManager : MonoBehaviour
                 this.problemCards.AddRange(this.discardedProblemCards);
                 this.discardedProblemCards = new List<Card>();
             }
-            int index = Random.Range(0, this.problemCards.Count);
-            Card choosenCard = this.problemCards[i];
+            int index = random.Next(0, this.problemCards.Count);
+            Card choosenCard = this.problemCards[index];
             this.cardPicker.AddCart(choosenCard);
             this.discardedProblemCards.Add(choosenCard);
             this.problemCards.Remove(choosenCard);
@@ -410,8 +418,8 @@ public class GameManager : MonoBehaviour
                 this.reviewCards.AddRange(this.discardedReviewCards);
                 this.discardedReviewCards = new List<Card>();
             }
-            int index = Random.Range(0, this.reviewCards.Count);
-            Card choosenCard = this.reviewCards[i];
+            int index = random.Next(0, this.reviewCards.Count);
+            Card choosenCard = this.reviewCards[index];
             this.cardPicker.AddCart(choosenCard);
             this.discardedReviewCards.Add(choosenCard);
             this.reviewCards.Remove(choosenCard);
@@ -429,6 +437,7 @@ public class GameManager : MonoBehaviour
             yield return new WaitUntil(() => this.cardPicker.choosenCard != null);
             yield return new WaitForSeconds(2);
             Debug.Log($"Handle Card : {this.cardPicker.choosenCard.GetComponent<UICard>().card.ToString()}");
+            EventManager.handleSingleCard = true;
             StartCoroutine(HandleSingleCard(this.cardPicker.choosenCard.GetComponent<UICard>().card));
             yield return new WaitUntil(() => EventManager.handleSingleCard == false);
             this.cardPicker.choosenCard = null;
@@ -440,12 +449,16 @@ public class GameManager : MonoBehaviour
     }
     
     IEnumerator HandleSingleCard(Card card){
-        EventManager.handleSingleCard = true;
-
         switch (card.typeOfCard){
             case Card.TypeOfCard.Simple :
+                EventManager.handleSimpleAction = true;
                 StartCoroutine(HandleSimpleAction(card.firstAction, card.firstValue));
                 yield return new WaitUntil(() => EventManager.handleSimpleAction == false);
+                break;
+            case Card.TypeOfCard.Multiple :
+                EventManager.handleMultipleActions = true;
+                StartCoroutine(HandleMultipleActions(card.firstAction, card.firstValue, card.secondAction, card.secondValue));
+                yield return new WaitUntil(() => EventManager.handleMultipleActions == false);
                 break;
             default :
                 break;
@@ -457,143 +470,207 @@ public class GameManager : MonoBehaviour
 
     #region - - - - - - - - - - - - - - - - - Handle CardType - - - - - - - - - - - - - - - - -
     IEnumerator HandleSimpleAction(Card.Action action, float value){
-        EventManager.handleSimpleAction = true;
-
+        EventManager.action = true;
         switch (action){
             case Card.Action.IncreaseTask :
-            
-            break;
-            case Card.Action.DecreaseTask :
-            
-            break;
-            case Card.Action.IncreaseDebt :
-            
-            break;
-            case Card.Action.DecreaseDebt :
-            
-            break;
-            case Card.Action.IncreaseTaskPerPlayer :
-            
-            break;
-            case Card.Action.IncreaseDebtPerPlayer :
-            
-            break;
-            case Card.Action.DecreaseTaskPerPlayer :
-            
-            break;
-            case Card.Action.DecreaseDebtPerPlayer :
-            
-            break;
-            case Card.Action.IncreaseTaskPerDevelopper :
-            
-            break;
-            case Card.Action.IncreaseDebtPerDevelopper :
-            
-            break;
-            case Card.Action.DecreaseTaskPerDevelopper :
-            
-            break;
-            case Card.Action.DecreaseDebtPerDevelopper :
-            
-            break;
-            case Card.Action.MultiplieDebt :
-            
-            break;
-            case Card.Action.RaiseTaskPerCurrentDebt :
-            
-            break;
-            case Card.Action.CurrentPlayerPassATurn :
-            
-            break;
-            case Card.Action.NextPlayerPassATurn :
-            
-            break;
-            case Card.Action.AllPlayersPassATurn :
-            
-            break;
-            case Card.Action.PickDailycards :
-            
-            break;
-            case Card.Action.PickProblemCards :
-            
-            break;
-            case Card.Action.PickReviewCards :
-            
-            break;
-            default :
+                StartCoroutine(IncreaseTask((int) value));
                 break;
-
+            case Card.Action.DecreaseTask :
+                StartCoroutine(DecreaseTask((int) value));
+                break;
+            case Card.Action.IncreaseDebt :
+                StartCoroutine(IncreaseDebt((int) value));
+                break;
+            case Card.Action.DecreaseDebt :
+                StartCoroutine(DecreaseDebt((int) value));
+                break;
+            case Card.Action.IncreaseTaskPerPlayer :
+                StartCoroutine(IncreaseTaskPerPlayer((int) value));
+                break;
+            case Card.Action.IncreaseDebtPerPlayer :
+                StartCoroutine(IncreaseDebtPerPlayer((int) value));
+                break;
+            case Card.Action.DecreaseTaskPerPlayer :
+                StartCoroutine(DecreaseTaskPerPlayer((int) value));
+                break;
+            case Card.Action.DecreaseDebtPerPlayer :
+                StartCoroutine(DecreaseDebtPerPlayer((int) value));
+                break;
+            case Card.Action.IncreaseTaskPerDevelopper :
+                StartCoroutine(IncreaseTaskPerDevelopper((int) value));
+                break;
+            case Card.Action.IncreaseDebtPerDevelopper :
+                StartCoroutine(IncreaseDebtPerDevelopper((int) value));
+                break;
+            case Card.Action.DecreaseTaskPerDevelopper :
+                StartCoroutine(DecreaseTaskPerDevelopper((int) value));
+                break;
+            case Card.Action.DecreaseDebtPerDevelopper :
+                StartCoroutine(DecreaseDebtPerDevelopper((int) value));
+                break;
+            case Card.Action.MultiplieDebt :
+                StartCoroutine(MultiplieDebt(value));
+                break;
+            case Card.Action.DecreaseTaskPerCurrentDebt :
+                StartCoroutine(DecreaseTaskPerCurrentDebt());
+                break;
+            case Card.Action.CurrentPlayerPassATurn :
+                StartCoroutine(CurrentPlayerPassATurn((int) value));
+                break;
+            case Card.Action.NextPlayerPassATurn :
+                StartCoroutine(NextPlayerPassATurn((int) value));
+                break;
+            case Card.Action.AllPlayersPassATurn :
+                StartCoroutine(AllPlayersPassATurn((int) value));
+                break;
+            case Card.Action.PickDailycards :
+                StartCoroutine(PickDailycards((int) value));
+                break;
+            case Card.Action.PickProblemCards :
+                StartCoroutine(PickProblemCards((int)value));
+                break;
+            case Card.Action.PickReviewCards :
+                StartCoroutine(PickReviewCards((int) value));
+                break;
+            default :
+                EventManager.action = false;
+                break;
         }
-
+        yield return new WaitUntil(() => EventManager.action == false);
         EventManager.handleSimpleAction = false;
-        yield break;
+    }
+    IEnumerator HandleMultipleActions(Card.Action firstAction, float firstValue, Card.Action secondAction, float secondValue){
+        EventManager.handleSimpleAction = true;
+        StartCoroutine(HandleSimpleAction(firstAction, firstValue));
+        yield return new WaitUntil(() => EventManager.handleSimpleAction == false);
+        EventManager.handleSimpleAction = true;
+        StartCoroutine(HandleSimpleAction(secondAction, secondValue));
+        yield return new WaitUntil(() => EventManager.handleSimpleAction == false);
+        EventManager.handleMultipleActions = false;
     }
     #endregion
     #region - - - - - - - - - - - - - - - - - Card Actions - - - - - - - - - - - - - - - - -
     IEnumerator IncreaseTask(int n){
-        yield break;
+        yield return new WaitUntil(() => EventManager.action == true);
+        EventManager.action = false;
     }
     IEnumerator DecreaseTask(int n){
-        yield break;
+        yield return new WaitUntil(() => EventManager.action == true);
+        EventManager.action = false;
     }
     IEnumerator IncreaseDebt(int n){
+        yield return new WaitUntil(() => EventManager.action == true);
+        animationManager.HideCardPick();
+        yield return new WaitUntil(() => EventManager.animate == false);
         animationManager.UpdateDebtScrollBar(this.debtSlider.value + n);
         yield return new WaitUntil(() => EventManager.animate == false);
+        animationManager.ShowCardPick();
+        yield return new WaitUntil(() => EventManager.animate == false);
+        EventManager.action = false;
     }
     IEnumerator DecreaseDebt(int n){
+        yield return new WaitUntil(() => EventManager.action == true);
+        animationManager.HideCardPick();
+        yield return new WaitUntil(() => EventManager.animate == false);
         animationManager.UpdateDebtScrollBar(this.debtSlider.value - n);
         yield return new WaitUntil(() => EventManager.animate == false);
+        animationManager.ShowCardPick();
+        yield return new WaitUntil(() => EventManager.animate == false);
+        EventManager.action = false;
     }
     IEnumerator IncreaseTaskPerPlayer(int n){
-        yield break;
+        yield return new WaitUntil(() => EventManager.action == true);
+        EventManager.action = false;
     }
     IEnumerator IncreaseDebtPerPlayer(int n){
+        yield return new WaitUntil(() => EventManager.action == true);
+        animationManager.HideCardPick();
+        yield return new WaitUntil(() => EventManager.animate == false);
         animationManager.UpdateDebtScrollBar(this.debtSlider.value + (n * StateManager.players.Count + 2));
         yield return new WaitUntil(() => EventManager.animate == false);
+        animationManager.ShowCardPick();
+        yield return new WaitUntil(() => EventManager.animate == false);
+        EventManager.action = false;
     }
     IEnumerator DecreaseTaskPerPlayer(int n){
-        yield break;
+        yield return new WaitUntil(() => EventManager.action == true);
+        EventManager.action = false;
     }
     IEnumerator DecreaseDebtPerPlayer(int n){
+        yield return new WaitUntil(() => EventManager.action == true);
+        animationManager.HideCardPick();
+        yield return new WaitUntil(() => EventManager.animate == false);
         animationManager.UpdateDebtScrollBar(this.debtSlider.value - (n * StateManager.players.Count + 2));
         yield return new WaitUntil(() => EventManager.animate == false);
+        animationManager.ShowCardPick();
+        yield return new WaitUntil(() => EventManager.animate == false);
+        EventManager.action = false;
     }
     IEnumerator IncreaseTaskPerDevelopper(int n){
-        yield break;
+        yield return new WaitUntil(() => EventManager.action == true);
+        EventManager.action = false;
     }
     IEnumerator IncreaseDebtPerDevelopper(int n){
+        yield return new WaitUntil(() => EventManager.action == true);
+        animationManager.HideCardPick();
+        yield return new WaitUntil(() => EventManager.animate == false);
         animationManager.UpdateDebtScrollBar(this.debtSlider.value + (n * StateManager.players.Count));
         yield return new WaitUntil(() => EventManager.animate == false);
+        animationManager.ShowCardPick();
+        yield return new WaitUntil(() => EventManager.animate == false);
+        EventManager.action = false;
     }
     IEnumerator DecreaseTaskPerDevelopper(int n){
-        yield break;
+        yield return new WaitUntil(() => EventManager.action == true);
+        EventManager.action = false;
     }
     IEnumerator DecreaseDebtPerDevelopper(int n){
+        yield return new WaitUntil(() => EventManager.action == true);
+        animationManager.HideCardPick();
+        yield return new WaitUntil(() => EventManager.animate == false);
         animationManager.UpdateDebtScrollBar(this.debtSlider.value - (n * StateManager.players.Count));
         yield return new WaitUntil(() => EventManager.animate == false);
+        animationManager.ShowCardPick();
+        yield return new WaitUntil(() => EventManager.animate == false);
+        EventManager.action = false;
     }
     IEnumerator MultiplieDebt(float n){
-        animationManager.UpdateDebtScrollBar(this.debtSlider.value * n);
+        yield return new WaitUntil(() => EventManager.action == true);
+        animationManager.HideCardPick();
         yield return new WaitUntil(() => EventManager.animate == false);
+        animationManager.UpdateDebtScrollBar(Mathf.RoundToInt(this.debtSlider.value * n));
+        yield return new WaitUntil(() => EventManager.animate == false);
+        animationManager.ShowCardPick();
+        yield return new WaitUntil(() => EventManager.animate == false);
+        EventManager.action = false;
     }
-    IEnumerator RaiseTaskPerCurrentDebt(){
+    IEnumerator DecreaseTaskPerCurrentDebt(){
+        yield return new WaitUntil(() => EventManager.action == true);
+        EventManager.action = false;
         yield break;
     }
     IEnumerator CurrentPlayerPassATurn(int n){
+        yield return new WaitUntil(() => EventManager.action == true);
         StateManager.players[currentPlayer.playerNumber-1].turnToPass = n;
+        EventManager.action = false;
         yield break;
     }
     IEnumerator NextPlayerPassATurn(int n){
+        yield return new WaitUntil(() => EventManager.action == true);
         StateManager.players[currentPlayer.nextPlayerNumber-1].turnToPass = n;
+        EventManager.action = false;
         yield break;
     }
     IEnumerator AllPlayersPassATurn(int n){
+        yield return new WaitUntil(() => EventManager.action == true);
         foreach (Player player in StateManager.players){
             player.turnToPass = n;
         }
+        EventManager.action = false;
         yield break;
     }
     IEnumerator PickProblemCards(int n){
+        yield return new WaitUntil(() => EventManager.action == true);
         EventManager.cardsToPick += n;
         // animate updeck
         yield return new WaitUntil(() => EventManager.animate == false);
@@ -602,8 +679,8 @@ public class GameManager : MonoBehaviour
                 this.problemCards.AddRange(this.discardedProblemCards);
                 this.discardedProblemCards = new List<Card>();
             }
-            int index = Random.Range(0, this.problemCards.Count);
-            Card choosenCard = this.problemCards[i];
+            int index = random.Next(0, this.problemCards.Count);
+            Card choosenCard = this.problemCards[index];
             this.cardPicker.AddCart(choosenCard);
             yield return new WaitUntil(() => EventManager.animate == false);
             this.discardedProblemCards.Add(choosenCard);
@@ -611,8 +688,10 @@ public class GameManager : MonoBehaviour
         }
         // animate downdeck
         yield return new WaitUntil(() => EventManager.animate == false);
+        EventManager.action = false;
     }
     IEnumerator PickDailycards(int n){
+        yield return new WaitUntil(() => EventManager.action == true);
         EventManager.cardsToPick += n;
         // animate updeck
         yield return new WaitUntil(() => EventManager.animate == false);
@@ -621,8 +700,8 @@ public class GameManager : MonoBehaviour
                 this.dailyCards.AddRange(this.discardedDailyCards);
                 this.discardedDailyCards = new List<Card>();
             }
-            int index = Random.Range(0, this.dailyCards.Count);
-            Card choosenCard = this.dailyCards[i];
+            int index = random.Next(0, this.dailyCards.Count);
+            Card choosenCard = this.dailyCards[index];
             this.cardPicker.AddCart(choosenCard);
             yield return new WaitUntil(() => EventManager.animate == false);
             this.discardedDailyCards.Add(choosenCard);
@@ -630,8 +709,10 @@ public class GameManager : MonoBehaviour
         }
         // animate downdeck
         yield return new WaitUntil(() => EventManager.animate == false);
+        EventManager.action = false;
     }
     IEnumerator PickReviewCards(int n){
+        yield return new WaitUntil(() => EventManager.action == true);
         EventManager.cardsToPick += n;
         // animate updeck
         yield return new WaitUntil(() => EventManager.animate == false);
@@ -640,8 +721,8 @@ public class GameManager : MonoBehaviour
                 this.reviewCards.AddRange(this.discardedReviewCards);
                 this.discardedReviewCards = new List<Card>();
             }
-            int index = Random.Range(0, this.reviewCards.Count);
-            Card choosenCard = this.reviewCards[i];
+            int index = random.Next(0, this.reviewCards.Count);
+            Card choosenCard = this.reviewCards[index];
             this.cardPicker.AddCart(choosenCard);
             yield return new WaitUntil(() => EventManager.animate == false);
             this.discardedReviewCards.Add(choosenCard);
@@ -649,6 +730,7 @@ public class GameManager : MonoBehaviour
         }
         // animate downdeck
         yield return new WaitUntil(() => EventManager.animate == false);
+        EventManager.action = false;
     }
     #endregion
     #endregion

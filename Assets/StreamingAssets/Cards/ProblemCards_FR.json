@@ -382,7 +382,8 @@
         "description" : "Un de vos coéquipiers est absent pour des raisons de santé aujourd'hui. Bon rétablissement !",
         "result" : "Le prochain joueur doit passer son tour.",
         "typeOfCard" : "Simple",
-        "firstAction" : "NextPlayerPassATurn"
+        "firstAction" : "NextPlayerPassATurn",
+        "firstValue" : 1
     },
     {
         "id" : 42,
@@ -542,7 +543,8 @@
         "description" : "Un de vos coéquipiers est absent pour des raisons de santé aujourd'hui. Bon rétablissement !",
         "result" : "Le prochain joueur doit passer son tour.",
         "typeOfCard" : "Simple",
-        "firstAction" : "NextPlayerPassATurn"
+        "firstAction" : "NextPlayerPassATurn",
+        "firstValue" : 1
     },
     {
         "id" : 60,
