@@ -63,15 +63,6 @@ public class GameManager : MonoBehaviour
         CreateDailyCards();
         CreateProblemCards();
         CreateReviewCards();
-        foreach (Card card in problemCards){
-            Debug.Log(card.ToString());
-        }
-        foreach (Card card in dailyCards){
-            Debug.Log(card.ToString());
-        }
-        foreach (Card card in reviewCards){
-            Debug.Log(card.ToString());
-        }
         workingOn = new List<UserStory>();
         StateManager.gameState = StateManager.GameState.BEGIN_GAME;
         StartCoroutine(StartGame());
@@ -338,6 +329,9 @@ public class GameManager : MonoBehaviour
         string dailyCardsStr = File.ReadAllText(path);
         this.dailyCards = JsonConvert.DeserializeObject<List<Card>>(dailyCardsStr);
         this.discardedDailyCards = new List<Card>();
+        foreach (Card card in this.dailyCards){
+            Debug.Log(card.ToString());
+        }
     }
 
     void CreateProblemCards(){
@@ -350,6 +344,9 @@ public class GameManager : MonoBehaviour
         string problemCardsStr = File.ReadAllText(path);
         this.problemCards = JsonConvert.DeserializeObject<List<Card>>(problemCardsStr);
         this.discardedProblemCards = new List<Card>();
+        foreach (Card card in this.problemCards){
+            Debug.Log(card.ToString());
+        }
     }
 
     void CreateReviewCards(){
@@ -362,6 +359,9 @@ public class GameManager : MonoBehaviour
         string reviewCardsStr = File.ReadAllText(path);
         this.reviewCards = JsonConvert.DeserializeObject<List<Card>>(reviewCardsStr);
         this.discardedReviewCards = new List<Card>();
+        foreach (Card card in this.reviewCards){
+            Debug.Log(card.ToString());
+        }
     }
     #endregion
 
@@ -428,8 +428,9 @@ public class GameManager : MonoBehaviour
         while (EventManager.cardsToPick > 0 || this.cardPicker.choosenCard != null){
             yield return new WaitUntil(() => this.cardPicker.choosenCard != null);
             yield return new WaitForSeconds(2);
-            // Handle cart
-            Debug.Log($"Handle Card : {this.cardPicker.choosenCard}");
+            Debug.Log($"Handle Card : {this.cardPicker.choosenCard.GetComponent<UICard>().card.ToString()}");
+            StartCoroutine(HandleSingleCard(this.cardPicker.choosenCard.GetComponent<UICard>().card));
+            yield return new WaitUntil(() => EventManager.handleSingleCard == false);
             this.cardPicker.choosenCard = null;
         }
         animationManager.HideCardPick();
@@ -437,8 +438,98 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(() => EventManager.animate == false);
         EventManager.handleCards = false;
     }
-    #region - - - - - - - - - - - - - - - - - Card Effects - - - - - - - - - - - - - - - - -
-    #region -    -    -    -    -    -    -    - Simple Effects -    -    -    -    -    -    -
+    
+    IEnumerator HandleSingleCard(Card card){
+        EventManager.handleSingleCard = true;
+
+        switch (card.typeOfCard){
+            case Card.TypeOfCard.Simple :
+                StartCoroutine(HandleSimpleAction(card.firstAction, card.firstValue));
+                yield return new WaitUntil(() => EventManager.handleSimpleAction == false);
+                break;
+            default :
+                break;
+        }
+
+        EventManager.handleSingleCard = false;
+        yield break;
+    }
+
+    #region - - - - - - - - - - - - - - - - - Handle CardType - - - - - - - - - - - - - - - - -
+    IEnumerator HandleSimpleAction(Card.Action action, float value){
+        EventManager.handleSimpleAction = true;
+
+        switch (action){
+            case Card.Action.IncreaseTask :
+            
+            break;
+            case Card.Action.DecreaseTask :
+            
+            break;
+            case Card.Action.IncreaseDebt :
+            
+            break;
+            case Card.Action.DecreaseDebt :
+            
+            break;
+            case Card.Action.IncreaseTaskPerPlayer :
+            
+            break;
+            case Card.Action.IncreaseDebtPerPlayer :
+            
+            break;
+            case Card.Action.DecreaseTaskPerPlayer :
+            
+            break;
+            case Card.Action.DecreaseDebtPerPlayer :
+            
+            break;
+            case Card.Action.IncreaseTaskPerDevelopper :
+            
+            break;
+            case Card.Action.IncreaseDebtPerDevelopper :
+            
+            break;
+            case Card.Action.DecreaseTaskPerDevelopper :
+            
+            break;
+            case Card.Action.DecreaseDebtPerDevelopper :
+            
+            break;
+            case Card.Action.MultiplieDebt :
+            
+            break;
+            case Card.Action.RaiseTaskPerCurrentDebt :
+            
+            break;
+            case Card.Action.CurrentPlayerPassATurn :
+            
+            break;
+            case Card.Action.NextPlayerPassATurn :
+            
+            break;
+            case Card.Action.AllPlayersPassATurn :
+            
+            break;
+            case Card.Action.PickDailycards :
+            
+            break;
+            case Card.Action.PickProblemCards :
+            
+            break;
+            case Card.Action.PickReviewCards :
+            
+            break;
+            default :
+                break;
+
+        }
+
+        EventManager.handleSimpleAction = false;
+        yield break;
+    }
+    #endregion
+    #region - - - - - - - - - - - - - - - - - Card Actions - - - - - - - - - - - - - - - - -
     IEnumerator IncreaseTask(int n){
         yield break;
     }
@@ -559,7 +650,6 @@ public class GameManager : MonoBehaviour
         // animate downdeck
         yield return new WaitUntil(() => EventManager.animate == false);
     }
-    #endregion
     #endregion
     #endregion
     
