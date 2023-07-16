@@ -19,6 +19,7 @@ public class AnimationManager : MonoBehaviour
     [SerializeField] GameObject rollPopUp;
     [SerializeField] GameObject resultPopUp;
     [SerializeField] GameObject tdddPopUp;
+    [SerializeField] GameObject cardPick;
 
     [SerializeField] GameObject sideMenu;
     [SerializeField] GameObject backgroundSideMenu;
@@ -86,6 +87,58 @@ public class AnimationManager : MonoBehaviour
         );
     }
 
+    public void ShowCardPick(){
+        EventManager.animate = true;
+        byte startBlur = 0;
+        byte endBlur = this.blurValue;
+        Vector2 startScale = new Vector2(0f, 0f);
+        Vector2 endScale = this.popUpScale;
+        this.popUp.SetActive(true);
+        this.cardPick.SetActive(true);
+        animationCoroutine = this.CreateAnimationRoutine(
+            popUpInDuration,
+            delegate(float progress){
+                float easedProgress = Easing.easeInExpo(0, 1, progress);
+                Vector2 scale = Vector2.Lerp(startScale, endScale, easedProgress);
+                byte blur = (byte) Mathf.Lerp(startBlur, endBlur, easedProgress);
+                Color32 temp = backgroundPopUp.GetComponent<Image>().color;
+                temp.a = blur;
+                backgroundPopUp.GetComponent<Image>().color = temp;
+                windowPopUp.transform.localScale = scale;
+                cardPick.transform.localScale = scale;
+            },
+            delegate{
+                EventManager.animate = false;
+            }
+        );
+    }
+
+    public void HideCardPick(){
+        EventManager.animate = true;
+        byte startBlur = 0;
+        byte endBlur = this.blurValue;
+        Vector2 startScale = new Vector2(0f, 0f);
+        Vector2 endScale = this.popUpScale;
+        animationCoroutine = this.CreateAnimationRoutine(
+            popUpInDuration,
+            delegate(float progress){
+                float easedProgress = Easing.easeInExpo(0, 1, progress);
+                Vector2 scale = Vector2.Lerp(endScale, startScale, easedProgress);
+                byte blur = (byte) Mathf.Lerp(endBlur, startBlur, easedProgress);
+                Color32 temp = backgroundPopUp.GetComponent<Image>().color;
+                temp.a = blur;
+                backgroundPopUp.GetComponent<Image>().color = temp;
+                windowPopUp.transform.localScale = scale;
+                cardPick.transform.localScale = scale;
+            },
+            delegate{
+                this.popUp.SetActive(false);
+                this.cardPick.SetActive(false);
+                EventManager.animate = false;
+            }
+        );
+    }
+
     public void ShowChoice(){
         EventManager.animate = true;
         byte startBlur = 0;
@@ -112,6 +165,31 @@ public class AnimationManager : MonoBehaviour
         );
     }
 
+    public void ShowResults(){
+        EventManager.animate = true;
+        byte startBlur = 0;
+        byte endBlur = this.blurValue;
+        Vector2 startScale = new Vector2(0f, 0f);
+        Vector2 endScale = this.popUpScale;
+        this.popUp.SetActive(true);
+        this.resultPopUp.SetActive(true);
+        animationCoroutine = this.CreateAnimationRoutine(
+            popUpInDuration,
+            delegate(float progress){
+                float easedProgress = Easing.easeInExpo(0, 1, progress);
+                Vector2 scale = Vector2.Lerp(startScale, endScale, easedProgress);
+                byte blur = (byte) Mathf.Lerp(startBlur, endBlur, easedProgress);
+                Color32 temp = backgroundPopUp.GetComponent<Image>().color;
+                temp.a = blur;
+                backgroundPopUp.GetComponent<Image>().color = temp;
+                windowPopUp.transform.localScale = scale;
+                resultPopUp.transform.localScale = scale;
+            },
+            delegate{
+                EventManager.animate = false;
+            }
+        );
+    }
     public void HideResults(){
         EventManager.animate = true;
         byte startBlur = this.blurValue;

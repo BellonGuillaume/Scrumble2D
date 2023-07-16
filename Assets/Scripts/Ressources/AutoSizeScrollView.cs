@@ -19,6 +19,8 @@ public class AutoSizeScrollView : MonoBehaviour
     private void Update()
     {
         ResizeContent();
+        content.SetLeft(0f);
+        content.SetRight(0f);
     }
 
     private void ResizeContent()

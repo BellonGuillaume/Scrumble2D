@@ -20,11 +20,6 @@ public class UIDice : MonoBehaviour
         currentFace = 6;
         this.dice.sprite = faces[this.currentFace-1];
     }
-    
-    void Update()
-    {
-        
-    }
 
     public int RollDice(){
         this.currentFace = Random.Range(1, 7);

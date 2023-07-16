@@ -5,7 +5,6 @@ using UnityEngine;
 public class EventManager : MonoBehaviour
 {
     public static bool animate = false;
-    public static int dailyCardsToPick = 0;
-    public static int problemCardsToPick = 0;
-    public static int reviewCardsToPick = 0;
+    public static bool handleCards = false;
+    public static int cardsToPick = 0;
 }

@@ -14,66 +14,44 @@ public class CardPicker : MonoBehaviour
     public Card.CategoryOfCard typeOfCard;
     public List<GameObject> cards = new List<GameObject>();
     public bool initialized;
+    public GameObject choosenCard;
 
     public void AddCart(Card card){
         Debug.Log($"Try to add the card {card.id.ToString()}");
-        if (cards.Count == 0){
-            this.typeOfCard = card.category;
-        } else {
-            if (card.category != this.typeOfCard){
-                return;
-            }
-        }
         GameObject go = Instantiate(cardUIPrefab);
         go.transform.SetParent(content.transform);
         go.GetComponent<UICard>().Fill(card, this);
         this.cards.Add(go);
+        go.transform.localScale = Vector3.one;
     }
 
     public void ChooseCard(int id){
-        int cardToPick;
-        if (this.typeOfCard == Card.CategoryOfCard.DAILY)
-            cardToPick = EventManager.dailyCardsToPick;
-        else if (this.typeOfCard == Card.CategoryOfCard.PROBLEM)
-            cardToPick = EventManager.problemCardsToPick;
-        else
-            cardToPick = EventManager.reviewCardsToPick;
-
-        if (cardToPick <= 0){
+        if (EventManager.cardsToPick <= 0 || choosenCard != null){
             return;
         }
         // animationManager.FlipCard(cards[id].GetComponent<UICard>());
-        Debug.Log(id.ToString());
-        Debug.Log(this.cards.Count.ToString());
+        Debug.Log($"Card ${id} picked : {this.cards[id].ToString()}");
         this.cards[id].GetComponent<UICard>().RemoveVerso();
-        this.cards[id].GetComponent<UICard>().card.flipped = true;
+        this.choosenCard = this.cards[id];
 
-        cardToPick--;
-        if (this.typeOfCard == Card.CategoryOfCard.DAILY)
-            EventManager.dailyCardsToPick = cardToPick;
-        else if (this.typeOfCard == Card.CategoryOfCard.PROBLEM)
-            EventManager.problemCardsToPick = cardToPick;
-        else
-            EventManager.reviewCardsToPick = cardToPick;
-
-        if (cardToPick <= 0){
+        EventManager.cardsToPick--;
+        if (EventManager.cardsToPick <= 0){
             foreach(GameObject go in this.cards){
                 if (go.GetComponent<UICard>().card.flipped == false){
-                    // animationManager.DeselectCard(go);
                     go.GetComponent<UICard>().Disable();
+                    // animationManager.RemoveCardUI(go);
                 }
             }
         }
     }
 
     public void Reset(){
-        foreach (GameObject go in cards){
-            Destroy(go);
+        foreach (Transform child in content.transform){
+            Destroy(child.gameObject);
         }
         cards = new List<GameObject>();
-        EventManager.dailyCardsToPick = 0;
-        EventManager.problemCardsToPick = 0;
-        EventManager.reviewCardsToPick = 0;
+        EventManager.cardsToPick = 0;
         UICard.count = 0;
+        choosenCard = null;
     }
 }

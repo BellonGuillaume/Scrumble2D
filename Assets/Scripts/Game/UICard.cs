@@ -61,6 +61,7 @@ public class UICard : MonoBehaviour
     }
     public void RemoveVerso(){
         this.verso.gameObject.SetActive(false);
+        this.card.flipped = true;
         this.transform.localScale = new Vector2(1.2f, 1.2f);
     }
 
