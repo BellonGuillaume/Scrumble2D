@@ -16,16 +16,14 @@ public class Card
         Multiple,
         [EnumMember(Value = "Question")]
         Question,
-        [EnumMember(Value = "RollTheDice")]
-        RollTheDice,
-        [EnumMember(Value = "RollTheHalfDice")]
-        RollTheHalfDice,
         [EnumMember(Value = "Permanent")]
         Permanent,
         [EnumMember(Value = "Choice")]
         Choice,
         [EnumMember(Value = "Information")]
         Information,
+        [EnumMember(Value = "Proposition")]
+        Proposition,
     }
 
     [JsonConverter(typeof(StringEnumConverter))]
@@ -39,22 +37,26 @@ public class Card
         REVIEW,
     }
 
-    // [JsonConverter(typeof(StringEnumConverter))]
-    // public enum Target{
-    //     None,
-    //     [EnumMember(Value = "Task")]
-    //     Task,
-    //     [EnumMember(Value = "Debt")]
-    //     Debt,
-    //     [EnumMember(Value = "Turn")]
-    //     Turn,
-    //     [EnumMember(Value = "DailyCardProblemCard")]
-    //     DailyCard,
-    //     [EnumMember(Value = "ProblemCard")]
-    //     ProblemCard,
-    //     [EnumMember(Value = "ReviewCard")]
-    //     ReviewCard,
-    // }
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum Permanent{
+        None,
+        [EnumMember(Value = "Jinx")]
+        Jinx,
+        [EnumMember(Value = "NoMoreTestIssues")]
+        NoMoreTestIssues,
+        [EnumMember(Value = "OneMoreTaskPerRoll")]
+        OneMoreTaskPerRoll,
+        [EnumMember(Value = "TasksOnBeginSprint")]
+        TasksOnBeginSprint,
+        [EnumMember(Value = "TwoMoreTasksPerRoll")]
+        TwoMoreTasksPerRoll,
+        [EnumMember(Value = "MaxUserStoriesLowered")]
+        MaxUserStoriesLowered,
+        [EnumMember(Value = "DecreaseDebtPerTurn")]
+        DecreaseDebtPerTurn,
+        [EnumMember(Value = "OneTaskPerDay")]
+        OneTaskPerDay,
+    }
 
     [JsonConverter(typeof(StringEnumConverter))]
     public enum Action{
@@ -87,6 +89,14 @@ public class Card
         MultiplieDebt,
         [EnumMember(Value = "DecreaseTaskPerCurrentDebt")]
         DecreaseTaskPerCurrentDebt,
+        [EnumMember(Value = "IncreaseTaskPerRoll")]
+        IncreaseTaskPerRoll,
+        [EnumMember(Value = "DecreaseTaskPerRoll")]
+        DecreaseTaskPerRoll,
+        [EnumMember(Value = "IncreaseDebtPerRoll")]
+        IncreaseDebtPerRoll,
+        [EnumMember(Value = "DecreaseDebtPerRoll")]
+        DecreaseDebtPerRoll,
         [EnumMember(Value = "CurrentPlayerPassATurn")]
         CurrentPlayerPassATurn,
         [EnumMember(Value = "NextPlayerPassATurn")]
@@ -99,6 +109,16 @@ public class Card
         PickProblemCards,
         [EnumMember(Value = "PickReviewCards")]
         PickReviewCards,
+        [EnumMember(Value = "PickProblemCardsPerRoll")]
+        PickProblemCardsPerRoll,
+        [EnumMember(Value = "GetRidOfJinxCard")]
+        GetRidOfJinxCard,
+        [EnumMember(Value = "SkipProblemOrDoubleDaily")]
+        SkipProblemOrDoubleDaily,
+        [EnumMember(Value = "DecreaseMaxTaskNextSprint")]
+        DecreaseMaxTaskNextSprint,
+        [EnumMember(Value = "IncreaseTaskNextSprint")]
+        IncreaseTaskNextSprint,
     }
 
     public int id;
@@ -113,8 +133,13 @@ public class Card
     public float firstValue;
     public Action secondAction;
     public float secondValue;
+    public Action thirdAction;
+    public float thirdValue;
+    public Permanent permanent;
+    public int questionId;
+    public bool positive;
 
-    public Card(int id, CategoryOfCard category, string description, string result, TypeOfCard typeOfCard, Action firstAction = Action.None, float firstValue = 0f, Action secondAction = Action.None, float secondValue = 0f)
+    public Card(int id, CategoryOfCard category, string description, string result, TypeOfCard typeOfCard, Action firstAction = Action.None, float firstValue = 0f, Action secondAction = Action.None, float secondValue = 0f, Action thirdAction = Action.None, float thirdValue = 0f, Permanent permanent = Permanent.None, int questionId = 0, bool positive = false)
     {
         this.id = id;
         this.category = category;
@@ -126,6 +151,11 @@ public class Card
         this.firstValue = firstValue;
         this.secondAction = secondAction;
         this.secondValue = secondValue;
+        this.thirdAction = thirdAction;
+        this.thirdValue = thirdValue;
+        this.permanent = permanent;
+        this.questionId = questionId;
+        this.positive = positive;
     }
 
     public override string ToString()

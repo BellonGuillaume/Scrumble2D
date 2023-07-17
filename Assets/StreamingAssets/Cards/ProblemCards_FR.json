@@ -24,7 +24,8 @@
         "result" : "Vous perdez 2 tâches.",
         "typeOfCard" : "Simple",
         "firstAction" : "DecreaseTask",
-        "firstValue" : 2
+        "firstValue" : 2,
+        "test" : true
     },
     {
         "id" : 4,
@@ -33,7 +34,8 @@
         "result" : "Vous perdez 2 tâches.",
         "typeOfCard" : "Simple",
         "firstAction" : "DecreaseTask",
-        "firstValue" : 2
+        "firstValue" : 2,
+        "test" : true
     },
     {
         "id" : 5,
@@ -44,7 +46,8 @@
         "firstAction" : "DecreaseTask",
         "firstValue" : 3,
         "secondAction" : "IncreaseDebt",
-        "secondValue" : 1
+        "secondValue" : 1,
+        "test" : true
     },
     {
         "id" : 6,
@@ -55,7 +58,8 @@
         "firstAction" : "DecreaseTask",
         "firstValue" : 4,
         "secondAction" : "IncreaseDebt",
-        "secondValue" : 2
+        "secondValue" : 2,
+        "test" : true
     },
     {
         "id" : 7,
@@ -73,7 +77,7 @@
         "result" : "Vous accumulez 3 dettes.",
         "typeOfCard" : "Simple",
         "firstAction" : "IncreaseDebt",
-        "firstValue" : 2
+        "firstValue" : 3
     },
     {
         "id" : 9,
@@ -96,7 +100,7 @@
     {
         "id" : 11,
         "category" : "PROBLEM",
-        "description" : "Qu'est-ce qui ressemble à un bug, mais qui est plus pénible qu'un bug ? Oui, c'est un très gros bug. ",
+        "description" : "Qu'est-ce qui ressemble à un bug, mais qui est plus pénible qu'un bug ? Oui, c'est un très gros bug.",
         "result" : "Vous accumulez 4 dettes.",
         "typeOfCard" : "Simple",
         "firstAction" : "IncreaseDebt",
@@ -109,7 +113,8 @@
         "result" : "Vous perdez 5 tâches.",
         "typeOfCard" : "Simple",
         "firstAction" : "DecreaseTask",
-        "firstValue" : 5
+        "firstValue" : 5,
+        "test" : true
     },
     {
         "id" : 13,
@@ -118,7 +123,8 @@
         "result" : "Vous perdez 3 tâches.",
         "typeOfCard" : "Simple",
         "firstAction" : "DecreaseTask",
-        "firstValue" : 3
+        "firstValue" : 3,
+        "test" : true
     },
     {
         "id" : 14,
@@ -163,7 +169,8 @@
         "result" : "Vous perdez 5 tâches.",
         "typeOfCard" : "Simple",
         "firstAction" : "DecreaseTask",
-        "firstValue" : 5
+        "firstValue" : 5,
+        "test" : true
     },
     {
         "id" : 19,
@@ -348,15 +355,16 @@
         "result" : "Vous accumulez 4 dettes.",
         "typeOfCard" : "Simple",
         "firstAction" : "IncreaseDebt",
-        "firstValue" : 4
+        "firstValue" : 4,
+        "test" : true
     },
     {
         "id" : 38,
         "category" : "PROBLEM",
         "description" : "Vous avez quelque peu négligé la définition de Terminé dernièrement !",
         "result" : "Lancez le dé et accumulez autant de dette.",
-        "typeOfCard" : "RollTheDice",
-        "firstAction" : "IncreaseDebt"
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebtPerRoll"
     },
     {
         "id" : 39,
@@ -399,8 +407,8 @@
         "category" : "PROBLEM",
         "description" : "Vous confrontez la fameuse loi de Murphy. Bonne chance !",
         "result" : "Lancez le dé. Si vous obtenez 3 ou moins, piochez autant de cartes Problème !",
-        "typeOfCard" : "RollTheHalfDice",
-        "firstAction" : "PickProblemCards"
+        "typeOfCard" : "Simple",
+        "firstAction" : "PickProblemCardsPerRoll"
     },
     {
         "id" : 44,
@@ -411,7 +419,8 @@
         "firstAction" : "DecreaseTask",
         "firstValue" : 4,
         "secondAction" : "IncreaseDebt",
-        "secondValue" : 2
+        "secondValue" : 2,
+        "test" : true
     },
     {
         "id" : 45,
@@ -482,8 +491,9 @@
         "id" : 52,
         "category" : "PROBLEM",
         "description" : "Vous avez désormais la poisse !",
-        "result" : "Toute l'équipe doit désormais aussi piocher un carte Problème si un 5 tombe aux lancés de dé.",
-        "typeOfCard" : "Permanent"
+        "result" : "Toute l'équipe doit désormais aussi piocher une carte Problème si un 5 tombe aux lancés de dé.",
+        "typeOfCard" : "Permanent",
+        "permanent" : "Jinx"
     },
     {
         "id" : 53,

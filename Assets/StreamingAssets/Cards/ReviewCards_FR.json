@@ -4,20 +4,24 @@
         "category" : "REVIEW",
         "description" : "Les utilisateurs ont constaté un bug bloquant pendant la présentation de l'incrément !",
         "result" : "L'équipe accumule 5 dettes.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 5
     },
     {
         "id" : 2,
         "category" : "REVIEW",
         "description" : "Les utilisateurs apprécient votre travail à sa juste valeur ainsi qu'un ajout bien pensé.",
         "result" : "L'équipe déduit 3 tâches d'une User Story pour le Sprint suivant.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseMaxTaskNextSprint",
+        "firstValue" : 3
     },
     {
         "id" : 3,
         "category" : "REVIEW",
         "description" : "'Vous faites preuve d'un véritable talent artistique. Ce nouveau logo est magnifique avec le nom du produit en police Comic Sans ! Bravo !'",
-        "result" : "- Un utilisateur satisfait ",
+        "result" : "- Un utilisateur satisfait",
         "typeOfCard" : "Information"
     },
     {
@@ -25,70 +29,92 @@
         "category" : "REVIEW",
         "description" : "Les utilisateurs ont observé un bug majeur dans l'incrément à l'issue de la Revue !",
         "result" : "L'équipe accumule 4 dettes.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 4
     },
     {
         "id" : 5,
         "category" : "REVIEW",
         "description" : "Le client envoie un expert métier pour vous éclairer lors du prochain Sprint !",
-        "result" : "L'équipe épargne 2 tâches et déduit 5 dettes d'une User Story pour le Sprint suivant.",
-        "typeOfCard" : "Multiple"
+        "result" : "L'équipe épargne 2 dettes et déduit 5 tâches d'une User Story pour le Sprint suivant.",
+        "typeOfCard" : "Multiple",
+        "firstAction" : "DecreaseDebt",
+        "firstValue" : 2,
+        "secondAction" : "DecreaseMaxTaskNextSprint",
+        "secondValue" : 5
     },
     {
         "id" : 6,
         "category" : "REVIEW",
         "description" : "Les utilisateurs ont détecté un bug mineur alors qu'ils testaient l'incrément lors de la Revue !",
         "result" : "L'équipe accumule 2 dettes.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 2
     },
     {
         "id" : 7,
         "category" : "REVIEW",
         "description" : "Les utilisateurs ont détecté un bug mineur alors qu'ils testaient l'incrément lors de la Revue !",
         "result" : "L'équipe accumule 2 dettes.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 2
     },
     {
         "id" : 8,
         "category" : "REVIEW",
         "description" : "Les utilisateurs apprécient votre travail à sa juste valeur ainsi qu'un ajout bien pensé.",
         "result" : "L'équipe déduit 3 tâches d'une User Story pour le Sprint suivant.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseMaxTaskNextSprint",
+        "firstValue" : 3
     },
     {
         "id" : 9,
         "category" : "REVIEW",
         "description" : "L'un des utilisateurs était absent à la Revue. Ses retours étant attendus, vous devrez les traiter plus tard.",
         "result" : "Ajoutez 10 tâches à une User Story pour le prochain Sprint.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseTaskNextSprint",
+        "firstValue" : 10
     },
     {
         "id" : 10,
         "category" : "REVIEW",
-        "description" : "Les utilisateurs ont observé un bug majeur dans l'incrément à l'issue de la Revue!",
+        "description" : "Les utilisateurs ont observé un bug majeur dans l'incrément à l'issue de la Revue !",
         "result" : "L'équipe accumule 4 dettes.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 4
     },
     {
         "id" : 11,
         "category" : "REVIEW",
         "description" : "Les utilisateurs invités à la Revue sont particulièrement actifs !",
         "result" : "Piochez 3 nouvelles cartes Revue.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "PickReviewCards",
+        "firstValue" : 3
     },
     {
         "id" : 12,
         "category" : "REVIEW",
         "description" : "Un bug a malencontreusement fait son apparition pendant la Revue. Gare à l'effet démo !",
         "result" : "L'équipe accumule 3 dettes.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 3
     },
     {
         "id" : 13,
         "category" : "REVIEW",
         "description" : "Les utilisateurs ont détecté un bug mineur alors qu'ils testaient l'incrément pendant la Revue !",
         "result" : "L'équipe accumule 2 dettes.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 2
     },
     {
         "id" : 14,
@@ -109,14 +135,18 @@
         "category" : "REVIEW",
         "description" : "Les utilisateurs vous informent d'un bug cosmétique pendant la Revue.",
         "result" : "L'équipe accumule 1 dette.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 1
     },
     {
         "id" : 17,
         "category" : "REVIEW",
         "description" : "Les utilisateurs vous informent d'un bug cosmétique pendant la Revue.",
         "result" : "L'équipe accumule 1 dette.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 1
     },
     {
         "id" : 18,
@@ -130,42 +160,53 @@
         "category" : "REVIEW",
         "description" : "Vous présentez un rapport de tests BDD lors de la Revue. Sa compréhension ravit les utilisateurs.",
         "result" : "L'équipe épargne 4 dettes.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseDebt",
+        "firstValue" : 4
     },
     {
         "id" : 20,
         "category" : "REVIEW",
         "description" : "Vous présentez quelques indicateurs de la couverture fonctionnelle du code lors de la Revue.",
         "result" : "L'équipe épargne 2 dettes.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseDebt",
+        "firstValue" : 2
     },
     {
         "id" : 21,
         "category" : "REVIEW",
         "description" : "La qualité de cet incrément laisse à désirer.",
         "result" : "L'équipe accumule autant de dettes que le résultat du lancé de dé du Product Owner.",
-        "typeOfCard" : "RollTheDice"
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebtPerRoll"
     },
     {
         "id" : 22,
         "category" : "REVIEW",
         "description" : "Les utilisateurs ont des difficultés à comprendre la documentation du produit et réclament une formation rapide.",
         "result" : "L'équipe accumule 3 dettes.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 3
     },
     {
         "id" : 23,
         "category" : "REVIEW",
         "description" : "Les utilisateurs vous informent d'un bug cosmétique pendant la revue.",
         "result" : "L'équipe accumule 1 dette.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 1
     },
     {
         "id" : 24,
         "category" : "REVIEW",
         "description" : "Les utilisateurs vous ont communiqué de précieux conseils sur leur métier pour le prochain Sprint.",
         "result" : "L'équipe épargne 5 dettes.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseDebt",
+        "firstValue" : 5
     },
     {
         "id" : 25,
@@ -179,154 +220,192 @@
         "category" : "REVIEW",
         "description" : "Les utilisateurs ont fait part de nombreuses remarques lors de cette Revue.",
         "result" : "L'équipe épargne autant de dettes que le résultat du lancé de dé du Product Owner.",
-        "typeOfCard" : "RollTheDice"
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseDebtPerRoll"
     },
     {
         "id" : 27,
         "category" : "REVIEW",
         "description" : "Les utilisateurs ont fait part de nombreuses remarques lors de cette Revue.",
         "result" : "L'équipe épargne autant de dettes que le résultat du lancé de dé du Product Owner.",
-        "typeOfCard" : "RollTheDice"
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseDebtPerRoll"
     },
     {
         "id" : 28,
         "category" : "REVIEW",
         "description" : "Les utilisateurs ont des difficultés à comprendre la documentation du produit et réclament une formation rapide.",
         "result" : "L'équipe accumule 3 dettes.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 3
     },
     {
         "id" : 29,
         "category" : "REVIEW",
         "description" : "Les utilisateurs vous informent d'un bug cosmétique pendant la revue.",
         "result" : "L'équipe accumule 1 dette.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 1
     },
     {
         "id" : 30,
         "category" : "REVIEW",
         "description" : "Lors de la Revue, l'équipe se rend compte qu'une partie du travail à venir est en fait d'ores et déjà traitée !",
         "result" : "L'équipe gagne 5 tâches pour le prochain Sprint.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseTaskNextSprint",
+        "firstValue" : 5
     },
     {
         "id" : 31,
         "category" : "REVIEW",
         "description" : "Les utilisateurs ont fait part de nombreuses remarques lors de cette Revue.",
         "result" : "L'équipe épargne autant de dettes que le résultat du lancé de dé du Product Owner.",
-        "typeOfCard" : "RollTheDice"
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseDebtPerRoll"
     },
     {
         "id" : 32,
         "category" : "REVIEW",
         "description" : "Les utilisateurs vous informent d'un bug cosmétique pendant la Revue",
         "result" : "L'équipe accumule 1 dette.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 1
     },
     {
         "id" : 33,
         "category" : "REVIEW",
         "description" : "Les utilisateurs vous informent d'un bug cosmétique pendant la Revue",
         "result" : "L'équipe accumule 1 dette.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 1
     },
     {
         "id" : 34,
         "category" : "REVIEW",
         "description" : "Les utilisateurs ont observé un bug majeur dans l'incrément à l'issue de la Revue !",
         "result" : "L'équipe accumule 4 dettes.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 4
     },
     {
         "id" : 35,
         "category" : "REVIEW",
         "description" : "Les utilisateurs ont détecté un bug mineur alors qu'ils testaient l'incrément lors de la Revue !",
         "result" : "L'équipe accumule 2 dettes.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 2
     },
     {
         "id" : 36,
         "category" : "REVIEW",
         "description" : "Un bug a malencontreusement fait son apparition pendant la Revue. Gare à l'effet démo !",
         "result" : "L'équipe accumule 3 dettes.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 3
     },
     {
         "id" : 37,
         "category" : "REVIEW",
         "description" : "Un utilisateur important était absent à la Revue. Ses conseils étaient attendus pour établir les futures activités.",
         "result" : "Ajoutez 10 tâches réparties sur les User Stories du Sprint suivant.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseTaskNextSprint",
+        "firstValue" : 10
     },
     {
         "id" : 38,
         "category" : "REVIEW",
         "description" : "Après inspection de l'incrément, échanger avec les utilisateurs vous permet de mieux cibler leurs besoins.",
         "result" : "L'équipe épargne 5 dettes.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseDebt",
+        "firstValue" : 5
     },
     {
         "id" : 39,
         "category" : "REVIEW",
         "description" : "Après inspection de l'incrément, échanger avec les utilisateurs vous permet de mieux cibler leurs besoins.",
         "result" : "L'équipe épargne 5 dettes.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseDebt",
+        "firstValue" : 5
     },
     {
         "id" : 40,
         "category" : "REVIEW",
         "description" : "Les utilisateurs ont fait part de nombreuses remarques lors de cette Revue.",
         "result" : "L'équipe épargne autant de dettes que le résultat du lancé de dé du Product Owner.",
-        "typeOfCard" : "RollTheDice"
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseDebtPerRoll"
     },
     {
         "id" : 41,
         "category" : "REVIEW",
         "description" : "En échangeant avec les utilisateurs présents à la Revue, vous comprenez mieux le domaine métier.",
         "result" : "Cela vous fait épargner 1 dette par joueur.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseDebtPerPlayer",
+        "firstValue" : 1
     },
     {
         "id" : 42,
         "category" : "REVIEW",
         "description" : "En échangeant avec les utilisateurs présents à la Revue, vous comprenez mieux le domaine métier.",
         "result" : "Cela vous fait épargner 1 dette par joueur.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseDebtPerPlayer",
+        "firstValue" : 1
     },
     {
         "id" : 43,
         "category" : "REVIEW",
         "description" : "Un éclaircissement sur la qualité attendue du produit vous permet d'éviter un grossissement de la dette technique.",
         "result" : "L'équipe épargne donc 4 dettes.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseDebt",
+        "firstValue" : 4
     },
     {
         "id" : 44,
         "category" : "REVIEW",
         "description" : "La Revue s'est révélée plus rapide que prévue. En contrepartie vous consolidez votre travail.",
         "result" : "L'équipe épargne 2 dettes.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseDebt",
+        "firstValue" : 2
     },
     {
         "id" : 45,
         "category" : "REVIEW",
         "description" : "Votre Product Owner décide de se former au domaine métier. Cela aide à terme l'équipe entière.",
         "result" : "Son assistance fait gagner 1 tâche par jour à l'équipe.",
-        "typeOfCard" : "Permanent"
+        "typeOfCard" : "Permanent",
+        "permanent" : "OneTaskPerDay"
     },
     {
         "id" : 46,
         "category" : "REVIEW",
         "description" : "Les utilisateurs ont fait part de nombreuses remarques lors de cette Revue.",
-        "result" : "L'équipe épargne autant de tâches que le résultat du lancé de dé du Product Owner.",
-        "typeOfCard" : "RollTheDice"
+        "result" : "L'équipe épargne autant de dettes que le résultat du lancé de dé du Product Owner.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseDebtPerRoll"
     },
     {
         "id" : 47,
         "category" : "REVIEW",
         "description" : "En échangeant avec les utilisateurs présents à la Revue, vous comprenez mieux le domaine métier.",
         "result" : "Cela vous fait épargner 1 dette par joueur.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseDebtPerPlayer",
+        "firstValue" : 1
     },
     {
         "id" : 48,
@@ -340,83 +419,105 @@
         "category" : "REVIEW",
         "description" : "Un éclaircissement sur la qualité attendue du produit vous permet d'éviter un grossissement de la dette technique.",
         "result" : "L'équipe épargne donc 4 dettes.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseDebt",
+        "firstValue" : 4
     },
     {
         "id" : 50,
         "category" : "REVIEW",
         "description" : "La Revue s'est révélée plus rapide que prévue. En conséquence vous consolidez votre travail.",
         "result" : "L'équipe épargne 2 dettes.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseDebt",
+        "firstValue" : 2
     },
     {
         "id" : 51,
         "category" : "REVIEW",
         "description" : "Les utilisateurs ont fait part de nombreuses remarques lors de cette Revue.",
         "result" : "L'équipe épargne autant de dettes que le résultat du lancé de dé du Product Owner.",
-        "typeOfCard" : "RollTheDice"
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseDebtPerRoll"
     },
     {
         "id" : 52,
         "category" : "REVIEW",
         "description" : "En échangeant avec les utilisateurs présents à la Revue, vous comprenez mieux le domaine métier.",
         "result" : "Cela vous fait épargner 1 dette par joueur.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseDebtPerPlayer",
+        "firstValue" : 1
     },
     {
         "id" : 53,
         "category" : "REVIEW",
         "description" : "Les utilisateurs ont détecté un bug mineur alors qu'ils testaient l'incrément lors de la Revue !",
         "result" : "L'équipe accumule 2 dettes.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 2
     },
     {
         "id" : 54,
         "category" : "REVIEW",
         "description" : "Les utilisateurs ont détecté un bug mineur alors qu'ils testaient l'incrément lors de la Revue !",
         "result" : "L'équipe accumule 2 dettes.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 2
     },
     {
         "id" : 55,
         "category" : "REVIEW",
         "description" : "Un utilisateur important était absent à la Revue. Ses conseils étaient attendus pour établir les futures activités.",
         "result" : "Ajoutez 10 tâches réparties sur les User Stories du Sprint suivant.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseTaskNextSprint",
+        "firstValue" : 10
     },
     {
         "id" : 56,
         "category" : "REVIEW",
         "description" : "Les utilisateurs ont détecté un bug mineur alors qu'ils testaient l'incrément lors de la Revue !",
         "result" : "L'équipe accumule 2 dettes.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 2
     },
     {
         "id" : 57,
         "category" : "REVIEW",
         "description" : "Les utilisateurs ont détecté un bug mineur alors qu'ils testaient l'incrément lors de la Revue !",
         "result" : "L'équipe accumule 2 dettes.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 2
     },
     {
         "id" : 58,
         "category" : "REVIEW",
         "description" : "Les utilisateurs ont fait part de nombreuses remarques lors de cette Revue.",
         "result" : "L'équipe épargne autant de dettes que le résultat du lancé de dé du Product Owner",
-        "typeOfCard" : "RollTheDice"
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseDebtPerRoll"
     },
     {
         "id" : 59,
         "category" : "REVIEW",
         "description" : "Un bug a malencontreusement fait son apparition pendant la Revue. Gare à l'effet démo !",
         "result" : "L'équipe accumule 3 dettes.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 3
     },
     {
         "id" : 60,
         "category" : "REVIEW",
         "description" : "Les utilisateurs vous informent d'un bug cosmétique pendant la revue.",
         "result" : "L'équipe accumule 1 dette.",
-        "typeOfCard" : "Simple"
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 1
     }
 ]
