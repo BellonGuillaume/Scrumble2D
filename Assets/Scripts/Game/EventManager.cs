@@ -17,4 +17,7 @@ public class EventManager : MonoBehaviour
     public static bool handleInformationAction = false;
     public static bool action = false;
     public static int cardsToPick = 0;
+    public static bool handleAddingTask = false;
+    public static bool taskAdded = true;
+    public static int taskToAdd = 0;
 }

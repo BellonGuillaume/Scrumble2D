@@ -15,12 +15,14 @@ public class ArrowedUS : MonoBehaviour
     public Color color = UserStory.red; // Couleur spécifique par défaut
     public float startAngle = 0f; // Angle de départ par défaut
     public float openAngle = 90f; // Ouverture d'angle par défaut
+    public int delta;
 
     private Material modifiedMaterial; // Matériau modifié pour cet objet
 
     void Start(){
         this.userStory = new UserStory(1, "GIFT SHOP", "Une description", 5, UserStory.Size.XS, 0);
         this.userStory.maxTask = 24;
+        this.delta = 0;
 
         modifiedMaterial = new Material(outline.material);
         modifiedMaterial.SetColor("_BaseColor", baseColor);
@@ -33,10 +35,16 @@ public class ArrowedUS : MonoBehaviour
     }
 
     public void ClickUp(){
+        this.delta++;
+        this.userStory.currentTask++;
         IncreaseColor(1);
+        EventManager.taskToAdd--;
     }
     public void ClickDown(){
+        this.delta--;
+        this.userStory.currentTask--;
         IncreaseColor(-1);
+        EventManager.taskToAdd++;
     }
     public void IncreaseColor(int i){
         if (this.userStory.currentTask > this.userStory.maxTask){
@@ -80,12 +88,15 @@ public class ArrowedUS : MonoBehaviour
 
     public void ShowUpArrow(){
         this.arrowUp.gameObject.SetActive(true);
+        this.arrowDown.gameObject.SetActive(false);
     }
+
     public void HideUpArrow(){
         this.arrowUp.gameObject.SetActive(false);
     }
     public void ShowDownArrow(){
         this.arrowDown.gameObject.SetActive(true);
+        this.arrowUp.gameObject.SetActive(false);
     }
     public void HideDownArrow(){
         this.arrowDown.gameObject.SetActive(false);

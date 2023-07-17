@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] Slider debtSlider;
     [SerializeField] Slider daySlider;
 
+    [SerializeField] Button taskValidation;
+
     Animator popUpAnimator;
     List<Card> dailyCards;
     List<Card> problemCards;
@@ -43,6 +45,7 @@ public class GameManager : MonoBehaviour
     CardPicker cardPicker;
     private Coroutine dayAnimationRoutine;
     public static List<UserStory> workingOn;
+    public List<GameObject> doingAUS;
 
     private StringTable table;
     private System.Random random;
@@ -66,6 +69,7 @@ public class GameManager : MonoBehaviour
         CreateProblemCards();
         CreateReviewCards();
         workingOn = new List<UserStory>();
+        doingAUS = new List<GameObject>();
         StateManager.gameState = StateManager.GameState.BEGIN_GAME;
         StartCoroutine(StartGame());
     }
@@ -98,10 +102,12 @@ public class GameManager : MonoBehaviour
             yield return new WaitUntil(() => StateManager.gameState == StateManager.GameState.END_OF_DAY);
             Debug.Log($"End of day {j} reached");
         }
-        animationManager.ShowInfo(table.GetEntry("Phase de Review").GetLocalizedString());
+        // animationManager.ShowInfo(table.GetEntry("Phase de Review").GetLocalizedString());
+        animationManager.ShowInfo("Phase de Review");
         yield return new WaitUntil(() => EventManager.animate == false);
         // BeginReview();
-        animationManager.ShowInfo(table.GetEntry("Phase de Rétrospective").GetLocalizedString());
+        // animationManager.ShowInfo(table.GetEntry("Phase de Rétrospective").GetLocalizedString());
+        animationManager.ShowInfo("Phase de Rétrospective");
         yield return new WaitUntil(() => EventManager.animate == false);
         // BeginRetrospective();
         StateManager.gameState = StateManager.GameState.END_OF_SPRINT;
@@ -135,6 +141,7 @@ public class GameManager : MonoBehaviour
                     go.GetComponent<ArrowedUS>().HideArrows();
                     go.transform.SetParent(child.transform);
                     go.transform.localPosition = Vector3.zero;
+                    this.doingAUS.Add(go);
                     break;
                 }
             }
@@ -278,7 +285,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("-SHOWING RESULTS");
         animationManager.ZoomInPopUp(this.results);
         yield return new WaitUntil(() => EventManager.animate == false);
-        if (StateManager.firstDiceResult == 6 || StateManager.secondDiceResult == 6 || true) {
+        if (StateManager.firstDiceResult == 6 || StateManager.secondDiceResult == 6) {
             // animationManager.ProblemAnimation();
             // yield return new WaitUntil(() => EventManager.animate == false);
             animationManager.ShowInfo(table.GetEntry("ProblemCard").GetLocalizedString());
@@ -304,11 +311,18 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(2);
         int debtCounter = 0;
+        int taskCounter = 0;
         if (StateManager.firstTaskOrDebtChoice == "DEBT"){
             debtCounter += StateManager.firstDiceResult;
         }
+        if (StateManager.firstTaskOrDebtChoice == "TASK"){
+            taskCounter += StateManager.firstDiceResult;
+        }
         if(StateManager.alreadyReRoll && StateManager.secondTaskOrDebtChoice == "DEBT"){
             debtCounter += StateManager.secondDiceResult;
+        }
+        if(StateManager.alreadyReRoll && StateManager.secondTaskOrDebtChoice == "TASK"){
+            taskCounter += StateManager.secondDiceResult;
         }
 
         Debug.Log("-END RESULTS");
@@ -320,6 +334,12 @@ public class GameManager : MonoBehaviour
             // StartCoroutine(AddToDebt(0-debtCounter));
             animationManager.UpdateDebtScrollBar(this.debtSlider.value - debtCounter);
             yield return new WaitUntil(() => EventManager.animate == false);
+        }
+
+        if (taskCounter > 0){
+            EventManager.handleAddingTask = true;
+            StartCoroutine(AddTasks(taskCounter));
+            yield return new WaitUntil(() => EventManager.handleAddingTask == false);
         }
         yield return new WaitForSeconds(2);
         StateManager.turnState = StateManager.TurnState.END_OF_TURN;
@@ -476,37 +496,37 @@ public class GameManager : MonoBehaviour
                 StartCoroutine(IncreaseTask((int) value));
                 break;
             case Card.Action.DecreaseTask :
-                StartCoroutine(DecreaseTask((int) value));
+                StartCoroutine(IncreaseTask((int) -value));
                 break;
             case Card.Action.IncreaseDebt :
                 StartCoroutine(IncreaseDebt((int) value));
                 break;
             case Card.Action.DecreaseDebt :
-                StartCoroutine(DecreaseDebt((int) value));
+                StartCoroutine(IncreaseDebt((int) -value));
                 break;
             case Card.Action.IncreaseTaskPerPlayer :
-                StartCoroutine(IncreaseTaskPerPlayer((int) value));
+                StartCoroutine(IncreaseTask(((int) value) * (StateManager.players.Count + 2)));
                 break;
             case Card.Action.IncreaseDebtPerPlayer :
-                StartCoroutine(IncreaseDebtPerPlayer((int) value));
+                StartCoroutine(IncreaseDebt(((int) value) * (StateManager.players.Count + 2)));
                 break;
             case Card.Action.DecreaseTaskPerPlayer :
-                StartCoroutine(DecreaseTaskPerPlayer((int) value));
+                StartCoroutine(IncreaseTask(((int) -value) * (StateManager.players.Count + 2)));
                 break;
             case Card.Action.DecreaseDebtPerPlayer :
-                StartCoroutine(DecreaseDebtPerPlayer((int) value));
+                StartCoroutine(IncreaseDebt(((int) -value) * (StateManager.players.Count + 2)));
                 break;
             case Card.Action.IncreaseTaskPerDevelopper :
-                StartCoroutine(IncreaseTaskPerDevelopper((int) value));
+                StartCoroutine(IncreaseTask(((int) value) * (StateManager.players.Count)));
                 break;
             case Card.Action.IncreaseDebtPerDevelopper :
-                StartCoroutine(IncreaseDebtPerDevelopper((int) value));
+                StartCoroutine(IncreaseDebt(((int) value) * (StateManager.players.Count)));
                 break;
             case Card.Action.DecreaseTaskPerDevelopper :
-                StartCoroutine(DecreaseTaskPerDevelopper((int) value));
+                StartCoroutine(IncreaseTask(((int) -value) * (StateManager.players.Count)));
                 break;
             case Card.Action.DecreaseDebtPerDevelopper :
-                StartCoroutine(DecreaseDebtPerDevelopper((int) value));
+                StartCoroutine(IncreaseDebt(((int) -value) * (StateManager.players.Count)));
                 break;
             case Card.Action.MultiplieDebt :
                 StartCoroutine(MultiplieDebt(value));
@@ -552,10 +572,13 @@ public class GameManager : MonoBehaviour
     #region - - - - - - - - - - - - - - - - - Card Actions - - - - - - - - - - - - - - - - -
     IEnumerator IncreaseTask(int n){
         yield return new WaitUntil(() => EventManager.action == true);
-        EventManager.action = false;
-    }
-    IEnumerator DecreaseTask(int n){
-        yield return new WaitUntil(() => EventManager.action == true);
+        EventManager.handleAddingTask = true;
+        animationManager.HidePopUp();
+        yield return new WaitUntil(() => EventManager.animate == false);
+        StartCoroutine(AddTasks(n));
+        yield return new WaitUntil(() => EventManager.handleAddingTask == false);
+        animationManager.ShowPopUp();
+        yield return new WaitUntil(() => EventManager.animate == false);
         EventManager.action = false;
     }
     IEnumerator IncreaseDebt(int n){
@@ -568,70 +591,12 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(() => EventManager.animate == false);
         EventManager.action = false;
     }
-    IEnumerator DecreaseDebt(int n){
-        yield return new WaitUntil(() => EventManager.action == true);
-        animationManager.HideCardPick();
-        yield return new WaitUntil(() => EventManager.animate == false);
-        animationManager.UpdateDebtScrollBar(this.debtSlider.value - n);
-        yield return new WaitUntil(() => EventManager.animate == false);
-        animationManager.ShowCardPick();
-        yield return new WaitUntil(() => EventManager.animate == false);
-        EventManager.action = false;
-    }
     IEnumerator IncreaseTaskPerPlayer(int n){
         yield return new WaitUntil(() => EventManager.action == true);
         EventManager.action = false;
     }
-    IEnumerator IncreaseDebtPerPlayer(int n){
-        yield return new WaitUntil(() => EventManager.action == true);
-        animationManager.HideCardPick();
-        yield return new WaitUntil(() => EventManager.animate == false);
-        animationManager.UpdateDebtScrollBar(this.debtSlider.value + (n * StateManager.players.Count + 2));
-        yield return new WaitUntil(() => EventManager.animate == false);
-        animationManager.ShowCardPick();
-        yield return new WaitUntil(() => EventManager.animate == false);
-        EventManager.action = false;
-    }
     IEnumerator DecreaseTaskPerPlayer(int n){
         yield return new WaitUntil(() => EventManager.action == true);
-        EventManager.action = false;
-    }
-    IEnumerator DecreaseDebtPerPlayer(int n){
-        yield return new WaitUntil(() => EventManager.action == true);
-        animationManager.HideCardPick();
-        yield return new WaitUntil(() => EventManager.animate == false);
-        animationManager.UpdateDebtScrollBar(this.debtSlider.value - (n * StateManager.players.Count + 2));
-        yield return new WaitUntil(() => EventManager.animate == false);
-        animationManager.ShowCardPick();
-        yield return new WaitUntil(() => EventManager.animate == false);
-        EventManager.action = false;
-    }
-    IEnumerator IncreaseTaskPerDevelopper(int n){
-        yield return new WaitUntil(() => EventManager.action == true);
-        EventManager.action = false;
-    }
-    IEnumerator IncreaseDebtPerDevelopper(int n){
-        yield return new WaitUntil(() => EventManager.action == true);
-        animationManager.HideCardPick();
-        yield return new WaitUntil(() => EventManager.animate == false);
-        animationManager.UpdateDebtScrollBar(this.debtSlider.value + (n * StateManager.players.Count));
-        yield return new WaitUntil(() => EventManager.animate == false);
-        animationManager.ShowCardPick();
-        yield return new WaitUntil(() => EventManager.animate == false);
-        EventManager.action = false;
-    }
-    IEnumerator DecreaseTaskPerDevelopper(int n){
-        yield return new WaitUntil(() => EventManager.action == true);
-        EventManager.action = false;
-    }
-    IEnumerator DecreaseDebtPerDevelopper(int n){
-        yield return new WaitUntil(() => EventManager.action == true);
-        animationManager.HideCardPick();
-        yield return new WaitUntil(() => EventManager.animate == false);
-        animationManager.UpdateDebtScrollBar(this.debtSlider.value - (n * StateManager.players.Count));
-        yield return new WaitUntil(() => EventManager.animate == false);
-        animationManager.ShowCardPick();
-        yield return new WaitUntil(() => EventManager.animate == false);
         EventManager.action = false;
     }
     IEnumerator MultiplieDebt(float n){
@@ -754,6 +719,83 @@ public class GameManager : MonoBehaviour
 
         StateManager.gameState = StateManager.GameState.INITIALISATION;
         Debug.Log("-STATE_MANAGER INITIALIZED");
+    }
+
+    IEnumerator AddTasks(int n){
+        this.taskValidation.gameObject.SetActive(true);
+        EventManager.taskToAdd = n;
+        EventManager.taskAdded = false;
+        int reasonsToContinue = 0;
+        while(EventManager.taskAdded == false){
+            if(n == 0){
+                EventManager.taskAdded = true;
+                break;
+            }
+            reasonsToContinue = 0;
+            foreach (GameObject doingAUS in this.doingAUS){
+                if(EventManager.taskToAdd == n && n > 0){
+                    doingAUS.GetComponent<ArrowedUS>().ShowUpArrow();
+                }
+                else if(EventManager.taskToAdd == n && n < 0){
+                    doingAUS.GetComponent<ArrowedUS>().ShowDownArrow();
+                }
+                else if(EventManager.taskToAdd == 0 && n > 0){
+                    if(doingAUS.GetComponent<ArrowedUS>().delta == 0){
+                        doingAUS.GetComponent<ArrowedUS>().HideArrows();
+                    } else {
+                        doingAUS.GetComponent<ArrowedUS>().ShowDownArrow();
+                    }
+                }
+                else if(EventManager.taskToAdd == 0 && n < 0){
+                    if(doingAUS.GetComponent<ArrowedUS>().delta == 0){
+                        doingAUS.GetComponent<ArrowedUS>().HideArrows();
+                    } else {
+                        doingAUS.GetComponent<ArrowedUS>().ShowUpArrow();
+                    }
+                }
+                else {
+                    if(n < 0 && doingAUS.GetComponent<ArrowedUS>().delta == 0){
+                        doingAUS.GetComponent<ArrowedUS>().ShowDownArrow();
+                    } 
+                    else if(n > 0 && doingAUS.GetComponent<ArrowedUS>().delta == 0){
+                        doingAUS.GetComponent<ArrowedUS>().ShowUpArrow();
+                    }
+                    else {
+                        doingAUS.GetComponent<ArrowedUS>().ShowArrows();
+                    }
+                }
+                reasonsToContinue++;
+                if (doingAUS.GetComponent<ArrowedUS>().userStory.currentTask == doingAUS.GetComponent<ArrowedUS>().userStory.maxTask){
+                    doingAUS.GetComponent<ArrowedUS>().HideUpArrow();
+                    if(n > 0)
+                        reasonsToContinue--;
+                }
+                else if (doingAUS.GetComponent<ArrowedUS>().userStory.currentTask == 0){
+                    doingAUS.GetComponent<ArrowedUS>().HideDownArrow();
+                    if(n < 0)
+                        reasonsToContinue--;
+                }
+                
+            }
+            Debug.Log($"Remaining task to add and reasons to continue : {EventManager.taskToAdd.ToString()}, {reasonsToContinue.ToString()}");
+            if (EventManager.taskToAdd == 0 || reasonsToContinue <= 0){
+                    this.taskValidation.interactable = true;
+                } else {
+                    this.taskValidation.interactable = false;
+                }
+            yield return null;
+        }
+        yield return new WaitUntil(() => EventManager.taskAdded == true);
+        this.taskValidation.gameObject.SetActive(false);
+        foreach (GameObject doingAUS in this.doingAUS){
+            doingAUS.GetComponent<ArrowedUS>().HideArrows();
+            doingAUS.GetComponent<ArrowedUS>().delta = 0;
+        }
+        EventManager.handleAddingTask = false;
+    }
+
+    public void OnTaskValidationClick(){
+        EventManager.taskAdded = true;
     }
 
     public void OnSideClick(){
