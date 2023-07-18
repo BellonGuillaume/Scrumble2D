@@ -15,6 +15,7 @@ public class EventManager : MonoBehaviour
     public static bool handlePermanentAction = false;
     public static bool handleChoiceActions = false;
     public static bool handleInformationAction = false;
+    public static bool handlePropositionAction = false;
     public static bool action = false;
     public static int cardsToPick = 0;
     public static bool handleAddingTask = false;

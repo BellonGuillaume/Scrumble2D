@@ -103,8 +103,8 @@ public class Card
         NextPlayerPassATurn,
         [EnumMember(Value = "AllPlayersPassATurn")]
         AllPlayersPassATurn,
-        [EnumMember(Value = "PickDailycards")]
-        PickDailycards,
+        [EnumMember(Value = "PickDailyCards")]
+        PickDailyCards,
         [EnumMember(Value = "PickProblemCards")]
         PickProblemCards,
         [EnumMember(Value = "PickReviewCards")]
