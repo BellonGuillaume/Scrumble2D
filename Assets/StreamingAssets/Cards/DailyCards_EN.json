@@ -481,14 +481,16 @@
         "category" : "DAILY",
         "description" : "La chance de votre équipe tourne.",
         "result" : "Débarrassez-vous de la carte permanente 'Poisse' si elle est déjà en votre possession.",
-        "typeOfCard" : "GetRidOfJinxCard"
+        "typeOfCard" : "Simple",
+        "firstAction" : "GetRidOfJinxCard"
     },
     {
         "id" : 54,
         "category" : "DAILY",
         "description" : "La chance de votre équipe tourne.",
         "result" : "Débarrassez-vous de la carte permanente 'Poisse' si elle est déjà en votre possession.",
-        "typeOfCard" : "GetRidOfJinxCard"
+        "typeOfCard" : "Simple",
+        "firstAction" : "GetRidOfJinxCard"
     },
     {
         "id" : 55,

@@ -47,21 +47,71 @@ public class AnimationManager : MonoBehaviour
 
     public void StartDayAnimation(int n){
         EventManager.animate = true;
-        string text = LocalizationSettings.StringDatabase.GetTable("Game").GetEntry("Day").GetLocalizedString();
-        this.textDayPopUp.GetComponent<TMP_Text>().text = text + " " + n.ToString();
-        this.dayPopUp.SetActive(true);
-        Vector2 startPosition = this.dayAnimationStartPosition;
-        Vector2 endPosition = this.dayAnimationEndPosition;
+        Color32 startColor = new Color32(0, 0, 0, 0);
+        Color32 endColor = new Color32(0, 0, 0, 255);
+        float startAlpha = 0;
+        float endAlpha = 1;
+        Vector2 startPosition = this.daySlider.transform.localPosition;
+        Vector2 endPosition = Vector2.zero;
+        Vector2 startScale = this.daySlider.transform.localScale;
+        Vector2 endScale = new Vector2(4f, 4f);
+        float startDayValue = this.daySlider.value;
+        float endDayValue = (float) n;
+        this.coverImage.color = startColor;
+        Transform oldDayParent = this.daySlider.transform.parent;
+        int oldSiblingIndex = this.daySlider.transform.GetSiblingIndex();
+        this.coverImage.gameObject.SetActive(true);
         animationCoroutine = this.CreateAnimationRoutine(
             dayAnimationDuration,
             delegate(float progress){
                 float easedProgress = Easing.clerp(0, 1, progress);
-                Vector2 pos = Vector2.Lerp(startPosition, endPosition, easedProgress);
-                textDayPopUp.transform.localPosition = pos;
+                Color32 color = Color32.Lerp(startColor, endColor, easedProgress);
+                this.coverImage.color = color;
             },
             delegate {
-                this.dayPopUp.SetActive(false);
-                EventManager.animate = false;
+                this.daySlider.GetComponent<DaySlider>().SetAlpha(startAlpha);
+                this.daySlider.transform.localPosition = endPosition;
+                this.daySlider.transform.localScale = endScale;
+                this.daySlider.transform.SetParent(this.daySlider.transform.root);
+                this.daySlider.transform.SetAsLastSibling();
+                this.CreateAnimationRoutine(
+                    dayAnimationDuration,
+                    delegate(float progress){
+                        float easedProgress = Easing.clerp(0, 1, progress);
+                        float alpha = Mathf.Lerp(startAlpha, endAlpha, easedProgress);
+                        this.daySlider.GetComponent<DaySlider>().SetAlpha(alpha);
+                    },
+                    delegate{
+                        this.CreateAnimationRoutine(
+                            0.5f,
+                            delegate(float progress){
+                                float easedProgress = Easing.clerp(0, 1, progress);
+                                float value = Mathf.Lerp(startDayValue, endDayValue, easedProgress);
+                                this.daySlider.value = value;
+                            },
+                            delegate{
+                                this.CreateAnimationRoutine(
+                                    dayAnimationDuration,
+                                    delegate(float progress){
+                                        float easedProgress = Easing.clerp(0, 1, progress);
+                                        Vector2 scale = Vector2.Lerp(endScale, startScale, easedProgress);
+                                        Vector2 position = Vector2.Lerp(endPosition, startPosition, easedProgress);
+                                        Color32 color = Color32.Lerp(endColor, startColor, easedProgress);
+                                        this.daySlider.transform.localPosition = position;
+                                        this.daySlider.transform.localScale = scale;
+                                        this.coverImage.color = color;
+                                    },
+                                    delegate{
+                                        this.coverImage.gameObject.SetActive(false);
+                                        this.daySlider.transform.SetParent(oldDayParent);
+                                        this.daySlider.transform.SetSiblingIndex(oldSiblingIndex);
+                                        EventManager.animate = false;
+                                    }
+                                );
+                            }
+                        );
+                    }
+                );
             }
         );
     }
