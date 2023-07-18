@@ -36,13 +36,11 @@ public class ArrowedUS : MonoBehaviour
 
     public void ClickUp(){
         this.delta++;
-        this.userStory.currentTask++;
         IncreaseColor(1);
         EventManager.taskToAdd--;
     }
     public void ClickDown(){
         this.delta--;
-        this.userStory.currentTask--;
         IncreaseColor(-1);
         EventManager.taskToAdd++;
     }
