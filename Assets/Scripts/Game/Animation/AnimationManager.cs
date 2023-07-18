@@ -493,4 +493,65 @@ public class AnimationManager : MonoBehaviour
         );
     }
 
+    public void RemoveCard(GameObject card){
+        card.GetComponent<UICard>().positionBeforeMove = card.transform.position;
+        Vector2 startPos = card.GetComponent<UICard>().positionBeforeMove;
+        Vector2 endPos = new Vector2(startPos.x, 2000f);
+        this.animationCoroutine = this.CreateAnimationRoutine(
+            0.5f,
+            delegate(float progress){
+                float easedProgress = Easing.easeInCubic(0, 1, progress);
+                Vector2 position = Vector2.Lerp(startPos, endPos, easedProgress);
+                card.transform.position = position;
+            },
+            delegate{
+                Destroy(card);
+                EventManager.cardToRemove--;
+            }
+        );
+        
+    }
+
+    public void CenterCard(GameObject card){
+        card.GetComponent<UICard>().positionBeforeMove = card.transform.position;
+        Vector2 startPos = card.GetComponent<UICard>().positionBeforeMove;
+        Vector2 endPos = new Vector2(960f, 540f);
+        Vector2 startScale = card.transform.localScale;
+        Vector2 endScale = new Vector2(1.2f, 1.2f);
+        this.animationCoroutine = this.CreateAnimationRoutine(
+            0.5f,
+            delegate(float progress){
+                float easedProgress = Easing.easeInCubic(0, 1, progress);
+                Vector2 position = Vector2.Lerp(startPos, endPos, easedProgress);
+                Vector2 scale = Vector2.Lerp(startScale, endScale, easedProgress);
+                card.transform.position = position;
+                card.transform.localScale = scale;
+                card.GetComponent<UICard>().positionAfterMove = position;
+                card.GetComponent<UICard>().moved = true;
+            },
+            delegate{
+                card.GetComponent<UICard>().positionAfterMove = endPos;
+                card.GetComponent<UICard>().moved = true;
+            }
+        );
+    }
+
+    public void UncenterCard(GameObject card){
+        Vector2 startPos = new Vector2(960f, 540f);
+        Vector2 endPos = card.GetComponent<UICard>().positionBeforeMove;
+        Vector2 startScale = card.transform.localScale;
+        Vector2 endScale = Vector2.one;
+        this.animationCoroutine = this.CreateAnimationRoutine(
+            0.5f,
+            delegate(float progress){
+                float easedProgress = Easing.easeInCubic(0, 1, progress);
+                Vector2 position = Vector2.Lerp(startPos, endPos, easedProgress);
+                Vector2 scale = Vector2.Lerp(startScale, endScale, easedProgress);
+                card.transform.position = position;
+                card.transform.localScale = scale;
+                card.GetComponent<UICard>().moved = false;
+                card.GetComponent<UICard>().positionAfterMove = card.transform.position;
+            }
+        );
+    }
 }

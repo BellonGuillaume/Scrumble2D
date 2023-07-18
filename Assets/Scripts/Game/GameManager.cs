@@ -285,7 +285,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("-SHOWING RESULTS");
         animationManager.ZoomInPopUp(this.results);
         yield return new WaitUntil(() => EventManager.animate == false);
-        if (StateManager.firstDiceResult == 6 || StateManager.secondDiceResult == 6) {
+        if (StateManager.firstDiceResult == 6 || StateManager.secondDiceResult == 6 || true) {
             // animationManager.ProblemAnimation();
             // yield return new WaitUntil(() => EventManager.animate == false);
             animationManager.ShowInfo(table.GetEntry("ProblemCard").GetLocalizedString());
@@ -462,9 +462,7 @@ public class GameManager : MonoBehaviour
             yield return new WaitUntil(() => EventManager.handleSingleCard == false);
             this.cardPicker.choosenCard = null;
         }
-        animationManager.HideCardPick();
         this.cardPicker.Reset();
-        yield return new WaitUntil(() => EventManager.animate == false);
         EventManager.handleCards = false;
     }
     
@@ -483,7 +481,10 @@ public class GameManager : MonoBehaviour
             default :
                 break;
         }
-
+        if (EventManager.cardsToPick != 0){
+            animationManager.ShowCardPick();
+            yield return new WaitUntil(() => EventManager.animate == false);
+        }
         EventManager.handleSingleCard = false;
         yield break;
     }
@@ -573,12 +574,10 @@ public class GameManager : MonoBehaviour
     IEnumerator IncreaseTask(int n){
         yield return new WaitUntil(() => EventManager.action == true);
         EventManager.handleAddingTask = true;
-        animationManager.HidePopUp();
+        animationManager.HideCardPick();
         yield return new WaitUntil(() => EventManager.animate == false);
         StartCoroutine(AddTasks(n));
         yield return new WaitUntil(() => EventManager.handleAddingTask == false);
-        animationManager.ShowPopUp();
-        yield return new WaitUntil(() => EventManager.animate == false);
         EventManager.action = false;
     }
     IEnumerator IncreaseDebt(int n){
@@ -586,8 +585,6 @@ public class GameManager : MonoBehaviour
         animationManager.HideCardPick();
         yield return new WaitUntil(() => EventManager.animate == false);
         animationManager.UpdateDebtScrollBar(this.debtSlider.value + n);
-        yield return new WaitUntil(() => EventManager.animate == false);
-        animationManager.ShowCardPick();
         yield return new WaitUntil(() => EventManager.animate == false);
         EventManager.action = false;
     }
@@ -604,8 +601,6 @@ public class GameManager : MonoBehaviour
         animationManager.HideCardPick();
         yield return new WaitUntil(() => EventManager.animate == false);
         animationManager.UpdateDebtScrollBar(Mathf.RoundToInt(this.debtSlider.value * n));
-        yield return new WaitUntil(() => EventManager.animate == false);
-        animationManager.ShowCardPick();
         yield return new WaitUntil(() => EventManager.animate == false);
         EventManager.action = false;
     }

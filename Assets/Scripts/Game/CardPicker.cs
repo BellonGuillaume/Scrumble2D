@@ -33,6 +33,7 @@ public class CardPicker : MonoBehaviour
         Debug.Log($"Card ${id} picked : {this.cards[id].ToString()}");
         this.cards[id].GetComponent<UICard>().RemoveVerso();
         this.choosenCard = this.cards[id];
+        animationManager.CenterCard(this.choosenCard);
 
         EventManager.cardsToPick--;
         if (EventManager.cardsToPick <= 0){
@@ -41,6 +42,16 @@ public class CardPicker : MonoBehaviour
                     go.GetComponent<UICard>().Disable();
                     // animationManager.RemoveCardUI(go);
                 }
+            }
+            RemoveUnflippedCards();
+        }
+    }
+
+    public void RemoveUnflippedCards(){
+        foreach(GameObject card in cards){
+            if(card.GetComponent<UICard>().card.flipped == false){
+                EventManager.cardToRemove++;
+                animationManager.RemoveCard(card);
             }
         }
     }

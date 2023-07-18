@@ -24,6 +24,15 @@ public class UICard : MonoBehaviour
     public CardPicker cardPicker;
     public int id;
     public static int count = 0;
+    public bool moved = false;
+    public Vector2 positionBeforeMove;
+    public Vector2 positionAfterMove;
+
+    void Update(){
+        if(moved){
+            this.transform.position = this.positionAfterMove;
+        }
+    }
 
     public void Fill(Card card, CardPicker cardPicker){
         this.card = card;
@@ -62,7 +71,6 @@ public class UICard : MonoBehaviour
     public void RemoveVerso(){
         this.verso.gameObject.SetActive(false);
         this.card.flipped = true;
-        this.transform.localScale = new Vector2(1.2f, 1.2f);
     }
 
     public void Disable(){
