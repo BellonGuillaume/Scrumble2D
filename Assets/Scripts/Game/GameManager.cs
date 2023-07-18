@@ -10,6 +10,7 @@ using UnityEngine.Localization.Tables;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] CardHandler cardHandler;
     [SerializeField] AnimationManager animationManager;
     [SerializeField] GameObject popUpGO;
     [SerializeField] GameObject sidePopUp;
@@ -29,17 +30,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Button taskValidation;
 
     Animator popUpAnimator;
-    List<Card> dailyCards;
-    List<Card> problemCards;
-    List<Card> reviewCards;
 
-    List<Card> remainingDailyCards;
-    List<Card> remainingProblemCards;
-    List<Card> remainingReviewCards;
-
-    List<Card> discardedDailyCards;
-    List<Card> discardedProblemCards;
-    List<Card> discardedReviewCards;
 
     Player currentPlayer;
     CardPicker cardPicker;
@@ -65,9 +56,9 @@ public class GameManager : MonoBehaviour
         table = LocalizationSettings.StringDatabase.GetTable("Game");
         this.popUpAnimator = popUpGO.GetComponent<Animator>();
         this.cardPicker = cardPick.GetComponent<CardPicker>();
-        CreateDailyCards();
-        CreateProblemCards();
-        CreateReviewCards();
+        this.cardHandler.CreateDailyCards();
+        this.cardHandler.CreateProblemCards();
+        this.cardHandler.CreateReviewCards();
         workingOn = new List<UserStory>();
         doingAUS = new List<GameObject>();
         StateManager.gameState = StateManager.GameState.BEGIN_GAME;
@@ -158,7 +149,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(() => EventManager.animate == false);
         if (n != 1){
             StateManager.gameState = StateManager.GameState.PICK_DAILY;
-            StartCoroutine(FirstPickDailyCard());
+            StartCoroutine(this.cardHandler.FirstPickDailyCard());
             yield return new WaitUntil(() => StateManager.gameState == StateManager.GameState.PLAYER_TURN);
             animationManager.ZoomOutPopUp(this.cardPick);
             this.popUpGO.SetActive(false);
@@ -188,7 +179,7 @@ public class GameManager : MonoBehaviour
             yield break;
         }
         Debug.Log($"Begin turn of {player.userName}");
-        this.currentPlayer = player;
+        StateManager.currentPlayer = player;
         animationManager.StartTurnAnimation(player);
         yield return new WaitUntil(() => EventManager.animate == false);
         StateManager.turnState = StateManager.TurnState.CHOICE;
@@ -295,7 +286,7 @@ public class GameManager : MonoBehaviour
             yield return new WaitUntil(() => EventManager.animate == false);
             StateManager.turnState = StateManager.TurnState.PROBLEM;
 
-            StartCoroutine(FirstPickProblemCard());
+            StartCoroutine(cardHandler.FirstPickProblemCard());
             yield return new WaitUntil(() => StateManager.turnState == StateManager.TurnState.RESULT);
 
             animationManager.ShowResults();
@@ -345,356 +336,6 @@ public class GameManager : MonoBehaviour
         StateManager.turnState = StateManager.TurnState.END_OF_TURN;
     }
     #endregion
-
-    #region --------------------------------- Initialisation ---------------------------------
-    void CreateDailyCards(){
-        string path = "";
-        if (StateManager.language == LocalizationSettings.AvailableLocales.GetLocale("en")){
-            path = Application.streamingAssetsPath + "/Cards/DailyCards_EN.json";
-        } else {
-            path = Application.streamingAssetsPath + "/Cards/DailyCards_FR.json";
-        }
-        string dailyCardsStr = File.ReadAllText(path);
-        this.dailyCards = JsonConvert.DeserializeObject<List<Card>>(dailyCardsStr);
-        this.discardedDailyCards = new List<Card>();
-        foreach (Card card in this.dailyCards){
-            Debug.Log(card.ToString());
-        }
-    }
-
-    void CreateProblemCards(){
-        string path = "";
-        if (StateManager.language == LocalizationSettings.AvailableLocales.GetLocale("en")){
-            path = Application.streamingAssetsPath + "/Cards/ProblemCards_EN.json";
-        } else {
-            path = Application.streamingAssetsPath + "/Cards/ProblemCards_FR.json";
-        }
-        string problemCardsStr = File.ReadAllText(path);
-        this.problemCards = JsonConvert.DeserializeObject<List<Card>>(problemCardsStr);
-        this.discardedProblemCards = new List<Card>();
-        foreach (Card card in this.problemCards){
-            Debug.Log(card.ToString());
-        }
-    }
-
-    void CreateReviewCards(){
-        string path = "";
-        if (StateManager.language == LocalizationSettings.AvailableLocales.GetLocale("en")){
-            path = Application.streamingAssetsPath + "/Cards/ReviewCards_EN.json";
-        } else {
-            path = Application.streamingAssetsPath + "/Cards/ReviewCards_FR.json";
-        }
-        string reviewCardsStr = File.ReadAllText(path);
-        this.reviewCards = JsonConvert.DeserializeObject<List<Card>>(reviewCardsStr);
-        this.discardedReviewCards = new List<Card>();
-        foreach (Card card in this.reviewCards){
-            Debug.Log(card.ToString());
-        }
-    }
-    #endregion
-
-    #region --------------------------------- Cards ---------------------------------
-    IEnumerator FirstPickDailyCard(){
-        EventManager.cardsToPick = 1;
-        for (int i = 0; i < 3; i++){
-            if (this.dailyCards.Count < 1){
-                this.dailyCards.AddRange(this.discardedDailyCards);
-                this.discardedDailyCards = new List<Card>();
-            }
-            int index = random.Next(0, this.dailyCards.Count);
-            Card choosenCard = this.dailyCards[index];
-            this.cardPicker.AddCart(choosenCard);
-            this.discardedDailyCards.Add(choosenCard);
-            this.dailyCards.Remove(choosenCard);
-        }
-        StartCoroutine(HandleCards());
-        yield return new WaitUntil(() => EventManager.handleCards == false);
-        StateManager.gameState = StateManager.GameState.PLAYER_TURN;
-    }
-
-    IEnumerator FirstPickProblemCard(){
-        yield return new WaitUntil(() => StateManager.turnState == StateManager.TurnState.PROBLEM);
-        EventManager.cardsToPick = 1;
-        for (int i = 0; i < 3; i++){
-            if (this.problemCards.Count <= 0){
-                this.problemCards.AddRange(this.discardedProblemCards);
-                this.discardedProblemCards = new List<Card>();
-            }
-            int index = random.Next(0, this.problemCards.Count);
-            Card choosenCard = this.problemCards[index];
-            this.cardPicker.AddCart(choosenCard);
-            this.discardedProblemCards.Add(choosenCard);
-            this.problemCards.Remove(choosenCard);
-        }
-        StartCoroutine(HandleCards());
-        yield return new WaitUntil(() => EventManager.handleCards == false);
-        StateManager.turnState = StateManager.TurnState.RESULT;
-    }
-
-    IEnumerator FirstPickReviewCard(){
-        EventManager.cardsToPick = 1;
-        for (int i = 0; i < 3; i++){
-            if (this.reviewCards.Count < 1){
-                this.reviewCards.AddRange(this.discardedReviewCards);
-                this.discardedReviewCards = new List<Card>();
-            }
-            int index = random.Next(0, this.reviewCards.Count);
-            Card choosenCard = this.reviewCards[index];
-            this.cardPicker.AddCart(choosenCard);
-            this.discardedReviewCards.Add(choosenCard);
-            this.reviewCards.Remove(choosenCard);
-        }
-        StartCoroutine(HandleCards());
-        yield return new WaitUntil(() => EventManager.handleCards == false);
-        StateManager.gameState = StateManager.GameState.RETROSPECTIVE;
-    }
-
-    IEnumerator HandleCards(){
-        EventManager.handleCards = true;
-        animationManager.ShowCardPick();
-        yield return new WaitUntil(() => EventManager.animate == false);
-        while (EventManager.cardsToPick > 0 || this.cardPicker.choosenCard != null){
-            yield return new WaitUntil(() => this.cardPicker.choosenCard != null);
-            yield return new WaitForSeconds(2);
-            Debug.Log($"Handle Card : {this.cardPicker.choosenCard.GetComponent<UICard>().card.ToString()}");
-            EventManager.handleSingleCard = true;
-            StartCoroutine(HandleSingleCard(this.cardPicker.choosenCard.GetComponent<UICard>().card));
-            yield return new WaitUntil(() => EventManager.handleSingleCard == false);
-            this.cardPicker.choosenCard = null;
-        }
-        this.cardPicker.Reset();
-        EventManager.handleCards = false;
-    }
-    
-    IEnumerator HandleSingleCard(Card card){
-        switch (card.typeOfCard){
-            case Card.TypeOfCard.Simple :
-                EventManager.handleSimpleAction = true;
-                StartCoroutine(HandleSimpleAction(card.firstAction, card.firstValue));
-                yield return new WaitUntil(() => EventManager.handleSimpleAction == false);
-                break;
-            case Card.TypeOfCard.Multiple :
-                EventManager.handleMultipleActions = true;
-                StartCoroutine(HandleMultipleActions(card.firstAction, card.firstValue, card.secondAction, card.secondValue));
-                yield return new WaitUntil(() => EventManager.handleMultipleActions == false);
-                break;
-            default :
-                break;
-        }
-        if (EventManager.cardsToPick != 0){
-            animationManager.ShowCardPick();
-            yield return new WaitUntil(() => EventManager.animate == false);
-        }
-        EventManager.handleSingleCard = false;
-        yield break;
-    }
-
-    #region - - - - - - - - - - - - - - - - - Handle CardType - - - - - - - - - - - - - - - - -
-    IEnumerator HandleSimpleAction(Card.Action action, float value){
-        EventManager.action = true;
-        switch (action){
-            case Card.Action.IncreaseTask :
-                StartCoroutine(IncreaseTask((int) value));
-                break;
-            case Card.Action.DecreaseTask :
-                StartCoroutine(IncreaseTask((int) -value));
-                break;
-            case Card.Action.IncreaseDebt :
-                StartCoroutine(IncreaseDebt((int) value));
-                break;
-            case Card.Action.DecreaseDebt :
-                StartCoroutine(IncreaseDebt((int) -value));
-                break;
-            case Card.Action.IncreaseTaskPerPlayer :
-                StartCoroutine(IncreaseTask(((int) value) * (StateManager.players.Count + 2)));
-                break;
-            case Card.Action.IncreaseDebtPerPlayer :
-                StartCoroutine(IncreaseDebt(((int) value) * (StateManager.players.Count + 2)));
-                break;
-            case Card.Action.DecreaseTaskPerPlayer :
-                StartCoroutine(IncreaseTask(((int) -value) * (StateManager.players.Count + 2)));
-                break;
-            case Card.Action.DecreaseDebtPerPlayer :
-                StartCoroutine(IncreaseDebt(((int) -value) * (StateManager.players.Count + 2)));
-                break;
-            case Card.Action.IncreaseTaskPerDevelopper :
-                StartCoroutine(IncreaseTask(((int) value) * (StateManager.players.Count)));
-                break;
-            case Card.Action.IncreaseDebtPerDevelopper :
-                StartCoroutine(IncreaseDebt(((int) value) * (StateManager.players.Count)));
-                break;
-            case Card.Action.DecreaseTaskPerDevelopper :
-                StartCoroutine(IncreaseTask(((int) -value) * (StateManager.players.Count)));
-                break;
-            case Card.Action.DecreaseDebtPerDevelopper :
-                StartCoroutine(IncreaseDebt(((int) -value) * (StateManager.players.Count)));
-                break;
-            case Card.Action.MultiplieDebt :
-                StartCoroutine(MultiplieDebt(value));
-                break;
-            case Card.Action.DecreaseTaskPerCurrentDebt :
-                StartCoroutine(DecreaseTaskPerCurrentDebt());
-                break;
-            case Card.Action.CurrentPlayerPassATurn :
-                StartCoroutine(CurrentPlayerPassATurn((int) value));
-                break;
-            case Card.Action.NextPlayerPassATurn :
-                StartCoroutine(NextPlayerPassATurn((int) value));
-                break;
-            case Card.Action.AllPlayersPassATurn :
-                StartCoroutine(AllPlayersPassATurn((int) value));
-                break;
-            case Card.Action.PickDailycards :
-                StartCoroutine(PickDailycards((int) value));
-                break;
-            case Card.Action.PickProblemCards :
-                StartCoroutine(PickProblemCards((int)value));
-                break;
-            case Card.Action.PickReviewCards :
-                StartCoroutine(PickReviewCards((int) value));
-                break;
-            default :
-                EventManager.action = false;
-                break;
-        }
-        yield return new WaitUntil(() => EventManager.action == false);
-        EventManager.handleSimpleAction = false;
-    }
-    IEnumerator HandleMultipleActions(Card.Action firstAction, float firstValue, Card.Action secondAction, float secondValue){
-        EventManager.handleSimpleAction = true;
-        StartCoroutine(HandleSimpleAction(firstAction, firstValue));
-        yield return new WaitUntil(() => EventManager.handleSimpleAction == false);
-        EventManager.handleSimpleAction = true;
-        StartCoroutine(HandleSimpleAction(secondAction, secondValue));
-        yield return new WaitUntil(() => EventManager.handleSimpleAction == false);
-        EventManager.handleMultipleActions = false;
-    }
-    #endregion
-    #region - - - - - - - - - - - - - - - - - Card Actions - - - - - - - - - - - - - - - - -
-    IEnumerator IncreaseTask(int n){
-        yield return new WaitUntil(() => EventManager.action == true);
-        EventManager.handleAddingTask = true;
-        animationManager.HideCardPick();
-        yield return new WaitUntil(() => EventManager.animate == false);
-        StartCoroutine(AddTasks(n));
-        yield return new WaitUntil(() => EventManager.handleAddingTask == false);
-        EventManager.action = false;
-    }
-    IEnumerator IncreaseDebt(int n){
-        yield return new WaitUntil(() => EventManager.action == true);
-        animationManager.HideCardPick();
-        yield return new WaitUntil(() => EventManager.animate == false);
-        animationManager.UpdateDebtScrollBar(this.debtSlider.value + n);
-        yield return new WaitUntil(() => EventManager.animate == false);
-        EventManager.action = false;
-    }
-    IEnumerator IncreaseTaskPerPlayer(int n){
-        yield return new WaitUntil(() => EventManager.action == true);
-        EventManager.action = false;
-    }
-    IEnumerator DecreaseTaskPerPlayer(int n){
-        yield return new WaitUntil(() => EventManager.action == true);
-        EventManager.action = false;
-    }
-    IEnumerator MultiplieDebt(float n){
-        yield return new WaitUntil(() => EventManager.action == true);
-        animationManager.HideCardPick();
-        yield return new WaitUntil(() => EventManager.animate == false);
-        animationManager.UpdateDebtScrollBar(Mathf.RoundToInt(this.debtSlider.value * n));
-        yield return new WaitUntil(() => EventManager.animate == false);
-        EventManager.action = false;
-    }
-    IEnumerator DecreaseTaskPerCurrentDebt(){
-        yield return new WaitUntil(() => EventManager.action == true);
-        EventManager.action = false;
-        yield break;
-    }
-    IEnumerator CurrentPlayerPassATurn(int n){
-        yield return new WaitUntil(() => EventManager.action == true);
-        StateManager.players[currentPlayer.playerNumber-1].turnToPass = n;
-        EventManager.action = false;
-        yield break;
-    }
-    IEnumerator NextPlayerPassATurn(int n){
-        yield return new WaitUntil(() => EventManager.action == true);
-        StateManager.players[currentPlayer.nextPlayerNumber-1].turnToPass = n;
-        EventManager.action = false;
-        yield break;
-    }
-    IEnumerator AllPlayersPassATurn(int n){
-        yield return new WaitUntil(() => EventManager.action == true);
-        foreach (Player player in StateManager.players){
-            player.turnToPass = n;
-        }
-        EventManager.action = false;
-        yield break;
-    }
-    IEnumerator PickProblemCards(int n){
-        yield return new WaitUntil(() => EventManager.action == true);
-        EventManager.cardsToPick += n;
-        // animate updeck
-        yield return new WaitUntil(() => EventManager.animate == false);
-        for (int i = 0; i < n; i++){
-            if (this.problemCards.Count < 1){
-                this.problemCards.AddRange(this.discardedProblemCards);
-                this.discardedProblemCards = new List<Card>();
-            }
-            int index = random.Next(0, this.problemCards.Count);
-            Card choosenCard = this.problemCards[index];
-            this.cardPicker.AddCart(choosenCard);
-            yield return new WaitUntil(() => EventManager.animate == false);
-            this.discardedProblemCards.Add(choosenCard);
-            this.problemCards.Remove(choosenCard);
-        }
-        // animate downdeck
-        yield return new WaitUntil(() => EventManager.animate == false);
-        EventManager.action = false;
-    }
-    IEnumerator PickDailycards(int n){
-        yield return new WaitUntil(() => EventManager.action == true);
-        EventManager.cardsToPick += n;
-        // animate updeck
-        yield return new WaitUntil(() => EventManager.animate == false);
-        for (int i = 0; i < n; i++){
-            if (this.dailyCards.Count < 1){
-                this.dailyCards.AddRange(this.discardedDailyCards);
-                this.discardedDailyCards = new List<Card>();
-            }
-            int index = random.Next(0, this.dailyCards.Count);
-            Card choosenCard = this.dailyCards[index];
-            this.cardPicker.AddCart(choosenCard);
-            yield return new WaitUntil(() => EventManager.animate == false);
-            this.discardedDailyCards.Add(choosenCard);
-            this.dailyCards.Remove(choosenCard);
-        }
-        // animate downdeck
-        yield return new WaitUntil(() => EventManager.animate == false);
-        EventManager.action = false;
-    }
-    IEnumerator PickReviewCards(int n){
-        yield return new WaitUntil(() => EventManager.action == true);
-        EventManager.cardsToPick += n;
-        // animate updeck
-        yield return new WaitUntil(() => EventManager.animate == false);
-        for (int i = 0; i < n; i++){
-            if (this.reviewCards.Count < 1){
-                this.reviewCards.AddRange(this.discardedReviewCards);
-                this.discardedReviewCards = new List<Card>();
-            }
-            int index = random.Next(0, this.reviewCards.Count);
-            Card choosenCard = this.reviewCards[index];
-            this.cardPicker.AddCart(choosenCard);
-            yield return new WaitUntil(() => EventManager.animate == false);
-            this.discardedReviewCards.Add(choosenCard);
-            this.reviewCards.Remove(choosenCard);
-        }
-        // animate downdeck
-        yield return new WaitUntil(() => EventManager.animate == false);
-        EventManager.action = false;
-    }
-    #endregion
-    #endregion
-    
     #region --------------------------------- Utils ---------------------------------
         void ClearTurn(){
         Debug.Log("Begin the clear");
@@ -716,7 +357,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("-STATE_MANAGER INITIALIZED");
     }
 
-    IEnumerator AddTasks(int n){
+    public IEnumerator AddTasks(int n){
         this.taskValidation.gameObject.SetActive(true);
         EventManager.taskToAdd = n;
         EventManager.taskAdded = false;
