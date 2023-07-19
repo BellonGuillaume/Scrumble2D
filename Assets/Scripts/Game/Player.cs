@@ -9,6 +9,8 @@ public class Player
     public int nextPlayerNumber;
     public string taskOrDebt;
     public int turnToPass;
+    public bool twoMoreTasksPerRoll;
+    public bool decreaseDebtPerTurn;
 
     public Player(string userName, int playerNumber, int nextPlayerNumber)
     {
@@ -16,6 +18,8 @@ public class Player
         this.playerNumber = playerNumber;
         this.nextPlayerNumber = nextPlayerNumber;
         this.turnToPass = 0;
+        this.twoMoreTasksPerRoll = false;
+        this.decreaseDebtPerTurn = false;
     }
 
     public override string ToString()

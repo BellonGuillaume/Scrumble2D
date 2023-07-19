@@ -25,10 +25,16 @@ public class StateManager : MonoBehaviour
     public static List<Player> players;
     public static bool pokerPlanning;
     public static GameState gameState;
-
     public enum GameState{
         MENU, POKER_PLANNING, CUSTOM_POKER_PLANNING, INITIALISATION, BEGIN_GAME, TDTD, BEGIN_DAY, PICK_DAILY, PLAYER_TURN, END_OF_DAY, REVIEW, RETROSPECTIVE, END_OF_SPRINT,
     }
+    
+    public static bool jinxed = false;
+    public static bool noMoreTestIssues = false;
+    public static bool maxUserStoryLowered = false;
+    public static bool oneMoreTaskPerRoll = false;
+    public static bool tasksOnBeginSprint = false;
+    public static bool oneTaskPerDay = false;
     #endregion
     #region Turn State
     public enum TurnState{

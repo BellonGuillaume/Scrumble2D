@@ -22,4 +22,9 @@ public class EventManager : MonoBehaviour
     public static bool taskAdded = true;
     public static int taskToAdd = 0;
     public static int cardToRemove = 0;
+    public static bool okPressed = false;
+    public static bool choiceOnePressed = false;
+    public static bool choiceTwoPressed = false;
+    public static bool acceptPressed = false;
+    public static bool declinePressed = false;
 }

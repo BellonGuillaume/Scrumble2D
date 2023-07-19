@@ -86,6 +86,12 @@ public class GameManager : MonoBehaviour
         StateManager.currentDay = 0;
         StartCoroutine(ChooseToDoToDoing());
         yield return new WaitUntil(() => StateManager.gameState == StateManager.GameState.BEGIN_DAY);
+        if(StateManager.tasksOnBeginSprint == true){
+            // Show Permanent Card
+            EventManager.handleAddingTask = true;
+            StartCoroutine(AddTasks(5));
+            yield return new WaitUntil(() => EventManager.handleAddingTask == false);
+        }
         for (int j = 1; j <= 9; j++){
             StateManager.gameState = StateManager.GameState.BEGIN_DAY;
             StateManager.currentDay = j;
@@ -147,8 +153,15 @@ public class GameManager : MonoBehaviour
         Debug.Log($"BEGIN Day {n}");
         animationManager.StartDayAnimation(n);
         yield return new WaitUntil(() => EventManager.animate == false);
+        if (StateManager.oneTaskPerDay == true){
+            // Show permanent card
+            EventManager.handleAddingTask = true;
+            StartCoroutine(AddTasks(1));
+            yield return new WaitUntil(() => EventManager.handleAddingTask == false);
+        }
         if (n != 1){
             StateManager.gameState = StateManager.GameState.PICK_DAILY;
+            // TODO : Choose a random player to draw the card
             StartCoroutine(this.cardHandler.FirstPickDailyCard());
             yield return new WaitUntil(() => StateManager.gameState == StateManager.GameState.PLAYER_TURN);
             animationManager.ZoomOutPopUp(this.cardPick);
@@ -189,7 +202,6 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(() => StateManager.turnState == StateManager.TurnState.RESULT);
         StartCoroutine(StartShowResult());
     }
-
     IEnumerator StartChoiceTaskDebt(){
         yield return new WaitUntil(() => StateManager.turnState == StateManager.TurnState.CHOICE);
         Debug.Log("STARTING CHOICE");
@@ -276,7 +288,8 @@ public class GameManager : MonoBehaviour
         Debug.Log("-SHOWING RESULTS");
         animationManager.ZoomInPopUp(this.results);
         yield return new WaitUntil(() => EventManager.animate == false);
-        if (StateManager.firstDiceResult == 6 || StateManager.secondDiceResult == 6 || true) {
+        bool jinx =  StateManager.jinxed && (StateManager.firstDiceResult == 5 || StateManager.secondDiceResult == 5);
+        if (StateManager.firstDiceResult == 6 || StateManager.secondDiceResult == 6 || jinx || true) {
             // animationManager.ProblemAnimation();
             // yield return new WaitUntil(() => EventManager.animate == false);
             animationManager.ShowInfo(table.GetEntry("ProblemCard").GetLocalizedString());
@@ -331,6 +344,29 @@ public class GameManager : MonoBehaviour
             EventManager.handleAddingTask = true;
             StartCoroutine(AddTasks(taskCounter));
             yield return new WaitUntil(() => EventManager.handleAddingTask == false);
+        }
+        if (StateManager.oneMoreTaskPerRoll == true){
+            // Show permanent card
+            int bonusTasks = 1;
+            if(StateManager.alreadyReRoll)
+                bonusTasks++;
+            EventManager.handleAddingTask = true;
+            StartCoroutine(AddTasks(bonusTasks));
+            yield return new WaitUntil(() => EventManager.handleAddingTask == false);
+        }
+        if (StateManager.currentPlayer.twoMoreTasksPerRoll == true){
+            // Show permanent card
+            int bonusTasks = 1;
+            if(StateManager.alreadyReRoll)
+                bonusTasks++;
+            EventManager.handleAddingTask = true;
+            StartCoroutine(AddTasks(bonusTasks * 2));
+            yield return new WaitUntil(() => EventManager.handleAddingTask == false);
+        }
+        if (StateManager.currentPlayer.decreaseDebtPerTurn == true){
+            // Show permanent card
+            animationManager.UpdateDebtScrollBar(this.debtSlider.value - 1);
+            yield return new WaitUntil(() => EventManager.animate == false);
         }
         yield return new WaitForSeconds(2);
         StateManager.turnState = StateManager.TurnState.END_OF_TURN;
@@ -413,7 +449,6 @@ public class GameManager : MonoBehaviour
                 }
                 
             }
-            Debug.Log($"Remaining task to add and reasons to continue : {EventManager.taskToAdd.ToString()}, {reasonsToContinue.ToString()}");
             if (EventManager.taskToAdd == 0 || reasonsToContinue <= 0){
                     this.taskValidation.interactable = true;
                 } else {

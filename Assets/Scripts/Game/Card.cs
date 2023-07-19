@@ -138,8 +138,9 @@ public class Card
     public Permanent permanent;
     public int questionId;
     public bool positive;
+    public bool test;
 
-    public Card(int id, CategoryOfCard category, string description, string result, TypeOfCard typeOfCard, Action firstAction = Action.None, float firstValue = 0f, Action secondAction = Action.None, float secondValue = 0f, Action thirdAction = Action.None, float thirdValue = 0f, Permanent permanent = Permanent.None, int questionId = 0, bool positive = false)
+    public Card(int id, CategoryOfCard category, string description, string result, TypeOfCard typeOfCard, Action firstAction = Action.None, float firstValue = 0f, Action secondAction = Action.None, float secondValue = 0f, Action thirdAction = Action.None, float thirdValue = 0f, Permanent permanent = Permanent.None, int questionId = 0, bool positive = false, bool test = false)
     {
         this.id = id;
         this.category = category;
@@ -156,6 +157,7 @@ public class Card
         this.permanent = permanent;
         this.questionId = questionId;
         this.positive = positive;
+        this.test = test;
     }
 
     public override string ToString()

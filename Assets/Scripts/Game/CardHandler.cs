@@ -14,25 +14,29 @@ public class CardHandler : MonoBehaviour
     List<Card> problemCards;
     List<Card> reviewCards;
 
-    List<Card> remainingDailyCards;
-    List<Card> remainingProblemCards;
-    List<Card> remainingReviewCards;
+    List<Card> remainingDailyCards = new List<Card>();
+    List<Card> remainingProblemCards = new List<Card>();
+    List<Card> remainingReviewCards = new List<Card>();
 
     List<Card> discardedDailyCards;
     List<Card> discardedProblemCards;
     List<Card> discardedReviewCards;
 
-    List<Card> pickedCards;
+    List<Card> pickedCards = new List<Card>();
 
     [SerializeField] CardPicker cardPicker;
     [SerializeField] AnimationManager animationManager;
     [SerializeField] Slider debtSlider;
+    [SerializeField] Button okButton;
+    [SerializeField] Button choiceOneButton;
+    [SerializeField] Button choiceTwoButton;
+    [SerializeField] Button acceptButton;
+    [SerializeField] Button declineButton;
 
     private System.Random random;
 
     void Start(){
         this.random = new System.Random();
-        this.pickedCards = new List<Card>();
     }
 
     IEnumerator HandleCards(){
@@ -52,44 +56,50 @@ public class CardHandler : MonoBehaviour
     }
     
     IEnumerator HandleSingleCard(Card card){
-        switch (card.typeOfCard){
-            case Card.TypeOfCard.Simple :
-                EventManager.handleSimpleAction = true;
-                StartCoroutine(HandleSimpleAction(card.firstAction, card.firstValue));
-                yield return new WaitUntil(() => EventManager.handleSimpleAction == false);
-                break;
-            case Card.TypeOfCard.Multiple :
-                EventManager.handleMultipleActions = true;
-                StartCoroutine(HandleMultipleActions(card.firstAction, card.firstValue, card.secondAction, card.secondValue));
-                yield return new WaitUntil(() => EventManager.handleMultipleActions == false);
-                break;
-            case Card.TypeOfCard.Proposition :
-                EventManager.handlePropositionAction = true;
-                StartCoroutine(HandlePropositionAction(card.firstAction, card.firstValue, card.secondAction, card.secondValue, card.thirdAction, card.thirdValue));
-                yield return new WaitUntil(() => EventManager.handlePropositionAction == false);
-                break;
-            case Card.TypeOfCard.Information :
-                EventManager.handleInformationAction = true;
-                StartCoroutine(HandleInformationAction());
-                yield return new WaitUntil(() => EventManager.handleInformationAction == false);
-                break;
-            case Card.TypeOfCard.Choice :
-                EventManager.handleChoiceActions = true;
-                StartCoroutine(HandleChoiceActions(card.firstAction, card.firstValue, card.secondAction, card.secondValue));
-                yield return new WaitUntil(() => EventManager.handleChoiceActions == false);
-                break;
-            case Card.TypeOfCard.Question :
-                EventManager.handleQuestionActions = true;
-                StartCoroutine(HandleQuestionActions(card.questionId));
-                yield return new WaitUntil(() => EventManager.handleQuestionActions == false);
-                break;
-            case Card.TypeOfCard.Permanent :
-                EventManager.handlePermanentAction = true;
-                StartCoroutine(HandlePermanentAction(card.permanent));
-                yield return new WaitUntil(() => EventManager.handlePermanentAction == false);
-                break;
-            default :
-                break;
+        if(StateManager.noMoreTestIssues == true && card.test == true){
+            // montrer la carte permanente
+            // ne rien faire
+
+        } else {
+            switch (card.typeOfCard){
+                case Card.TypeOfCard.Simple :
+                    EventManager.handleSimpleAction = true;
+                    StartCoroutine(HandleSimpleAction(card.firstAction, card.firstValue));
+                    yield return new WaitUntil(() => EventManager.handleSimpleAction == false);
+                    break;
+                case Card.TypeOfCard.Multiple :
+                    EventManager.handleMultipleActions = true;
+                    StartCoroutine(HandleMultipleActions(card.firstAction, card.firstValue, card.secondAction, card.secondValue));
+                    yield return new WaitUntil(() => EventManager.handleMultipleActions == false);
+                    break;
+                case Card.TypeOfCard.Proposition :
+                    EventManager.handlePropositionAction = true;
+                    StartCoroutine(HandlePropositionAction(card.firstAction, card.firstValue, card.secondAction, card.secondValue, card.thirdAction, card.thirdValue));
+                    yield return new WaitUntil(() => EventManager.handlePropositionAction == false);
+                    break;
+                case Card.TypeOfCard.Information :
+                    EventManager.handleInformationAction = true;
+                    StartCoroutine(HandleInformationAction());
+                    yield return new WaitUntil(() => EventManager.handleInformationAction == false);
+                    break;
+                case Card.TypeOfCard.Choice :
+                    EventManager.handleChoiceActions = true;
+                    StartCoroutine(HandleChoiceActions(card.firstAction, card.firstValue, card.secondAction, card.secondValue));
+                    yield return new WaitUntil(() => EventManager.handleChoiceActions == false);
+                    break;
+                case Card.TypeOfCard.Question :
+                    EventManager.handleQuestionActions = true;
+                    StartCoroutine(HandleQuestionActions(card.questionId));
+                    yield return new WaitUntil(() => EventManager.handleQuestionActions == false);
+                    break;
+                case Card.TypeOfCard.Permanent :
+                    EventManager.handlePermanentAction = true;
+                    StartCoroutine(HandlePermanentAction(card.permanent));
+                    yield return new WaitUntil(() => EventManager.handlePermanentAction == false);
+                    break;
+                default :
+                    break;
+            }
         }
         if (EventManager.cardsToPick != 0){
             animationManager.ShowCardPick();
@@ -101,8 +111,7 @@ public class CardHandler : MonoBehaviour
 
     #region ###### Cards functions ######
     #region - - - - - - - - - - - - - - - - - Handle CardType - - - - - - - - - - - - - - - - -
-    IEnumerator HandleSimpleAction(Card.Action action, float value){
-        EventManager.action = true;
+    IEnumerator HandleAtomicAction(Card.Action action, float value){
         switch (action){
             case Card.Action.IncreaseTask :
                 StartCoroutine(IncreaseTask((int) value));
@@ -204,49 +213,79 @@ public class CardHandler : MonoBehaviour
         yield return new WaitUntil(() => EventManager.action == false);
         EventManager.handleSimpleAction = false;
     }
+    IEnumerator HandleSimpleAction(Card.Action action, float value){
+        this.okButton.gameObject.SetActive(true);
+        yield return new WaitUntil(() => EventManager.okPressed == true);
+        EventManager.okPressed = false;
+        this.okButton.gameObject.SetActive(false);
+        EventManager.action = true;
+        StartCoroutine(HandleAtomicAction(action, value));
+        yield return new WaitUntil(() => EventManager.action == false);
+        EventManager.handleSimpleAction = false;
+    }
     IEnumerator HandleMultipleActions(Card.Action firstAction, float firstValue, Card.Action secondAction, float secondValue){
-        EventManager.handleSimpleAction = true;
-        StartCoroutine(HandleSimpleAction(firstAction, firstValue));
-        yield return new WaitUntil(() => EventManager.handleSimpleAction == false);
-        EventManager.handleSimpleAction = true;
-        StartCoroutine(HandleSimpleAction(secondAction, secondValue));
-        yield return new WaitUntil(() => EventManager.handleSimpleAction == false);
+        this.okButton.gameObject.SetActive(true);
+        yield return new WaitUntil(() => EventManager.okPressed == true);
+        EventManager.okPressed = false;
+        this.okButton.gameObject.SetActive(false);
+        EventManager.action = true;
+        StartCoroutine(HandleAtomicAction(firstAction, firstValue));
+        yield return new WaitUntil(() => EventManager.action == false);
+        EventManager.action = true;
+        StartCoroutine(HandleAtomicAction(secondAction, secondValue));
+        yield return new WaitUntil(() => EventManager.action == false);
         EventManager.handleMultipleActions = false;
     }
     IEnumerator HandlePropositionAction(Card.Action firstAction, float firstValue, Card.Action secondAction, float secondValue, Card.Action thirdAction, float thirdValue){
-        // Show buttons accept / decline
-        // Wait until accept or decline
-        // if accepted
-        EventManager.handleSimpleAction = true;
-        StartCoroutine(HandleSimpleAction(firstAction, firstValue));
-        yield return new WaitUntil(() => EventManager.handleSimpleAction == false);
-        EventManager.handleSimpleAction = true;
-        StartCoroutine(HandleSimpleAction(secondAction, secondValue));
-        yield return new WaitUntil(() => EventManager.handleSimpleAction == false);
-        EventManager.handleSimpleAction = true;
-        StartCoroutine(HandleSimpleAction(thirdAction, thirdValue));
-        yield return new WaitUntil(() => EventManager.handleSimpleAction == false);
+        this.acceptButton.gameObject.SetActive(true);
+        this.declineButton.gameObject.SetActive(true);
+        yield return new WaitUntil(() => EventManager.acceptPressed == true || EventManager.declinePressed == true);
+        bool accept = EventManager.acceptPressed;
+        EventManager.acceptPressed = false;
+        EventManager.declinePressed = false;
+        this.acceptButton.gameObject.SetActive(false);
+        this.declineButton.gameObject.SetActive(false);
+        if(accept){
+            EventManager.action = true;
+            StartCoroutine(HandleAtomicAction(firstAction, firstValue));
+            yield return new WaitUntil(() => EventManager.action == false);
+            EventManager.action = true;
+            StartCoroutine(HandleAtomicAction(secondAction, secondValue));
+            yield return new WaitUntil(() => EventManager.action == false);
+            EventManager.action = true;
+            StartCoroutine(HandleAtomicAction(thirdAction, thirdValue));
+            yield return new WaitUntil(() => EventManager.action == false);
+        }
         EventManager.handlePropositionAction = false;
-        // else
-        // do nothing
     }
     IEnumerator HandleInformationAction(){
+        this.okButton.gameObject.SetActive(true);
+        yield return new WaitUntil(() => EventManager.okPressed == true);
+        EventManager.okPressed = false;
+        this.okButton.gameObject.SetActive(false);
         // Do nothing
         EventManager.handleInformationAction = false;
         yield break;
     }
     IEnumerator HandleChoiceActions(Card.Action firstAction, float firstValue, Card.Action secondAction, float secondValue){
-        // Show Buttons choice 1 / choice 2
-        // Wait until choice 1 or choice 2
-        // if choice 1
-        EventManager.handleSimpleAction = true;
-        StartCoroutine(HandleSimpleAction(firstAction, firstValue));
-        yield return new WaitUntil(() => EventManager.handleSimpleAction == false);
-        // if choice 2
-        EventManager.handleSimpleAction = true;
-        StartCoroutine(HandleSimpleAction(secondAction, secondValue));
-        yield return new WaitUntil(() => EventManager.handleSimpleAction == false);
-        //
+        this.choiceOneButton.gameObject.SetActive(true);
+        this.choiceTwoButton.gameObject.SetActive(true);
+        yield return new WaitUntil(() => EventManager.choiceOnePressed == true || EventManager.choiceTwoPressed == true);
+        bool choiceOne = EventManager.choiceOnePressed;
+        EventManager.choiceOnePressed = false;
+        EventManager.choiceTwoPressed = false;
+        this.choiceOneButton.gameObject.SetActive(false);
+        this.choiceTwoButton.gameObject.SetActive(false);
+        if(choiceOne){
+            EventManager.action = true;
+            StartCoroutine(HandleAtomicAction(firstAction, firstValue));
+            yield return new WaitUntil(() => EventManager.action == false);
+        }
+        else{
+            EventManager.action = true;
+            StartCoroutine(HandleAtomicAction(secondAction, secondValue));
+            yield return new WaitUntil(() => EventManager.action == false);
+        }
         EventManager.handleChoiceActions = false;
     }
     IEnumerator HandleQuestionActions(int questionId){
@@ -258,8 +297,101 @@ public class CardHandler : MonoBehaviour
         yield break;
     }
     IEnumerator HandlePermanentAction(Card.Permanent permanent){
-        // En fonction du permanent
-        // Effectuer son action
+        switch (permanent){
+            case Card.Permanent.Jinx : {
+                this.okButton.gameObject.SetActive(true);
+                yield return new WaitUntil(() => EventManager.okPressed == true);
+                EventManager.okPressed = false;
+                this.okButton.gameObject.SetActive(false);
+                StateManager.jinxed = true;
+                break;
+            }
+            case Card.Permanent.NoMoreTestIssues : {
+                this.okButton.gameObject.SetActive(true);
+                yield return new WaitUntil(() => EventManager.okPressed == true);
+                EventManager.okPressed = false;
+                this.okButton.gameObject.SetActive(false);
+                StateManager.noMoreTestIssues = true;
+                break;
+            }
+            case Card.Permanent.OneMoreTaskPerRoll : {
+                this.acceptButton.gameObject.SetActive(true);
+                this.declineButton.gameObject.SetActive(true);
+                yield return new WaitUntil(() => EventManager.acceptPressed == true || EventManager.declinePressed == true);
+                bool accept = EventManager.acceptPressed;
+                EventManager.acceptPressed = false;
+                EventManager.declinePressed = false;
+                this.acceptButton.gameObject.SetActive(false);
+                this.declineButton.gameObject.SetActive(false);
+                if(accept){
+                    EventManager.action = true;
+                    StartCoroutine(HandleAtomicAction(Card.Action.CurrentPlayerPassATurn, 4));
+                    yield return new WaitUntil(() => EventManager.action == false);
+                    StateManager.oneMoreTaskPerRoll = true;
+                }
+                break;
+            }
+            case Card.Permanent.TasksOnBeginSprint : {
+                this.okButton.gameObject.SetActive(true);
+                yield return new WaitUntil(() => EventManager.okPressed == true);
+                EventManager.okPressed = false;
+                this.okButton.gameObject.SetActive(false);
+                StateManager.tasksOnBeginSprint = true;
+                break;
+            }
+            case Card.Permanent.TwoMoreTasksPerRoll : {
+                this.acceptButton.gameObject.SetActive(true);
+                this.declineButton.gameObject.SetActive(true);
+                yield return new WaitUntil(() => EventManager.acceptPressed == true || EventManager.declinePressed == true);
+                bool accept = EventManager.acceptPressed;
+                EventManager.acceptPressed = false;
+                EventManager.declinePressed = false;
+                this.acceptButton.gameObject.SetActive(false);
+                this.declineButton.gameObject.SetActive(false);
+                if(accept){
+                    EventManager.action = true;
+                    StartCoroutine(HandleAtomicAction(Card.Action.CurrentPlayerPassATurn, 5));
+                    yield return new WaitUntil(() => EventManager.action == false);
+                    StateManager.currentPlayer.twoMoreTasksPerRoll = true;
+                }
+                break;
+            }
+            case Card.Permanent.MaxUserStoriesLowered : { // TODO : handle la carte
+                this.okButton.gameObject.SetActive(true);
+                yield return new WaitUntil(() => EventManager.okPressed == true);
+                EventManager.okPressed = false;
+                this.okButton.gameObject.SetActive(false);
+                StateManager.maxUserStoryLowered = true;
+                break;
+            }
+            case Card.Permanent.DecreaseDebtPerTurn : {
+                this.acceptButton.gameObject.SetActive(true);
+                this.declineButton.gameObject.SetActive(true);
+                yield return new WaitUntil(() => EventManager.acceptPressed == true || EventManager.declinePressed == true);
+                bool accept = EventManager.acceptPressed;
+                EventManager.acceptPressed = false;
+                EventManager.declinePressed = false;
+                this.acceptButton.gameObject.SetActive(false);
+                this.declineButton.gameObject.SetActive(false);
+                if(accept){
+                    EventManager.action = true;
+                    StartCoroutine(HandleAtomicAction(Card.Action.CurrentPlayerPassATurn, 3));
+                    yield return new WaitUntil(() => EventManager.action == false);
+                    StateManager.currentPlayer.decreaseDebtPerTurn = true;
+                }
+                break;
+            }
+            case Card.Permanent.OneTaskPerDay : {
+                this.okButton.gameObject.SetActive(true);
+                yield return new WaitUntil(() => EventManager.okPressed == true);
+                EventManager.okPressed = false;
+                this.okButton.gameObject.SetActive(false);
+                StateManager.oneTaskPerDay = true;
+                break;
+            }
+            default :
+                break;
+        }
         EventManager.handlePermanentAction = false;
         yield break;
     }
@@ -497,6 +629,23 @@ public class CardHandler : MonoBehaviour
         foreach (Card card in this.reviewCards){
             Debug.Log(card.ToString());
         }
+    }
+    #endregion
+    #region ###### Clickables ######
+    public void OnOkClick(){
+        EventManager.okPressed = true;
+    }
+    public void OnChoiceOneClick(){
+        EventManager.choiceOnePressed = true;
+    }
+    public void OnChoiceTwoClick(){
+        EventManager.choiceTwoPressed = true;
+    }
+    public void OnAcceptClick(){
+        EventManager.acceptPressed = true;
+    }
+    public void OnDeclineClick(){
+        EventManager.declinePressed = true;
     }
     #endregion
 }
