@@ -35,6 +35,7 @@ public class StateManager : MonoBehaviour
     public static bool oneMoreTaskPerRoll = false;
     public static bool tasksOnBeginSprint = false;
     public static bool oneTaskPerDay = false;
+    public static int skipProblemOrDoubleDaily = 0;
     #endregion
     #region Turn State
     public enum TurnState{

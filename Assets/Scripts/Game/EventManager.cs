@@ -27,4 +27,5 @@ public class EventManager : MonoBehaviour
     public static bool choiceTwoPressed = false;
     public static bool acceptPressed = false;
     public static bool declinePressed = false;
+    public static bool rolled = false;
 }

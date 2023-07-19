@@ -32,6 +32,7 @@ public class CardHandler : MonoBehaviour
     [SerializeField] Button choiceTwoButton;
     [SerializeField] Button acceptButton;
     [SerializeField] Button declineButton;
+    [SerializeField] UIDice uiDice;
 
     private System.Random random;
 
@@ -56,25 +57,33 @@ public class CardHandler : MonoBehaviour
     }
     
     IEnumerator HandleSingleCard(Card card){
+        int doubleValue = 1;
+        if (StateManager.skipProblemOrDoubleDaily > 0 && card.positive == true){
+            StateManager.skipProblemOrDoubleDaily--;
+            doubleValue = 2;
+        }
         if(StateManager.noMoreTestIssues == true && card.test == true){
             // montrer la carte permanente
             // ne rien faire
-
+        } else if (StateManager.skipProblemOrDoubleDaily > 0 && card.category == Card.CategoryOfCard.PROBLEM){
+            StateManager.skipProblemOrDoubleDaily--;
+            // animate end of card
+            yield return new WaitForSeconds(1f);
         } else {
             switch (card.typeOfCard){
                 case Card.TypeOfCard.Simple :
                     EventManager.handleSimpleAction = true;
-                    StartCoroutine(HandleSimpleAction(card.firstAction, card.firstValue));
+                    StartCoroutine(HandleSimpleAction(card.firstAction, card.firstValue * doubleValue));
                     yield return new WaitUntil(() => EventManager.handleSimpleAction == false);
                     break;
                 case Card.TypeOfCard.Multiple :
                     EventManager.handleMultipleActions = true;
-                    StartCoroutine(HandleMultipleActions(card.firstAction, card.firstValue, card.secondAction, card.secondValue));
+                    StartCoroutine(HandleMultipleActions(card.firstAction, card.firstValue * doubleValue, card.secondAction, card.secondValue * doubleValue));
                     yield return new WaitUntil(() => EventManager.handleMultipleActions == false);
                     break;
                 case Card.TypeOfCard.Proposition :
                     EventManager.handlePropositionAction = true;
-                    StartCoroutine(HandlePropositionAction(card.firstAction, card.firstValue, card.secondAction, card.secondValue, card.thirdAction, card.thirdValue));
+                    StartCoroutine(HandlePropositionAction(card.firstAction, card.firstValue * doubleValue, card.secondAction, card.secondValue * doubleValue, card.thirdAction, card.thirdValue * doubleValue));
                     yield return new WaitUntil(() => EventManager.handlePropositionAction == false);
                     break;
                 case Card.TypeOfCard.Information :
@@ -84,7 +93,7 @@ public class CardHandler : MonoBehaviour
                     break;
                 case Card.TypeOfCard.Choice :
                     EventManager.handleChoiceActions = true;
-                    StartCoroutine(HandleChoiceActions(card.firstAction, card.firstValue, card.secondAction, card.secondValue));
+                    StartCoroutine(HandleChoiceActions(card.firstAction, card.firstValue * doubleValue, card.secondAction, card.secondValue * doubleValue));
                     yield return new WaitUntil(() => EventManager.handleChoiceActions == false);
                     break;
                 case Card.TypeOfCard.Question :
@@ -155,22 +164,42 @@ public class CardHandler : MonoBehaviour
             case Card.Action.DecreaseTaskPerCurrentDebt :
                 StartCoroutine(DecreaseTaskPerCurrentDebt());
                 break;
-            case Card.Action.IncreaseTaskPerRoll :
-                // Roll a dice;
-                // StartCoroutine(IncreaseTask(diceResult));
+            case Card.Action.IncreaseTaskPerRoll : {
+                EventManager.rolled = false;
+                StartCoroutine(this.uiDice.RollDice());
+                yield return new WaitUntil(() => EventManager.rolled == true);
+                EventManager.rolled = false;
+                int diceResult = this.uiDice.currentFace;
+                StartCoroutine(IncreaseTask(diceResult));
                 break;
-            case Card.Action.DecreaseTaskPerRoll :
-                // Roll a dice;
-                // StartCoroutine(IncreaseTask(-diceResult));
+            }
+            case Card.Action.DecreaseTaskPerRoll : {
+                EventManager.rolled = false;
+                StartCoroutine(this.uiDice.RollDice());
+                yield return new WaitUntil(() => EventManager.rolled == true);
+                EventManager.rolled = false;
+                int diceResult = this.uiDice.currentFace;
+                StartCoroutine(IncreaseTask(-diceResult));
                 break;
-            case Card.Action.IncreaseDebtPerRoll :
-                // Roll a dice;
-                // StartCoroutine(IncreaseDebt(diceResult));
+            }
+            case Card.Action.IncreaseDebtPerRoll : {
+                EventManager.rolled = false;
+                StartCoroutine(this.uiDice.RollDice());
+                yield return new WaitUntil(() => EventManager.rolled == true);
+                EventManager.rolled = false;
+                int diceResult = this.uiDice.currentFace;
+                StartCoroutine(IncreaseDebt(diceResult));
                 break;
-            case Card.Action.DecreaseDebtPerRoll :
-                // Roll a dice;
-                // StartCoroutine(IncreaseDebt(-diceResult));
+            }
+            case Card.Action.DecreaseDebtPerRoll : {
+                EventManager.rolled = false;
+                StartCoroutine(this.uiDice.RollDice());
+                yield return new WaitUntil(() => EventManager.rolled == true);
+                EventManager.rolled = false;
+                int diceResult = this.uiDice.currentFace;
+                StartCoroutine(IncreaseDebt(-diceResult));
                 break;
+            }
             case Card.Action.CurrentPlayerPassATurn :
                 StartCoroutine(CurrentPlayerPassATurn((int) value));
                 break;
@@ -189,22 +218,36 @@ public class CardHandler : MonoBehaviour
             case Card.Action.PickReviewCards :
                 StartCoroutine(PickReviewCards((int) value));
                 break;
-            case Card.Action.PickProblemCardsPerRoll :
-                // Roll a dice;
-                // StartCoroutine(PickProblemCards(diceResult));
+            case Card.Action.PickProblemCardsPerRoll : {
+                EventManager.rolled = false;
+                StartCoroutine(this.uiDice.RollDice());
+                yield return new WaitUntil(() => EventManager.rolled == true);
+                EventManager.rolled = false;
+                int diceResult = this.uiDice.currentFace;
+                if (diceResult <= 3){
+                    StartCoroutine(PickProblemCards(diceResult));
+                } else {
+                    EventManager.action = false;
+                }
                 break;
+            }
             case Card.Action.GetRidOfJinxCard :
-                // if StateManager.jinxed == true
-                // discard jinx card, StateManager.jinxed = false;
+                if (StateManager.jinxed == true){
+                    // discard jinx card,
+                    StateManager.jinxed = false;
+                }
+                EventManager.action = false;
                 break;
             case Card.Action.SkipProblemOrDoubleDaily :
-                // StateManager.skipProblemOrDoubleDaily++;
+                StateManager.skipProblemOrDoubleDaily++;
+                EventManager.action = false;
                 break;
             case Card.Action.DecreaseMaxTaskNextSprint :
-                
+                EventManager.action = false;
                 break;
             case Card.Action.IncreaseTaskNextSprint :
                 // EventManager.taskToAdd(value);
+                EventManager.action = false;
                 break;
             default :
                 EventManager.action = false;
@@ -545,6 +588,10 @@ public class CardHandler : MonoBehaviour
     public IEnumerator FirstPickProblemCard(){
         yield return new WaitUntil(() => StateManager.turnState == StateManager.TurnState.PROBLEM);
         EventManager.cardsToPick = 1;
+        // Card customPickedCard = this.problemCards[51];
+        // this.cardPicker.AddCart(customPickedCard);
+        // this.pickedCards.Add(customPickedCard);
+        // this.remainingProblemCards.Remove(customPickedCard);
         for (int i = 0; i < 3; i++){
             if (this.remainingProblemCards.Count <= 0){
                 this.remainingProblemCards.AddRange(this.discardedProblemCards);

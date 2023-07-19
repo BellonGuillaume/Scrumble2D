@@ -245,13 +245,13 @@ public class GameManager : MonoBehaviour
         animationManager.ZoomInPopUp(this.roll);
         yield return new WaitUntil(() => EventManager.animate == false);
 
-        while(this.popUpAnimator.GetBool("ROLL") == false){
-            yield return null;
-        }
+        EventManager.rolled = false;
+        StartCoroutine(this.roll.GetComponent<UIDice>().RollDice());
+        yield return new WaitUntil(() => EventManager.rolled == true);
+        EventManager.rolled = false;
 
-        int result = this.roll.GetComponent<UIDice>().RollDice();
+        int result = this.roll.GetComponent<UIDice>().currentFace;
         
-
         if (!StateManager.alreadyReRoll){
             StateManager.firstDiceResult = result;
         }
@@ -260,8 +260,6 @@ public class GameManager : MonoBehaviour
         }
 
         this.popUpAnimator.ResetTrigger("ROLL");
-
-        yield return new WaitForSeconds(0.5f);
         
         animationManager.ZoomOutPopUp(this.roll);
         yield return new WaitUntil(() => EventManager.animate == false);
@@ -289,7 +287,10 @@ public class GameManager : MonoBehaviour
         animationManager.ZoomInPopUp(this.results);
         yield return new WaitUntil(() => EventManager.animate == false);
         bool jinx =  StateManager.jinxed && (StateManager.firstDiceResult == 5 || StateManager.secondDiceResult == 5);
-        if (StateManager.firstDiceResult == 6 || StateManager.secondDiceResult == 6 || jinx || true) {
+        if (StateManager.firstDiceResult == 6 || StateManager.secondDiceResult == 6 || jinx) {
+            if (jinx == true){
+                // show permanent card
+            }
             // animationManager.ProblemAnimation();
             // yield return new WaitUntil(() => EventManager.animate == false);
             animationManager.ShowInfo(table.GetEntry("ProblemCard").GetLocalizedString());
@@ -372,6 +373,7 @@ public class GameManager : MonoBehaviour
         StateManager.turnState = StateManager.TurnState.END_OF_TURN;
     }
     #endregion
+    
     #region --------------------------------- Utils ---------------------------------
         void ClearTurn(){
         Debug.Log("Begin the clear");

@@ -554,4 +554,45 @@ public class AnimationManager : MonoBehaviour
             }
         );
     }
+    
+    public void RollToFace(GameObject dice, int value){
+        EventManager.animate = true;
+        float startRotation = 0;
+        float leftRotation = -Random.Range(10, 45);
+        float rightRotation = Random.Range(10, 45);
+        float endRotation = 0;
+        this.animationCoroutine = this.CreateAnimationRoutine(
+            0.05f,
+            delegate(float progress){
+                float easedProgress = Easing.easeInCubic(0, 1, progress);
+                float rotation = Mathf.Lerp(startRotation, leftRotation, easedProgress);
+                dice.transform.GetChild(0).localRotation = Quaternion.Euler(0f, 0f, rotation);
+            },
+            delegate{
+                this.CreateAnimationRoutine(
+                    0.1f,
+                    delegate(float progress){
+                        float easedProgress = Easing.easeInCubic(0, 1, progress);
+                        float rotation = Mathf.Lerp(leftRotation, rightRotation, easedProgress);
+                        dice.transform.GetChild(0).localRotation = Quaternion.Euler(0f, 0f, rotation);
+                    },
+                    delegate{
+                        dice.GetComponent<UIDice>().currentFace = value;
+                        this.CreateAnimationRoutine(
+                            0.05f,
+                            delegate(float progress){
+                                float easedProgress = Easing.easeInCubic(0, 1, progress);
+                                float rotation = Mathf.Lerp(rightRotation, endRotation, easedProgress);
+                                dice.transform.GetChild(0).localRotation = Quaternion.Euler(0f, 0f, rotation);
+                            },
+                            delegate{
+                                EventManager.animate = false;
+                            }
+                        );
+                    }
+                );
+            }
+        );
+
+    }
 }
