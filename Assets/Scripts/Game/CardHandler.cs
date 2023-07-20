@@ -216,7 +216,7 @@ public class CardHandler : MonoBehaviour
                 StartCoroutine(MultiplieDebt(value));
                 break;
             case Card.Action.DecreaseTaskPerCurrentDebt :
-                StartCoroutine(DecreaseTaskPerCurrentDebt());
+                StartCoroutine(IncreaseTask(-StateManager.debtFactor));
                 break;
             case Card.Action.IncreaseTaskPerRoll : {
                 this.uiDice.gameObject.SetActive(true);
@@ -542,14 +542,6 @@ public class CardHandler : MonoBehaviour
         yield return new WaitUntil(() => EventManager.animate == false);
         EventManager.action = false;
     }
-    IEnumerator IncreaseTaskPerPlayer(int n){
-        yield return new WaitUntil(() => EventManager.action == true);
-        EventManager.action = false;
-    }
-    IEnumerator DecreaseTaskPerPlayer(int n){
-        yield return new WaitUntil(() => EventManager.action == true);
-        EventManager.action = false;
-    }
     IEnumerator MultiplieDebt(float n){
         yield return new WaitUntil(() => EventManager.action == true);
         animationManager.HideCardPick();
@@ -557,11 +549,6 @@ public class CardHandler : MonoBehaviour
         animationManager.UpdateDebtScrollBar(Mathf.RoundToInt(this.debtSlider.value * n));
         yield return new WaitUntil(() => EventManager.animate == false);
         EventManager.action = false;
-    }
-    IEnumerator DecreaseTaskPerCurrentDebt(){
-        yield return new WaitUntil(() => EventManager.action == true);
-        EventManager.action = false;
-        yield break;
     }
     IEnumerator CurrentPlayerPassATurn(int n){
         yield return new WaitUntil(() => EventManager.action == true);
@@ -585,6 +572,14 @@ public class CardHandler : MonoBehaviour
     }
     IEnumerator PickProblemCards(int n){
         yield return new WaitUntil(() => EventManager.action == true);
+        if (EventManager.firstCard == true){
+            EventManager.firstCard = false;
+            ReDeckUnflippedCards();
+            DiscardCards();
+            this.cardPicker.RemoveCards();
+            yield return new WaitUntil(() => EventManager.cardToRemove <= 0);
+            this.cardPicker.Reset();
+        }
         EventManager.cardsToPick += n;
         // animate updeck
         yield return new WaitUntil(() => EventManager.animate == false);
@@ -607,6 +602,14 @@ public class CardHandler : MonoBehaviour
     }
     IEnumerator PickDailyCards(int n){
         yield return new WaitUntil(() => EventManager.action == true);
+        if (EventManager.firstCard == true){
+            EventManager.firstCard = false;
+            ReDeckUnflippedCards();
+            DiscardCards();
+            this.cardPicker.RemoveCards();
+            yield return new WaitUntil(() => EventManager.cardToRemove <= 0);
+            this.cardPicker.Reset();
+        }
         EventManager.cardsToPick += n;
         // animate updeck
         yield return new WaitUntil(() => EventManager.animate == false);
@@ -629,6 +632,14 @@ public class CardHandler : MonoBehaviour
     }
     IEnumerator PickReviewCards(int n){
         yield return new WaitUntil(() => EventManager.action == true);
+        if (EventManager.firstCard == true){
+            EventManager.firstCard = false;
+            ReDeckUnflippedCards();
+            DiscardCards();
+            this.cardPicker.RemoveCards();
+            yield return new WaitUntil(() => EventManager.cardToRemove <= 0);
+            this.cardPicker.Reset();
+        }
         EventManager.cardsToPick += n;
         // animate updeck
         yield return new WaitUntil(() => EventManager.animate == false);
@@ -668,6 +679,7 @@ public class CardHandler : MonoBehaviour
             this.readyToDiscard.Add(choosenCard.id -1, false);
         }
         EventManager.handleCards = true;
+        EventManager.firstCard = true;
         StartCoroutine(HandleCards());
         yield return new WaitUntil(() => EventManager.handleCards == false);
         StateManager.gameState = StateManager.GameState.PLAYER_TURN;
@@ -693,6 +705,7 @@ public class CardHandler : MonoBehaviour
             this.readyToDiscard.Add(choosenCard.id -1, false);
         }
         EventManager.handleCards = true;
+        EventManager.firstCard = true;
         StartCoroutine(HandleCards());
         yield return new WaitUntil(() => EventManager.handleCards == false);
         StateManager.turnState = StateManager.TurnState.RESULT;
@@ -713,6 +726,7 @@ public class CardHandler : MonoBehaviour
             this.readyToDiscard.Add(choosenCard.id -1, false);
         }
         EventManager.handleCards = true;
+        EventManager.firstCard = true;
         StartCoroutine(HandleCards());
         yield return new WaitUntil(() => EventManager.handleCards == false);
         StateManager.gameState = StateManager.GameState.RETROSPECTIVE;

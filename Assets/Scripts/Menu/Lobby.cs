@@ -152,6 +152,9 @@ public class Lobby : MonoBehaviour
                 StateManager.gameState = StateManager.GameState.POKER_PLANNING;
                 SceneManager.LoadSceneAsync("PokerPlanning");
             } else {
+                foreach (UserStory userStory in StateManager.userStories){
+                    userStory.size = userStory.defaultSize;
+                }
                 StateManager.gameState = StateManager.GameState.INITIALISATION;
                 SceneManager.LoadSceneAsync("Game");
             }

@@ -405,6 +405,9 @@ public class GameManager : MonoBehaviour
         StateManager.pokerPlanning = false;
         StateManager.CreatePlayers(new List<string>{"Alice", "Bob", "Charles"});
         StateManager.CreateUserStories(StateManager.Category.GIFT_SHOP);
+        foreach (UserStory userStory in StateManager.userStories){
+            userStory.size = userStory.defaultSize;
+        }
 
         StateManager.gameState = StateManager.GameState.INITIALISATION;
         Debug.Log("-STATE_MANAGER INITIALIZED");
