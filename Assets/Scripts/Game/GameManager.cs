@@ -61,6 +61,20 @@ public class GameManager : MonoBehaviour
         this.cardHandler.CreateReviewCards();
         workingOn = new List<UserStory>();
         doingAUS = new List<GameObject>();
+        switch (StateManager.difficulty){
+            case StateManager.Difficulty.EASY :
+                StateManager.debtFactor = 3;
+                debtSlider.value = 5;
+                break;
+            case StateManager.Difficulty.NORMAL :
+                StateManager.debtFactor = 4;
+                debtSlider.value = 15;
+                break;
+            case StateManager.Difficulty.HARD :
+                StateManager.debtFactor = 6;
+                debtSlider.value = 25;
+                break;
+        }
         StateManager.gameState = StateManager.GameState.BEGIN_GAME;
         StartCoroutine(StartGame());
     }

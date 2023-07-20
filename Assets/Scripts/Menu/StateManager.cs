@@ -29,6 +29,7 @@ public class StateManager : MonoBehaviour
         MENU, POKER_PLANNING, CUSTOM_POKER_PLANNING, INITIALISATION, BEGIN_GAME, TDTD, BEGIN_DAY, PICK_DAILY, PLAYER_TURN, END_OF_DAY, REVIEW, RETROSPECTIVE, END_OF_SPRINT,
     }
     
+    public static int debtFactor;
     public static bool jinxed = false;
     public static bool noMoreTestIssues = false;
     public static bool maxUserStoryLowered = false;
@@ -114,5 +115,17 @@ public class StateManager : MonoBehaviour
         }
         string userStoriesStr = File.ReadAllText(path);
         StateManager.userStories = JsonConvert.DeserializeObject<List<UserStory>>(userStoriesStr);
+    }
+    public static void UpdateDebt(float value){
+        if (value >= 40)
+            debtFactor = 12;
+        else if(value >= 30)
+            debtFactor = 9;
+        else if(value >= 20)
+            debtFactor = 6;
+        else if(value >= 10)
+            debtFactor = 4;
+        else
+            debtFactor = 3;
     }
 }

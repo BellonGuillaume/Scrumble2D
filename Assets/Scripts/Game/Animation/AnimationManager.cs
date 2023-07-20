@@ -485,6 +485,7 @@ public class AnimationManager : MonoBehaviour
                             },
                             delegate{
                                 EventManager.animate = false;
+                                StateManager.UpdateDebt(newValue);
                             }
                         );
                     }
