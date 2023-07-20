@@ -1,11 +1,25 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using UnityEngine;
 
 public class UserStory{
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum Size{
-        XS, S, M, L, XL, NOT_DEFINED
+        NOT_DEFINED,
+        [EnumMember(Value = "XS")]
+        XS,
+        [EnumMember(Value = "S")]
+        S,
+        [EnumMember(Value = "M")]
+        M,
+        [EnumMember(Value = "L")]
+        L,
+        [EnumMember(Value = "XL")]
+        XL
     }
     public enum State{
         TODO, DOING, DONE
@@ -84,7 +98,6 @@ public class UserStory{
         this.defaultStars = defaultStars;
         this.stars = defaultStars;
         this.defaultSize = defaultSize;
-        this.size = defaultSize;
         this.state = State.TODO;
         this.currentTask = 0;
     }
