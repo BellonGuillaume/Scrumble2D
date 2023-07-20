@@ -20,19 +20,12 @@ public class UICard : MonoBehaviour
     Color RED = new Color32(202, 95, 95, 255);
     Color BLUE = new Color32(88, 136, 199, 255);
     Color GREEN = new Color32(113, 203, 99, 255);
+    Color PINK = new Color32(100, 2, 55, 255);
     public Card card;
     public CardPicker cardPicker;
     public int id;
     public static int count = 0;
-    public bool moved = false;
     public Vector2 positionBeforeMove;
-    public Vector2 positionAfterMove;
-
-    void Update(){
-        if(moved){
-            this.transform.position = this.positionAfterMove;
-        }
-    }
 
     public void Fill(Card card, CardPicker cardPicker){
         this.card = card;
@@ -57,10 +50,20 @@ public class UICard : MonoBehaviour
         }
         this.cardPicker = cardPicker;
         id = count;
-        count++;
+    }
+
+    public void UnFill(){
+        this.card = null;
+        this.description.text = null;
+        this.result.text = null;
+        this.recto.color = PINK;
+        this.verso.sprite = null;
+        id = -1;
+        this.positionBeforeMove = Vector2.zero;
     }
 
     public void OnClick(){
+        Debug.Log("Clicked");
         this.cardPicker.ChooseCard(this.id);
     }
 
@@ -79,5 +82,26 @@ public class UICard : MonoBehaviour
         temp.a = 136;
         this.clickHandler.GetComponent<Image>().color = temp;
     }
+    public void Enable(){
+        this.clickHandler.GetComponent<Button>().interactable = true;
+        Color32 temp = this.clickHandler.GetComponent<Image>().color;
+        temp.a = 0;
+        this.clickHandler.GetComponent<Image>().color = temp;
+    }
 
+    public void SetAlpha(float alpha){
+        Image[] images = GetComponentsInChildren<Image>();
+        TMP_Text[] texts = GetComponentsInChildren<TMP_Text>();
+        Color newColor;
+        foreach(Image image in images){
+            newColor = image.color;
+            newColor.a = alpha;
+            image.color = newColor;
+        }
+        foreach(TMP_Text text in texts){
+            newColor = text.color;
+            newColor.a = alpha;
+            text.color = newColor;
+        }
+    }
 }

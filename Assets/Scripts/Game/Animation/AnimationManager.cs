@@ -526,17 +526,12 @@ public class AnimationManager : MonoBehaviour
                 Vector2 scale = Vector2.Lerp(startScale, endScale, easedProgress);
                 card.transform.position = position;
                 card.transform.localScale = scale;
-                card.GetComponent<UICard>().positionAfterMove = position;
-                card.GetComponent<UICard>().moved = true;
-            },
-            delegate{
-                card.GetComponent<UICard>().positionAfterMove = endPos;
-                card.GetComponent<UICard>().moved = true;
             }
         );
     }
 
     public void UncenterCard(GameObject card){
+        EventManager.animate = true;
         Vector2 startPos = new Vector2(960f, 540f);
         Vector2 endPos = card.GetComponent<UICard>().positionBeforeMove;
         Vector2 startScale = card.transform.localScale;
@@ -549,8 +544,9 @@ public class AnimationManager : MonoBehaviour
                 Vector2 scale = Vector2.Lerp(startScale, endScale, easedProgress);
                 card.transform.position = position;
                 card.transform.localScale = scale;
-                card.GetComponent<UICard>().moved = false;
-                card.GetComponent<UICard>().positionAfterMove = card.transform.position;
+            },
+            delegate{
+                EventManager.animate = false;
             }
         );
     }

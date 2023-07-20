@@ -15,44 +15,69 @@ public class CardPicker : MonoBehaviour
     public List<GameObject> cards = new List<GameObject>();
     public bool initialized;
     public GameObject choosenCard;
+    public int choosenIndex;
 
     public void AddCart(Card card){
-        Debug.Log($"Try to add the card {card.id.ToString()}");
+        Debug.Log($"Adding the card {card.id.ToString()} : \n {card.ToString()}");
         GameObject go = Instantiate(cardUIPrefab);
         go.transform.SetParent(content.transform);
         go.GetComponent<UICard>().Fill(card, this);
         this.cards.Add(go);
         go.transform.localScale = Vector3.one;
+        UICard.count++;
     }
 
     public void ChooseCard(int id){
-        if (EventManager.cardsToPick <= 0 || choosenCard != null){
+        if (EventManager.cardsToPick <= 0 || choosenCard.GetComponent<UICard>().card != null){
             return;
         }
         // animationManager.FlipCard(cards[id].GetComponent<UICard>());
         Debug.Log($"Card ${id} picked : {this.cards[id].ToString()}");
+        this.choosenCard.GetComponent<UICard>().Fill(this.cards[id].GetComponent<UICard>().card, this);
+        this.choosenIndex = id;
+        this.choosenCard.transform.position = this.cards[id].transform.position;
+        this.choosenCard.transform.localScale = this.cards[id].transform.localScale;
         this.cards[id].GetComponent<UICard>().RemoveVerso();
-        this.choosenCard = this.cards[id];
+        this.cards[id].GetComponent<UICard>().SetAlpha(0);
+        this.choosenCard.SetActive(true);
         animationManager.CenterCard(this.choosenCard);
 
         EventManager.cardsToPick--;
-        if (EventManager.cardsToPick <= 0){
-            foreach(GameObject go in this.cards){
-                if (go.GetComponent<UICard>().card.flipped == false){
-                    go.GetComponent<UICard>().Disable();
-                    // animationManager.RemoveCardUI(go);
-                }
-            }
-            RemoveUnflippedCards();
+        foreach (GameObject card in cards){
+            card.GetComponent<UICard>().Disable();
         }
+        // if (EventManager.cardsToPick <= 0){
+        //     foreach(GameObject go in this.cards){
+        //         if (go.GetComponent<UICard>().card.flipped == false){
+        //             go.GetComponent<UICard>().Disable();
+        //             // animationManager.RemoveCardUI(go);
+        //         }
+        //     }
+        //     RemoveUnflippedCards();
+        // }
     }
 
-    public void RemoveUnflippedCards(){
-        foreach(GameObject card in cards){
-            if(card.GetComponent<UICard>().card.flipped == false){
-                EventManager.cardToRemove++;
-                animationManager.RemoveCard(card);
+    public IEnumerator UnChooseCard(){
+        animationManager.UncenterCard(this.choosenCard);
+        if (EventManager.cardsToPick > 0){
+            foreach (GameObject card in cards){
+                if(card.GetComponent<UICard>().card.flipped == false){
+                    card.GetComponent<UICard>().Enable();
+                }   
             }
+        }
+        yield return new WaitUntil(() => EventManager.animate == false);
+        this.cards[choosenIndex].GetComponent<UICard>().SetAlpha(255);
+        this.cards[choosenIndex].GetComponent<UICard>().Disable();
+        this.choosenCard.SetActive(false);
+        this.choosenCard.GetComponent<UICard>().UnFill();
+        this.choosenIndex = -1;
+    }
+
+    public void RemoveCards(){
+        foreach(GameObject card in cards){
+            EventManager.cardToRemove++;
+            animationManager.RemoveCard(card);
         }
     }
 
@@ -63,6 +88,5 @@ public class CardPicker : MonoBehaviour
         cards = new List<GameObject>();
         EventManager.cardsToPick = 0;
         UICard.count = 0;
-        choosenCard = null;
     }
 }

@@ -189,6 +189,7 @@ public class GameManager : MonoBehaviour
             animationManager.ShowInfo($"{player.userName} passe son tour");
             StateManager.players[player.playerNumber-1].turnToPass--;
             yield return new WaitUntil(() => EventManager.animate == false);
+            StateManager.turnState = StateManager.TurnState.END_OF_TURN;
             yield break;
         }
         Debug.Log($"Begin turn of {player.userName}");
@@ -287,7 +288,7 @@ public class GameManager : MonoBehaviour
         animationManager.ZoomInPopUp(this.results);
         yield return new WaitUntil(() => EventManager.animate == false);
         bool jinx =  StateManager.jinxed && (StateManager.firstDiceResult == 5 || StateManager.secondDiceResult == 5);
-        if (StateManager.firstDiceResult == 6 || StateManager.secondDiceResult == 6 || jinx) {
+        if (StateManager.firstDiceResult == 6 || StateManager.secondDiceResult == 6 || jinx || true) {
             if (jinx == true){
                 // show permanent card
             }

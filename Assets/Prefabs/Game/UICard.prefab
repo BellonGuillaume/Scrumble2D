@@ -523,9 +523,8 @@ MonoBehaviour:
   clickHandler: {fileID: 160681243446328154}
   cardPicker: {fileID: 0}
   id: 0
-  moved: 0
+  flipped: 0
   positionBeforeMove: {x: 0, y: 0}
-  positionAfterMove: {x: 0, y: 0}
 --- !u!1 &4323008430760940589
 GameObject:
   m_ObjectHideFlags: 0
