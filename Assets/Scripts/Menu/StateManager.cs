@@ -15,7 +15,7 @@ public class StateManager : MonoBehaviour
         }
         public static Difficulty difficulty;
         public enum Category{
-            GIFT_SHOP, DIET_COACH, TRAVEL_DIARY, CUSTOM
+            GIFT_SHOP, DIET_COACH, TRAVEL_DIARY, KNOWLEDGE_MANAGEMENT, CUSTOM
         }
         public static Category category;
     #endregion
@@ -97,6 +97,8 @@ public class StateManager : MonoBehaviour
                 path += "/UserStories/DietCoach_EN.json";
             } else if (userStory == StateManager.Category.TRAVEL_DIARY){
                 path += "/UserStories/TravelDiary_EN.json";
+            } else if (userStory == StateManager.Category.KNOWLEDGE_MANAGEMENT){
+                path += "/UserStories/KnowledgeManagement_EN.json";
             } else {
                 path += "/UserStories/GiftShop_EN.json";
                 // throw new System.Exception();
@@ -108,6 +110,8 @@ public class StateManager : MonoBehaviour
                 path += "/UserStories/DietCoach_FR.json";
             } else if (userStory == StateManager.Category.TRAVEL_DIARY){
                 path += "/UserStories/TravelDiary_FR.json";
+            } else if (userStory == StateManager.Category.KNOWLEDGE_MANAGEMENT){
+                path += "/UserStories/KnowledgeManagement_FR.json";
             } else {
                 path += "/UserStories/GiftShop_FR.json";
                 // throw new System.Exception();

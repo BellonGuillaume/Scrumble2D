@@ -11,6 +11,7 @@ public class ArrowedUS : MonoBehaviour
 
 
     [HideInInspector] public UserStory userStory;
+
     public Color baseColor = UserStory.yellow; // Couleur de base par défaut
     public Color color = UserStory.red; // Couleur spécifique par défaut
     public float startAngle = 0f; // Angle de départ par défaut
@@ -20,8 +21,6 @@ public class ArrowedUS : MonoBehaviour
     private Material modifiedMaterial; // Matériau modifié pour cet objet
 
     void Start(){
-        this.userStory = new UserStory(1, "GIFT SHOP", "Une description", 5, UserStory.Size.XS, 0);
-        this.userStory.maxTask = 24;
         this.delta = 0;
 
         modifiedMaterial = new Material(outline.material);
@@ -30,8 +29,6 @@ public class ArrowedUS : MonoBehaviour
         modifiedMaterial.SetFloat("_StartAngle", startAngle);
         modifiedMaterial.SetFloat("_OpenAngle", openAngle);
         outline.material = modifiedMaterial;
-
-        UpdateColor(this.userStory.currentTask);
     }
 
     public void ClickUp(){
@@ -43,6 +40,10 @@ public class ArrowedUS : MonoBehaviour
         this.delta--;
         IncreaseColor(-1);
         EventManager.taskToAdd++;
+    }
+
+    public void SetUserStory(UserStory userStory){
+        this.userStory = userStory;
     }
     public void IncreaseColor(int i){
         if (this.userStory.currentTask > this.userStory.maxTask){

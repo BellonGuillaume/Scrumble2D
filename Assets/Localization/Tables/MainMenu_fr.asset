@@ -118,6 +118,10 @@ MonoBehaviour:
     m_Localized: Non
     m_Metadata:
       m_Items: []
+  - m_Id: 3619175728443392
+    m_Localized: Gestion des Connaissances
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

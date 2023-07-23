@@ -149,6 +149,7 @@ public class GameManager : MonoBehaviour
                 if (child.childCount == 0){
                     GameObject go = Instantiate(littleArrowUSPrefab);
                     go.GetComponent<UserStoryUI>().Fill(userStory);
+                    go.GetComponent<ArrowedUS>().SetUserStory(userStory);
                     go.GetComponent<ArrowedUS>().HideArrows();
                     go.transform.SetParent(child.transform);
                     go.transform.localPosition = Vector3.zero;
@@ -302,7 +303,7 @@ public class GameManager : MonoBehaviour
         animationManager.ZoomInPopUp(this.results);
         yield return new WaitUntil(() => EventManager.animate == false);
         bool jinx =  StateManager.jinxed && (StateManager.firstDiceResult == 5 || StateManager.secondDiceResult == 5);
-        if (StateManager.firstDiceResult == 6 || StateManager.secondDiceResult == 6 || jinx || true) {
+        if (StateManager.firstDiceResult == 6 || StateManager.secondDiceResult == 6 || jinx) {
             if (jinx == true){
                 // show permanent card
             }
@@ -398,8 +399,7 @@ public class GameManager : MonoBehaviour
 
     void InitState(){
         Debug.Log("-STATE_MANAGER INITIALIAZING");
-        // StateManager.difficulty = StateManager.difficulty.EASY; TODO
-        StateManager.difficulty = StateManager.Difficulty.EASY;
+        StateManager.difficulty = StateManager.Difficulty.HARD;
         StateManager.category = StateManager.Category.GIFT_SHOP;
         StateManager.gameName = "";
         StateManager.pokerPlanning = false;

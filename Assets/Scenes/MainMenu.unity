@@ -2600,6 +2600,14 @@ MonoBehaviour:
   - m_TableReference:
       m_TableCollectionName: GUID:ac7114d88eae14f4a90500655aa264d7
     m_TableEntryReference:
+      m_KeyId: 3619175728443392
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:ac7114d88eae14f4a90500655aa264d7
+    m_TableEntryReference:
       m_KeyId: 343008007188480
       m_Key: 
     m_FallbackState: 0
@@ -4097,6 +4105,14 @@ MonoBehaviour:
       m_TableCollectionName: GUID:ac7114d88eae14f4a90500655aa264d7
     m_TableEntryReference:
       m_KeyId: 342873512636416
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:ac7114d88eae14f4a90500655aa264d7
+    m_TableEntryReference:
+      m_KeyId: 3619175728443392
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -6193,6 +6209,8 @@ MonoBehaviour:
     - m_Text: Diet Coach
       m_Image: {fileID: 0}
     - m_Text: Travel Diary
+      m_Image: {fileID: 0}
+    - m_Text: Knowledge Management
       m_Image: {fileID: 0}
     - m_Text: Custom
       m_Image: {fileID: 0}

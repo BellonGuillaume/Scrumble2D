@@ -56,7 +56,8 @@ public class TDDDManager : MonoBehaviour
         List<UserStory> doingUS = doingDropContent.GetNewUserStories();
         foreach (UserStory userStory in doingUS){
             StateManager.userStories[userStory.id-1].state = UserStory.State.DOING;
-            GameManager.workingOn.Add(userStory);
+            StateManager.userStories[userStory.id-1].maxTask = StateManager.debtFactor * StateManager.players.Count * (int) userStory.size;
+            GameManager.workingOn.Add(StateManager.userStories[userStory.id-1]);
         }
     }
 

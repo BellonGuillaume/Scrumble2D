@@ -28,7 +28,7 @@ public class Local : MonoBehaviour
         if (string.IsNullOrWhiteSpace(serverNameIn.text)) {
             return false;
         }
-        if (userStoryIn.value < 0 | userStoryIn.value > 3){
+        if (userStoryIn.value < 0 | userStoryIn.value > 4){
             return false;
         }
         return true;
