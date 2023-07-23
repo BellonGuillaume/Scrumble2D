@@ -47,7 +47,7 @@ public class DropContent : MonoBehaviour, IDropHandler
         foreach (Transform child in content){
             if (child.childCount == 0){
                 child.GetComponent<DropCase>().AddUsUI(userStoryUI);
-                if (type == UserStory.State.TODO){
+                if (type == UserStory.State.PRODUCT_BACKLOG){
                 }
                 return;
             }

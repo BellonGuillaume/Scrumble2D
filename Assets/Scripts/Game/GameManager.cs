@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] Button taskValidation;
 
+    [SerializeField] ScrumboardManager scrumboardManager;
+
     Animator popUpAnimator;
 
 
@@ -59,6 +61,7 @@ public class GameManager : MonoBehaviour
         this.cardHandler.CreateDailyCards();
         this.cardHandler.CreateProblemCards();
         this.cardHandler.CreateReviewCards();
+        this.scrumboardManager.CreateScrumboard();
         workingOn = new List<UserStory>();
         doingAUS = new List<GameObject>();
         switch (StateManager.difficulty){
@@ -399,7 +402,7 @@ public class GameManager : MonoBehaviour
 
     void InitState(){
         Debug.Log("-STATE_MANAGER INITIALIAZING");
-        StateManager.difficulty = StateManager.Difficulty.HARD;
+        StateManager.difficulty = StateManager.Difficulty.EASY;
         StateManager.category = StateManager.Category.GIFT_SHOP;
         StateManager.gameName = "";
         StateManager.pokerPlanning = false;
@@ -491,6 +494,11 @@ public class GameManager : MonoBehaviour
 
     public void OnSideClick(){
         this.sidePopUp.SetActive(true);
+        this.scrumboardManager.Refresh();
+    }
+
+    public void OnOutClick(){
+        this.sidePopUp.SetActive(false);
     }
     #endregion
 }

@@ -35,11 +35,23 @@ public class ArrowedUS : MonoBehaviour
         this.delta++;
         IncreaseColor(1);
         EventManager.taskToAdd--;
+        if (userStory.currentTask == 0)
+            userStory.state = UserStory.State.SPRINT_BACKLOG;
+        else if (userStory.currentTask == userStory.maxTask)
+            userStory.state = UserStory.State.DONE;
+        else
+            userStory.state = UserStory.State.IN_PROGRESS;
     }
     public void ClickDown(){
         this.delta--;
         IncreaseColor(-1);
         EventManager.taskToAdd++;
+        if (userStory.currentTask == 0)
+            userStory.state = UserStory.State.SPRINT_BACKLOG;
+        else if (userStory.currentTask == userStory.maxTask)
+            userStory.state = UserStory.State.DONE;
+        else
+            userStory.state = UserStory.State.IN_PROGRESS;
     }
 
     public void SetUserStory(UserStory userStory){

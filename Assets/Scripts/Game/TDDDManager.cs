@@ -16,9 +16,9 @@ public class TDDDManager : MonoBehaviour
         yield return new WaitForSeconds(0f);
         foreach (UserStory userStory in StateManager.userStories){
             GameObject userStoryUI = CreateUserStoryUI(userStory);
-            if (userStory.state == UserStory.State.TODO){
+            if (userStory.state == UserStory.State.PRODUCT_BACKLOG){
                 toDoDropContent.AddUsUI(userStoryUI);
-            } else if (userStory.state == UserStory.State.DOING){
+            } else if (userStory.state == UserStory.State.SPRINT_BACKLOG || userStory.state == UserStory.State.IN_PROGRESS || userStory.state == UserStory.State.DONE){
                 doingDropContent.AddUsUI(userStoryUI);
             } else {
                 doneContent.AddUsUI(userStoryUI);
@@ -55,7 +55,7 @@ public class TDDDManager : MonoBehaviour
     public void OnClick(){
         List<UserStory> doingUS = doingDropContent.GetNewUserStories();
         foreach (UserStory userStory in doingUS){
-            StateManager.userStories[userStory.id-1].state = UserStory.State.DOING;
+            StateManager.userStories[userStory.id-1].state = UserStory.State.SPRINT_BACKLOG;
             StateManager.userStories[userStory.id-1].maxTask = StateManager.debtFactor * StateManager.players.Count * (int) userStory.size;
             GameManager.workingOn.Add(StateManager.userStories[userStory.id-1]);
         }

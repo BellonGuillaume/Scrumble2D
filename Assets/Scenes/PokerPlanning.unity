@@ -1210,6 +1210,14 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:ac7114d88eae14f4a90500655aa264d7
+    m_TableEntryReference:
+      m_KeyId: 3619175728443392
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   play: {fileID: 1736337755}
   references:
     version: 2

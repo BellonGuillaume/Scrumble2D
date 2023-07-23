@@ -205,7 +205,7 @@ public class PokerPlanningManager : MonoBehaviour
                 return userStoryOptions[1].GetLocalizedString();
             case StateManager.Category.TRAVEL_DIARY:
                 return userStoryOptions[2].GetLocalizedString();
-            case StateManager.Category.CUSTOM:
+            case StateManager.Category.KNOWLEDGE_MANAGEMENT:
                 return userStoryOptions[3].GetLocalizedString();
             default:
                 return userStoryOptions[0].GetLocalizedString();

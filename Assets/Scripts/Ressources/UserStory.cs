@@ -22,7 +22,7 @@ public class UserStory{
         XL
     }
     public enum State{
-        TODO, DOING, DONE
+        PRODUCT_BACKLOG, SPRINT_BACKLOG, IN_PROGRESS, DONE, DEPLOYED
     }
 
     public int id;
@@ -98,7 +98,7 @@ public class UserStory{
         this.defaultStars = defaultStars;
         this.stars = defaultStars;
         this.defaultSize = defaultSize;
-        this.state = State.TODO;
+        this.state = State.PRODUCT_BACKLOG;
         this.currentTask = 0;
     }
 

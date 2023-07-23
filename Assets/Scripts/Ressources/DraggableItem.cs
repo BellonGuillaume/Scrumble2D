@@ -10,7 +10,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     [HideInInspector] public UserStory userStory;
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if(StateManager.gameState == StateManager.GameState.TDTD && userStory.state == UserStory.State.TODO){
+        if(StateManager.gameState == StateManager.GameState.TDTD && userStory.state == UserStory.State.PRODUCT_BACKLOG){
             parentAfterDrag = transform.parent;
             transform.SetParent(transform.root);
             transform.SetAsLastSibling();
@@ -20,21 +20,21 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnDrag(PointerEventData eventData)
     {
-        if(StateManager.gameState == StateManager.GameState.TDTD && userStory.state == UserStory.State.TODO){
+        if(StateManager.gameState == StateManager.GameState.TDTD && userStory.state == UserStory.State.PRODUCT_BACKLOG){
             transform.position = Input.mousePosition;
         }
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if(StateManager.gameState == StateManager.GameState.TDTD && userStory.state == UserStory.State.TODO){
+        if(StateManager.gameState == StateManager.GameState.TDTD && userStory.state == UserStory.State.PRODUCT_BACKLOG){
             transform.SetParent(parentAfterDrag);
             EnableRaycastTargetsRecursively(transform);
         }
     }
     private void DisableRaycastTargetsRecursively(Transform parent)
     {
-        if(StateManager.gameState == StateManager.GameState.TDTD && userStory.state == UserStory.State.TODO){
+        if(StateManager.gameState == StateManager.GameState.TDTD && userStory.state == UserStory.State.PRODUCT_BACKLOG){
             foreach (Transform child in parent)
             {
                 Graphic graphic = child.GetComponent<Graphic>();
@@ -49,7 +49,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     }
     private void EnableRaycastTargetsRecursively(Transform parent)
     {
-        if(StateManager.gameState == StateManager.GameState.TDTD && userStory.state == UserStory.State.TODO){
+        if(StateManager.gameState == StateManager.GameState.TDTD && userStory.state == UserStory.State.PRODUCT_BACKLOG){
             foreach (Transform child in parent)
             {
                 Graphic graphic = child.GetComponent<Graphic>();
