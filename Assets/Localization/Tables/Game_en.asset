@@ -66,6 +66,18 @@ MonoBehaviour:
     m_Localized: Decline
     m_Metadata:
       m_Items: []
+  - m_Id: 3520072860332032
+    m_Localized: 'Time :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3520141944713216
+    m_Localized: 'Number of stars :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3520212731981824
+    m_Localized: 'Number of sprints :'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

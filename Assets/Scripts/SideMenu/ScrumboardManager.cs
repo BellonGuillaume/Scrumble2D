@@ -21,6 +21,7 @@ public class ScrumboardManager : MonoBehaviour
             go.transform.SetParent(productBackLogContent);
             userStoriesUI.Add(go);
             go.GetComponent<UserStoryUI>().Fill(userStory);
+            go.transform.localScale = Vector3.one;
         }
     }
     
@@ -58,7 +59,6 @@ public class ScrumboardManager : MonoBehaviour
                 this.userStoriesUI[i].transform.SetParent(this.deployedContent);
             this.userStoriesUI[i].transform.SetAsLastSibling();
             this.userStoriesUI[i].GetComponent<UserStoryUI>().Fill(StateManager.userStories[i]);
-            Debug.Log(this.userStoriesUI[i].GetComponent<UserStoryUI>().userStory.ToString());
         }
     }
 
@@ -67,6 +67,7 @@ public class ScrumboardManager : MonoBehaviour
             GameObject go = Instantiate(casePrefab);
             go.transform.SetParent(transform);
             go.transform.SetAsLastSibling();
+            go.transform.localScale = Vector3.one;
             casesUI.Add(go);
         }
     }

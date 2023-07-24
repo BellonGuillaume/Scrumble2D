@@ -745,9 +745,6 @@ public class CardHandler : MonoBehaviour
         this.dailyCards = JsonConvert.DeserializeObject<List<Card>>(dailyCardsStr);
         this.remainingDailyCards.AddRange(this.dailyCards);
         this.discardedDailyCards = new List<Card>();
-        foreach (Card card in this.dailyCards){
-            Debug.Log(card.ToString());
-        }
     }
 
     public void CreateProblemCards(){
@@ -761,9 +758,6 @@ public class CardHandler : MonoBehaviour
         this.problemCards = JsonConvert.DeserializeObject<List<Card>>(problemCardsStr);
         this.remainingProblemCards.AddRange(this.problemCards);
         this.discardedProblemCards = new List<Card>();
-        foreach (Card card in this.problemCards){
-            Debug.Log(card.ToString());
-        }
     }
 
     public void CreateReviewCards(){
@@ -777,9 +771,6 @@ public class CardHandler : MonoBehaviour
         this.reviewCards = JsonConvert.DeserializeObject<List<Card>>(reviewCardsStr);
         this.remainingReviewCards.AddRange(this.reviewCards);
         this.discardedReviewCards = new List<Card>();
-        foreach (Card card in this.reviewCards){
-            Debug.Log(card.ToString());
-        }
     }
     #endregion
     #region ###### Clickables ######

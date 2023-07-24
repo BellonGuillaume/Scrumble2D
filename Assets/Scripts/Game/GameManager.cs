@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.IO;
-using Newtonsoft.Json;
+using System;
 using TMPro;
 using UnityEngine.Localization.Settings;
 using UnityEngine.Localization.Tables;
@@ -30,6 +29,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] Button taskValidation;
 
     [SerializeField] ScrumboardManager scrumboardManager;
+    [SerializeField] TMP_Text timeOut;
+    [SerializeField] TMP_Text starsOut;
+    [SerializeField] TMP_Text sprintOut;
 
     Animator popUpAnimator;
 
@@ -43,8 +45,6 @@ public class GameManager : MonoBehaviour
     private StringTable table;
     private System.Random random;
 
-
-    // Start is called before the first frame update
     void Start()
     {
         Debug.Log("Begin Assets initialization");
@@ -79,6 +79,7 @@ public class GameManager : MonoBehaviour
                 break;
         }
         StateManager.gameState = StateManager.GameState.BEGIN_GAME;
+        StateManager.startTime = DateTime.Now;
         StartCoroutine(StartGame());
     }
 
@@ -98,6 +99,7 @@ public class GameManager : MonoBehaviour
 
     #region --------------------------------- Sprint ---------------------------------
     IEnumerator BeginSprint(int n){
+        StateManager.sprintNumber++;
         Debug.Log($"BEGIN SPRINT {n.ToString()}");
         StateManager.gameState = StateManager.GameState.TDTD;
         StateManager.currentDay = 0;

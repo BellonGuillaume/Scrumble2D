@@ -24,6 +24,8 @@ public class AnimationManager : MonoBehaviour
     [SerializeField] GameObject sideMenu;
     [SerializeField] GameObject backgroundSideMenu;
     [SerializeField] GameObject windowSideMenu;
+    [SerializeField] GameObject scrumboard;
+    [SerializeField] GameObject burndownChart;
 
     [SerializeField] GameObject dayPopUp;
     [SerializeField] GameObject textDayPopUp;
@@ -591,5 +593,70 @@ public class AnimationManager : MonoBehaviour
             }
         );
 
+    }
+
+    public void ShowScrumboard(){
+        EventManager.animate = true;
+        Vector2 startScale = this.scrumboard.transform.localScale;
+        Vector2 endScale = Vector2.one;
+        this.animationCoroutine = this.CreateAnimationRoutine(
+            0.2f,
+            delegate(float progress){
+                float easedProgress = Easing.easeInCubic(0, 1, progress);
+                Vector2 scale = Vector2.Lerp(startScale, endScale, easedProgress);
+                this.scrumboard.transform.localScale = scale;
+            },
+            delegate{
+                EventManager.animate = false;
+            }
+        );
+    }
+    public void HideScrumboard(){
+        EventManager.animate = true;
+        Vector2 startScale = Vector2.one;
+        Vector2 endScale = new Vector2(0.33f, 0.33f);
+        this.animationCoroutine = this.CreateAnimationRoutine(
+            0.2f,
+            delegate(float progress){
+                float easedProgress = Easing.easeInCubic(0, 1, progress);
+                Vector2 scale = Vector2.Lerp(startScale, endScale, easedProgress);
+                this.scrumboard.transform.localScale = scale;
+            },
+            delegate{
+                EventManager.animate = false;
+            }
+        );
+    }
+    public void ShowBurndownChart(){
+        EventManager.animate = true;
+        Vector2 startScale = this.burndownChart.transform.localScale;
+        Vector2 endScale = Vector2.one;
+        this.animationCoroutine = this.CreateAnimationRoutine(
+            0.2f,
+            delegate(float progress){
+                float easedProgress = Easing.easeInCubic(0, 1, progress);
+                Vector2 scale = Vector2.Lerp(startScale, endScale, easedProgress);
+                this.burndownChart.transform.localScale = scale;
+            },
+            delegate{
+                EventManager.animate = false;
+            }
+        );
+    }
+    public void HideBurndownChart(){
+        EventManager.animate = true;
+        Vector2 startScale = Vector2.one;
+        Vector2 endScale = new Vector2(0.33f, 0.33f);
+        this.animationCoroutine = this.CreateAnimationRoutine(
+            0.2f,
+            delegate(float progress){
+                float easedProgress = Easing.easeInCubic(0, 1, progress);
+                Vector2 scale = Vector2.Lerp(startScale, endScale, easedProgress);
+                this.burndownChart.transform.localScale = scale;
+            },
+            delegate{
+                EventManager.animate = false;
+            }
+        );
     }
 }

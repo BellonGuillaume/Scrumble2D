@@ -5,26 +5,30 @@ using System.IO;
 using Newtonsoft.Json;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
+using System;
 
 public class StateManager : MonoBehaviour
 {
     #region Menu
-        public static Locale language;
-        public enum Difficulty{
-            EASY, NORMAL, HARD
-        }
-        public static Difficulty difficulty;
-        public enum Category{
-            GIFT_SHOP, DIET_COACH, TRAVEL_DIARY, KNOWLEDGE_MANAGEMENT, CUSTOM
-        }
-        public static Category category;
+    public static Locale language;
+    public enum Difficulty{
+        EASY, NORMAL, HARD
+    }
+    public static Difficulty difficulty;
+    public enum Category{
+        GIFT_SHOP, DIET_COACH, TRAVEL_DIARY, KNOWLEDGE_MANAGEMENT, CUSTOM
+    }
+    public static Category category;
+    public static bool pokerPlanning;
+    public static string gameName;
     #endregion
     #region Game State
     public static List<UserStory> userStories;
-    public static string gameName;
     public static List<Player> players;
-    public static bool pokerPlanning;
     public static GameState gameState;
+    public static DateTime startTime;
+    public static int sprintNumber = 0;
+    public static int starsNumber = 0;
     public enum GameState{
         MENU, POKER_PLANNING, CUSTOM_POKER_PLANNING, INITIALISATION, BEGIN_GAME, TDTD, BEGIN_DAY, PICK_DAILY, PLAYER_TURN, END_OF_DAY, REVIEW, RETROSPECTIVE, END_OF_SPRINT,
     }
