@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] AnimationManager animationManager;
     [SerializeField] GameObject popUpGO;
     [SerializeField] GameObject sidePopUp;
+    [SerializeField] ChoosePlayer choosePlayer;
     [SerializeField] GameObject cardPick;
     [SerializeField] GameObject turn;
     [SerializeField] GameObject roll;
@@ -29,9 +30,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] Button taskValidation;
 
     [SerializeField] ScrumboardManager scrumboardManager;
-    [SerializeField] TMP_Text timeOut;
-    [SerializeField] TMP_Text starsOut;
-    [SerializeField] TMP_Text sprintOut;
 
     Animator popUpAnimator;
 
@@ -62,6 +60,7 @@ public class GameManager : MonoBehaviour
         this.cardHandler.CreateProblemCards();
         this.cardHandler.CreateReviewCards();
         this.scrumboardManager.CreateScrumboard();
+        this.choosePlayer.CreateDailyPlayers();
         workingOn = new List<UserStory>();
         doingAUS = new List<GameObject>();
         switch (StateManager.difficulty){
@@ -180,8 +179,8 @@ public class GameManager : MonoBehaviour
             yield return new WaitUntil(() => EventManager.handleAddingTask == false);
         }
         if (n != 1){
-            StateManager.gameState = StateManager.GameState.PICK_DAILY;
-            // TODO : Choose a random player to draw the card
+            StartCoroutine(choosePlayer.ShowDailyPlayers());
+            yield return new WaitUntil(() => StateManager.gameState == StateManager.GameState.PICK_DAILY);
             StartCoroutine(this.cardHandler.FirstPickDailyCard());
             yield return new WaitUntil(() => StateManager.gameState == StateManager.GameState.PLAYER_TURN);
             animationManager.ZoomOutPopUp(this.cardPick);

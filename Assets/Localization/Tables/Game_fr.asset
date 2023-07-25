@@ -79,6 +79,10 @@ MonoBehaviour:
     m_Localized: 'Nombre de sprints :'
     m_Metadata:
       m_Items: []
+  - m_Id: 3877514001543168
+    m_Localized: Choisissez un joueur pour piocher une carte daily
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

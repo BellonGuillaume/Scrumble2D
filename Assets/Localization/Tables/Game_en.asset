@@ -78,6 +78,10 @@ MonoBehaviour:
     m_Localized: 'Number of sprints :'
     m_Metadata:
       m_Items: []
+  - m_Id: 3877514001543168
+    m_Localized: Choose a player to draw a Daily Card
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

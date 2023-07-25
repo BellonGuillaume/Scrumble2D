@@ -75,6 +75,10 @@ MonoBehaviour:
     m_Key: Sprints
     m_Metadata:
       m_Items: []
+  - m_Id: 3877514001543168
+    m_Key: ChooseDailyPlayer
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -659,4 +659,55 @@ public class AnimationManager : MonoBehaviour
             }
         );
     }
+    public void ShowDailyPlayer(GameObject dailyPlayer){
+        EventManager.animate = true;
+        byte startBlur = 0;
+        byte endBlur = this.blurValue;
+        Vector2 startScale = new Vector2(0f, 0f);
+        Vector2 endScale = this.popUpScale;
+        this.popUp.SetActive(true);
+        dailyPlayer.SetActive(true);
+        animationCoroutine = this.CreateAnimationRoutine(
+            popUpInDuration,
+            delegate(float progress){
+                float easedProgress = Easing.easeInExpo(0, 1, progress);
+                Vector2 scale = Vector2.Lerp(startScale, endScale, easedProgress);
+                byte blur = (byte) Mathf.Lerp(startBlur, endBlur, easedProgress);
+                Color32 temp = backgroundPopUp.GetComponent<Image>().color;
+                temp.a = blur;
+                backgroundPopUp.GetComponent<Image>().color = temp;
+                windowPopUp.transform.localScale = scale;
+                dailyPlayer.transform.localScale = scale;
+            },
+            delegate{
+                EventManager.animate = false;
+            }
+        );
+    }
+
+    public void HideDailyPlayer(GameObject dailyPlayer){
+        EventManager.animate = true;
+        byte startBlur = 0;
+        byte endBlur = this.blurValue;
+        Vector2 startScale = new Vector2(0f, 0f);
+        Vector2 endScale = this.popUpScale;
+        animationCoroutine = this.CreateAnimationRoutine(
+            popUpInDuration,
+            delegate(float progress){
+                float easedProgress = Easing.easeInExpo(0, 1, progress);
+                Vector2 scale = Vector2.Lerp(endScale, startScale, easedProgress);
+                byte blur = (byte) Mathf.Lerp(endBlur, startBlur, easedProgress);
+                Color32 temp = backgroundPopUp.GetComponent<Image>().color;
+                temp.a = blur;
+                backgroundPopUp.GetComponent<Image>().color = temp;
+                windowPopUp.transform.localScale = scale;
+                dailyPlayer.transform.localScale = scale;
+            },
+            delegate{
+                this.popUp.SetActive(false);
+                dailyPlayer.SetActive(false);
+                EventManager.animate = false;
+            }
+        );
+    }
 }
