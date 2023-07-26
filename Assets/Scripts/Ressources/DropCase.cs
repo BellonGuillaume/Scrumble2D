@@ -39,17 +39,15 @@ public class DropCase : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (eventData.pointerDrag is null){
-                return;
-            }
-        
-        if (eventData.pointerDrag.GetComponent<DraggableItem>() is null){
-                return;
-            }
+        if (eventData.pointerDrag is null)
+            return;
+        if (eventData.pointerDrag.GetComponent<DraggableItem>() is null)
+            return;
+        if (eventData.pointerDrag.GetComponent<DraggableItem>().isDragged == false)
+            return;
         if (this.transform.childCount > 0){
-            if(nextDropCase is null){
+            if(nextDropCase is null)
                 return;
-            }
             this.nextDropCase.MoveToNext(this.transform.GetChild(0), this.userStoryUI);
             this.userStoryUI = null;
         }
@@ -57,16 +55,14 @@ public class DropCase : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (eventData.pointerDrag is null){
-                return;
-            }
-        
-        if (eventData.pointerDrag.GetComponent<DraggableItem>() is null){
-                return;
-            }
-        if (this.nextDropCase is null){
+        if (eventData.pointerDrag is null)
             return;
-        }
+        if (eventData.pointerDrag.GetComponent<DraggableItem>() is null)
+            return;
+        if (this.nextDropCase is null)
+            return;
+        if (eventData.pointerDrag.GetComponent<DraggableItem>().isDragged == false)
+            return;
         if (this.transform.childCount == 0){
             this.nextDropCase.MoveToPrev();
         }

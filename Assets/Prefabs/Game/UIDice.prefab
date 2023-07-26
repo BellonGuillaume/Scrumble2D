@@ -460,9 +460,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:40f28a1c2bc4c0f4699eaf9ac1dc13f7
+      m_TableCollectionName: GUID:23add21837e87a14a8bab3b4e73e3839
     m_TableEntryReference:
-      m_KeyId: 1025535406080
+      m_KeyId: 252977913856
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0

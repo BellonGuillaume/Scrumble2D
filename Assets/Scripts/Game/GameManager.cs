@@ -308,28 +308,28 @@ public class GameManager : MonoBehaviour
         if (StateManager.firstTaskOrDebtChoice == "TASK"){
             prompt += GetString("Game", "YouWon") + " " + StateManager.firstDiceResult.ToString() + " ";
             if (StateManager.firstDiceResult > 1)
-                prompt += GetString("Game", "tasks");
+                prompt += GetString("Game", "Tasks");
             else
-                prompt += GetString("Game", "task");
+                prompt += GetString("Game", "Task");
         } else {
             prompt += GetString("Game", "YouEarned") + " " + StateManager.firstDiceResult.ToString() + " ";
             if (StateManager.firstDiceResult > 1)
-                prompt += GetString("Game", "debts");
+                prompt += GetString("Game", "Debts");
             else
-                prompt += GetString("Game", "debt");
+                prompt += GetString("Game", "Debt");
         }
         if(StateManager.alreadyReRoll){
-            prompt += " " + GetString("Game", "and") + " " + StateManager.secondDiceResult.ToString() + " ";
+            prompt += " " + GetString("Game", "And") + " " + StateManager.secondDiceResult.ToString() + " ";
             if (StateManager.secondTaskOrDebtChoice == "TASK"){
                 if (StateManager.secondDiceResult > 1)
-                    prompt += GetString("Game", "tasks");
+                    prompt += GetString("Game", "Tasks");
                 else
-                    prompt += GetString("Game", "task");
+                    prompt += GetString("Game", "Task");
             } else {
                 if (StateManager.secondDiceResult > 1)
-                    prompt += GetString("Game", "debts");
+                    prompt += GetString("Game", "Debts");
                 else
-                    prompt += GetString("Game", "debt");
+                    prompt += GetString("Game", "Debt");
             }
         }
         prompt+=".";

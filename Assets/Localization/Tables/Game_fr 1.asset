@@ -9,25 +9,122 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97269afb30aa84742ae3f3342603618a, type: 3}
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
   m_Name: Game_fr 1
   m_EditorClassIdentifier: 
   m_LocaleId:
     m_Code: fr
-  m_SharedData: {fileID: 11400000, guid: 40f28a1c2bc4c0f4699eaf9ac1dc13f7, type: 2}
+  m_SharedData: {fileID: 11400000, guid: 23add21837e87a14a8bab3b4e73e3839, type: 2}
   m_Metadata:
     m_Items: []
   m_TableData:
-  - m_Id: 1388677996544
-    m_Localized: e4a1de1974b6d7043a8bda07badd3784
+  - m_Id: 338302640128
+    m_Localized: C'est le tour de
     m_Metadata:
       m_Items: []
-  - m_Id: 1659139301376
-    m_Localized: a2450924e15f6b54c9f46baeefa80375
+  - m_Id: 590376116224
+    m_Localized: Phase de Review
     m_Metadata:
       m_Items: []
-  - m_Id: 1843571236864
-    m_Localized: f308da0c57e00614887f7fe17279de7b
+  - m_Id: 595300229120
+    m_Localized: "Phase de R\xE9trospective"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 306186854400
+    m_Localized: Jour
+    m_Metadata:
+      m_Items: []
+  - m_Id: 402282553344
+    m_Localized: Accepter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 726330286080
+    m_Localized: passe son tour
+    m_Metadata:
+      m_Items: []
+  - m_Id: 276965138432
+    m_Localized: "Vous pouvez relancer le d\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 138104315904
+    m_Localized: Jouer un tour
+    m_Metadata:
+      m_Items: []
+  - m_Id: 183922892800
+    m_Localized: "Choisissez entre augmenter le nombre de t\xE2ches ou \xE9pargner
+      la dette"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 252977913856
+    m_Localized: "Lancer le d\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 300373549056
+    m_Localized: "Piochez une carte probl\xE8me"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 358389161984
+    m_Localized: A faire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 383328493568
+    m_Localized: En cours
+    m_Metadata:
+      m_Items: []
+  - m_Id: 393109610496
+    m_Localized: "Termin\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 419772801024
+    m_Localized: Refuser
+    m_Metadata:
+      m_Items: []
+  - m_Id: 447446818816
+    m_Localized: 'Temps :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 487515004928
+    m_Localized: "Nombre d'\xE9toiles :"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 519400103936
+    m_Localized: 'Nombre de sprints :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 563851337728
+    m_Localized: Choisissez un joueur qui piochera une carte Daily
+    m_Metadata:
+      m_Items: []
+  - m_Id: 627537649664
+    m_Localized: "Vous avez gagn\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 640766484480
+    m_Localized: "Vous avez \xE9pargn\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 656667090944
+    m_Localized: "t\xE2ches"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 676539703296
+    m_Localized: "t\xE2che"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 685486153728
+    m_Localized: dettes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694709428224
+    m_Localized: dette
+    m_Metadata:
+      m_Items: []
+  - m_Id: 714342965248
+    m_Localized: et
+    m_Metadata:
+      m_Items: []
+  - m_Id: 766180368384
+    m_Localized: "Valider les t\xE2ches"
     m_Metadata:
       m_Items: []
   references:

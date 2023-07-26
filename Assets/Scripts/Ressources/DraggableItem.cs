@@ -8,6 +8,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 {
     [HideInInspector] public Transform parentAfterDrag;
     [HideInInspector] public UserStory userStory;
+    [HideInInspector] public bool isDragged; 
     public void OnBeginDrag(PointerEventData eventData)
     {
         if(StateManager.gameState == StateManager.GameState.TDTD && userStory.state == UserStory.State.PRODUCT_BACKLOG){
@@ -15,6 +16,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             transform.SetParent(transform.root);
             transform.SetAsLastSibling();
             DisableRaycastTargetsRecursively(transform);
+            isDragged = true;
         }
     }
 
@@ -30,6 +32,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         if(StateManager.gameState == StateManager.GameState.TDTD && userStory.state == UserStory.State.PRODUCT_BACKLOG){
             transform.SetParent(parentAfterDrag);
             EnableRaycastTargetsRecursively(transform);
+            isDragged = false;
         }
     }
     private void DisableRaycastTargetsRecursively(Transform parent)

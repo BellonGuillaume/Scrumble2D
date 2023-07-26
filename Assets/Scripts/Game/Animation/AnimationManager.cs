@@ -120,7 +120,7 @@ public class AnimationManager : MonoBehaviour
 
     public void StartTurnAnimation(Player player){
                 EventManager.animate = true;
-        string text = LocalizationSettings.StringDatabase.GetTable("Game").GetEntry("TurnOf").GetLocalizedString();
+        string text = GetString("Game", "TurnOf");
         this.textDayPopUp.GetComponent<TMP_Text>().text = text + " " + player.userName;
         this.dayPopUp.SetActive(true);
         Vector2 startPosition = this.dayAnimationStartPosition;
@@ -709,5 +709,8 @@ public class AnimationManager : MonoBehaviour
                 EventManager.animate = false;
             }
         );
+    }
+    public string GetString(string tableName, string stringKey){
+        return LocalizationSettings.StringDatabase.GetLocalizedString(tableName, stringKey);
     }
 }

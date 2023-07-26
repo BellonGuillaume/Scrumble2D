@@ -414,6 +414,7 @@ GameObject:
   - component: {fileID: 4323008430428288814}
   - component: {fileID: 4323008430428288849}
   - component: {fileID: -8323526152496365946}
+  - component: {fileID: 5468875351620688951}
   m_Layer: 5
   m_Name: UICard
   m_TagString: Untagged
@@ -523,8 +524,42 @@ MonoBehaviour:
   clickHandler: {fileID: 160681243446328154}
   cardPicker: {fileID: 0}
   id: 0
-  flipped: 0
   positionBeforeMove: {x: 0, y: 0}
+--- !u!114 &5468875351620688951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4323008430428288815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f55fcc3768689a4f9cf863b8c11c618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LocalizedAssetReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:40f28a1c2bc4c0f4699eaf9ac1dc13f7
+    m_TableEntryReference:
+      m_KeyId: 1388677996544
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+  m_UpdateAsset:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4323008430760940589
 GameObject:
   m_ObjectHideFlags: 0
