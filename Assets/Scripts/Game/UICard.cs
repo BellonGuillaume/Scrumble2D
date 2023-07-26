@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Localization.Settings;
 
 public class UICard : MonoBehaviour
 {
     [SerializeField] Sprite dailyRecto;
-    [SerializeField] Sprite dailyVerso;
+    [SerializeField] Sprite dailyVersoFR;
+    [SerializeField] Sprite dailyVersoEN;
     [SerializeField] Sprite problemRecto;
-    [SerializeField] Sprite problemVerso;
+    [SerializeField] Sprite problemVersoFR;
+    [SerializeField] Sprite problemVersoEN;
     [SerializeField] Sprite reviewRecto;
-    [SerializeField] Sprite reviewVerso;
+    [SerializeField] Sprite reviewVersoFR;
+    [SerializeField] Sprite reviewVersoEN;
     [SerializeField] TMP_Text description;
     [SerializeField] TMP_Text result;
     [SerializeField] Image verso;
@@ -35,17 +39,17 @@ public class UICard : MonoBehaviour
             case Card.CategoryOfCard.DAILY:
                 this.recto.color = BLUE;
                 // this.recto.sprite = dailyRecto;
-                this.verso.sprite = dailyVerso;
+                this.verso.sprite = GetDailyVerso();
                 break;
             case Card.CategoryOfCard.PROBLEM:
                 this.recto.color = RED;
                 // this.recto.sprite = problemRecto;
-                this.verso.sprite = problemVerso;
+                this.verso.sprite = GetProblemVerso();
                 break;
             case Card.CategoryOfCard.REVIEW:
                 this.recto.color = GREEN;
                 // this.recto.sprite = reviewRecto;
-                this.verso.sprite = reviewVerso;
+                this.verso.sprite = GetReviewVerso();
                 break;
         }
         this.cardPicker = cardPicker;
@@ -103,5 +107,24 @@ public class UICard : MonoBehaviour
             newColor.a = alpha;
             text.color = newColor;
         }
+    }
+
+    public Sprite GetDailyVerso(){
+        if (StateManager.language == LocalizationSettings.AvailableLocales.GetLocale("fr")){
+            return this.dailyVersoFR;
+        }
+        return this.dailyVersoEN;
+    }
+    public Sprite GetProblemVerso(){
+        if (StateManager.language == LocalizationSettings.AvailableLocales.GetLocale("fr")){
+            return this.problemVersoFR;
+        }
+        return this.problemVersoEN;
+    }
+    public Sprite GetReviewVerso(){
+        if (StateManager.language == LocalizationSettings.AvailableLocales.GetLocale("fr")){
+            return this.reviewVersoFR;
+        }
+        return this.reviewVersoEN;
     }
 }
