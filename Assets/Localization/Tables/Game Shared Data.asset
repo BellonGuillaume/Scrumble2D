@@ -15,78 +15,45 @@ MonoBehaviour:
   m_TableCollectionName: Game
   m_TableCollectionNameGuidString: 40f28a1c2bc4c0f4699eaf9ac1dc13f7
   m_Entries:
-  - m_Id: 9662394368
-    m_Key: TurnButton
+  - m_Id: 1388677996544
+    m_Key: DailyCard
     m_Metadata:
       m_Items: []
-  - m_Id: 800469053440
-    m_Key: ChoiceTitle
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1025535406080
-    m_Key: Roll
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1099040583680
-    m_Key: Reroll
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1252879265792
+  - m_Id: 1659139301376
     m_Key: ProblemCard
     m_Metadata:
       m_Items: []
-  - m_Id: 1690093514752
-    m_Key: Day
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1728932769792
-    m_Key: TurnOf
-    m_Metadata:
-      m_Items: []
-  - m_Id: 2306245160960
-    m_Key: Todo
-    m_Metadata:
-      m_Items: []
-  - m_Id: 2365854609408
-    m_Key: Doing
-    m_Metadata:
-      m_Items: []
-  - m_Id: 2402605101056
-    m_Key: Done
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1705538717773824
-    m_Key: Accept
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1705596724998144
-    m_Key: Decline
-    m_Metadata:
-      m_Items: []
-  - m_Id: 3520072860332032
-    m_Key: Time
-    m_Metadata:
-      m_Items: []
-  - m_Id: 3520141944713216
-    m_Key: Stars
-    m_Metadata:
-      m_Items: []
-  - m_Id: 3520212731981824
-    m_Key: Sprints
-    m_Metadata:
-      m_Items: []
-  - m_Id: 3877514001543168
-    m_Key: ChooseDailyPlayer
+  - m_Id: 1843571236864
+    m_Key: ReviewCard
     m_Metadata:
       m_Items: []
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - rid: 1431151320621383688
   m_KeyGenerator:
-    rid: 1431151053299777554
+    rid: 1431151320621383686
   references:
     version: 2
     RefIds:
-    - rid: 1431151053299777554
+    - rid: 1431151320621383686
       type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
       data:
-        m_CustomEpoch: 1689346947038
+        m_CustomEpoch: 1690379807502
+    - rid: 1431151320621383688
+      type: {class: AssetTypeMetadata, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries:
+        - m_KeyId: 1388677996544
+          m_TableCodes:
+          - en
+          - fr
+        - m_KeyId: 1659139301376
+          m_TableCodes:
+          - en
+          - fr
+        - m_KeyId: 1843571236864
+          m_TableCodes:
+          - en
+          - fr
+        m_TypeString: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null

@@ -34,6 +34,14 @@ MonoBehaviour:
     m_Localized: 'Etoiles restantes :'
     m_Metadata:
       m_Items: []
+  - m_Id: 4340168134270976
+    m_Localized: En tant que
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4341506222104576
+    m_Localized: je veux
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

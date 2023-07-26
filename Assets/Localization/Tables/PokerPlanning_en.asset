@@ -34,6 +34,14 @@ MonoBehaviour:
     m_Localized: 'Remaining stars :'
     m_Metadata:
       m_Items: []
+  - m_Id: 4340168134270976
+    m_Localized: As a
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4341506222104576
+    m_Localized: I want
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

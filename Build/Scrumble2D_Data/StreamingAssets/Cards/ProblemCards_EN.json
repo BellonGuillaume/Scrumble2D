@@ -2,362 +2,567 @@
     {
         "id" : 1,
         "category" : "PROBLEM",
-        "description" : "Votre station de travail est tombée en panne... et donc du travail est à refaire !",
-        "result" : "Vous perdez 2 tâches."
+        "description" : "Your workstation has broken down... so you have to redo some, your work!",
+        "result" : "You lose 2 tasks.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 2
     },
     {
         "id" : 2,
         "category" : "PROBLEM",
-        "description" : "Oups, vous avez cassé le build !",
-        "result" : "Votre équipe perd 1 tâche par membre."
+        "description" : "Oops, you broke the build !",
+        "result" : "Your team loses 1 task per member.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTaskPerPlayer",
+        "firstValue" : 1
     },
     {
         "id" : 3,
         "category" : "PROBLEM",
-        "description" : "Un test échoue de manière impromptue et nécessite une investigation.",
-        "result" : "Vous perdez 2 tâches."
+        "description" : "A test fails unexpectedly and requires investigation.",
+        "result" : "You lose 2 tasks.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 2,
+        "test" : true
     },
     {
         "id" : 4,
         "category" : "PROBLEM",
-        "description" : "Un test échoue de manière impromptue et nécessite une investigation.",
-        "result" : "Vous perdez 2 tâches."
+        "description" : "A test fails unexpectedly and requires investigation.",
+        "result" : "You lose 2 tasks.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 2,
+        "test" : true
     },
     {
         "id" : 5,
         "category" : "PROBLEM",
-        "description" : "Un test sensible échoue de manière étrange et répétée. Vous devez investiguer et corriger cela.",
-        "result" : "Vous perdez 3 tâches et accumulez 1 dette."
+        "description" : "A sensitive test fails strangely and repeatedly. You need to investigate and correct it",
+        "result" : "You lose 3 tasks and accumulate 1 debt.",
+        "typeOfCard" : "Multiple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 3,
+        "secondAction" : "IncreaseDebt",
+        "secondValue" : 1,
+        "test" : true
     },
     {
         "id" : 6,
         "category" : "PROBLEM",
-        "description" : "Un test critique ne réussit plus sans raison apparente. Un travail minutieux d'inspection est requis.",
-        "result" : "Vous perdez 4 tâches et accumulez 2 dettes."
+        "description" : "A critical test no longer succeeds for no apparent reason. A thorough inspection is required.",
+        "result" : "You lose 4 tasks and accumulate 2 debts.",
+        "typeOfCard" : "Multiple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 4,
+        "secondAction" : "IncreaseDebt",
+        "secondValue" : 2,
+        "test" : true
     },
     {
         "id" : 7,
         "category" : "PROBLEM",
-        "description" : "Un bug mineur est signalé par l'un des utilisateurs. Rien de bien méchant, mais cela reste un bug !",
-        "result" : "Vous accumulez 2 dettes."
+        "description" : "A minor bug has been reported by one of our users. Nothing too serious, but it's still a bug !",
+        "result" : "You accumulate 2 debts.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 2
     },
     {
         "id" : 8,
         "category" : "PROBLEM",
-        "description" : "Dans vos e-mails aujourd'hui, le signalement d'un bug par les utilisateurs ! Mince !",
-        "result" : "Vous accumulez 3 dettes."
+        "description" : "In your emails today, users reporting a bug ! Damn!",
+        "result" : "You have accumulated 3 debts.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 3
     },
     {
         "id" : 9,
         "category" : "PROBLEM",
-        "description" : "La dette technique, c'est comme la calvitie. Elle s'installe très vite.",
-        "result" : "Vous accumulez 20% de dette supplémentaire ! Prudence !"
+        "description" : "Technical debts is like baldness. It sets in very quickly.",
+        "result" : "You accumulate 20% more debt ! Be careful !",
+        "typeOfCard" : "Simple",
+        "firstAction" : "MultiplieDebt",
+        "firstValue" : 1.20
     },
     {
         "id" : 10,
         "category" : "PROBLEM",
-        "description" : "Plus il y a de code, plus il y a de problèmes. Plus il y a de problèmes, moins il y a de fonctionnalités. Attendez...",
-        "result" : "Vous accumulez 20% de dette supplémentaire ! Prudence !"
+        "description" : "The more code, the more problems. The more problems, the less functionality. Wait a minute..",
+        "result" : "You are accumulating 20% more debts ! Be careful !",
+        "typeOfCard" : "Simple",
+        "firstAction" : "MultiplieDebt",
+        "firstValue" : 1.20
     },
     {
         "id" : 11,
         "category" : "PROBLEM",
-        "description" : "Qu'est-ce qui ressemble à un bug, mais qui est plus pénible qu'un bug ? Oui, c'est un très gros bug. ",
-        "result" : "Vous accumulez 4 dettes."
+        "description" : "What looks like 1 bug, but is more annoying than a bug ? Yes, it's a very big bug.",
+        "result" : "You accumulate 4 debts.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 4
     },
     {
         "id" : 12,
         "category" : "PROBLEM",
-        "description" : "Les tests unitaires automatisés ne fonctionnent plus. Vous devez absolument y jeter un œil et résoudre ce problème.",
-        "result" : "Vous perdez 5 tâches."
+        "description" : "Automated unit tests no longer work. You need to take a look at it and solve the problem.",
+        "result" : "You lose 5 tasks.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 5,
+        "test" : true
     },
     {
         "id" : 13,
         "category" : "PROBLEM",
-        "description" : "Bien curieusement, tous vos tests de BDD échouent. Vous devez résoudre ce problème en priorité.",
-        "result" : "Vous perdez 3 tâches."
+        "description" : "Curiously, all your BDD tests fail. You need to solve this problem as a matter of priority",
+        "result" : "You lose 3 tasks.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 3,
+        "test" : true
     },
     {
         "id" : 14,
         "category" : "PROBLEM",
-        "description" : "Après plusieurs échanges dans l'équipe, vous constatez la nécessité de clarifier un point de la définition de Terminé !",
-        "result" : "Vous accumulez 2 dettes."
+        "description" : "After several discussions within the team, you realize the need to clarify a point in the definition of Finished !",
+        "result" : "You accumulate 2 debts.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 2
     },
     {
         "id" : 15,
         "category" : "PROBLEM",
-        "description" : "De nouveaux standards nécessitent une révision de la définition de Terminé... ainsi que du travail imprévu !",
-        "result" : "Vous accumulez 5 dettes."
+        "description" : "New standards require a revision of the definition of Completed.. as well as some unforeseen work !",
+        "result" : "You accumulate 5 debts.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 5
     },
     {
         "id" : 16,
         "category" : "PROBLEM",
-        "description" : "De nouvelles normes majeures impactent fortement votre travail, réalisé jusqu'ici !",
-        "result" : "Vous accumulez 10 dettes."
+        "description" : "Major new standards are having a major impact on your work to date!",
+        "result" : "You accumulate 10 debts.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 10
     },
     {
         "id" : 17,
         "category" : "PROBLEM",
-        "description" : "Tiens, quelqu'un n'a pas écrit les tests unitaires d'une nouvelle classe !",
-        "result" : "Vous accumulez 2 dettes."
+        "description" : "Someone has not written the unit tests for a new class !",
+        "result" : "You accumulate 2 debts.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 2
     },
     {
         "id" : 18,
         "category" : "PROBLEM",
-        "description" : "Les tests unitaires automatisés ne fonctionnent plus. Vous devez absolument y jeter un œil et résoudre ce problème.",
-        "result" : "Vous perdez 5 tâches."
+        "description" : "Automated unit tests no longer work. You need to take a look at it and solve the problem.",
+        "result" : "You lose 5 tasks.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 5,
+        "test" : true
     },
     {
         "id" : 19,
         "category" : "PROBLEM",
-        "description" : "Vous remarquez l'absence de tests critiques. Souhaitez-vous les écrire ?",
-        "result" : "Si oui, choisissez de perdre 10 tâches. Sinon accumulez 5 dettes."
+        "description" : "You notice the absence of critical tests. Would you like to write them ?",
+        "result" : "If so, choose to lose 10 tasks. If not, accumulate 5 debts.",
+        "typeOfCard" : "Choice",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 10,
+        "secondAction" : "IncreaseDebt",
+        "secondValue" : 5
     },
     {
         "id" : 20,
         "category" : "PROBLEM",
-        "description" : "Vous remarquez l'absence de tests. Souhaitez-vous les écrire ?",
-        "result" : "Si oui, choisissez de perdre 8 tâches. Sinon accumulez 4 dettes."
+        "description" : "You notice the absence of tests. Would you like to write them  ?",
+        "result" : "If so, choose to lose 8 tasks. If not, accumulate 4 debts.",
+        "typeOfCard" : "Choice",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 8,
+        "secondAction" : "IncreaseDebt",
+        "secondValue" : 4
     },
     {
         "id" : 21,
         "category" : "PROBLEM",
-        "description" : "Vous remarquez de sacrées redondances dans le code. Souhaitez-vous le factoriser ?",
-        "result" : "Si oui, choisissez de perdre 5 tâches. Sinon accumulez 3 dettes."
+        "description" : "You notice a few big redundancies in the code. Would you like to factor it ?",
+        "result" : "If so, choose to lose 5 tasks. Otherwise, accumulate 3 debts..",
+        "typeOfCard" : "Choice",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 5,
+        "secondAction" : "IncreaseDebt",
+        "secondValue" : 3
     },
     {
         "id" : 22,
         "category" : "PROBLEM",
-        "description" : "Une commande rm -f mal exécutée vous fait perdre votre travail sans sauvegarde de secours !",
-        "result" : "Vous perdez 5 tâches."
+        "description" : "An incorrectly executed rm -f command will cause you to lose your work without a backup!",
+        "result" : "You lose 5 tasks.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 5
     },
     {
         "id" : 23,
         "category" : "PROBLEM",
-        "description" : "De nouvelles tâches techniques mineures sont identifiées. Elles sont indispensables.",
-        "result" : "Vous perdez 2 tâches."
+        "description" : "New minor technical tasks are identified. They are essential.",
+        "result" : "You lose 2 tasks.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 2
     },
     {
         "id" : 24,
         "category" : "PROBLEM",
-        "description" : "De nouvelles tâches techniques mineures sont identifiées. Elles sont indispensables.",
-        "result" : "Vous perdez 2 tâches."
+        "description" : "New minor technical tasks are identified. They are essential.",
+        "result" : "You lose 2 tasks.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 2
     },
     {
         "id" : 25,
         "category" : "PROBLEM",
-        "description" : "Vous avez vu un bug. Après cinq tentatives pour le reproduire, vous n'y arrivez pas...",
-        "result" : "Cette mésaventure vous fait perdre 1 tâche."
+        "description" : "You have a bug. After 5 attempts to reproduce it, you can't...",
+        "result" : "This mishap causes you to lose 1 task.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 1
     },
     {
         "id" : 26,
         "category" : "PROBLEM",
-        "description" : "Votre code devrait être plus commenté et documenté. Souhaitez-vous vous en charger ?",
-        "result" : "Si oui, choisissez de perdre 4 tâches. Sinon accumulez 2 dettes."
+        "description" : "Your code should be more detailed and documented. Would you like to do it ?",
+        "result" : "If so, choose to lose 4 tasks. If not, accumulate 2 debts",
+        "typeOfCard" : "Choice",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 4,
+        "secondAction" : "IncreaseDebt",
+        "secondValue" : 2
     },
     {
         "id" : 27,
         "category" : "PROBLEM",
-        "description" : "Vous remarquez quelques redondances dans le code. Souhaitez-vous le factoriser ?",
-        "result" : "Si oui, choisissez de perdre 3 tâches. Sinon accumulez 1 dette."
+        "description" : "You notice a few redundancies in the code. Would you like to factor it ?",
+        "result" : "If so, choose to lose 3 tasks. Otherwise, accumulate 1 debt.",
+        "typeOfCard" : "Choice",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 3,
+        "secondAction" : "IncreaseDebt",
+        "secondValue" : 1
     },
     {
         "id" : 28,
         "category" : "PROBLEM",
-        "description" : "Vous avez vu un bug. Après cinq tentatives pour le reproduire, vous n'y arrivez pas...",
-        "result" : "Cette mésaventure vous fait perdre 1 tâche."
+        "description" : "You have a bug. After 5 attempts to reproduce it, you can't...",
+        "result" : "This mishap causes you to lose 1 task..",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 1
     },
     {
         "id" : 29,
         "category" : "PROBLEM",
-        "description" : "De nouvelles tâches techniques s'avèrent nécessaires pour terminer une User Story.",
-        "result" : "Vous perdez 4 tâches."
+        "description" : "New technical tasks are requires to complete a User Story.",
+        "result" : "You lose 4 tasks.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 4
     },
     {
         "id" : 30,
         "category" : "PROBLEM",
-        "description" : "De nouvelles tâches techniques s'avèrent nécessaires pour terminer une User Story.",
-        "result" : "Vous perdez 4 tâches."
+        "description" : "New technical tasks are requires to complete a User Story.",
+        "result" : "You lose 4 tasks.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 4
     },
     {
         "id" : 31,
         "category" : "PROBLEM",
-        "description" : "Vous avez renversé votre café sur un travail d'analyse... Quelqu'un a une éponge ?",
-        "result" : "Cette maladresse vous fait perdre 1 tâche."
+        "description" : "You spilled your coffee on a piece of analysis work... Does anyone have a sponge ?",
+        "result" : "This clumsiness causes you to lose 1 task.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 1
     },
     {
         "id" : 32,
         "category" : "PROBLEM",
-        "description" : "Vous avez renversé votre thé sur votre clavier... Bravo !",
-        "result" : "Cette maladresse vous fait perdre 2 tâches."
+        "description" : "You spilled your tea on your keyboard... Well done !",
+        "result" : "This clumsiness causes you to lose 2 tasks.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 2
     },
     {
         "id" : 33,
         "category" : "PROBLEM",
-        "description" : "Vous remarquez quelques redondances dans le code. Souhaitez-vous le factoriser ?",
-        "result" : "Si oui, choisissez de perdre 3 tâches. Sinon accumulez 1 dette."
+        "description" : "You notice a few redundancies in the code. Would you like to factor it ?",
+        "result" : "If so, choose to lose 3 tasks. Otherwise, accumulate 1 debt.",
+        "typeOfCard" : "Choice",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 3,
+        "secondAction" : "IncreaseDebt",
+        "secondValue" : 1
     },
     {
         "id" : 34,
         "category" : "PROBLEM",
-        "description" : "Votre code devrait être plus commenté et documenté. Souhaitez-vous vous en charger ?",
-        "result" : "Si oui, choisissez de perdre 4 tâches. Sinon accumulez 2 dettes."
+        "description" : "Your code should be more detailed and documented. Would you like to do it ?",
+        "result" : "If so, choose to lose 4 tasks. If not, accumulate 2 debts.",
+        "typeOfCard" : "Choice",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 4,
+        "secondAction" : "IncreaseDebt",
+        "secondValue" : 2
     },
     {
         "id" : 35,
         "category" : "PROBLEM",
-        "description" : "Un utilisateur vous informe d'un bug, sans communiquer ses observations. Vous le recontactez donc.",
-        "result" : "Cette activité vous fait perdre 1 tâche."
+        "description" : "A user informs you of a bug, without communicating his observations. So you contact him.",
+        "result" : "This activity causes you to lose 1 task.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 1
     },
     {
         "id" : 36,
         "category" : "PROBLEM",
-        "description" : "Un utilisateur vous informe d'un bug, sans communiquer ses observations. Vous le recontactez donc.",
-        "result" : "Cette activité vous fait perdre 1 tâche."
+        "description" : "A user informs you of a bug, without communicating his observations. So you contact him.",
+        "result" : "This activity causes you to lose 1 task.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 1
     },
     {
         "id" : 37,
         "category" : "PROBLEM",
-        "description" : "Vos derniers tests de stress ont échoué.",
-        "result" : "Vous accumulez 4 dettes."
+        "description" : "Your latest stress tests have failed.",
+        "result" : "You accumulate 4 debts.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 4,
+        "test" : true
     },
     {
         "id" : 38,
         "category" : "PROBLEM",
-        "description" : "Vous avez quelque peu négligé la définition de Terminé dernièrement !",
-        "result" : "Lancez le dé et accumulez autant de dette."
+        "description" : "You have been neglecting the definition of Finished lately !",
+        "result" : "Roll, the die and accumulate as many debts.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebtPerRoll"
     },
     {
         "id" : 39,
         "category" : "PROBLEM",
-        "description" : "L'un de vos collègues vous demande un peu d'aide aujourd'hui. Vous décidez de le guider pour ne pas créer de dette inutilement.",
-        "result" : "Vous perdez 1 tâche."
+        "description" : "One of your colleague is asking for a little help today. You decide to guide him so as not to create unnecessary debt.",
+        "result" : "You lose 1 task.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 1
     },
     {
         "id" : 40,
         "category" : "PROBLEM",
-        "description" : "L'un de vos collègues vous demande un peu d'aide aujourd'hui. Vous décidez de le guider pour ne pas créer de dette inutilement.",
-        "result" : "Vous perdez 1 tâche."
+        "description" : "One of your colleague is asking for a little help today. You decide to guide him so as not to create unnecessary debt.",
+        "result" : "You lose 1 task.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 1
     },
     {
         "id" : 41,
         "category" : "PROBLEM",
-        "description" : "Un de vos coéquipiers est absent pour des raisons de santé aujourd'hui. Bon rétablissement !",
-        "result" : "Le prochain joueur doit passer son tour."
+        "description" : "One of your team-mates is absent for health reasons today. Get well soon !",
+        "result" : "Next player need to pass his turn.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "NextPlayerPassATurn",
+        "firstValue" : 1
     },
     {
         "id" : 42,
         "category" : "PROBLEM",
-        "description" : "Un utilisateur vous informe d'un bug, sans communiquer ses observations. Vous le recontactez donc.",
-        "result" : "Cette activité vous fait perdre 1 tâche."
+        "description" : "A user informs you of a bug, without communicating his observations. So you contact him.",
+        "result" : "This activity causes you to lose 1 task",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 1
     },
     {
         "id" : 43,
         "category" : "PROBLEM",
-        "description" : "Vous confrontez la fameuse loi de Murphy. Bonne chance !",
-        "result" : "Lancez le dé. Si vous obtenez 3 ou moins, piochez autant de cartes Problème !"
+        "description" : "You are confronting Murphy's law. Good luck to you !",
+        "result" : "Throw the die. If you get 3 or less, pick as many Problem cards !",
+        "typeOfCard" : "Simple",
+        "firstAction" : "PickProblemCardsPerRoll"
     },
     {
         "id" : 44,
         "category" : "PROBLEM",
-        "description" : "Un test critique ne réussit plus sans raison apparente. Un travail minutieux d'inspection est requis.",
-        "result" : "Vous perdez 4 tâches et accumulez 2 dettes."
+        "description" : "A critical test fails for no apparent reason. A thorough inspection is required",
+        "result" : "You lose 4 tasks and accumulate 2 debts.",
+        "typeOfCard" : "Multiple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 4,
+        "secondAction" : "IncreaseDebt",
+        "secondValue" : 2,
+        "test" : true
     },
     {
         "id" : 45,
         "category" : "PROBLEM",
-        "description" : "Le management vous perturbe en vous imposant des réunions hors du cadre Scrum.",
-        "result" : "Votre équipe perd 2 tâches par membre de l'équipe de développement."
+        "description" : "Management disturbs you by imposing meetings outside the Scrum framework.",
+        "result" : "Your team loses 2 tasks per development team member.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTaskPerDevelopper",
+        "firstValue" : 2
     },
     {
         "id" : 46,
         "category" : "PROBLEM",
-        "description" : "Vous êtes bloqué et devez demander un peu d'aide à vos coéquipiers.",
-        "result" : "Vous perdez 2 tâches."
+        "description" : "You are stuck and need to ask your teammates for a little help.",
+        "result" : "You lose 2 tasks.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 2
     },
     {
         "id" : 47,
         "category" : "PROBLEM",
-        "description" : "Vous êtes bloqué et devez demander un peu d'aide à vos coéquipiers.",
-        "result" : "Vous perdez 2 tâches."
+        "description" : "You are stuck and need to ask your teammates for a little help.",
+        "result" : "You lose 2 tasks.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 2
     },
     {
         "id" : 48,
         "category" : "PROBLEM",
-        "description" : "Un utilisateur grognon vient se plaindre auprès de l'équipe. Cela sape votre moral.",
-        "result" : "Vous perdez 3 tâches."
+        "description" : "A grumpy user complains to the team. It lowers your morale.",
+        "result" : "You lose 3 tasks.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 3
     },
     {
         "id" : 49,
         "category" : "PROBLEM",
-        "description" : "Vous remarquez quelques redondances dans le code. Souhaitez-vous le factoriser ?",
-        "result" : "Si oui, choisissez de perdre 3 tâches. Sinon accumulez 1 dette."
+        "description" : "You notice a few redundancies in the code. Would you like to factor it  ?",
+        "result" : "if so, choose to lose 3 tasks. Otherwise, accumulate 1 debt.",
+        "typeOfCard" : "Choice",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 3,
+        "secondAction" : "IncreaseDebt",
+        "secondValue" : 1
     },
     {
         "id" : 50,
         "category" : "PROBLEM",
-        "description" : "Un plantage de votre machine de travail anéantit une partie de vos efforts !",
-        "result" : "Vous perdez 3 tâches."
+        "description" : "Your work machine crashes, all your hard work is wasted !",
+        "result" : "You lose 3 tasks.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 3
     },
     {
         "id" : 51,
         "category" : "PROBLEM",
-        "description" : "Des ajustements sont nécessaires à la documentation du produit, incomplète.",
-        "result" : "Vous accumulez 2 dettes."
+        "description" : "Adjustments are needed to incomplete product documentation.",
+        "result" : "You accumulate 2 debts.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 2
     },
     {
         "id" : 52,
         "category" : "PROBLEM",
-        "description" : "Vous avez désormais la poisse !",
-        "result" : "Toute l'équipe doit désormais aussi piocher un carte Problème si un 5 tombe aux lancés de dé.",
-        "permanent" : true
+        "description" : "Now you are jinxed !",
+        "result" : "The whole team must now also draw a Problem card if a 5 is rolled.",
+        "typeOfCard" : "Permanent",
+        "permanent" : "Jinx"
     },
     {
         "id" : 53,
         "category" : "PROBLEM",
-        "description" : "Oups, vous avez cassé le build !",
-        "result" : "Votre équipe perd 1 tâche par membre."
+        "description" : "Oops, you have broken the build !",
+        "result" : "Your team loses one task per member.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTaskPerPlayer",
+        "firstValue" : 1
     },
     {
         "id" : 54,
         "category" : "PROBLEM",
-        "description" : "Oups, vous avez cassé le build !",
-        "result" : "Votre équipe perd 1 tâche par membre."
+        "description" : "Oops, you have broken the build  !",
+        "result" : "Your team loses one task per member.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTaskPerPlayer",
+        "firstValue" : 1
     },
     {
         "id" : 55,
         "category" : "PROBLEM",
-        "description" : "Votre Product Backlog doit être retravaillé régulièrement. Vous le clarifiez donc pour les Sprints à venir.",
-        "result" : "Votre équipe perd autant de tâches que le facteur de dette technique."
+        "description" : "Your Product Backlog needs to be reworked regularly. So you check it for upcoming Sprints.",
+        "result" : "Your team loses as many tasks as the technical debt factor.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTaskPerCurrentDebt"
     },
     {
         "id" : 56,
         "category" : "PROBLEM",
-        "description" : "Votre Product Backlog doit être retravaillé régulièrement. Vous le clarifiez donc pour les Sprints à venir.",
-        "result" : "Votre équipe perd autant de tâches que le facteur de dette technique."
+        "description" : "Your Product Backlog needs to be reworked regularly. So you check it for upcoming Sprints.",
+        "result" : "Your team loses as many tasks as the technical debt factor.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTaskPerCurrentDebt"
     },
     {
         "id" : 57,
         "category" : "PROBLEM",
-        "description" : "Quelqu'un a 'emprunté' vos post-its ainsi que vos fournitures... Les retrouver vous prend un peu de temps.",
-        "result" : "Vous perdez 1 tâche."
+        "description" : "Someone has 'borrowed' your post-it notes and supplies. Finding them takes a little time",
+        "result" : "You lose 1 task.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 1
     },
     {
         "id" : 58,
         "category" : "PROBLEM",
-        "description" : "Oups ! Coupure de courant ! Vous demandez au Scrum Master de pédaler sur la dynamo.",
-        "result" : "Vous perdez 3 tâches."
+        "description" : "Oops ! Power failure ! You ask the Scrum Master to pedal the dynamo.",
+        "result" : "You lose 3 tasks.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 3
     },
     {
         "id" : 59,
         "category" : "PROBLEM",
-        "description" : "Un de vos coéquipiers est absent pour des raisons de santé aujourd'hui. Bon rétablissement !",
-        "result" : "Le prochain joueur doit passer son tour."
+        "description" : "One of your team-mates is absent for health reasons today. Get well soon !",
+        "result" : "Next player need to pass his turn.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "NextPlayerPassATurn",
+        "firstValue" : 1
     },
     {
         "id" : 60,
         "category" : "PROBLEM",
-        "description" : "La complexité d'un projet est à la fois technique, fonctionnelle et aussi humaine.",
-        "result" : "L'équipe accumule autant de dettes que de développeurs."
+        "description" : "The complexity of a project is technical, functional and also human.",
+        "result" : "The team accumulates as many debts as developers.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebtPerDevelopper",
+        "firstValue" : 1
     }
 ]

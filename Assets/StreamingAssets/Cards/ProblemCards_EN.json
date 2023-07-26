@@ -406,7 +406,7 @@
         "id" : 43,
         "category" : "PROBLEM",
         "description" : "You are confronting Murphy's law. Good luck to you !",
-        "result" : "Throw the die. If you get 3 or less, pick as manu Problem cards !",
+        "result" : "Throw the die. If you get 3 or less, pick as many Problem cards !",
         "typeOfCard" : "Simple",
         "firstAction" : "PickProblemCardsPerRoll"
     },

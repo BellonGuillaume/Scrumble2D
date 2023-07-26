@@ -736,10 +736,10 @@ public class CardHandler : MonoBehaviour
     #region ###### Initialisation ######
     public void CreateDailyCards(){
         string path = "";
-        if (StateManager.language == LocalizationSettings.AvailableLocales.GetLocale("en")){
-            path = Application.streamingAssetsPath + "/Cards/DailyCards_EN.json";
-        } else {
+        if (StateManager.language == LocalizationSettings.AvailableLocales.GetLocale("fr")){
             path = Application.streamingAssetsPath + "/Cards/DailyCards_FR.json";
+        } else {
+            path = Application.streamingAssetsPath + "/Cards/DailyCards_EN.json";
         }
         string dailyCardsStr = File.ReadAllText(path);
         this.dailyCards = JsonConvert.DeserializeObject<List<Card>>(dailyCardsStr);
@@ -749,10 +749,10 @@ public class CardHandler : MonoBehaviour
 
     public void CreateProblemCards(){
         string path = "";
-        if (StateManager.language == LocalizationSettings.AvailableLocales.GetLocale("en")){
-            path = Application.streamingAssetsPath + "/Cards/ProblemCards_EN.json";
-        } else {
+        if (StateManager.language == LocalizationSettings.AvailableLocales.GetLocale("fr")){
             path = Application.streamingAssetsPath + "/Cards/ProblemCards_FR.json";
+        } else {
+            path = Application.streamingAssetsPath + "/Cards/ProblemCards_EN.json";
         }
         string problemCardsStr = File.ReadAllText(path);
         this.problemCards = JsonConvert.DeserializeObject<List<Card>>(problemCardsStr);
@@ -762,10 +762,10 @@ public class CardHandler : MonoBehaviour
 
     public void CreateReviewCards(){
         string path = "";
-        if (StateManager.language == LocalizationSettings.AvailableLocales.GetLocale("en")){
-            path = Application.streamingAssetsPath + "/Cards/ReviewCards_EN.json";
-        } else {
+        if (StateManager.language == LocalizationSettings.AvailableLocales.GetLocale("fr")){
             path = Application.streamingAssetsPath + "/Cards/ReviewCards_FR.json";
+        } else {
+            path = Application.streamingAssetsPath + "/Cards/ReviewCards_EN.json";
         }
         string reviewCardsStr = File.ReadAllText(path);
         this.reviewCards = JsonConvert.DeserializeObject<List<Card>>(reviewCardsStr);

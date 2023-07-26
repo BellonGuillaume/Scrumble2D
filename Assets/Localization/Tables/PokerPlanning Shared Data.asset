@@ -31,6 +31,14 @@ MonoBehaviour:
     m_Key: RemainingStars
     m_Metadata:
       m_Items: []
+  - m_Id: 4340168134270976
+    m_Key: AsA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4341506222104576
+    m_Key: IWant
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -1,106 +1,106 @@
- [
+[
     {
         "id" : 1,
         "category" : "DIET COACH",
-        "description" : "En tant qu'utilisateur régulier,\nje veux utiliser l'application selon un compte correspondant à mon profil.",
+        "description" : "As a regular user,\nI want to use the application under an account corresponding to my profile.",
         "defaultStars" : 1,
-        "defaultSize" : "NOT_DEFINED"
+        "defaultSize" : "L"
     },
     {
         "id" : 2,
         "category" : "DIET COACH",
-        "description" : "En tant qu'utilisateur enregistré,\nje veux désigner mon diététicien qui sera alors mon coach pour le suivi.",
+        "description" : "As a registered user,\nI want to designate my dietician who will then be my coach for the follow-up.",
         "defaultStars" : 4,
-        "defaultSize" : "NOT_DEFINED",
+        "defaultSize" : "M",
         "restriction" : 1
     },
     {
         "id" : 3,
         "category" : "DIET COACH",
-        "description" : "En tant que diététicien enregistré,\nje veux consulter toutes les informations d'une personne dont je suis le suiveur.",
+        "description" : "As a registered dietitian,\nI want to see all the informations of a person I follow.",
         "defaultStars" : 5,
-        "defaultSize" : "NOT_DEFINED",
+        "defaultSize" : "L",
         "restriction" : 2
     },{
         "id" : 4,
         "category" : "DIET COACH",
-        "description" : "En tant qu'utilisateur enregistré,\nje veux me fixer des objectifs personnalisés en un temps donné.",
+        "description" : "As a registered user,\nI want to set custom goals within a given time.",
         "defaultStars" : 4,
-        "defaultSize" : "NOT_DEFINED",
+        "defaultSize" : "M",
         "restriction" : 1
     },{
         "id" : 5,
         "category" : "DIET COACH",
-        "description" : "En tant qu'utilisateur,\nje veux consulter les régimes valables les plus connus.",
+        "description" : "As a user,\nI want to see the most popular valid diet plans.",
         "defaultStars" : 4,
-        "defaultSize" : "NOT_DEFINED"
+        "defaultSize" : "S"
     },{
         "id" : 6,
         "category" : "DIET COACH",
-        "description" : "En tant qu'utilisateur,\nje veux consulter les attributs nutritifs et caloriques de tout aliment.",
+        "description" : "As a user,\nI want to view the nutrient and calorie attributes of any food.",
         "defaultStars" : 3,
-        "defaultSize" : "NOT_DEFINED"
+        "defaultSize" : "S"
     },{
         "id" : 7,
         "category" : "DIET COACH",
-        "description" : "En tant que diététicien enregistré,\nje veux transmettre des objectifs et des conseils aux utilisateurs que je suis.",
+        "description" : "As a registered dietitian,\nI want to convey goals and advice to the users that I follow.",
         "defaultStars" : 5,
-        "defaultSize" : "NOT_DEFINED",
+        "defaultSize" : "L",
         "restriction" : 2
     },{
         "id" : 8,
         "category" : "DIET COACH",
-        "description" : "En tant qu'utilisateur enregistré,\nje veux renseigner mes informations personnelles utiles à mon suivi.",
+        "description" : "As a registered user,\nI want to enter my personal information useful for my follow-up.",
         "defaultStars" : 3,
-        "defaultSize" : "NOT_DEFINED",
+        "defaultSize" : "S",
         "restriction" : 1
     },{
         "id" : 9,
         "category" : "DIET COACH",
-        "description" : "En tant qu'utilisateur enregistré,\nje veux recevoir des offres régulières et personnalisées pour améliorer ma santé.",
+        "description" : "As a registered user,\nI want to receive regular and personalized offers to improve my health.",
         "defaultStars" : 3,
-        "defaultSize" : "NOT_DEFINED",
+        "defaultSize" : "L",
         "restriction" : 1
     },{
         "id" : 10,
         "category" : "DIET COACH",
-        "description" : "En tant qu'utilisateur,\nje veux recevoir fréquemment des encouragements automatiques pour me motiver.",
+        "description" : "As a user,\nI want to receive frequent automatic encouragement to motivate me.",
         "defaultStars" : 2,
-        "defaultSize" : "NOT_DEFINED"
+        "defaultSize" : "XS"
     },{
         "id" : 11,
         "category" : "DIET COACH",
-        "description" : "En tant qu'utilisateur,\nje veux me voir recommander chaque jour un nouvel aliment bénéfique pour ma santé.",
+        "description" : "As a user,\nI want to be recommended a new food that benefits my health every day.",
         "defaultStars" : 1,
-        "defaultSize" : "NOT_DEFINED"
+        "defaultSize" : "S"
     },{
         "id" : 12,
         "category" : "DIET COACH",
-        "description" : "En tant qu'utilisateur,\nje veux me voir présenter chaque semaine un nouveau sport et des clubs à proximité.",
+        "description" : "As a user,\nI want to be introduced to a new sport and nearby clubs every week.",
         "defaultStars" : 3,
-        "defaultSize" : "NOT_DEFINED"
+        "defaultSize" : "M"
     },
     {
         "id" : 13,
         "category" : "DIET COACH",
-        "description" : "En tant qu'utilisateur enregistré,\nje veux me voir suggérer un programme de nutrition selon mon profil et mes objectifs.",
+        "description" : "As a registered user,\nI want to be suggested a nutrition program according to my profile and my goals.",
         "defaultStars" : 3,
-        "defaultSize" : "NOT_DEFINED",
+        "defaultSize" : "XL",
         "restriction" : 1
     },
     {
         "id" : 14,
         "category" : "DIET COACH",
-        "description" : "En tant qu'utilisateur,\nje veux trouver les bonnes adresses de diététique dans la région.",
+        "description" : "As a user,\nI want to find the best addresses for dietetics in the region.",
         "defaultStars" : 1,
-        "defaultSize" : "NOT_DEFINED"
+        "defaultSize" : "M"
     },
     {
         "id" : 15,
         "category" : "DIET COACH",
-        "description" : "En tant qu'utilisateur enregistré,\nje veux enregistrer mes journaux de repas et d'activités.",
+        "description" : "As a registered user,\nI want to save my meal and activity logs.",
         "defaultStars" : 3,
-        "defaultSize" : "NOT_DEFINED",
+        "defaultSize" : "M",
         "restriction" : 1
     }
 ]

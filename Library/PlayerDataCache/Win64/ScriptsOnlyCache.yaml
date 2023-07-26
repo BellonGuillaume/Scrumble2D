@@ -6,10 +6,14 @@ ScriptsOnlyBuild:
     - AutoSizeScrollView
     - AutoSizeText
     - BarScroller
+    - CardHandler
     - CardPicker
+    - ChoosePlayer
     - Content
     - CustomPokerPlanningManager
     - CustomUserStoryUI
+    - DailyPlayer
+    - DaySlider
     - DropContent
     - DropDownController
     - DropDownLocalize
@@ -22,11 +26,13 @@ ScriptsOnlyBuild:
     - PokerPlanningManager
     - Results
     - ScrollingManager
+    - ScrumboardManager
+    - SideMenuManager
     - TDDDManager
     - TrueFalseScrollbar
+    - UICard
     - UIDice
     - UIPlayer
-    - UIRecto
     - UserStoryUI
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
@@ -60,14 +66,14 @@ ScriptsOnlyBuild:
     - UnityEditor.AddressableAssets.Settings.GroupSchemas.ContentUpdateGroupSchema
     - UnityEditor.AddressableAssets.Settings.GroupSchemas.PlayerDataGroupSchema
     Unity.Localization.Editor.dll:
+    - UnityEditor.Localization.AssetTableCollection
     - UnityEditor.Localization.StringTableCollection
     - UnityEditor.Localization.UI.LocalizationTablesWindow
     Unity.Localization.dll:
+    - UnityEngine.Localization.Components.LocalizeSpriteEvent
     - UnityEngine.Localization.Components.LocalizeStringEvent
     - UnityEngine.Localization.Locale
     - UnityEngine.Localization.Settings.LocalizationSettings
-    - UnityEngine.Localization.Tables.SharedTableData
-    - UnityEngine.Localization.Tables.StringTable
     Unity.RenderPipelines.Core.Runtime.dll:
     - UnityEngine.Rendering.UI.DebugUIHandlerBitField
     - UnityEngine.Rendering.UI.DebugUIHandlerButton
@@ -117,12 +123,6 @@ ScriptsOnlyBuild:
     - TMPro.TMP_SpriteAsset
     - TMPro.TMP_StyleSheet
     - TMPro.TextMeshProUGUI
-    UnityEditor.Graphs.dll:
-    - UnityEditor.Graphs.AnimationBlendTree.Graph
-    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.Graph
-    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -150,8 +150,10 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.VerticalLayoutGroup
   serializedClasses:
     Unity.Localization:
+    - UnityEngine.Localization.Events.UnityEventSprite
     - UnityEngine.Localization.Events.UnityEventString
     - UnityEngine.Localization.LocaleIdentifier
+    - UnityEngine.Localization.LocalizedSprite
     - UnityEngine.Localization.LocalizedString
     - UnityEngine.Localization.Metadata.MetadataCollection
     - UnityEngine.Localization.Settings.CommandLineLocaleSelector
@@ -379,9 +381,6 @@ ScriptsOnlyBuild:
   - assembly: Unity.TextMeshPro
     fullTypeName: TMPro.TMP_Text
     methodName: set_text
-  - assembly: Unity.TextMeshPro
-    fullTypeName: TMPro.TMP_Text
-    methodName: set_text
   - assembly: Assembly-CSharp
     fullTypeName: UserStoryUI
     methodName: OnClick
@@ -394,15 +393,9 @@ ScriptsOnlyBuild:
   - assembly: Unity.TextMeshPro
     fullTypeName: TMPro.TMP_Text
     methodName: set_text
-  - assembly: Unity.TextMeshPro
-    fullTypeName: TMPro.TMP_Text
-    methodName: set_text
   - assembly: Assembly-CSharp
     fullTypeName: UserStoryUI
     methodName: OnClick
-  - assembly: Unity.TextMeshPro
-    fullTypeName: TMPro.TMP_Text
-    methodName: set_text
   - assembly: Unity.TextMeshPro
     fullTypeName: TMPro.TMP_Text
     methodName: set_text
@@ -457,9 +450,6 @@ ScriptsOnlyBuild:
   - assembly: Unity.TextMeshPro
     fullTypeName: TMPro.TMP_Text
     methodName: set_text
-  - assembly: Unity.TextMeshPro
-    fullTypeName: TMPro.TMP_Text
-    methodName: set_text
   - assembly: Assembly-CSharp
     fullTypeName: CustomUserStoryUI
     methodName: OnSizeChange
@@ -583,9 +573,6 @@ ScriptsOnlyBuild:
   - assembly: Unity.TextMeshPro
     fullTypeName: TMPro.TMP_Text
     methodName: set_text
-  - assembly: Unity.TextMeshPro
-    fullTypeName: TMPro.TMP_Text
-    methodName: set_text
   - assembly: Assembly-CSharp
     fullTypeName: CustomPokerPlanningManager
     methodName: OnLeftClick
@@ -604,6 +591,45 @@ ScriptsOnlyBuild:
   - assembly: Unity.TextMeshPro
     fullTypeName: TMPro.TMP_Text
     methodName: set_text
+  - assembly: Assembly-CSharp
+    fullTypeName: SideMenuManager
+    methodName: ScrumboardClick
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Assembly-CSharp
+    fullTypeName: UIDice
+    methodName: OnClick
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Assembly-CSharp
+    fullTypeName: UIDice
+    methodName: OnClick
+  - assembly: Assembly-CSharp
+    fullTypeName: UICard
+    methodName: OnClick
+  - assembly: Assembly-CSharp
+    fullTypeName: DailyPlayer
+    methodName: OnClick
   - assembly: Assembly-CSharp
     fullTypeName: ArrowedUS
     methodName: ClickUp
@@ -611,11 +637,11 @@ ScriptsOnlyBuild:
     fullTypeName: ArrowedUS
     methodName: ClickDown
   - assembly: Assembly-CSharp
+    fullTypeName: UICard
+    methodName: OnClick
+  - assembly: Assembly-CSharp
     fullTypeName: UserStoryUI
     methodName: OnClick
-  - assembly: Unity.TextMeshPro
-    fullTypeName: TMPro.TMP_Text
-    methodName: set_text
   - assembly: Unity.TextMeshPro
     fullTypeName: TMPro.TMP_Text
     methodName: set_text
@@ -637,42 +663,27 @@ ScriptsOnlyBuild:
   - assembly: Unity.TextMeshPro
     fullTypeName: TMPro.TMP_Text
     methodName: set_text
-  - assembly: Unity.TextMeshPro
-    fullTypeName: TMPro.TMP_Text
-    methodName: set_text
+  - assembly: Assembly-CSharp
+    fullTypeName: CardHandler
+    methodName: OnOkClick
   - assembly: Assembly-CSharp
     fullTypeName: ExitButton
     methodName: QuitGame
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
   - assembly: Assembly-CSharp
-    fullTypeName: CardPicker
-    methodName: ChooseCard
-  - assembly: UnityEngine.AnimationModule
-    fullTypeName: UnityEngine.Animator
-    methodName: SetTrigger
+    fullTypeName: CardHandler
+    methodName: OnChoiceTwoClick
   - assembly: Unity.TextMeshPro
     fullTypeName: TMPro.TMP_Text
     methodName: set_text
   - assembly: Assembly-CSharp
     fullTypeName: GameManager
     methodName: OnSideClick
-  - assembly: UnityEngine.AnimationModule
-    fullTypeName: UnityEngine.Animator
-    methodName: SetTrigger
-  - assembly: UnityEngine.AnimationModule
-    fullTypeName: UnityEngine.Animator
-    methodName: SetTrigger
   - assembly: Assembly-CSharp
-    fullTypeName: CardPicker
-    methodName: ChooseCard
-  - assembly: UnityEngine.AnimationModule
-    fullTypeName: UnityEngine.Animator
-    methodName: SetTrigger
-  - assembly: Unity.TextMeshPro
-    fullTypeName: TMPro.TMP_Text
-    methodName: set_text
-  - assembly: Assembly-CSharp
-    fullTypeName: CardPicker
-    methodName: ChooseCard
+    fullTypeName: ChoosePlayer
+    methodName: OnOkClick
   - assembly: UnityEngine.AnimationModule
     fullTypeName: UnityEngine.Animator
     methodName: SetTrigger
@@ -681,7 +692,31 @@ ScriptsOnlyBuild:
     methodName: set_text
   - assembly: Assembly-CSharp
     fullTypeName: GameManager
-    methodName: PickDailyCard
+    methodName: OnOutClick
+  - assembly: UnityEngine.AnimationModule
+    fullTypeName: UnityEngine.Animator
+    methodName: SetTrigger
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Assembly-CSharp
+    fullTypeName: CardHandler
+    methodName: OnAcceptClick
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: UnityEngine.UI
+    fullTypeName: UnityEngine.UI.Image
+    methodName: set_sprite
+  - assembly: Assembly-CSharp
+    fullTypeName: SideMenuManager
+    methodName: OnOutClick
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
   - assembly: Unity.TextMeshPro
     fullTypeName: TMPro.TMP_Text
     methodName: set_text
@@ -691,24 +726,33 @@ ScriptsOnlyBuild:
   - assembly: UnityEngine.AnimationModule
     fullTypeName: UnityEngine.Animator
     methodName: SetTrigger
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
   - assembly: Assembly-CSharp
-    fullTypeName: GameManager
-    methodName: PickReviewCard
-  - assembly: UnityEngine.AnimationModule
-    fullTypeName: UnityEngine.Animator
-    methodName: SetTrigger
+    fullTypeName: CardHandler
+    methodName: OnChoiceOneClick
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: UnityEngine.UI
+    fullTypeName: UnityEngine.UI.Image
+    methodName: set_sprite
   - assembly: Unity.TextMeshPro
     fullTypeName: TMPro.TMP_Text
     methodName: set_text
   - assembly: Assembly-CSharp
     fullTypeName: GameManager
-    methodName: BeginTurn
+    methodName: OnTaskValidationClick
   - assembly: Assembly-CSharp
-    fullTypeName: GameManager
-    methodName: PickProblemCard
-  - assembly: Unity.TextMeshPro
-    fullTypeName: TMPro.TMP_Text
-    methodName: set_text
+    fullTypeName: CardHandler
+    methodName: OnDeclineClick
+  - assembly: UnityEngine.UI
+    fullTypeName: UnityEngine.UI.Image
+    methodName: set_sprite
   sceneClasses:
     Assets/Scenes/CustomPokerPlanning.unity:
     - Class: 1
@@ -736,49 +780,49 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1756}
     - Class: 114
-      Script: {instanceID: 3142}
+      Script: {instanceID: 1758}
     - Class: 114
-      Script: {instanceID: 3396}
+      Script: {instanceID: 3150}
     - Class: 114
-      Script: {instanceID: 3416}
+      Script: {instanceID: 3406}
     - Class: 114
-      Script: {instanceID: 4140}
+      Script: {instanceID: 3426}
     - Class: 114
-      Script: {instanceID: 4262}
+      Script: {instanceID: 4150}
     - Class: 114
-      Script: {instanceID: 4428}
+      Script: {instanceID: 4272}
     - Class: 114
-      Script: {instanceID: 4680}
+      Script: {instanceID: 4438}
     - Class: 114
-      Script: {instanceID: 5382}
+      Script: {instanceID: 4690}
     - Class: 114
-      Script: {instanceID: 5730}
+      Script: {instanceID: 5394}
     - Class: 114
-      Script: {instanceID: 6780}
+      Script: {instanceID: 5742}
     - Class: 114
-      Script: {instanceID: 7076}
+      Script: {instanceID: 6792}
     - Class: 114
-      Script: {instanceID: 7146}
+      Script: {instanceID: 7088}
     - Class: 114
-      Script: {instanceID: 7428}
+      Script: {instanceID: 7158}
     - Class: 114
-      Script: {instanceID: 7908}
+      Script: {instanceID: 7442}
     - Class: 114
-      Script: {instanceID: 8288}
+      Script: {instanceID: 7924}
     - Class: 114
-      Script: {instanceID: 8426}
+      Script: {instanceID: 8306}
     - Class: 114
-      Script: {instanceID: 8676}
+      Script: {instanceID: 8444}
     - Class: 114
-      Script: {instanceID: 9234}
+      Script: {instanceID: 8694}
     - Class: 114
-      Script: {instanceID: 9250}
+      Script: {instanceID: 9252}
     - Class: 114
-      Script: {instanceID: 10226}
+      Script: {instanceID: 9268}
     - Class: 114
-      Script: {instanceID: 10362}
+      Script: {instanceID: 10244}
     - Class: 114
-      Script: {instanceID: 10896}
+      Script: {instanceID: 10380}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -823,69 +867,83 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1752}
     - Class: 114
-      Script: {instanceID: 2880}
+      Script: {instanceID: 1756}
     - Class: 114
-      Script: {instanceID: 2930}
+      Script: {instanceID: 2164}
     - Class: 114
-      Script: {instanceID: 3036}
+      Script: {instanceID: 2172}
     - Class: 114
-      Script: {instanceID: 3366}
+      Script: {instanceID: 2888}
     - Class: 114
-      Script: {instanceID: 3396}
+      Script: {instanceID: 2938}
     - Class: 114
-      Script: {instanceID: 3656}
+      Script: {instanceID: 3044}
     - Class: 114
-      Script: {instanceID: 3730}
+      Script: {instanceID: 3202}
     - Class: 114
-      Script: {instanceID: 4016}
+      Script: {instanceID: 3376}
     - Class: 114
-      Script: {instanceID: 4072}
+      Script: {instanceID: 3406}
     - Class: 114
-      Script: {instanceID: 4140}
+      Script: {instanceID: 3666}
     - Class: 114
-      Script: {instanceID: 4180}
+      Script: {instanceID: 3740}
     - Class: 114
-      Script: {instanceID: 4262}
+      Script: {instanceID: 4026}
     - Class: 114
-      Script: {instanceID: 4642}
+      Script: {instanceID: 4082}
     - Class: 114
-      Script: {instanceID: 4898}
+      Script: {instanceID: 4150}
     - Class: 114
-      Script: {instanceID: 5382}
+      Script: {instanceID: 4190}
     - Class: 114
-      Script: {instanceID: 5908}
+      Script: {instanceID: 4272}
     - Class: 114
-      Script: {instanceID: 6780}
+      Script: {instanceID: 4652}
     - Class: 114
-      Script: {instanceID: 6984}
+      Script: {instanceID: 4884}
     - Class: 114
-      Script: {instanceID: 7146}
+      Script: {instanceID: 4910}
     - Class: 114
-      Script: {instanceID: 7286}
+      Script: {instanceID: 5336}
     - Class: 114
-      Script: {instanceID: 7428}
+      Script: {instanceID: 5394}
     - Class: 114
-      Script: {instanceID: 7908}
+      Script: {instanceID: 5920}
     - Class: 114
-      Script: {instanceID: 8288}
+      Script: {instanceID: 6792}
     - Class: 114
-      Script: {instanceID: 8426}
+      Script: {instanceID: 6996}
     - Class: 114
-      Script: {instanceID: 8676}
+      Script: {instanceID: 7158}
     - Class: 114
-      Script: {instanceID: 9234}
+      Script: {instanceID: 7298}
     - Class: 114
-      Script: {instanceID: 9250}
+      Script: {instanceID: 7352}
     - Class: 114
-      Script: {instanceID: 9430}
+      Script: {instanceID: 7442}
     - Class: 114
-      Script: {instanceID: 10362}
+      Script: {instanceID: 7918}
     - Class: 114
-      Script: {instanceID: 10896}
+      Script: {instanceID: 7924}
     - Class: 114
-      Script: {instanceID: 11632}
+      Script: {instanceID: 8306}
     - Class: 114
-      Script: {instanceID: 11704}
+      Script: {instanceID: 8444}
+    - Class: 114
+      Script: {instanceID: 8694}
+    - Class: 114
+      Script: {instanceID: 9252}
+    - Class: 114
+      Script: {instanceID: 9268}
+    - Class: 114
+      Script: {instanceID: 9448}
+    - Class: 114
+      Script: {instanceID: 10380}
+    - Class: 114
+      Script: {instanceID: 11648}
+    - Class: 114
+      Script: {instanceID: 11720}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -936,117 +994,117 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1756}
     - Class: 114
-      Script: {instanceID: 1762}
+      Script: {instanceID: 1758}
     - Class: 114
-      Script: {instanceID: 2672}
+      Script: {instanceID: 1764}
     - Class: 114
-      Script: {instanceID: 2766}
+      Script: {instanceID: 2680}
     - Class: 114
-      Script: {instanceID: 2908}
+      Script: {instanceID: 2774}
     - Class: 114
-      Script: {instanceID: 3058}
+      Script: {instanceID: 2916}
     - Class: 114
-      Script: {instanceID: 3396}
+      Script: {instanceID: 3066}
     - Class: 114
-      Script: {instanceID: 3416}
+      Script: {instanceID: 3406}
     - Class: 114
-      Script: {instanceID: 4140}
+      Script: {instanceID: 3426}
     - Class: 114
-      Script: {instanceID: 4262}
+      Script: {instanceID: 4150}
     - Class: 114
-      Script: {instanceID: 4268}
+      Script: {instanceID: 4272}
     - Class: 114
-      Script: {instanceID: 4390}
+      Script: {instanceID: 4278}
     - Class: 114
-      Script: {instanceID: 4428}
+      Script: {instanceID: 4400}
     - Class: 114
-      Script: {instanceID: 4522}
+      Script: {instanceID: 4438}
     - Class: 114
-      Script: {instanceID: 4726}
+      Script: {instanceID: 4532}
     - Class: 114
-      Script: {instanceID: 4896}
+      Script: {instanceID: 4736}
     - Class: 114
-      Script: {instanceID: 5382}
+      Script: {instanceID: 4908}
     - Class: 114
-      Script: {instanceID: 5550}
+      Script: {instanceID: 5394}
     - Class: 114
-      Script: {instanceID: 5596}
+      Script: {instanceID: 5562}
     - Class: 114
-      Script: {instanceID: 5730}
+      Script: {instanceID: 5608}
     - Class: 114
-      Script: {instanceID: 5756}
+      Script: {instanceID: 5742}
     - Class: 114
-      Script: {instanceID: 5944}
+      Script: {instanceID: 5768}
     - Class: 114
-      Script: {instanceID: 6048}
+      Script: {instanceID: 5956}
     - Class: 114
-      Script: {instanceID: 6214}
+      Script: {instanceID: 6060}
     - Class: 114
-      Script: {instanceID: 6396}
+      Script: {instanceID: 6226}
     - Class: 114
-      Script: {instanceID: 6780}
+      Script: {instanceID: 6408}
     - Class: 114
-      Script: {instanceID: 7076}
+      Script: {instanceID: 6792}
     - Class: 114
-      Script: {instanceID: 7286}
+      Script: {instanceID: 7088}
     - Class: 114
-      Script: {instanceID: 7302}
+      Script: {instanceID: 7298}
     - Class: 114
-      Script: {instanceID: 7330}
+      Script: {instanceID: 7314}
     - Class: 114
-      Script: {instanceID: 7428}
+      Script: {instanceID: 7342}
     - Class: 114
       Script: {instanceID: 7442}
     - Class: 114
-      Script: {instanceID: 7778}
+      Script: {instanceID: 7456}
     - Class: 114
-      Script: {instanceID: 7780}
+      Script: {instanceID: 7792}
     - Class: 114
-      Script: {instanceID: 7806}
+      Script: {instanceID: 7794}
     - Class: 114
-      Script: {instanceID: 7908}
+      Script: {instanceID: 7820}
     - Class: 114
-      Script: {instanceID: 8240}
+      Script: {instanceID: 7924}
     - Class: 114
-      Script: {instanceID: 8426}
+      Script: {instanceID: 8258}
     - Class: 114
-      Script: {instanceID: 8674}
+      Script: {instanceID: 8444}
     - Class: 114
-      Script: {instanceID: 8676}
+      Script: {instanceID: 8692}
     - Class: 114
-      Script: {instanceID: 8826}
+      Script: {instanceID: 8694}
     - Class: 114
-      Script: {instanceID: 8834}
+      Script: {instanceID: 8844}
     - Class: 114
-      Script: {instanceID: 9004}
+      Script: {instanceID: 8852}
     - Class: 114
-      Script: {instanceID: 9064}
+      Script: {instanceID: 9022}
     - Class: 114
-      Script: {instanceID: 9142}
+      Script: {instanceID: 9082}
     - Class: 114
-      Script: {instanceID: 9234}
+      Script: {instanceID: 9160}
     - Class: 114
-      Script: {instanceID: 9250}
+      Script: {instanceID: 9252}
     - Class: 114
-      Script: {instanceID: 9416}
+      Script: {instanceID: 9268}
     - Class: 114
-      Script: {instanceID: 9614}
+      Script: {instanceID: 9434}
     - Class: 114
-      Script: {instanceID: 9812}
+      Script: {instanceID: 9632}
     - Class: 114
-      Script: {instanceID: 9916}
+      Script: {instanceID: 9830}
     - Class: 114
-      Script: {instanceID: 10148}
+      Script: {instanceID: 9934}
     - Class: 114
-      Script: {instanceID: 10224}
+      Script: {instanceID: 10166}
     - Class: 114
-      Script: {instanceID: 10362}
+      Script: {instanceID: 10242}
     - Class: 114
-      Script: {instanceID: 10896}
+      Script: {instanceID: 10380}
     - Class: 114
-      Script: {instanceID: 11382}
+      Script: {instanceID: 11398}
     - Class: 114
-      Script: {instanceID: 11868}
+      Script: {instanceID: 11884}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1085,39 +1143,39 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1752}
     - Class: 114
-      Script: {instanceID: 3396}
+      Script: {instanceID: 1756}
     - Class: 114
-      Script: {instanceID: 4140}
+      Script: {instanceID: 3406}
     - Class: 114
-      Script: {instanceID: 4262}
+      Script: {instanceID: 4150}
     - Class: 114
-      Script: {instanceID: 4428}
+      Script: {instanceID: 4272}
     - Class: 114
-      Script: {instanceID: 5382}
+      Script: {instanceID: 4438}
     - Class: 114
-      Script: {instanceID: 6780}
+      Script: {instanceID: 5394}
     - Class: 114
-      Script: {instanceID: 7146}
+      Script: {instanceID: 6792}
     - Class: 114
-      Script: {instanceID: 7428}
+      Script: {instanceID: 7158}
     - Class: 114
-      Script: {instanceID: 7908}
+      Script: {instanceID: 7442}
     - Class: 114
-      Script: {instanceID: 8288}
+      Script: {instanceID: 7924}
     - Class: 114
-      Script: {instanceID: 8426}
+      Script: {instanceID: 8306}
     - Class: 114
-      Script: {instanceID: 8676}
+      Script: {instanceID: 8444}
     - Class: 114
-      Script: {instanceID: 9234}
+      Script: {instanceID: 8694}
     - Class: 114
-      Script: {instanceID: 9250}
+      Script: {instanceID: 9252}
     - Class: 114
-      Script: {instanceID: 10362}
+      Script: {instanceID: 9268}
     - Class: 114
-      Script: {instanceID: 10610}
+      Script: {instanceID: 10380}
     - Class: 114
-      Script: {instanceID: 10896}
+      Script: {instanceID: 10628}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1165,6 +1223,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Text
+  - hash:
+      serializedVersion: 2
+      Hash: 040dd48e3a027d5424519a5fa2009df4
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: ScrollRect
   - hash:
       serializedVersion: 2
       Hash: 0dbc3be398b4869a5c8d0d8481ee402c
@@ -1227,6 +1291,12 @@ ScriptsOnlyBuild:
     className: PlayerController
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: EventManager
+  - hash:
+      serializedVersion: 2
       Hash: eff992cd35724308edd23e57bda17cff
     assemblyName: Mirror.Examples.dll
     namespaceName: Mirror.Examples.AdditiveLevels
@@ -1263,10 +1333,22 @@ ScriptsOnlyBuild:
     className: LatencySimulation
   - hash:
       serializedVersion: 2
-      Hash: 423ec5ba5b07bf6084a7434f148919f7
+      Hash: 8d61c74c3df57e9b3e6faf78ba85d8d3
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: DropCase
+  - hash:
+      serializedVersion: 2
+      Hash: e281f8945c1438fb8a38116301a20131
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CardHandler
+  - hash:
+      serializedVersion: 2
+      Hash: 032327042ba8a8b170573f081dfa0d3c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ChoosePlayer
   - hash:
       serializedVersion: 2
       Hash: 8e13bb05c31d315b9db3d7ff2211c3a9
@@ -1383,10 +1465,10 @@ ScriptsOnlyBuild:
     className: DebugUIHandlerToggle
   - hash:
       serializedVersion: 2
-      Hash: 3c814ed161fb57ff9ccb48362e86821e
+      Hash: c57787f26939041c6ba5a9839cc00ce9
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: UIRecto
+    className: UICard
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -1455,6 +1537,12 @@ ScriptsOnlyBuild:
     className: XRSystemData
   - hash:
       serializedVersion: 2
+      Hash: b2806e611db27bab559741709c4d5f7d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ScrumboardManager
+  - hash:
+      serializedVersion: 2
       Hash: 58cb4e2e0cfe376003f3758d58f93e4a
     assemblyName: Unity.RenderPipelines.Core.Runtime.dll
     namespaceName: UnityEngine.Rendering
@@ -1521,7 +1609,7 @@ ScriptsOnlyBuild:
     className: DebugUIHandlerWidget
   - hash:
       serializedVersion: 2
-      Hash: 6890c44d0684172f5d295c15c8963c84
+      Hash: 6942801f51f5e9e0bcc57c532d843362
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: AnimationManager
@@ -1617,7 +1705,7 @@ ScriptsOnlyBuild:
     className: VertexShakeA
   - hash:
       serializedVersion: 2
-      Hash: 32a8a80470959dcda62f070fbbfefbf4
+      Hash: c8b4939529d6c7d50cb05720a86ef7df
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ArrowedUS
@@ -1731,7 +1819,7 @@ ScriptsOnlyBuild:
     className: PlayerQuitHandler
   - hash:
       serializedVersion: 2
-      Hash: 4db702444048a63502767fdf2dd1d675
+      Hash: 399d11f631b217f350d9ef11634102ca
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CardPicker
@@ -1807,6 +1895,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: AnimationTrack
+  - hash:
+      serializedVersion: 2
+      Hash: de7a259bed7ecafab00a21de2915309c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SideMenuManager
   - hash:
       serializedVersion: 2
       Hash: 5e1eefcd5106de6c2e85908a3b2d3f04
@@ -2025,13 +2119,13 @@ ScriptsOnlyBuild:
     className: ChromaticAberration
   - hash:
       serializedVersion: 2
-      Hash: cfed74e5d5db874f7288cddf4ab7824c
+      Hash: 9390d03a64591b1f2c813d6f508d0301
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
   - hash:
       serializedVersion: 2
-      Hash: 1028c39545bcfa841aaab54121e69a47
+      Hash: c68cb3c2e838393021266169474aa961
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: TrueFalseScrollbar
@@ -2385,6 +2479,12 @@ ScriptsOnlyBuild:
     className: DebugUIHandlerVector3
   - hash:
       serializedVersion: 2
+      Hash: 51fa87cfc390803c2f0dcb5faf56f570
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DailyPlayer
+  - hash:
+      serializedVersion: 2
       Hash: e6f0efd0e20669d577e9d21526b3d3f9
     assemblyName: Assembly-CSharp.dll
     namespaceName: TMPro.Examples
@@ -2485,6 +2585,12 @@ ScriptsOnlyBuild:
     assemblyName: Mirror.Examples.dll
     namespaceName: Mirror.Examples.CCU
     className: Player
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DaySlider
   - hash:
       serializedVersion: 2
       Hash: f6f8da509924ed4e5a8ce5d2d86938a2
@@ -2769,7 +2875,7 @@ ScriptsOnlyBuild:
     className: DebugUIHandlerCanvas
   - hash:
       serializedVersion: 2
-      Hash: 06c51bbd1830595454f5da4824336cb3
+      Hash: 815b3b49bdbe453d57c6858104781fea
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UIDice
@@ -3091,12 +3197,6 @@ ScriptsOnlyBuild:
     assemblyName: Mirror.Examples.dll
     namespaceName: Mirror.Examples.AdditiveLevels
     className: PhysicsSimulator
-  - hash:
-      serializedVersion: 2
-      Hash: 040dd48e3a027d5424519a5fa2009df4
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: ScrollRect
   - hash:
       serializedVersion: 2
       Hash: 924151518b0617aca3f4a3b2e422689f

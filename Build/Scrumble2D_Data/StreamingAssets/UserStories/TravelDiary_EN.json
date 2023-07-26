@@ -2,108 +2,108 @@
     {
         "id" : 1,
         "category" : "TRAVEL DIARY",
-        "description" : "En tant qu'utilisateur enregistré,\nje veux tenir un carnet de voyage et y lister mes lieux visités",
+        "description" : "As a registered user,\nI want to keep a travel diary and list my visited places in it",
         "defaultStars" : 1,
-        "defaultSize" : "NOT_DEFINED",
+        "defaultSize" : "S",
         "restriction" : 4
     },
     {
         "id" : 2,
         "category" : "TRAVEL DIARY",
-        "description" : "En tant qu'utilisateur enregistré,\nje veux ajouter des photos et notes à mon carnet de voyage pour chaque lieu visité.",
+        "description" : "As a registered user,\nI want to add photos and notes to my travel diary for each place visited.",
         "defaultStars" : 4,
-        "defaultSize" : "NOT_DEFINED",
+        "defaultSize" : "M",
         "restriction" : 4
     },
     {
         "id" : 3,
         "category" : "TRAVEL DIARY",
-        "description" : "En tant que visiteur,\nje veux consulter les carnets de voyage et de route des utilisateurs, rendus publiques.",
+        "description" : "As a visitor,\nI want to consult users' travel and road diaries, made public.",
         "defaultStars" : 5,
-        "defaultSize" : "NOT_DEFINED",
+        "defaultSize" : "M",
         "restriction" : 12
     },{
         "id" : 4,
         "category" : "TRAVEL DIARY",
-        "description" : "En tant qu'utilisateur régulier,\nje veux gérer un compte minimal QuickTrip pour y stocker des informations.",
+        "description" : "As a regular user,\nI want to manage a minimal QuickTrip account to store information in.",
         "defaultStars" : 4,
-        "defaultSize" : "NOT_DEFINED"
+        "defaultSize" : "M"
     },{
         "id" : 5,
         "category" : "TRAVEL DIARY",
-        "description" : "En tant que visiteur,\nje veux consulter des offres touristiques dans la région.",
+        "description" : "As a visitor,\nI want to consult tourist offers in the region.",
         "defaultStars" : 4,
-        "defaultSize" : "NOT_DEFINED"
+        "defaultSize" : "L"
     },{
         "id" : 6,
         "category" : "TRAVEL DIARY",
-        "description" : "En tant que visiteur,\nje veux générer des parcours touristiques journaliers dans un rayon limité de 200km et pour un coût de moins de 500$.",
+        "description" : "As a visitor,\nI want to generate daily tourist routes within a limited radius of 200km and for a cost of less than $500.",
         "defaultStars" : 3,
-        "defaultSize" : "NOT_DEFINED"
+        "defaultSize" : "L"
     },{
         "id" : 7,
         "category" : "TRAVEL DIARY",
-        "description" : "En tant qu'utilisateur enregistré,\nje veux générer des parcours touristiques d'une durée jusqu'à deux mois.",
+        "description" : "As a registered user,\nI want to generate tourist routes lasting up to two months.",
         "defaultStars" : 5,
-        "defaultSize" : "NOT_DEFINED",
+        "defaultSize" : "L",
         "restriction" : 4
     },{
         "id" : 8,
         "category" : "TRAVEL DIARY",
-        "description" : "En tant qu'utilisateur enregistré,\nje veux générer des parcours touristiques à des étapes personnalisées, partout dans le monde.",
+        "description" : "As a registered user,\nI want to generate tourist routes at personalized stages, anywhere in the world.",
         "defaultStars" : 3,
-        "defaultSize" : "NOT_DEFINED",
+        "defaultSize" : "XL",
         "restriction" : 4
     },{
         "id" : 9,
         "category" : "TRAVEL DIARY",
-        "description" : "En tant qu'utilisateur enregistré,\nje veux restreindre mon budget pour les parcours générés.",
+        "description" : "As a registered user,\nI want to restrict my budget for generated trails.",
         "defaultStars" : 3,
-        "defaultSize" : "NOT_DEFINED",
+        "defaultSize" : "M",
         "restriction" : 4
     },{
         "id" : 10,
         "category" : "TRAVEL DIARY",
-        "description" : "En tant qu'utilisateur enregistré,\nje veux rédiger des carnets de route.",
+        "description" : "As a registered user,\nI want to write travel diaries.",
         "defaultStars" : 2,
-        "defaultSize" : "NOT_DEFINED",
+        "defaultSize" : "S",
         "restriction" : 4
     },{
         "id" : 11,
         "category" : "TRAVEL DIARY",
-        "description" : "En tant qu'utilisateur enregistré,\nje veux extraire des parcours générés pour les éditer comme mes propres carnets de route.",
+        "description" : "As a registered user,\nI want to extract generated routes to edit them as my own logbooks.",
         "defaultStars" : 1,
-        "defaultSize" : "NOT_DEFINED",
+        "defaultSize" : "L",
         "restriction" : 4
     },{
         "id" : 12,
         "category" : "TRAVEL DIARY",
-        "description" : "En tant qu'utilisateur enregistré,\nje veux rendre publiques mes carnets de route et de voyage.",
+        "description" : "As a registered user,\nI want to make my road and travel diaries public.",
         "defaultStars" : 3,
-        "defaultSize" : "NOT_DEFINED",
+        "defaultSize" : "XS",
         "restriction" : 4
     },
     {
         "id" : 13,
         "category" : "TRAVEL DIARY",
-        "description" : "En tant qu'utilisateur enregistré,\nje veux me voir suggérer un nouveau parcours par mail selon mon expérience après un mois d'inactivité.",
+        "description" : "As a registered user,\nI want to be suggested a new route by email based on my experience after a month of inactivity.",
         "defaultStars" : 3,
-        "defaultSize" : "NOT_DEFINED",
+        "defaultSize" : "S",
         "restriction" : 4
     },
     {
         "id" : 14,
         "category" : "TRAVEL DIARY",
-        "description" : "En tant qu'utilisateur enregistré,\nje veux que QuickTrip réserve tout pour un carnet de route, sur paiement global.",
+        "description" : "As a registered user,\nI want QuickTrip to reserve everything for a road book, on global payment.",
         "defaultStars" : 1,
-        "defaultSize" : "NOT_DEFINED",
+        "defaultSize" : "XL",
         "restriction" : 4
     },
     {
         "id" : 15,
         "category" : "TRAVEL DIARY",
-        "description" : "En tant que visiteur,\nje veux voir les lieux les plus prisés d'une localité choisie.",
+        "description" : "As a visitor,\nI want to see the most popular places in a chosen location.",
         "defaultStars" : 3,
-        "defaultSize" : "NOT_DEFINED"
+        "defaultSize" : "S"
     }
 ]

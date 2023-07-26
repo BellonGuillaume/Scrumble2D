@@ -5,7 +5,6 @@ using UnityEngine.UI;
 using System;
 using TMPro;
 using UnityEngine.Localization.Settings;
-using UnityEngine.Localization.Tables;
 
 public class GameManager : MonoBehaviour
 {
@@ -40,20 +39,15 @@ public class GameManager : MonoBehaviour
     public static List<UserStory> workingOn;
     public List<GameObject> doingAUS;
 
-    private StringTable table;
     private System.Random random;
 
     void Start()
     {
-        Debug.Log("Begin Assets initialization");
-        // StateManager.gameState = StateManager.GameState.INITIALISATION;
         if (StateManager.gameState != StateManager.GameState.INITIALISATION) {
-            Debug.Log("NEED TO INITSTATE");
             StateManager.gameState = StateManager.GameState.INITIALISATION;
             InitState();
         }
         random = new System.Random();
-        table = LocalizationSettings.StringDatabase.GetTable("Game");
         this.popUpAnimator = popUpGO.GetComponent<Animator>();
         this.cardPicker = cardPick.GetComponent<CardPicker>();
         this.cardHandler.CreateDailyCards();
@@ -84,7 +78,6 @@ public class GameManager : MonoBehaviour
 
     IEnumerator StartGame(){
         yield return new WaitUntil(() => StateManager.gameState == StateManager.GameState.BEGIN_GAME);
-        Debug.Log("Begin Game");
         animationManager.StartGame();
         yield return new WaitUntil(() => EventManager.animate == false);
         yield return new WaitForSeconds(2);
@@ -99,7 +92,6 @@ public class GameManager : MonoBehaviour
     #region --------------------------------- Sprint ---------------------------------
     IEnumerator BeginSprint(int n){
         StateManager.sprintNumber++;
-        Debug.Log($"BEGIN SPRINT {n.ToString()}");
         StateManager.gameState = StateManager.GameState.TDTD;
         StateManager.currentDay = 0;
         StartCoroutine(ChooseToDoToDoing());
@@ -115,14 +107,11 @@ public class GameManager : MonoBehaviour
             StateManager.currentDay = j;
             StartCoroutine(BeginDay(j));
             yield return new WaitUntil(() => StateManager.gameState == StateManager.GameState.END_OF_DAY);
-            Debug.Log($"End of day {j} reached");
         }
-        // animationManager.ShowInfo(table.GetEntry("Phase de Review").GetLocalizedString());
-        animationManager.ShowInfo("Phase de Review");
+        animationManager.ShowInfo(GetString("Game", "ReviewPhase"));
         yield return new WaitUntil(() => EventManager.animate == false);
         // BeginReview();
-        // animationManager.ShowInfo(table.GetEntry("Phase de Rétrospective").GetLocalizedString());
-        animationManager.ShowInfo("Phase de Rétrospective");
+        animationManager.ShowInfo(GetString("Game", "RetrospectivePhase"));
         yield return new WaitUntil(() => EventManager.animate == false);
         // BeginRetrospective();
         StateManager.gameState = StateManager.GameState.END_OF_SPRINT;
@@ -169,7 +158,6 @@ public class GameManager : MonoBehaviour
     #region --------------------------------- Day ---------------------------------
     IEnumerator BeginDay(int n){
         yield return new WaitUntil(() => StateManager.gameState == StateManager.GameState.BEGIN_DAY);
-        Debug.Log($"BEGIN Day {n}");
         animationManager.StartDayAnimation(n);
         yield return new WaitUntil(() => EventManager.animate == false);
         if (StateManager.oneTaskPerDay == true){
@@ -205,13 +193,12 @@ public class GameManager : MonoBehaviour
     IEnumerator BeginTurn(Player player){
         yield return new WaitUntil(() => StateManager.turnState == StateManager.TurnState.BEGIN_TURN);
         if (StateManager.players[player.playerNumber-1].turnToPass > 0){
-            animationManager.ShowInfo($"{player.userName} passe son tour");
+            animationManager.ShowInfo($"{player.userName}" + " " + GetString("Game", "PassHisTurn"));
             StateManager.players[player.playerNumber-1].turnToPass--;
             yield return new WaitUntil(() => EventManager.animate == false);
             StateManager.turnState = StateManager.TurnState.END_OF_TURN;
             yield break;
         }
-        Debug.Log($"Begin turn of {player.userName}");
         StateManager.currentPlayer = player;
         animationManager.StartTurnAnimation(player);
         yield return new WaitUntil(() => EventManager.animate == false);
@@ -224,7 +211,6 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator StartChoiceTaskDebt(){
         yield return new WaitUntil(() => StateManager.turnState == StateManager.TurnState.CHOICE);
-        Debug.Log("STARTING CHOICE");
         
         animationManager.ShowChoice();
         yield return new WaitUntil(() => EventManager.animate == false);
@@ -254,13 +240,10 @@ public class GameManager : MonoBehaviour
         
         animationManager.ZoomOutPopUp(this.turn);
         yield return new WaitUntil(() => EventManager.animate == false);
-
-        Debug.Log("-END OF CHOICE");
         StateManager.turnState = StateManager.TurnState.ROLL;
     }
     IEnumerator StartRollDice(){
         yield return new WaitUntil(() => StateManager.turnState == StateManager.TurnState.ROLL);
-        Debug.Log("STARTING ROLL");
 
         animationManager.ZoomInPopUp(this.roll);
         yield return new WaitUntil(() => EventManager.animate == false);
@@ -279,20 +262,16 @@ public class GameManager : MonoBehaviour
             StateManager.secondDiceResult = result;
         }
 
-        this.popUpAnimator.ResetTrigger("ROLL");
         
         animationManager.ZoomOutPopUp(this.roll);
         yield return new WaitUntil(() => EventManager.animate == false);
-        Debug.Log("-END ROLL");
         StateManager.turnState = StateManager.TurnState.RESULT;
     }
     IEnumerator StartShowResult(){
         yield return new WaitUntil(() => StateManager.turnState == StateManager.TurnState.RESULT);
-        Debug.Log("-START RESULTS");
         if (StateManager.firstDiceResult == 1 && !StateManager.alreadyReRoll){
-            Debug.Log("--RESULT => REROLL");
             // StartCoroutine(ReRollAnimation());
-            animationManager.ShowInfo(table.GetEntry("Reroll").GetLocalizedString());
+            animationManager.ShowInfo(GetString("Game", "Reroll"));
             yield return new WaitUntil(() => EventManager.animate == false);
             StateManager.alreadyReRoll = true;
             StateManager.turnState = StateManager.TurnState.CHOICE;
@@ -300,10 +279,8 @@ public class GameManager : MonoBehaviour
             yield return new WaitUntil(() => StateManager.turnState == StateManager.TurnState.ROLL);
             StartCoroutine(StartRollDice());
             yield return new WaitUntil(() => StateManager.turnState == StateManager.TurnState.RESULT);
-            Debug.Log("--END REROLL");
         }
 
-        Debug.Log("-SHOWING RESULTS");
         animationManager.ZoomInPopUp(this.results);
         yield return new WaitUntil(() => EventManager.animate == false);
         bool jinx =  StateManager.jinxed && (StateManager.firstDiceResult == 5 || StateManager.secondDiceResult == 5);
@@ -313,7 +290,7 @@ public class GameManager : MonoBehaviour
             }
             // animationManager.ProblemAnimation();
             // yield return new WaitUntil(() => EventManager.animate == false);
-            animationManager.ShowInfo(table.GetEntry("ProblemCard").GetLocalizedString());
+            animationManager.ShowInfo(GetString("Game", "ProblemCard"));
             yield return new WaitUntil(() => EventManager.animate == false);
 
             animationManager.HideResults();
@@ -327,12 +304,36 @@ public class GameManager : MonoBehaviour
             yield return new WaitUntil(() => EventManager.animate == false);
         }
 
-        if(StateManager.alreadyReRoll){
-            this.results.GetComponent<Results>().ChangeText($"Vous avez gagné {StateManager.firstDiceResult} {StateManager.firstTaskOrDebtChoice} " +
-                                                            $"et {StateManager.secondDiceResult} {StateManager.secondTaskOrDebtChoice} ");
+        string prompt = "";
+        if (StateManager.firstTaskOrDebtChoice == "TASK"){
+            prompt += GetString("Game", "YouWon") + " " + StateManager.firstDiceResult.ToString() + " ";
+            if (StateManager.firstDiceResult > 1)
+                prompt += GetString("Game", "tasks");
+            else
+                prompt += GetString("Game", "task");
         } else {
-            this.results.GetComponent<Results>().ChangeText($"Vous avez gagné {StateManager.firstDiceResult} {StateManager.firstTaskOrDebtChoice}");
+            prompt += GetString("Game", "YouEarned") + " " + StateManager.firstDiceResult.ToString() + " ";
+            if (StateManager.firstDiceResult > 1)
+                prompt += GetString("Game", "debts");
+            else
+                prompt += GetString("Game", "debt");
         }
+        if(StateManager.alreadyReRoll){
+            prompt += " " + GetString("Game", "and") + " " + StateManager.secondDiceResult.ToString() + " ";
+            if (StateManager.secondTaskOrDebtChoice == "TASK"){
+                if (StateManager.secondDiceResult > 1)
+                    prompt += GetString("Game", "tasks");
+                else
+                    prompt += GetString("Game", "task");
+            } else {
+                if (StateManager.secondDiceResult > 1)
+                    prompt += GetString("Game", "debts");
+                else
+                    prompt += GetString("Game", "debt");
+            }
+        }
+        prompt+=".";
+        this.results.GetComponent<Results>().ChangeText(prompt);
 
         yield return new WaitForSeconds(2);
         int debtCounter = 0;
@@ -350,13 +351,10 @@ public class GameManager : MonoBehaviour
             taskCounter += StateManager.secondDiceResult;
         }
 
-        Debug.Log("-END RESULTS");
-
         animationManager.HideResults();
         yield return new WaitUntil(() => EventManager.animate == false);
 
         if (debtCounter > 0){
-            // StartCoroutine(AddToDebt(0-debtCounter));
             animationManager.UpdateDebtScrollBar(this.debtSlider.value - debtCounter);
             yield return new WaitUntil(() => EventManager.animate == false);
         }
@@ -396,13 +394,12 @@ public class GameManager : MonoBehaviour
     
     #region --------------------------------- Utils ---------------------------------
         void ClearTurn(){
-        Debug.Log("Begin the clear");
         StateManager.ClearTurnState();
         this.results.GetComponent<Results>().ChangeText("");
     }
 
     void InitState(){
-        Debug.Log("-STATE_MANAGER INITIALIAZING");
+        StateManager.language = LocalizationSettings.SelectedLocale;
         StateManager.difficulty = StateManager.Difficulty.EASY;
         StateManager.category = StateManager.Category.GIFT_SHOP;
         StateManager.gameName = "";
@@ -414,7 +411,6 @@ public class GameManager : MonoBehaviour
         }
 
         StateManager.gameState = StateManager.GameState.INITIALISATION;
-        Debug.Log("-STATE_MANAGER INITIALIZED");
     }
 
     public IEnumerator AddTasks(int n){
@@ -500,6 +496,10 @@ public class GameManager : MonoBehaviour
 
     public void OnOutClick(){
         this.sidePopUp.SetActive(false);
+    }
+
+    public string GetString(string tableName, string stringKey){
+        return LocalizationSettings.StringDatabase.GetLocalizedString(tableName, stringKey);
     }
     #endregion
 }

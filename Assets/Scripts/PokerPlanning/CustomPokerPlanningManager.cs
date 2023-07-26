@@ -5,6 +5,7 @@ using TMPro;
 using System;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Localization.Settings;
 
 public class CustomPokerPlanningManager : MonoBehaviour
 {
@@ -139,7 +140,8 @@ public class CustomPokerPlanningManager : MonoBehaviour
         this.preciseUI.SetActive(false);
     }
     public void AddUserStoryUI(){
-        UserStory userStory = new UserStory(this.userStories.Count+1, "CUSTOM", "En tant que\t,\nje veux ", 0, UserStory.Size.NOT_DEFINED, 0);
+        string temp = GetString("PokerPlanning", "AsA") + "\n" + GetString("PokerPlanning", "IWant");
+        UserStory userStory = new UserStory(this.userStories.Count+1, "CUSTOM", temp, 0, UserStory.Size.NOT_DEFINED, 0);
         this.userStories.Add(userStory);
         GameObject go = Instantiate(userStoryPrefab);
         go.transform.SetParent(this.scrollPannel.transform);
@@ -237,5 +239,8 @@ public class CustomPokerPlanningManager : MonoBehaviour
         StateManager.customPokerPlanningState = StateManager.CustomPokerPlanningState.FINISHED;
         StateManager.gameState = StateManager.GameState.INITIALISATION;
         SceneManager.LoadSceneAsync("Game");
+    }
+    public string GetString(string tableName, string stringKey){
+        return LocalizationSettings.StringDatabase.GetLocalizedString(tableName, stringKey);
     }
 }

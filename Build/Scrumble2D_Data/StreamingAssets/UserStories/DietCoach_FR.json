@@ -4,14 +4,14 @@
         "category" : "DIET COACH",
         "description" : "En tant qu'utilisateur régulier,\nje veux utiliser l'application selon un compte correspondant à mon profil.",
         "defaultStars" : 1,
-        "defaultSize" : "NOT_DEFINED"
+        "defaultSize" : "L"
     },
     {
         "id" : 2,
         "category" : "DIET COACH",
         "description" : "En tant qu'utilisateur enregistré,\nje veux désigner mon diététicien qui sera alors mon coach pour le suivi.",
         "defaultStars" : 4,
-        "defaultSize" : "NOT_DEFINED",
+        "defaultSize" : "M",
         "restriction" : 1
     },
     {
@@ -19,73 +19,73 @@
         "category" : "DIET COACH",
         "description" : "En tant que diététicien enregistré,\nje veux consulter toutes les informations d'une personne dont je suis le suiveur.",
         "defaultStars" : 5,
-        "defaultSize" : "NOT_DEFINED",
+        "defaultSize" : "L",
         "restriction" : 2
     },{
         "id" : 4,
         "category" : "DIET COACH",
         "description" : "En tant qu'utilisateur enregistré,\nje veux me fixer des objectifs personnalisés en un temps donné.",
         "defaultStars" : 4,
-        "defaultSize" : "NOT_DEFINED",
+        "defaultSize" : "M",
         "restriction" : 1
     },{
         "id" : 5,
         "category" : "DIET COACH",
         "description" : "En tant qu'utilisateur,\nje veux consulter les régimes valables les plus connus.",
         "defaultStars" : 4,
-        "defaultSize" : "NOT_DEFINED"
+        "defaultSize" : "S"
     },{
         "id" : 6,
         "category" : "DIET COACH",
         "description" : "En tant qu'utilisateur,\nje veux consulter les attributs nutritifs et caloriques de tout aliment.",
         "defaultStars" : 3,
-        "defaultSize" : "NOT_DEFINED"
+        "defaultSize" : "S"
     },{
         "id" : 7,
         "category" : "DIET COACH",
         "description" : "En tant que diététicien enregistré,\nje veux transmettre des objectifs et des conseils aux utilisateurs que je suis.",
         "defaultStars" : 5,
-        "defaultSize" : "NOT_DEFINED",
+        "defaultSize" : "L",
         "restriction" : 2
     },{
         "id" : 8,
         "category" : "DIET COACH",
         "description" : "En tant qu'utilisateur enregistré,\nje veux renseigner mes informations personnelles utiles à mon suivi.",
         "defaultStars" : 3,
-        "defaultSize" : "NOT_DEFINED",
+        "defaultSize" : "S",
         "restriction" : 1
     },{
         "id" : 9,
         "category" : "DIET COACH",
         "description" : "En tant qu'utilisateur enregistré,\nje veux recevoir des offres régulières et personnalisées pour améliorer ma santé.",
         "defaultStars" : 3,
-        "defaultSize" : "NOT_DEFINED",
+        "defaultSize" : "L",
         "restriction" : 1
     },{
         "id" : 10,
         "category" : "DIET COACH",
         "description" : "En tant qu'utilisateur,\nje veux recevoir fréquemment des encouragements automatiques pour me motiver.",
         "defaultStars" : 2,
-        "defaultSize" : "NOT_DEFINED"
+        "defaultSize" : "XS"
     },{
         "id" : 11,
         "category" : "DIET COACH",
         "description" : "En tant qu'utilisateur,\nje veux me voir recommander chaque jour un nouvel aliment bénéfique pour ma santé.",
         "defaultStars" : 1,
-        "defaultSize" : "NOT_DEFINED"
+        "defaultSize" : "S"
     },{
         "id" : 12,
         "category" : "DIET COACH",
         "description" : "En tant qu'utilisateur,\nje veux me voir présenter chaque semaine un nouveau sport et des clubs à proximité.",
         "defaultStars" : 3,
-        "defaultSize" : "NOT_DEFINED"
+        "defaultSize" : "M"
     },
     {
         "id" : 13,
         "category" : "DIET COACH",
         "description" : "En tant qu'utilisateur enregistré,\nje veux me voir suggérer un programme de nutrition selon mon profil et mes objectifs.",
         "defaultStars" : 3,
-        "defaultSize" : "NOT_DEFINED",
+        "defaultSize" : "XL",
         "restriction" : 1
     },
     {
@@ -93,14 +93,14 @@
         "category" : "DIET COACH",
         "description" : "En tant qu'utilisateur,\nje veux trouver les bonnes adresses de diététique dans la région.",
         "defaultStars" : 1,
-        "defaultSize" : "NOT_DEFINED"
+        "defaultSize" : "M"
     },
     {
         "id" : 15,
         "category" : "DIET COACH",
         "description" : "En tant qu'utilisateur enregistré,\nje veux enregistrer mes journaux de repas et d'activités.",
         "defaultStars" : 3,
-        "defaultSize" : "NOT_DEFINED",
+        "defaultSize" : "M",
         "restriction" : 1
     }
 ]

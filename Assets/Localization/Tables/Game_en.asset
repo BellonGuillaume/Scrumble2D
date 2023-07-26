@@ -82,6 +82,50 @@ MonoBehaviour:
     m_Localized: Choose a player to draw a Daily Card
     m_Metadata:
       m_Items: []
+  - m_Id: 4275928723660800
+    m_Localized: Review Phase
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4276063759278080
+    m_Localized: Retrospective Phase
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4276449811406848
+    m_Localized: You won
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4276546934710272
+    m_Localized: You earned
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4276705768808448
+    m_Localized: tasks
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4276764438732800
+    m_Localized: task
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4276808776720384
+    m_Localized: debt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4276850052866048
+    m_Localized: debts
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4277096094932992
+    m_Localized: and
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4310688430858240
+    m_Localized: pass his turn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4315563260682240
+    m_Localized: Task validation
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

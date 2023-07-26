@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Localization.Settings;
 
 public class CustomUserStoryUI : MonoBehaviour
 {
@@ -57,12 +58,12 @@ public class CustomUserStoryUI : MonoBehaviour
 
     }
     public void OnAsAChange(){
-        this.customPokerPlanningManager.userStories[this.id-1].description = "En tant que " + this.asAIn.text + ",\nje veux " + this.iWantIn.text;
-        this.customPokerPlanningManager.userStories[this.id-1].asA = this.asAIn.text;
+        this.customPokerPlanningManager.userStories[this.id-1].description = GetString("AsA") + " " + this.asAIn.text + ",\n" + GetString("IWant") + " " + this.iWantIn.text;
+        this.customPokerPlanningManager.userStories[this.id-1].asA = this.asAIn.text; 
         this.customPokerPlanningManager.UpdateUserStoryUI(this.id);
     }
     public void OnIWantChange(){
-        this.customPokerPlanningManager.userStories[this.id-1].description = "En tant que " + this.asAIn.text + ",\nje veux " + this.iWantIn.text;
+        this.customPokerPlanningManager.userStories[this.id-1].description = GetString("AsA") + " " + this.asAIn.text + ",\n" + GetString("IWant") + " " + this.iWantIn.text;
         this.customPokerPlanningManager.userStories[this.id-1].iWant = this.iWantIn.text;
         this.customPokerPlanningManager.UpdateUserStoryUI(this.id);
     }
@@ -144,5 +145,8 @@ public class CustomUserStoryUI : MonoBehaviour
         this.restrictionIn.enabled = false;
         this.asAIn.enabled = false;
         this.iWantIn.enabled = false;
+    }
+    public string GetString(string stringKey){
+        return LocalizationSettings.StringDatabase.GetLocalizedString("PokerPlanning", stringKey);
     }
 }
