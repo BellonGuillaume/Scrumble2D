@@ -26,7 +26,7 @@
         "category" : "GIFT SHOP",
         "description" : "En tant que client,\nje veux éditer mes coordonnées postales et bancaires.",
         "defaultStars" : 4,
-        "defaultSize" : "XS",
+        "defaultSize" : "S",
         "restriction" : 11
     },{
         "id" : 5,

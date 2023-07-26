@@ -2,7 +2,7 @@
     {
         "id" : 1,
         "category" : "GIFT SHOP",
-        "description" : "En tant que commerçant,\nje veux ajouter et éditer de nouveaux produits dans ma boutique.",
+        "description" : "As a merchant,\nI want to add and edit new products in my shop.",
         "defaultStars" : 5,
         "defaultSize" : "M",
         "restriction" : 13
@@ -10,7 +10,7 @@
     {
         "id" : 2,
         "category" : "GIFT SHOP",
-        "description" : "En tant que commerçant,\nje veux empêcher les nouvelles commandes pendant mes congés.",
+        "description" : "As a merchant,\nI want to prevent new orders during my holidays.",
         "defaultStars" : 1,
         "defaultSize" : "XS",
         "restriction" : 13
@@ -18,76 +18,76 @@
     {
         "id" : 3,
         "category" : "GIFT SHOP",
-        "description" : "En tant que visiteur,\nje veux voir la liste de produits phares.",
+        "description" : "As a visitor,\nI want to see the list of featured products.",
         "defaultStars" : 1,
         "defaultSize" : "S"
     },{
         "id" : 4,
         "category" : "GIFT SHOP",
-        "description" : "En tant que client,\nje veux éditer mes coordonnées postales et bancaires.",
+        "description" : "As a customer,\nI want to edit my postal and bank details.",
         "defaultStars" : 4,
-        "defaultSize" : "XS",
+        "defaultSize" : "S",
         "restriction" : 11
     },{
         "id" : 5,
         "category" : "GIFT SHOP",
-        "description" : "En tant que client fidèle,\nje veux recevoir des suggestions de cadeaux par mail.",
+        "description" : "As a loyal customer,\nI want to receive gift suggestions by email.",
         "defaultStars" : 2,
         "defaultSize" : "S"
     },{
         "id" : 6,
         "category" : "GIFT SHOP",
-        "description" : "En tant que visiteur,\nje veux indiquer un souhait sur les réseaux sociaux.",
+        "description" : "As a visitor,\nI want to indicate a wish on social networks.",
         "defaultStars" : 5,
         "defaultSize" : "M"
     },{
         "id" : 7,
         "category" : "GIFT SHOP",
-        "description" : "En tant que client,\nje veux payer par Paypal, Visa, virement ou chèque.",
+        "description" : "As a customer,\nI want to pay by Paypal, Visa, bank transfer or check.",
         "defaultStars" : 4,
         "defaultSize" : "XL"
     },{
         "id" : 8,
         "category" : "GIFT SHOP",
-        "description" : "En tant que visiteur,\nje veux chercher des cadeaux selon leur prix.",
+        "description" : "As a visitor,\nI want to search for gifts by price.",
         "defaultStars" : 2,
         "defaultSize" : "XS"
     },{
         "id" : 9,
         "category" : "GIFT SHOP",
-        "description" : "En tant que visiteur,\nje veux chercher des cadeaux selon un thème, des couleurs et des matières.",
+        "description" : "As a visitor,\nI want to search for gifts according to a theme, colors and materials.",
         "defaultStars" : 4,
         "defaultSize" : "S"
     },{
         "id" : 10,
         "category" : "GIFT SHOP",
-        "description" : "En tant que client,\nje veux obtenir une facture et un suivi de mes commandes.",
+        "description" : "As a customer,\nI want to obtain an invoice and a follow-up of my orders.",
         "defaultStars" : 3,
         "defaultSize" : "M"
     },{
         "id" : 11,
         "category" : "GIFT SHOP",
-        "description" : "En tant que visiteur régulier ou acheteur,\nje veux pouvoir créer un compte client.",
+        "description" : "As a regular visitor or buyer,\nI want to be able to create a customer account.",
         "defaultStars" : 2,
         "defaultSize" : "XL"
     },{
         "id" : 12,
         "category" : "GIFT SHOP",
-        "description" : "En tant que commerçant,\nje veux des indicateurs clés sur la consultation des pages et les intérêts des visiteurs.",
+        "description" : "As a merchant,\nI want key metrics on page views and visitor interests.",
         "defaultStars" : 4,
         "defaultSize" : "L"
     },
     {
         "id" : 13,
         "category" : "GIFT SHOP",
-        "description" : "En tant que commerçant,\nje veux un espace sécurisé pour administrer mon site.",
+        "description" : "As a merchant,\nI want a secure space to administer my site.",
         "defaultStars" : 2,
         "defaultSize" : "L"
     },
     {
         "id" : 14,
         "category" : "GIFT SHOP",
-        "description" : "En tant que commerçant,\nje veux annuler toute commande erronée ou frauduleuse et procéder au dédommagement depuis l'espace sécurisé.",
+        "description" : "As a merchant,\nI want to cancel any erroneous or fraudulent orders and proceed with compensation from the secure area.",
         "defaultStars" : 5,
         "defaultSize" : "L",
         "restriction" : 13
@@ -95,7 +95,7 @@
     {
         "id" : 15,
         "category" : "GIFT SHOP",
-        "description" : "En tant que visiteur,\nje veux proposer des idées d'articles à la boutique.",
+        "description" : "As a visitor,\nI want to submit ideas for items in the shop.",
         "defaultStars" : 1,
         "defaultSize" : "M"
     }
