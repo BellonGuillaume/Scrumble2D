@@ -41,6 +41,7 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
      <Compile Include="Assets\Scripts\Ressources\DropCase.cs" />
      <Compile Include="Assets\Scripts\Game\CardHandler.cs" />
+     <Compile Include="Assets\Scripts\Game\ChoosePlayer.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
      <Compile Include="Assets\Scripts\Old\HostJoinUI.cs" />
      <Compile Include="Assets\Scripts\Game\UICard.cs" />
@@ -85,6 +86,7 @@
      <Compile Include="Assets\Scripts\Old\ExitButton.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
      <Compile Include="Assets\Scripts\Ressources\UserStoryUI.cs" />
+     <Compile Include="Assets\Scripts\Game\DailyPlayer.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
      <Compile Include="Assets\Scripts\Ressources\DaySlider.cs" />
@@ -122,8 +124,6 @@
      <Compile Include="Assets\Scripts\Old\TextSlider.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\Scripts\Old\StateNameController.cs" />
-     <Compile Include="Assets\Scripts\Game\DailyPlayer.cs" />
-     <Compile Include="Assets\Scripts\Game\ChoosePlayer.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\ScriptTemplates\51-Mirror__Network Authenticator-NewNetworkAuthenticator.cs.txt" />
