@@ -8,6 +8,7 @@ public class ArrowedUS : MonoBehaviour
     [SerializeField] Image outline;
     [SerializeField] Button arrowUp;
     [SerializeField] Button arrowDown;
+    [SerializeField] HighlightScore highlightScore;
 
 
     [HideInInspector] public UserStory userStory;
@@ -56,6 +57,7 @@ public class ArrowedUS : MonoBehaviour
 
     public void SetUserStory(UserStory userStory){
         this.userStory = userStory;
+        this.highlightScore.userStory = userStory;
     }
     public void IncreaseColor(int i){
         if (this.userStory.currentTask > this.userStory.maxTask){
