@@ -79,6 +79,10 @@ public class UICard : MonoBehaviour
         this.verso.gameObject.SetActive(false);
         this.card.flipped = true;
     }
+    public void AddVerso(){
+        this.verso.gameObject.SetActive(true);
+        this.card.flipped = false;
+    }
 
     public void Disable(){
         this.clickHandler.GetComponent<Button>().interactable = false;

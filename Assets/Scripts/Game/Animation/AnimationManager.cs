@@ -455,7 +455,7 @@ public class AnimationManager : MonoBehaviour
         Vector2 startScale = this.debtSlider.transform.localScale;
         float startValue = this.debtSlider.value;
         Vector2 endPos = Vector2.zero;
-        Vector2 endScale = new Vector2(4f, 4f);
+        Vector2 endScale = new Vector2(3f, 3f);
         float endValue = newValue;
         animationCoroutine = this.CreateAnimationRoutine(
             0.5f,
@@ -710,6 +710,35 @@ public class AnimationManager : MonoBehaviour
             }
         );
     }
+    public void FlipCard(GameObject card){
+        EventManager.animate = true;
+        Vector2 startScale = card.transform.localScale;
+        Vector2 intermediateScale = new Vector2(0f, startScale.y);
+        Vector2 endScale = startScale;
+        animationCoroutine = this.CreateAnimationRoutine(
+            0.5f,
+            delegate(float progress){
+                float easedProgress = Easing.easeInCirc(0, 1, progress);
+                Vector2 scale = Vector2.Lerp(startScale, intermediateScale, easedProgress);
+                card.transform.localScale = scale;
+            },
+            delegate{
+                card.GetComponent<UICard>().RemoveVerso();
+                this.CreateAnimationRoutine(
+                    0.5f,
+                    delegate(float progress){
+                        float easedProgress = Easing.easeOutCirc(0, 1, progress);
+                        Vector2 scale = Vector2.Lerp(intermediateScale, endScale, easedProgress);
+                        card.transform.localScale = scale;
+                    },
+                    delegate{
+                        EventManager.animate = false;
+                    }
+                );
+            }
+        );
+    }
+
     public string GetString(string tableName, string stringKey){
         return LocalizationSettings.StringDatabase.GetLocalizedString(tableName, stringKey);
     }
