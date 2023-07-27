@@ -13,9 +13,11 @@ public class UserStoryUI : MonoBehaviour
     [SerializeField] TMP_Text starsTXT;
     [SerializeField] TMP_Text sizeTXT;
     [SerializeField] Image outline;
+    [SerializeField] Button clickHandler;
     public UserStory userStory;
     PokerPlanningManager pokerPlanningManager;
     CustomPokerPlanningManager customPokerPlanningManager;
+    [HideInInspector] public bool canBeDrag = true;
 
     public void Fill(UserStory userStory){
         this.userStory = userStory;
@@ -81,5 +83,17 @@ public class UserStoryUI : MonoBehaviour
                 this.outline.color = UserStory.yellow;
                 break;
         }
+    }
+    public void Deactivate(){
+        Color32 temp = clickHandler.image.color;
+        temp.a = 100;
+        clickHandler.image.color = temp;
+        canBeDrag = false;
+    }
+    public void Activate(){
+        Color32 temp = clickHandler.image.color;
+        temp.a = 0;
+        clickHandler.image.color = temp;
+        canBeDrag = true;
     }
 }

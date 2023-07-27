@@ -12,6 +12,20 @@ public class TDDDManager : MonoBehaviour
     void Awake(){
         StartCoroutine(OnAwake());
     }
+
+    void Update(){
+        foreach (DropCase dropCase in toDoDropContent.cases){
+            if(dropCase.transform.childCount != 0){
+                UserStoryUI usUI = dropCase.transform.GetChild(0).GetComponent<UserStoryUI>();
+                if (usUI.userStory.restriction > 0){
+                    if(StateManager.userStories[usUI.userStory.restriction-1].state == UserStory.State.DEPLOYED)
+                        usUI.Activate();
+                    else
+                        usUI.Deactivate();
+                }
+            }
+        }
+    }
     IEnumerator OnAwake(){
         yield return new WaitForSeconds(0f);
         foreach (UserStory userStory in StateManager.userStories){
@@ -49,6 +63,7 @@ public class TDDDManager : MonoBehaviour
         go.GetComponent<UserStoryUI>().Fill(userStory);
         go.AddComponent<DraggableItem>();
         go.GetComponent<DraggableItem>().userStory = userStory;
+        go.GetComponent<DraggableItem>().userStoryUI = go.GetComponent<UserStoryUI>();
         return go;
     }
 

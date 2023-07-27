@@ -102,7 +102,7 @@ public class GameManager : MonoBehaviour
             StartCoroutine(AddTasks(5));
             yield return new WaitUntil(() => EventManager.handleAddingTask == false);
         }
-        for (int j = 1; j <= 9; j++){
+        for (int j = 1; j <= 3; j++){
             StateManager.gameState = StateManager.GameState.BEGIN_DAY;
             StateManager.currentDay = j;
             StartCoroutine(BeginDay(j));
