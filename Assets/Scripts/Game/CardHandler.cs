@@ -62,6 +62,7 @@ public class CardHandler : MonoBehaviour
         this.cardPicker.RemoveCards();
         yield return new WaitUntil(() => EventManager.cardToRemove <= 0);
         this.cardPicker.Reset();
+        this.cardPicker.gameObject.SetActive(false);
         EventManager.handleCards = false;
     }
 
@@ -75,7 +76,7 @@ public class CardHandler : MonoBehaviour
                     this.remainingProblemCards.Add(card);
                 else if (card.category == Card.CategoryOfCard.REVIEW)
                     this.remainingReviewCards.Add(card);
-                cardIds.Add(card.id);
+                cardIds.Add(card.id + (((int) card.category -1) * 60));
             }
         }
         this.pickedCards.RemoveAll(card => card.flipped == false);
@@ -87,7 +88,7 @@ public class CardHandler : MonoBehaviour
 
     public void DiscardCards(){
         foreach (Card card in pickedCards){
-            if (readyToDiscard[card.id - 1] == true){
+            if (readyToDiscard[card.id + (((int) card.category -1) * 60) - 1] == true){
                 if (card.category == Card.CategoryOfCard.DAILY)
                     this.discardedDailyCards.Add(card);
                 else if (card.category == Card.CategoryOfCard.PROBLEM)
@@ -96,7 +97,7 @@ public class CardHandler : MonoBehaviour
                     this.discardedReviewCards.Add(card);
             }
         }
-        this.pickedCards.RemoveAll(card => readyToDiscard[card.id -1] == true);
+        this.pickedCards.RemoveAll(card => readyToDiscard[card.id + (((int) card.category -1) * 60) - 1] == true);
         var keyValuePairsToRemove = readyToDiscard.Where(kvp => kvp.Value == true).ToList();
         foreach (var kvp in keyValuePairsToRemove){
             Debug.Log("Remove the flipped card : " + (kvp.Key + 1).ToString());
@@ -106,54 +107,70 @@ public class CardHandler : MonoBehaviour
     
     IEnumerator HandleSingleCard(Card card){
         int doubleValue = 1;
-        if (StateManager.skipProblemOrDoubleDaily > 0 && card.positive == true){
+        if (StateManager.skipProblemOrDoubleDaily > 0 && card.category == Card.CategoryOfCard.DAILY && card.positive == true){
             StateManager.skipProblemOrDoubleDaily--;
             doubleValue = 2;
         }
-        if(StateManager.noMoreTestIssues == true && card.test == true){
+        if(StateManager.noMoreTestIssues == true && card.category == Card.CategoryOfCard.PROBLEM && card.test == true){
             // montrer la carte permanente
-            // ne rien faire
+            this.okButton.gameObject.SetActive(true);
+            yield return new WaitUntil(() => EventManager.okPressed == true);
+            EventManager.okPressed = false;
+            this.okButton.gameObject.SetActive(false);
+            StartCoroutine(this.cardPicker.UnChooseCard());
+            yield return new WaitUntil(() => EventManager.animate == false);
+            animationManager.HideCardPick();
+            yield return new WaitUntil(() => EventManager.animate == false);
+            EventManager.handleSimpleAction = false;
         } else if (StateManager.skipProblemOrDoubleDaily > 0 && card.category == Card.CategoryOfCard.PROBLEM){
             StateManager.skipProblemOrDoubleDaily--;
             // animate end of card
-            yield return new WaitForSeconds(1f);
+            this.okButton.gameObject.SetActive(true);
+            yield return new WaitUntil(() => EventManager.okPressed == true);
+            EventManager.okPressed = false;
+            this.okButton.gameObject.SetActive(false);
+            StartCoroutine(this.cardPicker.UnChooseCard());
+            yield return new WaitUntil(() => EventManager.animate == false);
+            animationManager.HideCardPick();
+            yield return new WaitUntil(() => EventManager.animate == false);
+            EventManager.handleSimpleAction = false;
         } else {
             switch (card.typeOfCard){
                 case Card.TypeOfCard.Simple :
                     EventManager.handleSimpleAction = true;
                     StartCoroutine(HandleSimpleAction(card.firstAction, card.firstValue * doubleValue));
                     yield return new WaitUntil(() => EventManager.handleSimpleAction == false);
-                    readyToDiscard[card.id - 1] = true;
+                    readyToDiscard[card.id + (((int) card.category -1) * 60) - 1] = true;
                     break;
                 case Card.TypeOfCard.Multiple :
                     EventManager.handleMultipleActions = true;
                     StartCoroutine(HandleMultipleActions(card.firstAction, card.firstValue * doubleValue, card.secondAction, card.secondValue * doubleValue));
                     yield return new WaitUntil(() => EventManager.handleMultipleActions == false);
-                    readyToDiscard[card.id - 1] = true;
+                    readyToDiscard[card.id + (((int) card.category -1) * 60) - 1] = true;
                     break;
                 case Card.TypeOfCard.Proposition :
                     EventManager.handlePropositionAction = true;
                     StartCoroutine(HandlePropositionAction(card.firstAction, card.firstValue * doubleValue, card.secondAction, card.secondValue * doubleValue, card.thirdAction, card.thirdValue * doubleValue));
                     yield return new WaitUntil(() => EventManager.handlePropositionAction == false);
-                    readyToDiscard[card.id - 1] = true;
+                    readyToDiscard[card.id + (((int) card.category -1) * 60) - 1] = true;
                     break;
                 case Card.TypeOfCard.Information :
                     EventManager.handleInformationAction = true;
                     StartCoroutine(HandleInformationAction());
                     yield return new WaitUntil(() => EventManager.handleInformationAction == false);
-                    readyToDiscard[card.id - 1] = true;
+                    readyToDiscard[card.id + (((int) card.category -1) * 60) - 1] = true;
                     break;
                 case Card.TypeOfCard.Choice :
                     EventManager.handleChoiceActions = true;
                     StartCoroutine(HandleChoiceActions(card.firstAction, card.firstValue * doubleValue, card.secondAction, card.secondValue * doubleValue));
                     yield return new WaitUntil(() => EventManager.handleChoiceActions == false);
-                    readyToDiscard[card.id - 1] = true;
+                    readyToDiscard[card.id + (((int) card.category -1) * 60) - 1] = true;
                     break;
                 case Card.TypeOfCard.Question :
                     EventManager.handleQuestionActions = true;
                     StartCoroutine(HandleQuestionActions(card.questionId));
                     yield return new WaitUntil(() => EventManager.handleQuestionActions == false);
-                    readyToDiscard[card.id - 1] = true;
+                    readyToDiscard[card.id + (((int) card.category -1) * 60) - 1] = true;
                     break;
                 case Card.TypeOfCard.Permanent :
                     EventManager.handlePermanentAction = true;
@@ -448,7 +465,7 @@ public class CardHandler : MonoBehaviour
                     yield return new WaitUntil(() => EventManager.action == false);
                     StateManager.oneMoreTaskPerRoll = true;
                 } else {
-                    readyToDiscard[card.id - 1] = true;
+                    readyToDiscard[card.id + (((int) card.category -1) * 60) - 1] = true;
                 }
                 break;
             }
@@ -475,7 +492,7 @@ public class CardHandler : MonoBehaviour
                     yield return new WaitUntil(() => EventManager.action == false);
                     StateManager.currentPlayer.twoMoreTasksPerRoll = true;
                 } else {
-                    readyToDiscard[card.id - 1] = true;
+                    readyToDiscard[card.id + (((int) card.category -1) * 60) - 1] = true;
                 }
                 break;
             }
@@ -502,7 +519,7 @@ public class CardHandler : MonoBehaviour
                     yield return new WaitUntil(() => EventManager.action == false);
                     StateManager.currentPlayer.decreaseDebtPerTurn = true;
                 } else {
-                    readyToDiscard[card.id - 1] = true;
+                    readyToDiscard[card.id + (((int) card.category -1) * 60) - 1] = true;
                 }
                 break;
             }
@@ -581,6 +598,11 @@ public class CardHandler : MonoBehaviour
             this.cardPicker.Reset();
         }
         EventManager.cardsToPick += n;
+        // Card customPickedCard = this.problemCards[58];
+        // this.cardPicker.AddCart(customPickedCard);
+        // this.pickedCards.Add(customPickedCard);
+        // this.remainingProblemCards.Remove(customPickedCard);
+        // this.readyToDiscard.Add(customPickedCard.id + (((int) customPickedCard.category -1) * 60) -1, false);
         // animate updeck
         yield return new WaitUntil(() => EventManager.animate == false);
         for (int i = 0; i < n; i++){
@@ -594,7 +616,7 @@ public class CardHandler : MonoBehaviour
             yield return new WaitUntil(() => EventManager.animate == false);
             this.discardedProblemCards.Add(choosenCard);
             this.remainingProblemCards.Remove(choosenCard);
-            this.readyToDiscard.Add(choosenCard.id -1, false);
+            this.readyToDiscard.Add(choosenCard.id + (((int) choosenCard.category -1) * 60) -1, false);
         }
         // animate downdeck
         yield return new WaitUntil(() => EventManager.animate == false);
@@ -624,7 +646,7 @@ public class CardHandler : MonoBehaviour
             yield return new WaitUntil(() => EventManager.animate == false);
             this.discardedDailyCards.Add(choosenCard);
             this.remainingDailyCards.Remove(choosenCard);
-            this.readyToDiscard.Add(choosenCard.id -1, false);
+            this.readyToDiscard.Add(choosenCard.id + (((int) choosenCard.category -1) * 60) -1, false);
         }
         // animate downdeck
         yield return new WaitUntil(() => EventManager.animate == false);
@@ -654,7 +676,7 @@ public class CardHandler : MonoBehaviour
             yield return new WaitUntil(() => EventManager.animate == false);
             this.discardedReviewCards.Add(choosenCard);
             this.remainingReviewCards.Remove(choosenCard);
-            this.readyToDiscard.Add(choosenCard.id -1, false);
+            this.readyToDiscard.Add(choosenCard.id + (((int) choosenCard.category -1) * 60) -1, false);
         }
         // animate downdeck
         yield return new WaitUntil(() => EventManager.animate == false);
@@ -666,6 +688,11 @@ public class CardHandler : MonoBehaviour
     public IEnumerator FirstPickDailyCard(){
         yield return new WaitUntil(() => StateManager.gameState == StateManager.GameState.PICK_DAILY);
         EventManager.cardsToPick = 1;
+        // Card customPickedCard = this.dailyCards[58];
+        // this.cardPicker.AddCart(customPickedCard);
+        // this.pickedCards.Add(customPickedCard);
+        // this.remainingDailyCards.Remove(customPickedCard);
+        // this.readyToDiscard.Add(customPickedCard.id + (((int) customPickedCard.category -1) * 60) -1, false);
         for (int i = 0; i < 3; i++){
             if (this.remainingDailyCards.Count < 1){
                 this.remainingDailyCards.AddRange(this.discardedDailyCards);
@@ -676,7 +703,7 @@ public class CardHandler : MonoBehaviour
             this.cardPicker.AddCart(choosenCard);
             this.pickedCards.Add(choosenCard);
             this.remainingDailyCards.Remove(choosenCard);
-            this.readyToDiscard.Add(choosenCard.id -1, false);
+            this.readyToDiscard.Add(choosenCard.id + (((int) choosenCard.category -1) * 60) -1, false);
         }
         EventManager.handleCards = true;
         EventManager.firstCard = true;
@@ -702,7 +729,7 @@ public class CardHandler : MonoBehaviour
             this.cardPicker.AddCart(choosenCard);
             this.pickedCards.Add(choosenCard);
             this.remainingProblemCards.Remove(choosenCard);
-            this.readyToDiscard.Add(choosenCard.id -1, false);
+            this.readyToDiscard.Add(choosenCard.id + (((int) choosenCard.category -1) * 60) -1, false);
         }
         EventManager.handleCards = true;
         EventManager.firstCard = true;
@@ -723,7 +750,7 @@ public class CardHandler : MonoBehaviour
             this.cardPicker.AddCart(choosenCard);
             this.pickedCards.Add(choosenCard);
             this.remainingReviewCards.Remove(choosenCard);
-            this.readyToDiscard.Add(choosenCard.id -1, false);
+            this.readyToDiscard.Add(choosenCard.id + (((int) choosenCard.category -1) * 60) -1, false);
         }
         EventManager.handleCards = true;
         EventManager.firstCard = true;

@@ -121,8 +121,10 @@ public class Lobby : MonoBehaviour
     }
 
     public void RemovePLayer(){
-        Destroy(playersUI.LastOrDefault());
+        GameObject player = playersUI[playersUI.Count-1];
         playersUI.RemoveAt(playersUI.Count - 1);
+        playersName.RemoveAt(playersName.Count - 1);
+        Destroy(player);
     }
 
     void UpdateNames(){

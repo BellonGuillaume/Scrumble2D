@@ -46,15 +46,6 @@ public class CardPicker : MonoBehaviour
         foreach (GameObject card in cards){
             card.GetComponent<UICard>().Disable();
         }
-        // if (EventManager.cardsToPick <= 0){
-        //     foreach(GameObject go in this.cards){
-        //         if (go.GetComponent<UICard>().card.flipped == false){
-        //             go.GetComponent<UICard>().Disable();
-        //             // animationManager.RemoveCardUI(go);
-        //         }
-        //     }
-        //     RemoveUnflippedCards();
-        // }
     }
 
     public IEnumerator UnChooseCard(){

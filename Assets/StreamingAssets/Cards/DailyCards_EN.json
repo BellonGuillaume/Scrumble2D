@@ -473,14 +473,14 @@
         "id" : 52,
         "category" : "DAILY",
         "description" : "Nothing to report today.",
-        "result" : "VSo you're going back to your activities. But is everything really going well ?",
+        "result" : "So you're going back to your activities. But is everything really going well ?",
         "typeOfCard" : "Information"
     },
     {
         "id" : 53,
         "category" : "DAILY",
         "description" : "Your team's luck is running.",
-        "result" : "Get rid of the permanent card 'Poisse' if it is already in your possession.",
+        "result" : "Get rid of the permanent card 'Jinx' if it is already in your possession.",
         "typeOfCard" : "Simple",
         "firstAction" : "GetRidOfJinxCard"
     },
@@ -488,7 +488,7 @@
         "id" : 54,
         "category" : "DAILY",
         "description" : "Your team's luck is running.",
-        "result" : "Get rid of the permanent card 'Poisse' if it is already in your possession.",
+        "result" : "Get rid of the permanent card 'Jinx' if it is already in your possession.",
         "typeOfCard" : "Simple",
         "firstAction" : "GetRidOfJinxCard"
     },
