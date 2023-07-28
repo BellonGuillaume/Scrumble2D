@@ -29,4 +29,6 @@ public class EventManager : MonoBehaviour
     public static bool acceptPressed = false;
     public static bool declinePressed = false;
     public static bool rolled = false;
+    public static int usToShift = 0;
+    public static bool usResized = false;
 }

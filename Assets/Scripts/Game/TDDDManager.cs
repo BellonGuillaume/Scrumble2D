@@ -25,6 +25,14 @@ public class TDDDManager : MonoBehaviour
                 }
             }
         }
+        foreach (DropCase dropCase in doingDropContent.cases){
+            if(dropCase.transform.childCount != 0){
+                UserStoryUI usUI = dropCase.transform.GetChild(0).GetComponent<UserStoryUI>();
+                if (usUI.userStory.state == UserStory.State.DEPLOYED){
+                    this.doneContent.AddUsUI(usUI.gameObject);
+                }
+            }
+        }
     }
     IEnumerator OnAwake(){
         yield return new WaitForSeconds(0f);

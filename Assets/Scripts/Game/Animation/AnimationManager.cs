@@ -744,6 +744,130 @@ public class AnimationManager : MonoBehaviour
         );
     }
 
+    public void ShowReviewScreen(GameObject reviewScreen, GameObject background, GameObject container){
+        EventManager.animate = true;
+        byte startBlur = 0;
+        byte endBlur = this.blurValue;
+        Vector2 startScale = Vector2.zero;
+        Vector2 endScale = Vector2.one;
+        reviewScreen.SetActive(true);
+        this.animationCoroutine = this.CreateAnimationRoutine(
+            0.25f,
+            delegate(float progress){
+                float easedProgress = Easing.easeInCubic(0, 1, progress);
+                Vector2 scale = Vector2.Lerp(startScale, endScale, easedProgress);
+                byte blur = (byte) Mathf.Lerp(startBlur, endBlur, easedProgress);
+                Color32 temp = background.GetComponent<Image>().color;
+                temp.a = blur;
+                background.GetComponent<Image>().color = temp;
+                container.transform.localScale = scale;
+            },
+            delegate{
+                EventManager.animate = false;
+            }
+        );
+    }
+
+    public void HideReviewScreen(GameObject reviewScreen, GameObject background, GameObject container){
+        EventManager.animate = true;
+        byte startBlur = this.blurValue;
+        byte endBlur = 0;
+        Vector2 startScale = Vector2.one;
+        Vector2 endScale = Vector2.zero;
+        this.animationCoroutine = this.CreateAnimationRoutine(
+            0.25f,
+            delegate(float progress){
+                float easedProgress = Easing.easeInCubic(0, 1, progress);
+                Vector2 scale = Vector2.Lerp(startScale, endScale, easedProgress);
+                byte blur = (byte) Mathf.Lerp(startBlur, endBlur, easedProgress);
+                Color32 temp = background.GetComponent<Image>().color;
+                temp.a = blur;
+                background.GetComponent<Image>().color = temp;
+                container.transform.localScale = scale;
+            },
+            delegate{
+                reviewScreen.SetActive(false);
+                container.transform.localScale = startScale;
+                EventManager.animate = false;
+            }
+        );
+    }
+
+    public void MoveOutOfScreen(GameObject arrowedUS)
+    {
+        EventManager.animate = true;
+        Vector2 startPos = arrowedUS.transform.position;
+        Vector2 endPos = new Vector2(2220f, 540f);
+        this.animationCoroutine = this.CreateAnimationRoutine(
+            0.5f,
+            delegate(float progress){
+                float easedProgress = Easing.easeInExpo(0, 1, progress);
+                Vector2 pos = Vector2.Lerp(startPos, endPos, easedProgress);
+                arrowedUS.transform.position = pos;
+            },
+            delegate{
+                arrowedUS.SetActive(false);
+                EventManager.animate = false;
+            }
+        );
+    }
+
+    public void ShiftUsToRight(GameObject arrowedUS){
+        Vector2 startPos = arrowedUS.transform.position;
+        Vector2 endPos = new Vector2(arrowedUS.transform.position.x + 960f, arrowedUS.transform.position.y);
+        this.animationCoroutine = this.CreateAnimationRoutine(
+            0.5f,
+            delegate(float progress){
+                float easedProgress = Easing.easeInCubic(0, 1, progress);
+                Vector2 pos = Vector2.Lerp(startPos, endPos, easedProgress);
+                arrowedUS.transform.position = pos;
+            },
+            delegate{
+                EventManager.usToShift--;
+            }
+        );
+    }
+
+    public void MoveUSToCase(GameObject arrowedUS, Vector2 position){
+        EventManager.animate = true;
+        Vector2 startPos = arrowedUS.transform.position;
+        Vector2 endPos = position;
+        Vector2 startScale = Vector2.one;
+        Vector2 endScale = new Vector2(0.291666f, 0.291666f);
+        this.animationCoroutine = this.CreateAnimationRoutine(
+            0.2f,
+            delegate(float progress){
+                float easedProgress = Easing.easeInCubic(0, 1, progress);
+                Vector2 pos = Vector2.Lerp(startPos, endPos, easedProgress);
+                Vector2 scale = Vector2.Lerp(startScale, endScale, easedProgress);
+                arrowedUS.transform.position = pos;
+                arrowedUS.transform.localScale = scale;
+            },
+            delegate{
+                EventManager.animate = false;
+            }
+        );
+    }
+
+    public void ApproveUS(GameObject arrowedUS){
+        EventManager.animate = true;
+        Vector2 startScale = new Vector2(3f, 3f);
+        Vector2 endScale = new Vector2(1f, 1f);
+        arrowedUS.GetComponent<ArrowedUS>().approvedSeal.transform.localScale = startScale;
+        arrowedUS.GetComponent<ArrowedUS>().approvedSeal.gameObject.SetActive(true);
+        this.animationCoroutine = this.CreateAnimationRoutine(
+            0.2f,
+            delegate(float progress){
+                float easedProgress = Easing.easeOutExpo(0, 1, progress);
+                Vector2 scale = Vector2.Lerp(startScale, endScale, easedProgress);
+                arrowedUS.GetComponent<ArrowedUS>().approvedSeal.transform.localScale = scale;
+            },
+            delegate{
+                EventManager.animate = false;
+            }
+        );
+    }
+
     public string GetString(string tableName, string stringKey){
         return LocalizationSettings.StringDatabase.GetLocalizedString(tableName, stringKey);
     }

@@ -9,6 +9,7 @@ public class ArrowedUS : MonoBehaviour
     [SerializeField] Button arrowUp;
     [SerializeField] Button arrowDown;
     [SerializeField] HighlightScore highlightScore;
+    public Image approvedSeal;
 
 
     [HideInInspector] public UserStory userStory;
@@ -30,6 +31,9 @@ public class ArrowedUS : MonoBehaviour
         modifiedMaterial.SetFloat("_StartAngle", startAngle);
         modifiedMaterial.SetFloat("_OpenAngle", openAngle);
         outline.material = modifiedMaterial;
+        if (this.userStory is not null){
+            UpdateColor(this.userStory.currentTask);
+        }
     }
 
     public void ClickUp(){

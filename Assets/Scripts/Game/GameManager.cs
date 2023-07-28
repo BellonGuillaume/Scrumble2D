@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Button taskValidation;
 
     [SerializeField] ScrumboardManager scrumboardManager;
+    [SerializeField] ReviewManager reviewManager;
 
     Animator popUpAnimator;
 
@@ -94,6 +95,10 @@ public class GameManager : MonoBehaviour
         StateManager.sprintNumber++;
         StateManager.gameState = StateManager.GameState.TDTD;
         StateManager.currentDay = 0;
+        if (n > 1){
+            animationManager.StartDayAnimation(0);
+            yield return new WaitUntil(() => EventManager.animate == false);
+        }
         StartCoroutine(ChooseToDoToDoing());
         yield return new WaitUntil(() => StateManager.gameState == StateManager.GameState.BEGIN_DAY);
         if(StateManager.tasksOnBeginSprint == true){
@@ -102,26 +107,25 @@ public class GameManager : MonoBehaviour
             StartCoroutine(AddTasks(5));
             yield return new WaitUntil(() => EventManager.handleAddingTask == false);
         }
-        for (int j = 1; j <= 3; j++){
+        for (int j = 1; j <= 1; j++){
             StateManager.gameState = StateManager.GameState.BEGIN_DAY;
             StateManager.currentDay = j;
             StartCoroutine(BeginDay(j));
             yield return new WaitUntil(() => StateManager.gameState == StateManager.GameState.END_OF_DAY);
         }
+        StateManager.gameState = StateManager.GameState.REVIEW;
+        animationManager.StartDayAnimation(10);
+        yield return new WaitUntil(() => EventManager.animate == false);
         animationManager.ShowInfo(GetString("Game", "ReviewPhase"));
         yield return new WaitUntil(() => EventManager.animate == false);
-        // BeginReview();
+        StartCoroutine(reviewManager.handleReview());
+        yield return new WaitUntil(() => StateManager.gameState == StateManager.GameState.RETROSPECTIVE);
+        animationManager.StartDayAnimation(11);
+        yield return new WaitUntil(() => EventManager.animate == false);
         animationManager.ShowInfo(GetString("Game", "RetrospectivePhase"));
         yield return new WaitUntil(() => EventManager.animate == false);
         // BeginRetrospective();
         StateManager.gameState = StateManager.GameState.END_OF_SPRINT;
-    }
-
-    public void BeginReview(){
-        // ShowResults();
-        // PickReviewCard();
-        // UpdateDetteEndTurn();
-        // IncreaseScore();
     }
 
     IEnumerator ChooseToDoToDoing(){
@@ -284,7 +288,7 @@ public class GameManager : MonoBehaviour
         animationManager.ZoomInPopUp(this.results);
         yield return new WaitUntil(() => EventManager.animate == false);
         bool jinx =  StateManager.jinxed && (StateManager.firstDiceResult == 5 || StateManager.secondDiceResult == 5);
-        if (StateManager.firstDiceResult == 6 || StateManager.secondDiceResult == 6 || jinx || true) {
+        if (StateManager.firstDiceResult == 6 || StateManager.secondDiceResult == 6 || jinx) {
             if (jinx == true){
                 // show permanent card
             }
@@ -400,7 +404,7 @@ public class GameManager : MonoBehaviour
 
     void InitState(){
         StateManager.language = LocalizationSettings.SelectedLocale;
-        StateManager.difficulty = StateManager.Difficulty.HARD;
+        StateManager.difficulty = StateManager.Difficulty.EASY;
         StateManager.category = StateManager.Category.GIFT_SHOP;
         StateManager.gameName = "";
         StateManager.pokerPlanning = false;
