@@ -516,6 +516,7 @@ public class AnimationManager : MonoBehaviour
     }
 
     public void CenterCard(GameObject card){
+        EventManager.animate = true;
         card.GetComponent<UICard>().positionBeforeMove = card.transform.position;
         Vector2 startPos = card.GetComponent<UICard>().positionBeforeMove;
         Vector2 endPos = new Vector2(960f, 540f);
@@ -529,6 +530,9 @@ public class AnimationManager : MonoBehaviour
                 Vector2 scale = Vector2.Lerp(startScale, endScale, easedProgress);
                 card.transform.position = position;
                 card.transform.localScale = scale;
+            },
+            delegate{
+                EventManager.animate = false;
             }
         );
     }
@@ -710,7 +714,8 @@ public class AnimationManager : MonoBehaviour
             }
         );
     }
-    public void FlipCard(GameObject card){
+    public IEnumerator FlipCard(GameObject card){
+        yield return new WaitUntil(() => EventManager.animate == false);
         EventManager.animate = true;
         Vector2 startScale = card.transform.localScale;
         Vector2 intermediateScale = new Vector2(0f, startScale.y);

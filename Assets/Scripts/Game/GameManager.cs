@@ -284,7 +284,7 @@ public class GameManager : MonoBehaviour
         animationManager.ZoomInPopUp(this.results);
         yield return new WaitUntil(() => EventManager.animate == false);
         bool jinx =  StateManager.jinxed && (StateManager.firstDiceResult == 5 || StateManager.secondDiceResult == 5);
-        if (StateManager.firstDiceResult == 6 || StateManager.secondDiceResult == 6 || jinx) {
+        if (StateManager.firstDiceResult == 6 || StateManager.secondDiceResult == 6 || jinx || true) {
             if (jinx == true){
                 // show permanent card
             }
@@ -400,7 +400,7 @@ public class GameManager : MonoBehaviour
 
     void InitState(){
         StateManager.language = LocalizationSettings.SelectedLocale;
-        StateManager.difficulty = StateManager.Difficulty.EASY;
+        StateManager.difficulty = StateManager.Difficulty.HARD;
         StateManager.category = StateManager.Category.GIFT_SHOP;
         StateManager.gameName = "";
         StateManager.pokerPlanning = false;

@@ -31,7 +31,6 @@ public class CardPicker : MonoBehaviour
         if (EventManager.cardsToPick <= 0 || choosenCard.GetComponent<UICard>().card != null){
             return;
         }
-        // animationManager.FlipCard(cards[id].GetComponent<UICard>());
         Debug.Log($"Card ${id} picked : {this.cards[id].ToString()}");
         this.choosenCard.GetComponent<UICard>().Fill(this.cards[id].GetComponent<UICard>().card, this);
         this.choosenIndex = id;
@@ -41,6 +40,7 @@ public class CardPicker : MonoBehaviour
         this.cards[id].GetComponent<UICard>().SetAlpha(0);
         this.choosenCard.SetActive(true);
         animationManager.CenterCard(this.choosenCard);
+        StartCoroutine(animationManager.FlipCard(this.choosenCard));
 
         EventManager.cardsToPick--;
         foreach (GameObject card in cards){
@@ -61,6 +61,7 @@ public class CardPicker : MonoBehaviour
         this.cards[choosenIndex].GetComponent<UICard>().SetAlpha(255);
         this.cards[choosenIndex].GetComponent<UICard>().Disable();
         this.choosenCard.SetActive(false);
+        this.choosenCard.GetComponent<UICard>().AddVerso();
         this.choosenCard.GetComponent<UICard>().UnFill();
         this.choosenIndex = -1;
     }
