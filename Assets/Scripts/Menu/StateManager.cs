@@ -29,10 +29,14 @@ public class StateManager : MonoBehaviour
     public static DateTime startTime;
     public static int sprintNumber = 0;
     public static int starsNumber = 0;
+    public static int finishedUS = 0;
+    public static int problemCards = 0;
+    public static int loosedTasks = 0;
     public enum GameState{
-        MENU, POKER_PLANNING, CUSTOM_POKER_PLANNING, INITIALISATION, BEGIN_GAME, TDTD, BEGIN_DAY, PICK_DAILY, PLAYER_TURN, END_OF_DAY, REVIEW, RETROSPECTIVE, END_OF_SPRINT,
+        MENU, POKER_PLANNING, CUSTOM_POKER_PLANNING, INITIALISATION, BEGIN_GAME, TDTD, BEGIN_DAY, PICK_DAILY, PLAYER_TURN, END_OF_DAY, REVIEW, SUMMARY, RETROSPECTIVE, END_OF_SPRINT,
     }
     
+    public static int currentDebt;
     public static int debtFactor;
     public static bool jinxed = false;
     public static bool noMoreTestIssues = false;
@@ -41,6 +45,15 @@ public class StateManager : MonoBehaviour
     public static bool tasksOnBeginSprint = false;
     public static bool oneTaskPerDay = false;
     public static int skipProblemOrDoubleDaily = 0;
+    #endregion
+    #region Sprint State
+    public static DateTime sprintBeginTime;
+    public static int sprintStars = 0;
+    public static int sprintDebt = 0;
+    public static int sprintFinishedUS = 0;
+    public static int sprintProblemCards = 0;
+    public static int sprintLoosedTasks = 0;
+
     #endregion
     #region Turn State
     public enum TurnState{
@@ -135,5 +148,6 @@ public class StateManager : MonoBehaviour
             debtFactor = 4;
         else
             debtFactor = 3;
+        currentDebt = Mathf.FloorToInt(value);
     }
 }

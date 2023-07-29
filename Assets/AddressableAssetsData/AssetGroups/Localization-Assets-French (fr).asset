@@ -17,18 +17,18 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: cf816658510b8294cb2370507ae439ba
   m_SerializeEntries:
-  - m_GUID: e4a1de1974b6d7043a8bda07badd3784
-    m_Address: Daily_fr_sc
+  - m_GUID: 47bcd77bfba703541883160d7a04a114
+    m_Address: NewDaily_fr_sc
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-fr
-  - m_GUID: a2450924e15f6b54c9f46baeefa80375
-    m_Address: Problem_fr_sc
+  - m_GUID: 3622f01959885ef4a82be584b6cd7e9e
+    m_Address: NewProblem_fr_sc
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-fr
-  - m_GUID: f308da0c57e00614887f7fe17279de7b
-    m_Address: Review_fr_sc
+  - m_GUID: 19b056cb590bb36478093802268b5cbc
+    m_Address: NewReview_fr_sc
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-fr

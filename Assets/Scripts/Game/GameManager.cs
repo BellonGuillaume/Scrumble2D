@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] ScrumboardManager scrumboardManager;
     [SerializeField] ReviewManager reviewManager;
+    [SerializeField] SummaryManager summaryManager;
 
     Animator popUpAnimator;
 
@@ -61,14 +62,17 @@ public class GameManager : MonoBehaviour
         switch (StateManager.difficulty){
             case StateManager.Difficulty.EASY :
                 StateManager.debtFactor = 3;
+                StateManager.currentDebt = 5;
                 debtSlider.value = 5;
                 break;
             case StateManager.Difficulty.NORMAL :
                 StateManager.debtFactor = 4;
+                StateManager.currentDebt = 15;
                 debtSlider.value = 15;
                 break;
             case StateManager.Difficulty.HARD :
                 StateManager.debtFactor = 6;
+                StateManager.currentDebt = 25;
                 debtSlider.value = 25;
                 break;
         }
@@ -93,6 +97,7 @@ public class GameManager : MonoBehaviour
     #region --------------------------------- Sprint ---------------------------------
     IEnumerator BeginSprint(int n){
         StateManager.sprintNumber++;
+        InitSprintState();
         StateManager.gameState = StateManager.GameState.TDTD;
         StateManager.currentDay = 0;
         if (n > 1){
@@ -119,6 +124,8 @@ public class GameManager : MonoBehaviour
         animationManager.ShowInfo(GetString("Game", "ReviewPhase"));
         yield return new WaitUntil(() => EventManager.animate == false);
         StartCoroutine(reviewManager.handleReview());
+        yield return new WaitUntil(() => StateManager.gameState == StateManager.GameState.SUMMARY);
+        StartCoroutine(summaryManager.HandleSummary());
         yield return new WaitUntil(() => StateManager.gameState == StateManager.GameState.RETROSPECTIVE);
         animationManager.StartDayAnimation(11);
         yield return new WaitUntil(() => EventManager.animate == false);
@@ -417,6 +424,15 @@ public class GameManager : MonoBehaviour
         StateManager.gameState = StateManager.GameState.INITIALISATION;
     }
 
+    void InitSprintState(){
+        StateManager.sprintBeginTime = DateTime.Now;
+        StateManager.sprintStars = StateManager.starsNumber;
+        StateManager.sprintDebt = StateManager.currentDebt;
+        StateManager.sprintFinishedUS = StateManager.finishedUS;
+        StateManager.sprintProblemCards = 0;
+        StateManager.sprintLoosedTasks = 0;
+    }
+
     public IEnumerator AddTasks(int n){
         this.taskValidation.gameObject.SetActive(true);
         EventManager.taskToAdd = n;
@@ -482,6 +498,10 @@ public class GameManager : MonoBehaviour
         }
         yield return new WaitUntil(() => EventManager.taskAdded == true);
         this.taskValidation.gameObject.SetActive(false);
+        if (n < 0){
+            StateManager.loosedTasks -= n - EventManager.taskToAdd;
+            StateManager.sprintLoosedTasks -= n - EventManager.taskToAdd;
+        }
         foreach (GameObject doingAUS in this.doingAUS){
             doingAUS.GetComponent<ArrowedUS>().HideArrows();
             doingAUS.GetComponent<ArrowedUS>().delta = 0;

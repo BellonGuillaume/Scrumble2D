@@ -21,9 +21,10 @@ public class UICard : MonoBehaviour
     [SerializeField] Image verso;
     [SerializeField] Image recto;
     [SerializeField] Button clickHandler;
-    Color RED = new Color32(202, 95, 95, 255);
-    Color BLUE = new Color32(88, 136, 199, 255);
-    Color GREEN = new Color32(113, 203, 99, 255);
+    Color BACK = new Color32(247, 252, 237, 255);   // #f7fced
+    Color RED = new Color32(214, 71, 71, 255);      // #d64747
+    Color BLUE = new Color32(79, 178, 228, 255);    // #4fb2e4
+    Color GREEN = new Color32(122, 201, 67, 255);   // #7ac943
     Color PINK = new Color32(100, 2, 55, 255);
     public Card card;
     public CardPicker cardPicker;

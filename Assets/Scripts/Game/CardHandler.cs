@@ -598,6 +598,8 @@ public class CardHandler : MonoBehaviour
             this.cardPicker.Reset();
         }
         EventManager.cardsToPick += n;
+        StateManager.problemCards += n;
+        StateManager.sprintProblemCards += n;
         // Card customPickedCard = this.problemCards[58];
         // this.cardPicker.AddCart(customPickedCard);
         // this.pickedCards.Add(customPickedCard);
@@ -715,6 +717,8 @@ public class CardHandler : MonoBehaviour
     public IEnumerator FirstPickProblemCard(){
         yield return new WaitUntil(() => StateManager.turnState == StateManager.TurnState.PROBLEM);
         EventManager.cardsToPick = 1;
+        StateManager.problemCards++;
+        StateManager.sprintProblemCards++;
         // Card customPickedCard = this.problemCards[51];
         // this.cardPicker.AddCart(customPickedCard);
         // this.pickedCards.Add(customPickedCard);

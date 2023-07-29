@@ -868,6 +868,38 @@ public class AnimationManager : MonoBehaviour
         );
     }
 
+    public void ShowNewValue(GameObject arrow, GameObject textBox){
+        EventManager.animate = true;
+        byte startBlur = 0;
+        byte endBlur = this.blurValue;
+        Vector2 startArrowPos = new Vector2(arrow.transform.localPosition.x -10, arrow.transform.localPosition.y);
+        Vector2 endArrowPos = arrow.transform.localPosition;
+        Vector2 startTextBoxPos = new Vector2(textBox.transform.localPosition.x -10, textBox.transform.localPosition.y);
+        Vector2 endTextBoxPos = textBox.transform.localPosition;
+        arrow.SetActive(true);
+        textBox.SetActive(true);
+        this.animationCoroutine = this.CreateAnimationRoutine(
+            0.5f,
+            delegate(float progress){
+                float easedProgress = Easing.easeInCubic(0, 1, progress);
+                Vector2 arrowPos = Vector2.Lerp(startArrowPos, endArrowPos, easedProgress);
+                Vector2 textBoxPos = Vector2.Lerp(startTextBoxPos, endTextBoxPos, easedProgress);
+                byte blur = (byte) Mathf.Lerp(startBlur, endBlur, easedProgress);
+                Color32 arrowTemp = arrow.GetComponent<TMP_Text>().color;
+                Color32 textBoxTemp = textBox.GetComponent<TMP_Text>().color;
+                arrowTemp.a = blur;
+                textBoxTemp.a = blur;
+                arrow.GetComponent<TMP_Text>().color = arrowTemp;
+                textBox.GetComponent<TMP_Text>().color = textBoxTemp;
+                arrow.transform.localPosition = arrowPos;
+                textBox.transform.localPosition = textBoxPos;
+            },
+            delegate{
+                EventManager.animate = false;
+            }
+        );
+    }
+
     public string GetString(string tableName, string stringKey){
         return LocalizationSettings.StringDatabase.GetLocalizedString(tableName, stringKey);
     }

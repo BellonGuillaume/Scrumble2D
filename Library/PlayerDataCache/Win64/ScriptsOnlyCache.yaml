@@ -20,14 +20,17 @@ ScriptsOnlyBuild:
     - ExitButton
     - FlexibleGridLayout
     - GameManager
+    - HighlightScore
     - Lobby
     - Local
     - Menu
     - PokerPlanningManager
     - Results
+    - ReviewManager
     - ScrollingManager
     - ScrumboardManager
     - SideMenuManager
+    - SummaryManager
     - TDDDManager
     - TrueFalseScrollbar
     - UICard
@@ -73,7 +76,11 @@ ScriptsOnlyBuild:
     - UnityEngine.Localization.Components.LocalizeSpriteEvent
     - UnityEngine.Localization.Components.LocalizeStringEvent
     - UnityEngine.Localization.Locale
+    - UnityEngine.Localization.LocalizationBehaviour
     - UnityEngine.Localization.Settings.LocalizationSettings
+    - UnityEngine.Localization.Tables.SharedTableData
+    - UnityEngine.Localization.Tables.StringTable
+    - UnityEngine.Localization.VariantsPropertyDriver
     Unity.RenderPipelines.Core.Runtime.dll:
     - UnityEngine.Rendering.UI.DebugUIHandlerBitField
     - UnityEngine.Rendering.UI.DebugUIHandlerButton
@@ -110,6 +117,9 @@ ScriptsOnlyBuild:
     - UnityEngine.Rendering.Universal.UniversalAdditionalCameraData
     - UnityEngine.Rendering.Universal.UniversalRenderPipelineAsset
     - UnityEngine.Rendering.Universal.UniversalRenderPipelineGlobalSettings
+    Unity.ResourceManager.dll:
+    - MonoBehaviourCallbackHooks
+    - UnityEngine.ResourceManagement.Util.DelayedActionManager
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     Unity.ShaderGraph.Editor.dll:
@@ -288,9 +298,6 @@ ScriptsOnlyBuild:
   - assembly: Unity.TextMeshPro
     fullTypeName: TMPro.TMP_Text
     methodName: set_text
-  - assembly: Unity.TextMeshPro
-    fullTypeName: TMPro.TMP_Text
-    methodName: set_text
   - assembly: Assembly-CSharp
     fullTypeName: Menu
     methodName: OnEnglishClick
@@ -337,6 +344,18 @@ ScriptsOnlyBuild:
     fullTypeName: Menu
     methodName: OnFrenchClick
   - assembly: Unity.RenderPipelines.Core.Runtime
+    fullTypeName: UnityEngine.Rendering.UI.DebugUIHandlerUIntField
+    methodName: OnDecrement
+  - assembly: Unity.RenderPipelines.Core.Runtime
+    fullTypeName: UnityEngine.Rendering.UI.DebugUIHandlerUIntField
+    methodName: OnIncrement
+  - assembly: Unity.RenderPipelines.Core.Runtime
+    fullTypeName: UnityEngine.Rendering.UI.DebugUIHandlerUIntField
+    methodName: OnIncrement
+  - assembly: Unity.RenderPipelines.Core.Runtime
+    fullTypeName: UnityEngine.Rendering.UI.DebugUIHandlerUIntField
+    methodName: OnDecrement
+  - assembly: Unity.RenderPipelines.Core.Runtime
     fullTypeName: UnityEngine.Rendering.UI.DebugUIHandlerPanel
     methodName: OnScrollbarClicked
   - assembly: Unity.RenderPipelines.Core.Runtime
@@ -354,18 +373,6 @@ ScriptsOnlyBuild:
   - assembly: Unity.RenderPipelines.Core.Runtime
     fullTypeName: UnityEngine.Rendering.UI.DebugUIHandlerIntField
     methodName: OnIncrement
-  - assembly: Unity.RenderPipelines.Core.Runtime
-    fullTypeName: UnityEngine.Rendering.UI.DebugUIHandlerUIntField
-    methodName: OnDecrement
-  - assembly: Unity.RenderPipelines.Core.Runtime
-    fullTypeName: UnityEngine.Rendering.UI.DebugUIHandlerUIntField
-    methodName: OnIncrement
-  - assembly: Unity.RenderPipelines.Core.Runtime
-    fullTypeName: UnityEngine.Rendering.UI.DebugUIHandlerUIntField
-    methodName: OnIncrement
-  - assembly: Unity.RenderPipelines.Core.Runtime
-    fullTypeName: UnityEngine.Rendering.UI.DebugUIHandlerUIntField
-    methodName: OnDecrement
   - assembly: Unity.RenderPipelines.Core.Runtime
     fullTypeName: UnityEngine.Rendering.UI.DebugUIHandlerPanel
     methodName: ResetDebugManager
@@ -612,6 +619,27 @@ ScriptsOnlyBuild:
   - assembly: Unity.TextMeshPro
     fullTypeName: TMPro.TMP_Text
     methodName: set_text
+  - assembly: Assembly-CSharp
+    fullTypeName: SideMenuManager
+    methodName: ScrumboardClick
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
   - assembly: Unity.TextMeshPro
     fullTypeName: TMPro.TMP_Text
     methodName: set_text
@@ -642,18 +670,27 @@ ScriptsOnlyBuild:
   - assembly: Assembly-CSharp
     fullTypeName: UserStoryUI
     methodName: OnClick
-  - assembly: Unity.TextMeshPro
-    fullTypeName: TMPro.TMP_Text
-    methodName: set_text
-  - assembly: Unity.TextMeshPro
-    fullTypeName: TMPro.TMP_Text
-    methodName: set_text
-  - assembly: Unity.TextMeshPro
-    fullTypeName: TMPro.TMP_Text
-    methodName: set_text
   - assembly: Assembly-CSharp
     fullTypeName: UserStoryUI
     methodName: OnClick
+  - assembly: Assembly-CSharp
+    fullTypeName: UserStoryUI
+    methodName: OnClick
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
   - assembly: Unity.TextMeshPro
     fullTypeName: TMPro.TMP_Text
     methodName: set_text
@@ -681,12 +718,21 @@ ScriptsOnlyBuild:
   - assembly: Assembly-CSharp
     fullTypeName: GameManager
     methodName: OnSideClick
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
   - assembly: Assembly-CSharp
     fullTypeName: ChoosePlayer
     methodName: OnOkClick
   - assembly: UnityEngine.AnimationModule
     fullTypeName: UnityEngine.Animator
     methodName: SetTrigger
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Assembly-CSharp
+    fullTypeName: BarScroller
+    methodName: OnValueChanged
   - assembly: Unity.TextMeshPro
     fullTypeName: TMPro.TMP_Text
     methodName: set_text
@@ -702,15 +748,30 @@ ScriptsOnlyBuild:
   - assembly: Unity.TextMeshPro
     fullTypeName: TMPro.TMP_Text
     methodName: set_text
-  - assembly: Assembly-CSharp
-    fullTypeName: CardHandler
-    methodName: OnAcceptClick
   - assembly: Unity.TextMeshPro
     fullTypeName: TMPro.TMP_Text
     methodName: set_text
+  - assembly: Assembly-CSharp
+    fullTypeName: CardHandler
+    methodName: OnAcceptClick
+  - assembly: Assembly-CSharp
+    fullTypeName: SideMenuManager
+    methodName: OnOutClick
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Assembly-CSharp
+    fullTypeName: GameManager
+    methodName: OnOutClick
   - assembly: UnityEngine.UI
     fullTypeName: UnityEngine.UI.Image
     methodName: set_sprite
+  - assembly: Assembly-CSharp
+    fullTypeName: SummaryManager
+    methodName: OnNextClick
   - assembly: Assembly-CSharp
     fullTypeName: SideMenuManager
     methodName: OnOutClick
@@ -729,6 +790,12 @@ ScriptsOnlyBuild:
   - assembly: Unity.TextMeshPro
     fullTypeName: TMPro.TMP_Text
     methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
   - assembly: Assembly-CSharp
     fullTypeName: CardHandler
     methodName: OnChoiceOneClick
@@ -741,6 +808,9 @@ ScriptsOnlyBuild:
   - assembly: UnityEngine.UI
     fullTypeName: UnityEngine.UI.Image
     methodName: set_sprite
+  - assembly: Unity.TextMeshPro
+    fullTypeName: TMPro.TMP_Text
+    methodName: set_text
   - assembly: Unity.TextMeshPro
     fullTypeName: TMPro.TMP_Text
     methodName: set_text
@@ -941,9 +1011,15 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10380}
     - Class: 114
-      Script: {instanceID: 11648}
+      Script: {instanceID: 10496}
     - Class: 114
-      Script: {instanceID: 11720}
+      Script: {instanceID: 10824}
+    - Class: 114
+      Script: {instanceID: 11652}
+    - Class: 114
+      Script: {instanceID: 11724}
+    - Class: 114
+      Script: {instanceID: 49202}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1102,9 +1178,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10380}
     - Class: 114
-      Script: {instanceID: 11398}
+      Script: {instanceID: 11402}
     - Class: 114
-      Script: {instanceID: 11884}
+      Script: {instanceID: 11888}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1175,7 +1251,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10380}
     - Class: 114
-      Script: {instanceID: 10628}
+      Script: {instanceID: 10630}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1465,7 +1541,7 @@ ScriptsOnlyBuild:
     className: DebugUIHandlerToggle
   - hash:
       serializedVersion: 2
-      Hash: c57787f26939041c6ba5a9839cc00ce9
+      Hash: 0a7f49322d92301336e2646b7cc7748f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UICard
@@ -1705,7 +1781,7 @@ ScriptsOnlyBuild:
     className: VertexShakeA
   - hash:
       serializedVersion: 2
-      Hash: c8b4939529d6c7d50cb05720a86ef7df
+      Hash: 848f7d3c8520d49da0a6a2625679d305
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ArrowedUS
@@ -2119,7 +2195,7 @@ ScriptsOnlyBuild:
     className: ChromaticAberration
   - hash:
       serializedVersion: 2
-      Hash: 9390d03a64591b1f2c813d6f508d0301
+      Hash: a15e93c2e05c3c9636bf00982441787c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -2407,7 +2483,7 @@ ScriptsOnlyBuild:
     className: ShaderPropAnimator
   - hash:
       serializedVersion: 2
-      Hash: 4c0d3a1ca6eff6842325110420d7c1ad
+      Hash: 9d793cd498376c8546ce34dcb788d947
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UserStoryUI
@@ -2677,7 +2753,7 @@ ScriptsOnlyBuild:
     className: SimpleWebTransport
   - hash:
       serializedVersion: 2
-      Hash: 6f7320823464e3dc92ab5b11a1d63081
+      Hash: d6ad27a663f881bcd48e4503516a44ab
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: DraggableItem
@@ -3103,6 +3179,12 @@ ScriptsOnlyBuild:
     className: DistanceInterestManagement
   - hash:
       serializedVersion: 2
+      Hash: 7c416beda87471c4e04541a82fb1a7d5
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: HighlightScore
+  - hash:
+      serializedVersion: 2
       Hash: a1ca1237bad0f30ea5ba8f4060929114
     assemblyName: Assembly-CSharp.dll
     namespaceName: TMPro.Examples
@@ -3167,6 +3249,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.RenderPipelines.Core.Runtime.dll
     namespaceName: UnityEngine
     className: LightAnchor
+  - hash:
+      serializedVersion: 2
+      Hash: cc69805fe0128328ddba301f8dfd5dc9
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ReviewManager
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -3367,7 +3455,7 @@ ScriptsOnlyBuild:
     className: MatchMaker
   - hash:
       serializedVersion: 2
-      Hash: 1028c39545bcfa841aaab54121e69a47
+      Hash: e4f4fe191896cbd7b61f1b30c80f73b4
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BarScroller
@@ -3449,6 +3537,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: StateNameController
+  - hash:
+      serializedVersion: 2
+      Hash: 6fceb3dfa523894b83182e7e8148d1a9
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SummaryManager
   platform: 19
   scenePathNames:
   - Assets/Scenes/MainMenu.unity

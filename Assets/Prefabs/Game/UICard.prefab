@@ -512,14 +512,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dailyRecto: {fileID: 0}
-  dailyVersoFR: {fileID: 21300000, guid: e4a1de1974b6d7043a8bda07badd3784, type: 3}
-  dailyVersoEN: {fileID: 21300000, guid: 657e78e62c56367428c9eeec61df5beb, type: 3}
+  dailyVersoFR: {fileID: 21300000, guid: 47bcd77bfba703541883160d7a04a114, type: 3}
+  dailyVersoEN: {fileID: 21300000, guid: 5a8b39f8bb0cf2d409c16895a7e8a2e3, type: 3}
   problemRecto: {fileID: 0}
-  problemVersoFR: {fileID: 21300000, guid: a2450924e15f6b54c9f46baeefa80375, type: 3}
-  problemVersoEN: {fileID: 21300000, guid: 5d51ec2842c802548994ab8867c89c8e, type: 3}
+  problemVersoFR: {fileID: 21300000, guid: 3622f01959885ef4a82be584b6cd7e9e, type: 3}
+  problemVersoEN: {fileID: 21300000, guid: f2d3677fc7b84454997f0c585a1f435c, type: 3}
   reviewRecto: {fileID: 0}
-  reviewVersoFR: {fileID: 21300000, guid: f308da0c57e00614887f7fe17279de7b, type: 3}
-  reviewVersoEN: {fileID: 21300000, guid: ee3288f7bc6a968408dbc1b7c2fb1194, type: 3}
+  reviewVersoFR: {fileID: 21300000, guid: 19b056cb590bb36478093802268b5cbc, type: 3}
+  reviewVersoEN: {fileID: 21300000, guid: 09899556801eade4883e39cf0e64331b, type: 3}
   description: {fileID: 9216344030164670832}
   result: {fileID: 6499459383333439905}
   verso: {fileID: 4323008430760940591}
@@ -629,7 +629,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a2450924e15f6b54c9f46baeefa80375, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3622f01959885ef4a82be584b6cd7e9e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

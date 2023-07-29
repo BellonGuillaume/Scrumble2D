@@ -39,7 +39,7 @@ public class ReviewManager : MonoBehaviour
         UpdateDebt();
         yield return new WaitUntil(() => EventManager.animate == false);
         ResetReview();
-        StateManager.gameState = StateManager.GameState.RETROSPECTIVE;
+        StateManager.gameState = StateManager.GameState.SUMMARY;
     }
 
     private void PopulateUS(){
@@ -75,6 +75,8 @@ public class ReviewManager : MonoBehaviour
         if (arrowedUS.GetComponent<UserStoryUI>().userStory.currentTask >= arrowedUS.GetComponent<UserStoryUI>().userStory.maxTask){
             Debug.Log($"Ready to deploy UserStory n°{arrowedUS.GetComponent<UserStoryUI>().userStory.id.ToString()}");
             arrowedUS.GetComponent<UserStoryUI>().userStory.state = UserStory.State.DEPLOYED;
+            StateManager.starsNumber += arrowedUS.GetComponent<UserStoryUI>().userStory.stars;
+            StateManager.finishedUS++;
             animationManager.ApproveUS(arrowedUS);
             yield return new WaitUntil(() => EventManager.animate == false);
             MoveOutOfScreen(arrowedUS);
