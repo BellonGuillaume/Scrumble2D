@@ -39,7 +39,7 @@ public class ReviewManager : MonoBehaviour
         UpdateDebt();
         yield return new WaitUntil(() => EventManager.animate == false);
         ResetReview();
-        StateManager.gameState = StateManager.GameState.SUMMARY;
+        StateManager.gameState = StateManager.GameState.REVIEW_CARDS;
     }
 
     private void PopulateUS(){
@@ -77,6 +77,7 @@ public class ReviewManager : MonoBehaviour
             arrowedUS.GetComponent<UserStoryUI>().userStory.state = UserStory.State.DEPLOYED;
             StateManager.starsNumber += arrowedUS.GetComponent<UserStoryUI>().userStory.stars;
             StateManager.finishedUS++;
+            EventManager.cardsToPick++;
             animationManager.ApproveUS(arrowedUS);
             yield return new WaitUntil(() => EventManager.animate == false);
             MoveOutOfScreen(arrowedUS);

@@ -124,6 +124,8 @@ public class GameManager : MonoBehaviour
         animationManager.ShowInfo(GetString("Game", "ReviewPhase"));
         yield return new WaitUntil(() => EventManager.animate == false);
         StartCoroutine(reviewManager.handleReview());
+        yield return new WaitUntil(() => StateManager.gameState == StateManager.GameState.REVIEW_CARDS);
+        StartCoroutine(cardHandler.FirstPickReviewCard(EventManager.cardsToPick));
         yield return new WaitUntil(() => StateManager.gameState == StateManager.GameState.SUMMARY);
         StartCoroutine(summaryManager.HandleSummary());
         yield return new WaitUntil(() => StateManager.gameState == StateManager.GameState.RETROSPECTIVE);

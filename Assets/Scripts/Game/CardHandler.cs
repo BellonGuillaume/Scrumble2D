@@ -741,10 +741,14 @@ public class CardHandler : MonoBehaviour
         yield return new WaitUntil(() => EventManager.handleCards == false);
         StateManager.turnState = StateManager.TurnState.RESULT;
     }
-    public IEnumerator FirstPickReviewCard(){
-        yield return new WaitUntil(() => StateManager.gameState == StateManager.GameState.REVIEW);
-        EventManager.cardsToPick = 1;
-        for (int i = 0; i < 3; i++){
+    public IEnumerator FirstPickReviewCard(int n){
+        yield return new WaitUntil(() => StateManager.gameState == StateManager.GameState.REVIEW_CARDS);
+        if (n <= 0){
+            StateManager.gameState = StateManager.GameState.SUMMARY;
+            yield break;
+        }
+        EventManager.cardsToPick = n;
+        for (int i = 0; i < n; i++){
             if (this.remainingReviewCards.Count < 1){
                 this.remainingReviewCards.AddRange(this.discardedReviewCards);
                 this.discardedReviewCards = new List<Card>();
@@ -760,7 +764,7 @@ public class CardHandler : MonoBehaviour
         EventManager.firstCard = true;
         StartCoroutine(HandleCards());
         yield return new WaitUntil(() => EventManager.handleCards == false);
-        StateManager.gameState = StateManager.GameState.RETROSPECTIVE;
+        StateManager.gameState = StateManager.GameState.SUMMARY;
     }
     #endregion
     #endregion
