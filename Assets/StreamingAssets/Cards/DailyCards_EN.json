@@ -123,6 +123,10 @@
         "result" : "Win as many tasks as roles. Don't cheat: validate the answer with the Scrum Master.",
         "typeOfCard" : "Question",
         "questionId" : 1,
+        "answer1" : "1",
+        "answer2" : "2",
+        "answer3" : "3",
+        "answer4" : "4",
         "positive" : true
     },
     {
@@ -136,10 +140,11 @@
     {
         "id" : 16,
         "category" : "DAILY",
-        "description" : "Take a minute to list some likely criteria for a definition of Done.",
-        "result" : "Save as much debt. Don't cheat, ask the Scrum Master to count.",
-        "typeOfCard" : "Question",
-        "questionId" : 2,
+        "description" : "You take a minute to list the likely criteria for a definition of Done.",
+        "result" : "You save 3 debts.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseDebt",
+        "firstValue" : 3,
         "positive" : true
     },
     {
@@ -186,7 +191,11 @@
         "description" : "Who must be present during the Daily Scrums ?",
         "result" : "If you answer correctly according to the Scrum Master, then save 3 debts.",
         "typeOfCard" : "Question",
-        "questionId" : 3,
+        "questionId" : 2,
+        "answer1" : "Scrum Master",
+        "answer2" : "Product Owner",
+        "answer3" : "Development team",
+        "answer4" : "No one",
         "positive" : true
     },
     {
@@ -340,7 +349,11 @@
         "description" : "What are the three usual questions used by the development team in the Daily Scrum ?",
         "result" : "Answer correctly according to the Scrum Master, otherwise accumulate 5 debts.",
         "typeOfCard" : "Question",
-        "questionId" : 4
+        "questionId" : 3,
+        "answer1" : "What did I do yesterday ?",
+        "answer2" : "What am I going to do today ?",
+        "answer3" : "What will I do tomorrow ?",
+        "answer4" : "Do I see any obstacles ?"
     },
     {
         "id" : 38,
@@ -348,7 +361,11 @@
         "description" : "How many weeks at most does a Sprint last according to Scrum ?",
         "result" : "Answer just according to the Scrum Master and save as much debt.",
         "typeOfCard" : "Question",
-        "questionId" : 5,
+        "questionId" : 4,
+        "answer1" : "4",
+        "answer2" : "6",
+        "answer3" : "8",
+        "answer4" : "12",
         "positive" : true
     },
     {
@@ -505,7 +522,11 @@
         "description" : "How many hours is the Review of a two-week Sprint at most ?",
         "result" : "Answer just according to the Scrum Master and save as much debt.",
         "typeOfCard" : "Question",
-        "questionId" : 6,
+        "questionId" : 5,
+        "answer1" : "1",
+        "answer2" : "2",
+        "answer3" : "3",
+        "answer4" : "4",
         "positive" : true
     },
     {
@@ -514,7 +535,11 @@
         "description" : "How many hours maximum does a Monthly Sprint Retrospective take ?",
         "result" : "Answer just according to the Scrum Master and save as much debt.",
         "typeOfCard" : "Question",
-        "questionId" : 7,
+        "questionId" : 6,
+        "answer1" : "1",
+        "answer2" : "2",
+        "answer3" : "3",
+        "answer4" : "4",
         "positive" : true
     },
     {
@@ -523,7 +548,11 @@
         "description" : "How many hours maximum does the Planning of a monthly Sprint take ?",
         "result" : "Answer correctly according to the Scrum Master and win as many tasks.",
         "typeOfCard" : "Question",
-        "questionId" : 8,
+        "questionId" : 7,
+        "answer1" : "4",
+        "answer2" : "6",
+        "answer3" : "8",
+        "answer4" : "12",
         "positive" : true
     },
     {

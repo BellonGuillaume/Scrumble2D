@@ -37,6 +37,8 @@ public class CardHandler : MonoBehaviour
     [SerializeField] Button declineButton;
     [SerializeField] UIDice uiDice;
 
+    [SerializeField] QuestionHandler questionHandler;
+
     private System.Random random;
 
     void Start(){
@@ -168,7 +170,7 @@ public class CardHandler : MonoBehaviour
                     break;
                 case Card.TypeOfCard.Question :
                     EventManager.handleQuestionActions = true;
-                    StartCoroutine(HandleQuestionActions(card.questionId));
+                    StartCoroutine(HandleQuestionActions(card));
                     yield return new WaitUntil(() => EventManager.handleQuestionActions == false);
                     readyToDiscard[card.id + (((int) card.category -1) * 60) - 1] = true;
                     break;
@@ -422,11 +424,21 @@ public class CardHandler : MonoBehaviour
         }
         EventManager.handleChoiceActions = false;
     }
-    IEnumerator HandleQuestionActions(int questionId){
-        // En fonction de la question
-        // -> Afficher des réponses en bouton
-        // -> Si correct, exécuter la récompense de la question
-        // -> Si incorrect, exécuter la perte de question
+    IEnumerator HandleQuestionActions(Card card){
+        EventManager.questionHandled = false;
+        StartCoroutine(questionHandler.HandleQuestion(card));
+        yield return new WaitUntil(() => EventManager.questionHandled == true);
+        EventManager.questionHandled = false;
+        if (questionHandler.rightAnswerIsFound == true){
+            EventManager.action = true;
+            StartCoroutine(HandleAtomicAction(questionHandler.successAction, questionHandler.value));
+            yield return new WaitUntil(() => EventManager.action == false);
+        } else {
+            EventManager.action = true;
+            StartCoroutine(HandleAtomicAction(questionHandler.failedAction, questionHandler.value));
+            yield return new WaitUntil(() => EventManager.action == false);
+        }
+        questionHandler.ResetQuestionHandler();
         StartCoroutine(this.cardPicker.UnChooseCard());
         yield return new WaitUntil(() => EventManager.animate == false);
         EventManager.handleQuestionActions = false;
@@ -690,7 +702,7 @@ public class CardHandler : MonoBehaviour
     public IEnumerator FirstPickDailyCard(){
         yield return new WaitUntil(() => StateManager.gameState == StateManager.GameState.PICK_DAILY);
         EventManager.cardsToPick = 1;
-        // Card customPickedCard = this.dailyCards[58];
+        // Card customPickedCard = this.dailyCards[55];
         // this.cardPicker.AddCart(customPickedCard);
         // this.pickedCards.Add(customPickedCard);
         // this.remainingDailyCards.Remove(customPickedCard);
@@ -723,6 +735,7 @@ public class CardHandler : MonoBehaviour
         // this.cardPicker.AddCart(customPickedCard);
         // this.pickedCards.Add(customPickedCard);
         // this.remainingProblemCards.Remove(customPickedCard);
+        // this.readyToDiscard.Add(customPickedCard.id + (((int) customPickedCard.category -1) * 60) -1, false);
         for (int i = 0; i < 3; i++){
             if (this.remainingProblemCards.Count <= 0){
                 this.remainingProblemCards.AddRange(this.discardedProblemCards);

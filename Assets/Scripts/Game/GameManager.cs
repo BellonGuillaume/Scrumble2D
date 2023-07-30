@@ -87,11 +87,19 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(() => EventManager.animate == false);
         yield return new WaitForSeconds(2);
         int i = 1;
-        while (true){
+        while (StateManager.gameState != StateManager.GameState.END_OF_GAME){
             StartCoroutine(BeginSprint(i));
             yield return new WaitUntil(() => StateManager.gameState == StateManager.GameState.END_OF_SPRINT);
+            bool finished = true;
+            foreach (UserStory userStory in StateManager.userStories){
+                if (userStory.state != UserStory.State.DEPLOYED)
+                    finished = false;
+            }
+            if(finished)
+                StateManager.gameState = StateManager.GameState.END_OF_GAME;
             i++;
         }
+        animationManager.ShowInfo("PARTIE TERMINÉE");
     }
 
     #region --------------------------------- Sprint ---------------------------------
@@ -112,7 +120,7 @@ public class GameManager : MonoBehaviour
             StartCoroutine(AddTasks(5));
             yield return new WaitUntil(() => EventManager.handleAddingTask == false);
         }
-        for (int j = 1; j <= 1; j++){
+        for (int j = 1; j <= 2; j++){
             StateManager.gameState = StateManager.GameState.BEGIN_DAY;
             StateManager.currentDay = j;
             StartCoroutine(BeginDay(j));
@@ -417,7 +425,8 @@ public class GameManager : MonoBehaviour
         StateManager.category = StateManager.Category.GIFT_SHOP;
         StateManager.gameName = "";
         StateManager.pokerPlanning = false;
-        StateManager.CreatePlayers(new List<string>{"Alice", "Bob", "Charles"});
+        StateManager.CreatePlayers(new List<string>{"Alice"});
+        // StateManager.CreatePlayers(new List<string>{"Alice", "Bob", "Charles"});
         StateManager.CreateUserStories(StateManager.Category.GIFT_SHOP);
         foreach (UserStory userStory in StateManager.userStories){
             userStory.size = userStory.defaultSize;
@@ -436,6 +445,8 @@ public class GameManager : MonoBehaviour
     }
 
     public IEnumerator AddTasks(int n){
+        if (n>0)
+            n = 10*n;
         this.taskValidation.gameObject.SetActive(true);
         EventManager.taskToAdd = n;
         EventManager.taskAdded = false;

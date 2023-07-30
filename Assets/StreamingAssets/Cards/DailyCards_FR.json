@@ -123,6 +123,10 @@
         "result" : "Gagnez autant de tâches que de rôles. Ne trichez pas : validez la réponse avec le Scrum Master.",
         "typeOfCard" : "Question",
         "questionId" : 1,
+        "answer1" : "1",
+        "answer2" : "2",
+        "answer3" : "3",
+        "answer4" : "4",
         "positive" : true
     },
     {
@@ -136,10 +140,11 @@
     {
         "id" : 16,
         "category" : "DAILY",
-        "description" : "Prenez une minute pour lister des critères probables pour une définition de Terminé.",
-        "result" : "Epargnez autant de dettes. Ne trichez pas, demandez au Scrum Master de compter.",
-        "typeOfCard" : "Question",
-        "questionId" : 2,
+        "description" : "Vous prenez une minute pour lister des critères probables pour une définition de Terminé.",
+        "result" : "Vous épargnez 3 dettes.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseDebt",
+        "firstValue" : "3",
         "positive" : true
     },
     {
@@ -186,7 +191,11 @@
         "description" : "Qui doit être obligatoirement présent lors des Daily Scrums ?",
         "result" : "Si vous répondez juste selon le Scrum Master, épargnez alors 3 dettes.",
         "typeOfCard" : "Question",
-        "questionId" : 3,
+        "questionId" : 2,
+        "answer1" : "Scrum Master",
+        "answer2" : "Product Owner",
+        "answer3" : "Équipe de développement",
+        "answer4" : "Personne",
         "positive" : true
     },
     {
@@ -340,7 +349,11 @@
         "description" : "Quelles sont les trois questions usuelles servant l'équipe de développement au Daily Scrum ?",
         "result" : "Répondez juste selon le Scrum Master, sinon accumulez 5 dettes.",
         "typeOfCard" : "Question",
-        "questionId" : 4
+        "questionId" : 3,
+        "answer1" : "Qu'est-ce que j'ai fait hier ?",
+        "answer2" : "Qu'est-ce que je vais faire aujourd'hui ?",
+        "answer3" : "Qu'est-ce que je ferai demain ?",
+        "answer4" : "Est-ce que je vois des obstacles ?"
     },
     {
         "id" : 38,
@@ -348,7 +361,11 @@
         "description" : "Combien de semaines au maximum dure un Sprint selon Scrum ?",
         "result" : "Répondez juste selon le Scrum Master et épargnez autant de dettes.",
         "typeOfCard" : "Question",
-        "questionId" : 5,
+        "questionId" : 4,
+        "answer1" : "4",
+        "answer2" : "6",
+        "answer3" : "8",
+        "answer4" : "12",
         "positive" : true
     },
     {
@@ -505,7 +522,11 @@
         "description" : "Combien d'heures au maximum dure la Revue d'un Sprint de deux semaines ?",
         "result" : "Répondez juste selon le Scrum Master et épargnez autant de dettes.",
         "typeOfCard" : "Question",
-        "questionId" : 6,
+        "questionId" : 5,
+        "answer1" : "1",
+        "answer2" : "2",
+        "answer3" : "3",
+        "answer4" : "4",
         "positive" : true
     },
     {
@@ -514,7 +535,11 @@
         "description" : "Combien d'heures au maximum dure la Rétrospective d'un Sprint mensuel ?",
         "result" : "Répondez juste selon le Scrum Master et épargnez autant de dettes.",
         "typeOfCard" : "Question",
-        "questionId" : 7,
+        "questionId" : 6,
+        "answer1" : "1",
+        "answer2" : "2",
+        "answer3" : "3",
+        "answer4" : "4",
         "positive" : true
     },
     {
@@ -523,7 +548,11 @@
         "description" : "Combien d'heures au maximum dure le Planning d'un Sprint mensuel ?",
         "result" : "Répondez juste selon le Scrum Master et gagnez autant de tâches.",
         "typeOfCard" : "Question",
-        "questionId" : 8,
+        "questionId" : 7,
+        "answer1" : "4",
+        "answer2" : "6",
+        "answer3" : "8",
+        "answer4" : "12",
         "positive" : true
     },
     {
