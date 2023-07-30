@@ -239,6 +239,13 @@ public class QuestionHandler : MonoBehaviour
         answer3.interactable = false;
         answer4.interactable = false;
     }
+
+    public void ActivateButtons(){
+        answer1.interactable = true;
+        answer2.interactable = true;
+        answer3.interactable = true;
+        answer4.interactable = true;
+    }
     public void ResetQuestionHandler(){
         buttonsDictionary[0] = "";
         buttonsDictionary[1] = "";
@@ -260,6 +267,7 @@ public class QuestionHandler : MonoBehaviour
         answer2.GetComponentInChildren<TMP_Text>().text = "";
         answer3.GetComponentInChildren<TMP_Text>().text = "";
         answer4.GetComponentInChildren<TMP_Text>().text = "";
+        ActivateButtons();
         rightAnswerIsFound = false;
         wrongAnswerIsFound = false;
         successAction = Card.Action.None;

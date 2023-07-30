@@ -1,0 +1,175 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: EndGame_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: ce97173c22eab014aaac67e1d0403198, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 8575819776
+    m_Localized: End of game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75189755904
+    m_Localized: You've completed a game of Scrumble in
+    m_Metadata:
+      m_Items: []
+  - m_Id: 357634187264
+    m_Localized: hours
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455273390080
+    m_Localized: hour
+    m_Metadata:
+      m_Items: []
+  - m_Id: 620281503744
+    m_Localized: minutes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 658709716992
+    m_Localized: minute
+    m_Metadata:
+      m_Items: []
+  - m_Id: 740372815872
+    m_Localized: seconds
+    m_Metadata:
+      m_Items: []
+  - m_Id: 769347067904
+    m_Localized: second
+    m_Metadata:
+      m_Items: []
+  - m_Id: 999094263808
+    m_Localized: and
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1112487272448
+    m_Localized: on the difficulty level
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1472928980992
+    m_Localized: easy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1542244048896
+    m_Localized: normal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1603870957568
+    m_Localized: hard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651954458624
+    m_Localized: in
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1688277131264
+    m_Localized: sprints
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1741418962944
+    m_Localized: sprint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1806191599616
+    m_Localized: 'Summary :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1884159516672
+    m_Localized: 'Difficulty :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2252478128128
+    m_Localized: 'User stories used :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2756197261312
+    m_Localized: 'Size of the user stories :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2926196596736
+    m_Localized: 'Game duration :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3064927395840
+    m_Localized: 'Number of sprints :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3663983058944
+    m_Localized: 'Final technical debt value :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3778198151168
+    m_Localized: 'Problem cards picked :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4032549134336
+    m_Localized: 'Total tasks number :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4150165807104
+    m_Localized: 'Total lost tasks number :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4709002289152
+    m_Localized: Easy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4916838440960
+    m_Localized: Normal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4984257683456
+    m_Localized: Hard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5019967987712
+    m_Localized: Gift Shop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5100758671360
+    m_Localized: Travel Diary
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5195956789248
+    m_Localized: Diet Coach
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5831939104768
+    m_Localized: Knowledge Management
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5889556258816
+    m_Localized: Custom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5981021446144
+    m_Localized: 'Players :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6074873192448
+    m_Localized: Screenshot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6198236061696
+    m_Localized: Download Burndown Chart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22353814265856
+    m_Localized: By default
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

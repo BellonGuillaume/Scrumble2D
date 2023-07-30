@@ -27,10 +27,12 @@ public class StateManager : MonoBehaviour
     public static List<Player> players;
     public static GameState gameState;
     public static DateTime startTime;
+    public static DateTime endTime;
     public static int sprintNumber = 0;
     public static int starsNumber = 0;
     public static int finishedUS = 0;
     public static int problemCards = 0;
+    public static int totalTasks = 0;
     public static int loosedTasks = 0;
     public enum GameState{
         MENU, POKER_PLANNING, CUSTOM_POKER_PLANNING, INITIALISATION, BEGIN_GAME, TDTD, BEGIN_DAY, PICK_DAILY, PLAYER_TURN, END_OF_DAY, REVIEW, REVIEW_CARDS, SUMMARY, RETROSPECTIVE, END_OF_SPRINT, END_OF_GAME
@@ -148,6 +150,6 @@ public class StateManager : MonoBehaviour
             debtFactor = 4;
         else
             debtFactor = 3;
-        currentDebt = Mathf.FloorToInt(value);
+        currentDebt = Mathf.Max(0, Mathf.FloorToInt(value));
     }
 }

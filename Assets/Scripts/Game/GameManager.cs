@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] ScrumboardManager scrumboardManager;
     [SerializeField] ReviewManager reviewManager;
     [SerializeField] SummaryManager summaryManager;
+    [SerializeField] EndScreenManager endScreenManager;
 
     Animator popUpAnimator;
 
@@ -99,7 +100,7 @@ public class GameManager : MonoBehaviour
                 StateManager.gameState = StateManager.GameState.END_OF_GAME;
             i++;
         }
-        animationManager.ShowInfo("PARTIE TERMINÉE");
+        StartCoroutine(endScreenManager.HandleEndGame());
     }
 
     #region --------------------------------- Sprint ---------------------------------
@@ -120,7 +121,7 @@ public class GameManager : MonoBehaviour
             StartCoroutine(AddTasks(5));
             yield return new WaitUntil(() => EventManager.handleAddingTask == false);
         }
-        for (int j = 1; j <= 2; j++){
+        for (int j = 1; j <= 9; j++){
             StateManager.gameState = StateManager.GameState.BEGIN_DAY;
             StateManager.currentDay = j;
             StartCoroutine(BeginDay(j));
@@ -445,8 +446,8 @@ public class GameManager : MonoBehaviour
     }
 
     public IEnumerator AddTasks(int n){
-        if (n>0)
-            n = 10*n;
+        // if (n>0)
+        //     n = 100*n;
         this.taskValidation.gameObject.SetActive(true);
         EventManager.taskToAdd = n;
         EventManager.taskAdded = false;
@@ -514,6 +515,9 @@ public class GameManager : MonoBehaviour
         if (n < 0){
             StateManager.loosedTasks -= n - EventManager.taskToAdd;
             StateManager.sprintLoosedTasks -= n - EventManager.taskToAdd;
+        }
+        else if (n > 0){
+            StateManager.totalTasks += n - EventManager.taskToAdd;
         }
         foreach (GameObject doingAUS in this.doingAUS){
             doingAUS.GetComponent<ArrowedUS>().HideArrows();

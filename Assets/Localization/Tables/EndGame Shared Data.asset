@@ -1,0 +1,180 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: EndGame Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: EndGame
+  m_TableCollectionNameGuidString: ce97173c22eab014aaac67e1d0403198
+  m_Entries:
+  - m_Id: 8575819776
+    m_Key: EndOfGame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75189755904
+    m_Key: HeaderFirst
+    m_Metadata:
+      m_Items: []
+  - m_Id: 357634187264
+    m_Key: Hours
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455273390080
+    m_Key: Hour
+    m_Metadata:
+      m_Items: []
+  - m_Id: 620281503744
+    m_Key: Minutes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 658709716992
+    m_Key: Minute
+    m_Metadata:
+      m_Items: []
+  - m_Id: 740372815872
+    m_Key: Seconds
+    m_Metadata:
+      m_Items: []
+  - m_Id: 769347067904
+    m_Key: Second
+    m_Metadata:
+      m_Items: []
+  - m_Id: 999094263808
+    m_Key: And
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1112487272448
+    m_Key: HeaderSecond
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1472928980992
+    m_Key: easy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1542244048896
+    m_Key: normal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1603870957568
+    m_Key: hard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1651954458624
+    m_Key: In
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1688277131264
+    m_Key: Sprints
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1741418962944
+    m_Key: Sprint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1806191599616
+    m_Key: Summary
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1884159516672
+    m_Key: Difficulty
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2252478128128
+    m_Key: UserStoriesUsed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2756197261312
+    m_Key: SizeOfUserStories
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2926196596736
+    m_Key: GameDuration
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3064927395840
+    m_Key: SprintNumber
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3663983058944
+    m_Key: FinalDebt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3778198151168
+    m_Key: ProblemCards
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4032549134336
+    m_Key: TotalTasks
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4150165807104
+    m_Key: TotalLoosed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4709002289152
+    m_Key: Easy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4916838440960
+    m_Key: Normal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4984257683456
+    m_Key: Hard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5019967987712
+    m_Key: GiftShop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5100758671360
+    m_Key: TravelDiary
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5195956789248
+    m_Key: DietCoach
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5831939104768
+    m_Key: KnowledgeManagement
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5889556258816
+    m_Key: Custom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5981021446144
+    m_Key: Players
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6074873192448
+    m_Key: Screenshot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6198236061696
+    m_Key: DownloadBurndownChart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22353814265856
+    m_Key: Default
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 1431151417148309504
+  references:
+    version: 2
+    RefIds:
+    - rid: 1431151417148309504
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1690731195108
