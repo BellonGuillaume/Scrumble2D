@@ -61,7 +61,7 @@ public class UICard : MonoBehaviour
         this.card = null;
         this.description.text = null;
         this.result.text = null;
-        this.recto.color = PINK;
+        this.recto.sprite = null;
         this.verso.sprite = null;
         id = -1;
         this.positionBeforeMove = Vector2.zero;

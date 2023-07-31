@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using CsvHelper;
+using System.IO;
+using CsvHelper.Configuration;
+using System.Globalization;
+using CsvHelper.Configuration.Attributes;
 
 public class BurndownChartManager : MonoBehaviour
 {
@@ -9,7 +13,21 @@ public class BurndownChartManager : MonoBehaviour
     public Sprint currentSprint;
 
     public void WriteCSV(){
+        string filePath = Directory.GetCurrentDirectory() + "/BurndownChart/burn_down_chart.csv";
+        for (int i = 0; i < sprints.Count; i++){
+            TextWriter tw = new StreamWriter(filePath, false);
+            tw.WriteLine($"Sprint N°{sprints[i].sprintNumber}");
+            tw.WriteLine("Cases,Planned Burndown,Real Burndown,Planned Tasks,Real Tasks");
+            tw.Close();
+            tw = new StreamWriter(filePath, true);
+            tw.WriteLine($"Initial values,{sprints[i].totalTasks},{sprints[i].totalTasks},{sprints[i].totalTasks},{sprints[i].totalTasks}");
 
+            for (int j = 0; j < sprints[i].days.Count; j++){
+                tw.WriteLine($"Day {sprints[i].days[j].dayNumber},{sprints[i].days[j].plannedRemainingTasks},{sprints[i].days[j].realRemainingTasks},{sprints[i].days[j].plannedTasks},{sprints[i].days[j].realTasks}");
+            }
+            tw.WriteLine();
+            tw.Close();
+        }
     }
 
     public void NewSprint(int sprintNumber, List<UserStory> userStories){
@@ -49,13 +67,20 @@ public class Sprint{
 }
 
 public class Day{
+    [Ignore]
     public Sprint sprint;
-    public int dayNumber;
-    public int previousRemaingTasks;
-    public int plannedRemainingTasks;
-    public int realRemainingTasks;
-    public int plannedTasks;
-    public int realTasks;
+    [Name("Day N°")]
+    public int dayNumber { get; set; }
+    [Ignore]
+    public int previousRemaingTasks { get; set; }
+    [Name("Ideal Burndown")]
+    public int plannedRemainingTasks { get; set; }
+    [Name("Real Burndown")]
+    public int realRemainingTasks { get; set; }
+    [Name("Planned tasks")]
+    public int plannedTasks { get; set; }
+    [Name("Real tasks")]
+    public int realTasks { get; set; }
 
     public Day(int dayNumber, int previousRemaingTasks, int plannedRemainingTasks, int plannedTasks, Sprint sprint){
         this.dayNumber = dayNumber;

@@ -51,6 +51,7 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
      <Compile Include="Assets\Scripts\Game\Animation\AnimationManager.cs" />
      <Compile Include="Assets\Scripts\Ressources\AutoSizeScrollView.cs" />
+     <Compile Include="Assets\Scripts\Game\ExitButton.cs" />
      <Compile Include="Assets\Scripts\Game\Results.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
      <Compile Include="Assets\Scripts\Ressources\ArrowedUS.cs" />
@@ -64,6 +65,7 @@
      <Compile Include="Assets\Scripts\Ressources\DropContent.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
+     <Compile Include="Assets\Scripts\Game\DebtSlider.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\Game\QuestionHandler.cs" />
@@ -105,6 +107,7 @@
      <Compile Include="Assets\Scripts\Ressources\HighlightScore.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
      <Compile Include="Assets\Scripts\PokerPlanning\PokerPlanningManager.cs" />
+     <Compile Include="Assets\Scripts\Game\Animation\Scrolling.cs" />
      <Compile Include="Assets\Scripts\Game\ReviewManager.cs" />
      <Compile Include="Assets\Scripts\Menu\StateManager.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
@@ -116,9 +119,6 @@
      <Compile Include="Assets\Scripts\Game\Animation\Easing.cs" />
      <Compile Include="Assets\Scripts\Game\BurndownChartManager.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
-     <Compile Include="Assets\Scripts\Game\DebtSlider.cs" />
-     <Compile Include="Assets\Scripts\Game\Animation\Scrolling.cs" />
-     <Compile Include="Assets\Scripts\Game\ExitButton.cs" />
      <None Include="Assets\Packages\System.Globalization.4.3.0\ThirdPartyNotices.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\Packages\System.Threading.4.3.0\dotnet_library_license.txt" />
