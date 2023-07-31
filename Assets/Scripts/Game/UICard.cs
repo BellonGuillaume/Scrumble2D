@@ -38,18 +38,18 @@ public class UICard : MonoBehaviour
         this.result.text = card.result;
         switch (card.category){
             case Card.CategoryOfCard.DAILY:
-                this.recto.color = BLUE;
-                // this.recto.sprite = dailyRecto;
+                // this.recto.color = BLUE;
+                this.recto.sprite = dailyRecto;
                 this.verso.sprite = GetDailyVerso();
                 break;
             case Card.CategoryOfCard.PROBLEM:
-                this.recto.color = RED;
-                // this.recto.sprite = problemRecto;
+                // this.recto.color = RED;
+                this.recto.sprite = problemRecto;
                 this.verso.sprite = GetProblemVerso();
                 break;
             case Card.CategoryOfCard.REVIEW:
-                this.recto.color = GREEN;
-                // this.recto.sprite = reviewRecto;
+                // this.recto.color = GREEN;
+                this.recto.sprite = reviewRecto;
                 this.verso.sprite = GetReviewVerso();
                 break;
         }

@@ -225,12 +225,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfe1d9666f4fdf841b0c45abc5ace6cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  face1: {fileID: 21300000, guid: 20c31083bd1b0c14fb506d369f91fe9e, type: 3}
-  face2: {fileID: 21300000, guid: 0a49ca1ee06393d4591fb3c0d755912b, type: 3}
-  face3: {fileID: 21300000, guid: d8331fa9ea6c3b04ebc8dff01fa799e2, type: 3}
-  face4: {fileID: 21300000, guid: fa976ea30a04b6e4599c7a8f9dd69c96, type: 3}
-  face5: {fileID: 21300000, guid: 4bedbd909addc424c919309130c003d5, type: 3}
-  face6: {fileID: 21300000, guid: 016807b793e875b48b84cc6b7bc3a1b2, type: 3}
+  face1: {fileID: 21300000, guid: b5110f65ede53704dac5f9331c5923bf, type: 3}
+  face2: {fileID: 21300000, guid: cf81687526877b640a51648bd6000129, type: 3}
+  face3: {fileID: 21300000, guid: 6d52b021561f40a46a7ae1198c5b3e01, type: 3}
+  face4: {fileID: 21300000, guid: 6a9f32aaa9d64ec43af5f863afb935b4, type: 3}
+  face5: {fileID: 21300000, guid: a6fd3ec6bd194b44b83ab37fb5dc6e32, type: 3}
+  face6: {fileID: 21300000, guid: ffdffa2a4a0d84e4f9f93863001f9426, type: 3}
   dice: {fileID: 6519098807399084994}
   animationManager: {fileID: 0}
   currentFace: 0
