@@ -13,9 +13,9 @@ public class CardHandler : MonoBehaviour
     [SerializeField] GameManager gameManager;
 
     Dictionary<int, bool> readyToDiscard = new Dictionary<int, bool>();
-    List<Card> dailyCards;
-    List<Card> problemCards;
-    List<Card> reviewCards;
+    public List<Card> dailyCards;
+    public List<Card> problemCards;
+    public List<Card> reviewCards;
 
     List<Card> remainingDailyCards = new List<Card>();
     List<Card> remainingProblemCards = new List<Card>();
@@ -38,6 +38,16 @@ public class CardHandler : MonoBehaviour
     [SerializeField] UIDice uiDice;
 
     [SerializeField] QuestionHandler questionHandler;
+
+    [SerializeField] UICard permanentCard1;
+    [SerializeField] UICard permanentCard2;
+    [SerializeField] UICard permanentCard3;
+    [SerializeField] UICard permanentCard4;
+    [SerializeField] UICard permanentCard5;
+    [SerializeField] UICard permanentCard6;
+    [SerializeField] UICard permanentCard7;
+    [SerializeField] UICard permanentCard8;
+    [SerializeField] UICard permanentCard9;
 
     private System.Random random;
 
@@ -316,7 +326,8 @@ public class CardHandler : MonoBehaviour
             }
             case Card.Action.GetRidOfJinxCard :
                 if (StateManager.jinxed == true){
-                    // discard jinx card,
+                    DiscardPermanentCard(permanentCard7);
+                    yield return new WaitUntil(() => EventManager.animate == false);
                     StateManager.jinxed = false;
                 }
                 EventManager.action = false;
@@ -445,12 +456,14 @@ public class CardHandler : MonoBehaviour
         yield break;
     }
     IEnumerator HandlePermanentAction(Card card){
+        GameObject permanentPlaceholder = null;
         switch (card.permanent){
             case Card.Permanent.Jinx : {
                 this.okButton.gameObject.SetActive(true);
                 yield return new WaitUntil(() => EventManager.okPressed == true);
                 EventManager.okPressed = false;
                 this.okButton.gameObject.SetActive(false);
+                permanentPlaceholder = permanentCard7.gameObject;
                 StateManager.jinxed = true;
                 break;
             }
@@ -459,6 +472,7 @@ public class CardHandler : MonoBehaviour
                 yield return new WaitUntil(() => EventManager.okPressed == true);
                 EventManager.okPressed = false;
                 this.okButton.gameObject.SetActive(false);
+                permanentPlaceholder = permanentCard1.gameObject;
                 StateManager.noMoreTestIssues = true;
                 break;
             }
@@ -475,6 +489,7 @@ public class CardHandler : MonoBehaviour
                     EventManager.action = true;
                     StartCoroutine(HandleAtomicAction(Card.Action.CurrentPlayerPassATurn, 4));
                     yield return new WaitUntil(() => EventManager.action == false);
+                    permanentPlaceholder = permanentCard2.gameObject;
                     StateManager.oneMoreTaskPerRoll = true;
                 } else {
                     readyToDiscard[card.id + (((int) card.category -1) * 60) - 1] = true;
@@ -486,6 +501,7 @@ public class CardHandler : MonoBehaviour
                 yield return new WaitUntil(() => EventManager.okPressed == true);
                 EventManager.okPressed = false;
                 this.okButton.gameObject.SetActive(false);
+                permanentPlaceholder = permanentCard3.gameObject;
                 StateManager.tasksOnBeginSprint = true;
                 break;
             }
@@ -502,6 +518,7 @@ public class CardHandler : MonoBehaviour
                     EventManager.action = true;
                     StartCoroutine(HandleAtomicAction(Card.Action.CurrentPlayerPassATurn, 5));
                     yield return new WaitUntil(() => EventManager.action == false);
+                    permanentPlaceholder = permanentCard4.gameObject;
                     StateManager.currentPlayer.twoMoreTasksPerRoll = true;
                 } else {
                     readyToDiscard[card.id + (((int) card.category -1) * 60) - 1] = true;
@@ -513,6 +530,7 @@ public class CardHandler : MonoBehaviour
                 yield return new WaitUntil(() => EventManager.okPressed == true);
                 EventManager.okPressed = false;
                 this.okButton.gameObject.SetActive(false);
+                permanentPlaceholder = permanentCard5.gameObject;
                 StateManager.maxUserStoryLowered = true;
                 break;
             }
@@ -529,6 +547,7 @@ public class CardHandler : MonoBehaviour
                     EventManager.action = true;
                     StartCoroutine(HandleAtomicAction(Card.Action.CurrentPlayerPassATurn, 3));
                     yield return new WaitUntil(() => EventManager.action == false);
+                permanentPlaceholder = permanentCard6.gameObject;
                     StateManager.currentPlayer.decreaseDebtPerTurn = true;
                 } else {
                     readyToDiscard[card.id + (((int) card.category -1) * 60) - 1] = true;
@@ -540,16 +559,21 @@ public class CardHandler : MonoBehaviour
                 yield return new WaitUntil(() => EventManager.okPressed == true);
                 EventManager.okPressed = false;
                 this.okButton.gameObject.SetActive(false);
+                permanentPlaceholder = permanentCard9.gameObject;
                 StateManager.oneTaskPerDay = true;
                 break;
             }
             default :
                 break;
         }
-        StartCoroutine(this.cardPicker.UnChooseCard());
+        StartCoroutine(this.cardPicker.PlacePermanentCard(permanentPlaceholder));
         yield return new WaitUntil(() => EventManager.animate == false);
         EventManager.handlePermanentAction = false;
         yield break;
+    }
+    
+    private void DiscardPermanentCard(UICard card){
+        animationManager.DiscardCard(card.gameObject);
     }
     #endregion
     
@@ -702,12 +726,12 @@ public class CardHandler : MonoBehaviour
     public IEnumerator FirstPickDailyCard(){
         yield return new WaitUntil(() => StateManager.gameState == StateManager.GameState.PICK_DAILY);
         EventManager.cardsToPick = 1;
-        // Card customPickedCard = this.dailyCards[55];
-        // this.cardPicker.AddCart(customPickedCard);
-        // this.pickedCards.Add(customPickedCard);
-        // this.remainingDailyCards.Remove(customPickedCard);
-        // this.readyToDiscard.Add(customPickedCard.id + (((int) customPickedCard.category -1) * 60) -1, false);
-        for (int i = 0; i < 3; i++){
+        Card customPickedCard = this.dailyCards[1];
+        this.cardPicker.AddCart(customPickedCard);
+        this.pickedCards.Add(customPickedCard);
+        this.remainingDailyCards.Remove(customPickedCard);
+        this.readyToDiscard.Add(customPickedCard.id + (((int) customPickedCard.category -1) * 60) -1, false);
+        for (int i = 0; i < 2; i++){
             if (this.remainingDailyCards.Count < 1){
                 this.remainingDailyCards.AddRange(this.discardedDailyCards);
                 this.discardedDailyCards = new List<Card>();
@@ -819,6 +843,18 @@ public class CardHandler : MonoBehaviour
         this.reviewCards = JsonConvert.DeserializeObject<List<Card>>(reviewCardsStr);
         this.remainingReviewCards.AddRange(this.reviewCards);
         this.discardedReviewCards = new List<Card>();
+    }
+
+    public void InitPermanentCard(){
+        permanentCard1.Fill(dailyCards[1], cardPicker);
+        permanentCard2.Fill(dailyCards[14], cardPicker);
+        permanentCard3.Fill(dailyCards[21], cardPicker);
+        permanentCard4.Fill(dailyCards[30], cardPicker);
+        permanentCard5.Fill(dailyCards[31], cardPicker);
+        permanentCard6.Fill(dailyCards[49], cardPicker);
+        permanentCard7.Fill(problemCards[51], cardPicker);
+        permanentCard8.Fill(reviewCards[44], cardPicker);
+        permanentCard9.Fill(dailyCards[19], cardPicker);
     }
     #endregion
     #region ###### Clickables ######

@@ -66,6 +66,15 @@ public class CardPicker : MonoBehaviour
         this.choosenIndex = -1;
     }
 
+    public IEnumerator PlacePermanentCard(GameObject permanentCardLocation){
+        animationManager.AddPermanentCard(this.choosenCard, permanentCardLocation);
+        yield return new WaitUntil(() => EventManager.animate == false);
+        this.choosenCard.SetActive(false);
+        this.choosenCard.GetComponent<UICard>().AddVerso();
+        this.choosenCard.GetComponent<UICard>().UnFill();
+        this.choosenIndex = -1;
+    }
+
     public void RemoveCards(){
         foreach(GameObject card in cards){
             EventManager.cardToRemove++;

@@ -58,6 +58,7 @@ public class GameManager : MonoBehaviour
         this.cardHandler.CreateReviewCards();
         this.scrumboardManager.CreateScrumboard();
         this.choosePlayer.CreateDailyPlayers();
+        this.cardHandler.InitPermanentCard();
         workingOn = new List<UserStory>();
         doingAUS = new List<GameObject>();
         switch (StateManager.difficulty){

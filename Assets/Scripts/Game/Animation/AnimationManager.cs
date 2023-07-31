@@ -900,6 +900,49 @@ public class AnimationManager : MonoBehaviour
         );
     }
 
+    public void DiscardCard(GameObject card){
+        EventManager.animate = true;
+        Vector2 startPos = card.transform.position;
+        Vector2 endPos = new Vector2(startPos.x, 1300);
+        this.animationCoroutine = this.CreateAnimationRoutine(
+            0.5f,
+            delegate(float progress){
+                float easedProgress = Easing.easeInCubic(0, 1, progress);
+                Vector2 pos = Vector2.Lerp(startPos, endPos, easedProgress);
+                card.transform.position = pos;
+            },
+            delegate{
+                card.SetActive(false);
+                card.transform.position = startPos;
+                EventManager.animate = false;
+            }
+        );
+    }
+
+    public void AddPermanentCard(GameObject card, GameObject permanentCard){
+        EventManager.animate = true;
+        Vector2 startPos = card.transform.position;
+        Vector2 endPos = permanentCard.transform.position;
+        Vector3 startScale = card.transform.localScale;
+        Vector3 endScale = permanentCard.transform.localScale;
+        this.animationCoroutine = this.CreateAnimationRoutine(
+            1f,
+            delegate(float progress){
+                float easedProgress = Easing.easeInCubic(0, 1, progress);
+                Vector2 pos = Vector2.Lerp(startPos, endPos, easedProgress);
+                Vector3 scale = Vector3.Lerp(startScale, endScale, easedProgress);
+                card.transform.position = pos;
+                card.transform.localScale = scale;
+            },
+            delegate{
+                permanentCard.SetActive(true);
+                card.GetComponent<UICard>().SetAlpha(0);
+                card.transform.position = startPos;
+                EventManager.animate = false;
+            }
+        );
+    }
+
     public string GetString(string tableName, string stringKey){
         return LocalizationSettings.StringDatabase.GetLocalizedString(tableName, stringKey);
     }

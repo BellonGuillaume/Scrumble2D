@@ -5,6 +5,7 @@ using UnityEngine.Localization.Settings;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using System.IO;
 
 public class EndScreenManager : MonoBehaviour
 {
@@ -125,6 +126,7 @@ public class EndScreenManager : MonoBehaviour
             return GetString("Default");
     }
     public void OnScreenShotClick(){
+        string path = Directory.GetCurrentDirectory() + "/Screenshots/";
         ScreenCapture.CaptureScreenshot("Scrumble Result.png");
     }
     public void OnDownloadClick(){
