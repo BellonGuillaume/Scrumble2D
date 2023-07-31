@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] ReviewManager reviewManager;
     [SerializeField] SummaryManager summaryManager;
     [SerializeField] EndScreenManager endScreenManager;
+    [SerializeField] BurndownChartManager burndownChartManager;
 
     Animator popUpAnimator;
 
@@ -92,6 +93,10 @@ public class GameManager : MonoBehaviour
         while (StateManager.gameState != StateManager.GameState.END_OF_GAME){
             StartCoroutine(BeginSprint(i));
             yield return new WaitUntil(() => StateManager.gameState == StateManager.GameState.END_OF_SPRINT);
+            Debug.Log(burndownChartManager.currentSprint.ToString());
+            foreach(Day day in burndownChartManager.currentSprint.days){
+                Debug.Log(day.ToString());
+            }
             bool finished = true;
             foreach (UserStory userStory in StateManager.userStories){
                 if (userStory.state != UserStory.State.DEPLOYED)
@@ -116,6 +121,11 @@ public class GameManager : MonoBehaviour
         }
         StartCoroutine(ChooseToDoToDoing());
         yield return new WaitUntil(() => StateManager.gameState == StateManager.GameState.BEGIN_DAY);
+        List<UserStory> userStories = new List<UserStory>();
+        foreach(GameObject arrowedUS in this.doingAUS){
+            userStories.Add(arrowedUS.GetComponent<UserStoryUI>().userStory);
+        }
+        burndownChartManager.NewSprint(n, userStories);
         if(StateManager.tasksOnBeginSprint == true){
             // Show Permanent Card
             EventManager.handleAddingTask = true;
@@ -182,6 +192,7 @@ public class GameManager : MonoBehaviour
     IEnumerator BeginDay(int n){
         yield return new WaitUntil(() => StateManager.gameState == StateManager.GameState.BEGIN_DAY);
         animationManager.StartDayAnimation(n);
+        burndownChartManager.currentSprint.NewDay(n);
         yield return new WaitUntil(() => EventManager.animate == false);
         if (StateManager.oneTaskPerDay == true){
             // Show permanent card
@@ -427,8 +438,8 @@ public class GameManager : MonoBehaviour
         StateManager.category = StateManager.Category.GIFT_SHOP;
         StateManager.gameName = "";
         StateManager.pokerPlanning = false;
-        StateManager.CreatePlayers(new List<string>{"Alice"});
-        // StateManager.CreatePlayers(new List<string>{"Alice", "Bob", "Charles"});
+        // StateManager.CreatePlayers(new List<string>{"Alice"});
+        StateManager.CreatePlayers(new List<string>{"Alice", "Bob", "Charles"});
         StateManager.CreateUserStories(StateManager.Category.GIFT_SHOP);
         foreach (UserStory userStory in StateManager.userStories){
             userStory.size = userStory.defaultSize;
@@ -516,9 +527,11 @@ public class GameManager : MonoBehaviour
         if (n < 0){
             StateManager.loosedTasks -= n - EventManager.taskToAdd;
             StateManager.sprintLoosedTasks -= n - EventManager.taskToAdd;
+            burndownChartManager.currentSprint.currentDay.AddTasks(n + EventManager.taskToAdd);
         }
         else if (n > 0){
             StateManager.totalTasks += n - EventManager.taskToAdd;
+            burndownChartManager.currentSprint.currentDay.AddTasks(n - EventManager.taskToAdd);
         }
         foreach (GameObject doingAUS in this.doingAUS){
             doingAUS.GetComponent<ArrowedUS>().HideArrows();

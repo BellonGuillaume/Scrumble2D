@@ -1207,7 +1207,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 43828194}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 451fe2edc88d08e42a74e94e0000bb27, type: 3}
+  m_Script: {fileID: 11500000, guid: e7bf7481af8a44946b464d2b781eed4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 43828197}
@@ -1342,7 +1342,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 53981852}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30a1001b082e69149940a9262229fdf6, type: 3}
+  m_Script: {fileID: 11500000, guid: b53cb0a8c144fc744ab9a8ee7224b1b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &53981855
@@ -2497,7 +2497,6 @@ GameObject:
   m_Component:
   - component: {fileID: 181623024}
   - component: {fileID: 181623025}
-  - component: {fileID: 181623026}
   - component: {fileID: 181623027}
   m_Layer: 5
   m_Name: DaySlider
@@ -2588,19 +2587,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &181623026
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 181623023}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 740e03475848af64f8fa74b7b8bf9e18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  counter: {fileID: 0}
 --- !u!114 &181623027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8552,7 +8538,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 519452433}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 740e03475848af64f8fa74b7b8bf9e18, type: 3}
+  m_Script: {fileID: 11500000, guid: cab73d250d57bd94da2a56d3a8d921d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   counter: {fileID: 80330258}

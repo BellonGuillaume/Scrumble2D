@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638248333625308615
-    m_Hash: 210558344
+      ticks: 638264157886053981
+    m_Hash: 883982326
   m_LockFileStatus:
     m_FilePath: C:/Users/guill/Bureau/Memoire - Scrumble/Scrumble2D/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638248333625508626
-    m_Hash: 3846205959
+      ticks: 638264157886093984
+    m_Hash: 3786303025
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -22,6 +22,54 @@ m_LocalPackages:
 m_ProjectPath: C:/Users/guill/Bureau/Memoire - Scrumble/Scrumble2D/Packages
 m_EditorVersion: 2021.3.16f1 (4016570cf34f)
 m_ResolvedPackages:
+- packageId: com.github-glitchenzo.nugetforunity@https://github.com/GlitchEnzo/NuGetForUnity.git?path=/src/NuGetForUnity
+  testable: 0
+  isDirectDependency: 1
+  version: 3.1.3
+  source: 5
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.github-glitchenzo.nugetforunity@65640405ea
+  assetPath: Packages/com.github-glitchenzo.nugetforunity
+  name: com.github-glitchenzo.nugetforunity
+  displayName: NuGetForUnity
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: 
+  description: A NuGet Package Manager for Unity
+  status: 0
+  errors: []
+  versions:
+    all: []
+    compatible: []
+    verified: 
+  dependencies: []
+  resolvedDependencies: []
+  keywords:
+  - nuget
+  - unity
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+  hideInEditor: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 0
+  documentationUrl: https://github.com/GlitchEnzo/NuGetForUnity
+  hasRepository: 0
+  repository:
+    type: 
+    url: 
+    revision: 
+    path: 
+  unityLifecycle:
+    version: 
+    nextVersion: 
 - packageId: com.unity.collab-proxy@1.17.7
   testable: 0
   isDirectDependency: 1
@@ -1017,6 +1065,7 @@ m_ResolvedPackages:
     - 3.2.0-pre.2
     - 3.2.0-pre.3
     - 3.2.0-pre.4
+    - 3.2.0-pre.5
     - 4.0.0-pre.1
     - 4.0.0-pre.2
     compatible:
@@ -1025,6 +1074,7 @@ m_ResolvedPackages:
     - 3.2.0-pre.2
     - 3.2.0-pre.3
     - 3.2.0-pre.4
+    - 3.2.0-pre.5
     verified: 3.0.6
   dependencies:
   - name: com.unity.ugui
@@ -1253,6 +1303,7 @@ m_ResolvedPackages:
     all:
     - 1.0.0
     - 3.0.0-exp.1
+    - 3.0.0-exp.3
     compatible:
     - 1.0.0
     verified: 1.0.0

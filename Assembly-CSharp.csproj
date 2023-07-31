@@ -36,14 +36,12 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Old\PlayerOld.cs" />
      <Compile Include="Assets\Scripts\Game\EventManager.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
      <Compile Include="Assets\Scripts\Ressources\DropCase.cs" />
      <Compile Include="Assets\Scripts\Game\CardHandler.cs" />
      <Compile Include="Assets\Scripts\Game\ChoosePlayer.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
-     <Compile Include="Assets\Scripts\Old\HostJoinUI.cs" />
      <Compile Include="Assets\Scripts\Game\UICard.cs" />
      <Compile Include="Assets\Scripts\Ressources\FlexibleGridLayout.cs" />
      <Compile Include="Assets\Scripts\PokerPlanning\CustomPokerPlanningManager.cs" />
@@ -53,12 +51,10 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
      <Compile Include="Assets\Scripts\Game\Animation\AnimationManager.cs" />
      <Compile Include="Assets\Scripts\Ressources\AutoSizeScrollView.cs" />
-     <Compile Include="Assets\Scripts\Old\BackButtonScript.cs" />
      <Compile Include="Assets\Scripts\Game\Results.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
      <Compile Include="Assets\Scripts\Ressources\ArrowedUS.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
-     <Compile Include="Assets\Scripts\Old\ScrollingManager.cs" />
      <Compile Include="Assets\Scripts\Menu\UIPlayer.cs" />
      <Compile Include="Assets\Scripts\Game\CardPicker.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
@@ -69,7 +65,6 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
-     <Compile Include="Assets\Scripts\Old\UILobby.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\Game\QuestionHandler.cs" />
      <Compile Include="Assets\Scripts\Game\GameManager.cs" />
@@ -83,8 +78,6 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
      <Compile Include="Assets\Scripts\Game\Card.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
-     <Compile Include="Assets\Scripts\Old\ConnexionManager.cs" />
-     <Compile Include="Assets\Scripts\Old\ExitButton.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
      <Compile Include="Assets\Scripts\Ressources\UserStoryUI.cs" />
      <Compile Include="Assets\Scripts\Game\DailyPlayer.cs" />
@@ -114,60 +107,104 @@
      <Compile Include="Assets\Scripts\PokerPlanning\PokerPlanningManager.cs" />
      <Compile Include="Assets\Scripts\Game\ReviewManager.cs" />
      <Compile Include="Assets\Scripts\Menu\StateManager.cs" />
-     <Compile Include="Assets\Scripts\Old\HexToRGBA.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
-     <Compile Include="Assets\Scripts\Old\AutoHostClient.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
      <Compile Include="Assets\Scripts\Game\TDDDManager.cs" />
-     <Compile Include="Assets\Scripts\Old\MatchMaker.cs" />
-     <Compile Include="Assets\Scripts\Old\BarScroller.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
      <Compile Include="Assets\Scripts\Game\Animation\Easing.cs" />
-     <Compile Include="Assets\Scripts\Old\PlayButtonScript.cs" />
-     <Compile Include="Assets\Scripts\Old\TextSlider.cs" />
+     <Compile Include="Assets\Scripts\Game\BurndownChartManager.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
-     <Compile Include="Assets\Scripts\Old\StateNameController.cs" />
+     <Compile Include="Assets\Scripts\Game\DebtSlider.cs" />
+     <Compile Include="Assets\Scripts\Game\Animation\Scrolling.cs" />
+     <Compile Include="Assets\Scripts\Game\ExitButton.cs" />
+     <None Include="Assets\Packages\System.Globalization.4.3.0\ThirdPartyNotices.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
+     <None Include="Assets\Packages\System.Threading.4.3.0\dotnet_library_license.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
+     <None Include="Assets\Packages\System.IO.4.3.0\dotnet_library_license.txt" />
+     <None Include="Assets\Packages\System.Reflection.TypeExtensions.4.3.0\ThirdPartyNotices.txt" />
+     <None Include="Assets\Packages\System.Resources.ResourceManager.4.3.0\ThirdPartyNotices.txt" />
+     <None Include="Assets\Packages\System.Threading.Tasks.4.3.0\ThirdPartyNotices.txt" />
      <None Include="Assets\ScriptTemplates\51-Mirror__Network Authenticator-NewNetworkAuthenticator.cs.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+     <None Include="Assets\Packages\System.Linq.4.3.0\dotnet_library_license.txt" />
+     <None Include="Assets\Packages\System.Linq.4.3.0\ThirdPartyNotices.txt" />
      <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Oswald-Bold - OFL.txt" />
+     <None Include="Assets\Packages\System.Runtime.Extensions.4.3.0\dotnet_library_license.txt" />
      <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Anton OFL.txt" />
+     <None Include="Assets\Packages\System.Collections.4.3.0\ThirdPartyNotices.txt" />
+     <None Include="Assets\Packages\System.Diagnostics.Debug.4.3.0\ThirdPartyNotices.txt" />
+     <None Include="Assets\Packages\Microsoft.NETCore.Targets.1.1.0\dotnet_library_license.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
+     <None Include="Assets\Packages\System.ObjectModel.4.3.0\ThirdPartyNotices.txt" />
      <None Include="Assets\ScriptTemplates\56-Mirror__Network Discovery-NewNetworkDiscovery.cs.txt" />
+     <None Include="Assets\Packages\System.Reflection.Emit.Lightweight.4.3.0\ThirdPartyNotices.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
+     <None Include="Assets\Packages\System.Reflection.Extensions.4.3.0\ThirdPartyNotices.txt" />
+     <None Include="Assets\Packages\System.Linq.Expressions.4.3.0\ThirdPartyNotices.txt" />
+     <None Include="Assets\Packages\System.Reflection.Extensions.4.3.0\dotnet_library_license.txt" />
+     <None Include="Assets\Packages\System.Dynamic.Runtime.4.3.0\ThirdPartyNotices.txt" />
+     <None Include="Assets\Packages\System.Resources.ResourceManager.4.3.0\dotnet_library_license.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+     <None Include="Assets\Packages\System.IO.4.3.0\ThirdPartyNotices.txt" />
+     <None Include="Assets\Packages\System.Runtime.Extensions.4.3.0\ThirdPartyNotices.txt" />
      <None Include="Assets\Colors\gradient_tiles.txt" />
-     <None Include="Assets\Mirror\Version.txt" />
-     <None Include="Assets\Mirror\Readme.txt" />
+     <None Include="Assets\Packages\CsvHelper.30.0.1\lib\netstandard2.1\CsvHelper.xml" />
+     <None Include="Assets\Packages\System.Reflection.4.3.0\dotnet_library_license.txt" />
+     <None Include="Assets\Packages\System.ObjectModel.4.3.0\dotnet_library_license.txt" />
+     <None Include="Assets\Packages\System.Runtime.InteropServices.4.3.0\ThirdPartyNotices.txt" />
      <None Include="Assets\Font\nightwatcher\fontinfo.txt" />
+     <None Include="Assets\Packages\System.Threading.Tasks.4.3.0\dotnet_library_license.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
+     <None Include="Assets\Packages\System.Globalization.4.3.0\dotnet_library_license.txt" />
      <None Include="Assets\ScriptTemplates\57-Mirror__Network Transform-NewNetworkTransform.cs.txt" />
      <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+     <None Include="Assets\Packages\System.Reflection.Primitives.4.3.0\ThirdPartyNotices.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
      <None Include="Assets\Font\nightwatcher\ffonts.net.txt" />
      <None Include="Assets\ScriptTemplates\52-Mirror__Network Behaviour-NewNetworkBehaviour.cs.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
+     <None Include="Assets\Packages\System.Dynamic.Runtime.4.3.0\dotnet_library_license.txt" />
+     <None Include="Assets\Packages\System.Runtime.4.3.0\ThirdPartyNotices.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
-     <None Include="Assets\Mirror\Notice.txt" />
+     <None Include="Assets\Packages\System.Runtime.InteropServices.4.3.0\dotnet_library_license.txt" />
+     <None Include="Assets\Packages\System.Reflection.Emit.Lightweight.4.3.0\dotnet_library_license.txt" />
+     <None Include="Assets\Packages\System.Threading.4.3.0\ThirdPartyNotices.txt" />
+     <None Include="Assets\Packages\Microsoft.NETCore.Platforms.1.1.0\dotnet_library_license.txt" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
      <None Include="Assets\Materials\ColorOnAngle.shader" />
-     <None Include="Assets\Mirror\Plugins\Mono.Cecil\License.txt" />
+     <None Include="Assets\Packages\System.Diagnostics.Debug.4.3.0\dotnet_library_license.txt" />
+     <None Include="Assets\Packages\System.Runtime.4.3.0\dotnet_library_license.txt" />
+     <None Include="Assets\Packages\System.Reflection.Emit.ILGeneration.4.3.0\dotnet_library_license.txt" />
+     <None Include="Assets\Packages\System.Collections.4.3.0\dotnet_library_license.txt" />
+     <None Include="Assets\Packages\System.Reflection.Emit.4.3.0\ThirdPartyNotices.txt" />
+     <None Include="Assets\Packages\System.Reflection.Primitives.4.3.0\dotnet_library_license.txt" />
      <None Include="Assets\ScriptTemplates\55-Mirror__Network Room Player-NewNetworkRoomPlayer.cs.txt" />
+     <None Include="Assets\Packages\System.Linq.Expressions.4.3.0\dotnet_library_license.txt" />
+     <None Include="Assets\Packages\System.Text.Encoding.4.3.0\ThirdPartyNotices.txt" />
+     <None Include="Assets\Packages\Microsoft.NETCore.Targets.1.1.0\ThirdPartyNotices.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
+     <None Include="Assets\Packages\System.Reflection.4.3.0\ThirdPartyNotices.txt" />
      <None Include="Assets\ScriptTemplates\53-Mirror__Custom Interest Management-CustomInterestManagement.cs.txt" />
+     <None Include="Assets\Packages\System.Reflection.Emit.4.3.0\dotnet_library_license.txt" />
+     <None Include="Assets\Packages\System.Runtime.Handles.4.3.0\dotnet_library_license.txt" />
+     <None Include="Assets\Packages\System.Runtime.Handles.4.3.0\ThirdPartyNotices.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
      <None Include="Assets\ScriptTemplates\50-Mirror__Network Manager-NewNetworkManager.cs.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
      <None Include="Assets\ScriptTemplates\54-Mirror__Network Room Manager-NewNetworkRoomManager.cs.txt" />
      <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+     <None Include="Assets\Packages\System.Text.Encoding.4.3.0\dotnet_library_license.txt" />
+     <None Include="Assets\Packages\System.Reflection.Emit.ILGeneration.4.3.0\ThirdPartyNotices.txt" />
      <None Include="Assets\Font\nightwatcher\install-a-new-font.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
+     <None Include="Assets\Packages\Microsoft.NETCore.Platforms.1.1.0\ThirdPartyNotices.txt" />
+     <None Include="Assets\Packages\System.Reflection.TypeExtensions.4.3.0\dotnet_library_license.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
      <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Bangers - OFL.txt" />
     <Reference Include="UnityEngine">
@@ -416,14 +453,8 @@
     <Reference Include="UnityEditor.UnityConnectModule">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.16f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
-    <Reference Include="Mono.CecilX.Rocks">
-        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Assets\Mirror\Plugins\Mono.Cecil\Mono.CecilX.Rocks.dll</HintPath>
-    </Reference>
-    <Reference Include="Mono.CecilX.Pdb">
-        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Assets\Mirror\Plugins\Mono.Cecil\Mono.CecilX.Pdb.dll</HintPath>
-    </Reference>
-    <Reference Include="Mono.CecilX">
-        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Assets\Mirror\Plugins\Mono.Cecil\Mono.CecilX.dll</HintPath>
+    <Reference Include="System.Reflection.TypeExtensions">
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Assets\Packages\System.Reflection.TypeExtensions.4.3.0\lib\netstandard1.5\System.Reflection.TypeExtensions.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Cecil.Mdb">
         <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.burst@1.8.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
@@ -440,8 +471,8 @@
     <Reference Include="Newtonsoft.Json">
         <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Mono.CecilX.Mdb">
-        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Assets\Mirror\Plugins\Mono.Cecil\Mono.CecilX.Mdb.dll</HintPath>
+    <Reference Include="CsvHelper">
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Assets\Packages\CsvHelper.30.0.1\lib\netstandard2.1\CsvHelper.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.16f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
@@ -896,6 +927,9 @@
     <Reference Include="Unity.VisualStudio.Editor">
         <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="NuGetForUnity">
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\NuGetForUnity.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Timeline">
         <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
     </Reference>
@@ -976,46 +1010,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="kcp2k.csproj">
-      <Project>{004dfa13-347b-4b60-8d47-fd5e12195a0f}</Project>
-      <Name>kcp2k</Name>
-    </ProjectReference>
-    <ProjectReference Include="Mirror.Transports.csproj">
-      <Project>{c244d7ce-86a5-952e-de16-0ce533171596}</Project>
-      <Name>Mirror.Transports</Name>
-    </ProjectReference>
-    <ProjectReference Include="Mirror.Editor.csproj">
-      <Project>{78d96b7f-096a-425d-1d47-c21027e036bc}</Project>
-      <Name>Mirror.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Mirror.CompilerSymbols.csproj">
-      <Project>{31f306f3-09f6-c0bf-321f-3ce36bf84555}</Project>
-      <Name>Mirror.CompilerSymbols</Name>
-    </ProjectReference>
-    <ProjectReference Include="Mirror.Authenticators.csproj">
-      <Project>{6da8228c-9428-743f-b5eb-6ef611189dbc}</Project>
-      <Name>Mirror.Authenticators</Name>
-    </ProjectReference>
-    <ProjectReference Include="Telepathy.csproj">
-      <Project>{08edb8ea-f11a-9a36-6afc-94d71642c3a7}</Project>
-      <Name>Telepathy</Name>
-    </ProjectReference>
-    <ProjectReference Include="Mirror.Components.csproj">
-      <Project>{31a0bbab-0562-b75d-445f-dcacfa72c11d}</Project>
-      <Name>Mirror.Components</Name>
-    </ProjectReference>
-    <ProjectReference Include="Mirror.csproj">
-      <Project>{dfa0bfb1-6303-dd74-e748-d39ca9b01e95}</Project>
-      <Name>Mirror</Name>
-    </ProjectReference>
-    <ProjectReference Include="Mirror.Examples.csproj">
-      <Project>{afa0b12d-bb5b-6762-03fe-14fce2cced28}</Project>
-      <Name>Mirror.Examples</Name>
-    </ProjectReference>
-    <ProjectReference Include="SimpleWebTransport.csproj">
-      <Project>{d440350d-623e-b069-6dd0-520ec9fd566e}</Project>
-      <Name>SimpleWebTransport</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

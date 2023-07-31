@@ -559,7 +559,7 @@ public class CardHandler : MonoBehaviour
                 yield return new WaitUntil(() => EventManager.okPressed == true);
                 EventManager.okPressed = false;
                 this.okButton.gameObject.SetActive(false);
-                permanentPlaceholder = permanentCard9.gameObject;
+                permanentPlaceholder = permanentCard8.gameObject;
                 StateManager.oneTaskPerDay = true;
                 break;
             }
@@ -726,12 +726,12 @@ public class CardHandler : MonoBehaviour
     public IEnumerator FirstPickDailyCard(){
         yield return new WaitUntil(() => StateManager.gameState == StateManager.GameState.PICK_DAILY);
         EventManager.cardsToPick = 1;
-        Card customPickedCard = this.dailyCards[1];
-        this.cardPicker.AddCart(customPickedCard);
-        this.pickedCards.Add(customPickedCard);
-        this.remainingDailyCards.Remove(customPickedCard);
-        this.readyToDiscard.Add(customPickedCard.id + (((int) customPickedCard.category -1) * 60) -1, false);
-        for (int i = 0; i < 2; i++){
+        // Card customPickedCard = this.dailyCards[1];
+        // this.cardPicker.AddCart(customPickedCard);
+        // this.pickedCards.Add(customPickedCard);
+        // this.remainingDailyCards.Remove(customPickedCard);
+        // this.readyToDiscard.Add(customPickedCard.id + (((int) customPickedCard.category -1) * 60) -1, false);
+        for (int i = 0; i < 3; i++){
             if (this.remainingDailyCards.Count < 1){
                 this.remainingDailyCards.AddRange(this.discardedDailyCards);
                 this.discardedDailyCards = new List<Card>();
