@@ -48,8 +48,7 @@ public class DropCase : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
         if (this.transform.childCount > 0){
             if(nextDropCase is null)
                 return;
-            this.nextDropCase.MoveToNext(this.transform.GetChild(0), this.userStoryUI);
-            this.userStoryUI = null;
+            this.MoveToNext(null);
         }
     }
 
@@ -64,33 +63,42 @@ public class DropCase : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
         if (eventData.pointerDrag.GetComponent<DraggableItem>().isDragged == false)
             return;
         if (this.transform.childCount == 0){
-            this.nextDropCase.MoveToPrev();
+            this.GetFromNext();
         }
     }
-    public void MoveToNext(Transform card, UserStoryUI userStory){
-        if(this.transform.childCount == 0){
-            card.SetParent(this.transform);
-            this.userStoryUI = userStory;
-            return;
-        }
-        if(this.nextDropCase is null){
+    public void MoveToNext(UserStoryUI newUS){
+        if (this.transform.childCount == 0){
+            this.userStoryUI = newUS;
+            if (newUS is not null)
+                newUS.transform.SetParent(this.transform);
         } else {
-            this.nextDropCase.MoveToNext(this.transform.GetChild(0), this.userStoryUI);
-            card.SetParent(this.transform);
-            this.userStoryUI = userStory;
+            UserStoryUI oldUS = this.userStoryUI;
+            this.userStoryUI = newUS;
+            if (newUS is not null)
+                newUS.transform.SetParent(this.transform);
+            this.nextDropCase.MoveToNext(oldUS);
         }
     }
-    public void MoveToPrev(){
-        if(this.transform.childCount == 0){
-            this.previousDropCase.userStoryUI = null;
-            return;
-        }
-        this.transform.GetChild(0).transform.SetParent(this.previousDropCase.transform);
-        this.previousDropCase.userStoryUI = this.userStoryUI;
-        if(this.nextDropCase is null){
+    public UserStoryUI GetNextUS(){
+        if (this.userStoryUI is null){
+            if (this.nextDropCase is null)
+                return null;
+            else
+                return this.nextDropCase.GetNextUS();
+        } else {
+            UserStoryUI usToReturn = this.userStoryUI;
             this.userStoryUI = null;
-            return;
+            return usToReturn;
         }
-        this.nextDropCase.MoveToPrev();
+    }
+
+    public void GetFromNext(){
+        if (this.nextDropCase is null)
+            return;
+        UserStoryUI newUS = this.GetNextUS();
+        if (newUS is not null)
+            newUS.transform.SetParent(this.transform);
+        this.userStoryUI = newUS;
+        this.nextDropCase.GetFromNext();
     }
 }

@@ -30,23 +30,23 @@ public class DropContent : MonoBehaviour, IDropHandler
     }
 
     void Update(){
-        int filledCases = 0;
-        for (int i = cases.Count-1; i >= 6; i--){
-            if(cases[i].transform.childCount == 0){
-                if(i % 2 == 0){
-                    if(cases[i+1].transform.childCount == 0){
-                        RemoveCases(i);
-                    }
-                }
-
+        int unfilled = 0;
+        for (int i = 0; i < cases.Count; i++){
+            if (cases[i].transform.childCount == 0)
+                unfilled++;
+                // if (EventManager.movingUS == false){
+                //     cases[i].GetFromNext();
+                //     if (cases[i].userStoryUI is not null)
+                //         unfilled--;
+                // }
+            else
+                unfilled = 0;
+            if (i == cases.Count -1){
+                if (unfilled < 1)
+                    CreateTwoMoreCases();
+                else if (unfilled > 2 && i >= 6)
+                    RemoveTwoLastCases();
             }
-        }
-        for (int i = 3; i > 0; i--){
-            if(cases[cases.Count-i].transform.childCount != 0)
-                filledCases++;
-        }
-        if (filledCases == 3){
-            this.CreateTwoMoreCases();
         }
     }
 
@@ -147,21 +147,12 @@ public class DropContent : MonoBehaviour, IDropHandler
         cases.Add(go2.GetComponent<DropCase>());
     }
 
-    public void RemoveCases(int index){
-        GameObject go1 = cases[index].gameObject;
-        GameObject go2 = cases[index+1].gameObject;
-        if(index + 2 >= cases.Count){
-            cases[index-1].nextDropCase = null;
-            cases.RemoveAt(index+1);
-            cases.RemoveAt(index);
-            Destroy(go1);
-            Destroy(go2);
-            return;
-        }
-        cases[index-1].nextDropCase = cases[index+2];
-        cases[index+2].previousDropCase = cases[index-1];
-        cases.RemoveAt(index+1);
-        cases.RemoveAt(index);
+    public void RemoveTwoLastCases(){
+        GameObject go1 = cases[cases.Count-2].gameObject;
+        GameObject go2 = cases[cases.Count-1].gameObject;
+        cases[cases.Count-3].nextDropCase = null;
+        cases.RemoveAt(cases.Count-1);
+        cases.RemoveAt(cases.Count-1);
         Destroy(go1);
         Destroy(go2);
     }

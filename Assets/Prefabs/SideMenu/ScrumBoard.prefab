@@ -1858,6 +1858,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollRect: {fileID: 7134518163367017946}
   content: {fileID: 8610578952991881638}
+  contentTransform: {fileID: 8610578952991881638}
   padding: 10
   numberOfObjectsAlreadyShowed: 3
 --- !u!1 &5739846066972441853
@@ -2091,6 +2092,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollRect: {fileID: 6693607821514718813}
   content: {fileID: 8887362150994319727}
+  contentTransform: {fileID: 8887362150994319727}
   padding: 10
   numberOfObjectsAlreadyShowed: 3
 --- !u!1 &6098770151089727512
@@ -2406,6 +2408,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollRect: {fileID: 2132784756442292286}
   content: {fileID: 4001836341358513095}
+  contentTransform: {fileID: 4001836341358513095}
   padding: 10
   numberOfObjectsAlreadyShowed: 3
 --- !u!1 &6535672994241339695
@@ -2660,6 +2663,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollRect: {fileID: 677884779524313368}
   content: {fileID: 6803532164463119345}
+  contentTransform: {fileID: 6803532164463119345}
   padding: 10
   numberOfObjectsAlreadyShowed: 3
 --- !u!1 &6856509713556932012
@@ -3488,6 +3492,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollRect: {fileID: 5827029419125214315}
   content: {fileID: 8274144399354306883}
+  contentTransform: {fileID: 8274144399354306883}
   padding: 10
   numberOfObjectsAlreadyShowed: 3
 --- !u!1 &8310137702430476506

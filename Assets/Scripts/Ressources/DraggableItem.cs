@@ -14,10 +14,12 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         if(StateManager.gameState == StateManager.GameState.TDTD && userStory.state == UserStory.State.PRODUCT_BACKLOG && userStoryUI.canBeDrag){
             parentAfterDrag = transform.parent;
+            transform.parent.GetComponent<DropCase>().userStoryUI = null;
             transform.SetParent(transform.root);
             transform.SetAsLastSibling();
             DisableRaycastTargetsRecursively(transform);
             isDragged = true;
+            EventManager.movingUS = true;
         }
     }
 
@@ -31,9 +33,17 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void OnEndDrag(PointerEventData eventData)
     {
         if(StateManager.gameState == StateManager.GameState.TDTD && userStory.state == UserStory.State.PRODUCT_BACKLOG && userStoryUI.canBeDrag){
-            transform.SetParent(parentAfterDrag);
-            EnableRaycastTargetsRecursively(transform);
-            isDragged = false;
+            if (parentAfterDrag.childCount > 0){
+                parentAfterDrag.GetComponent<DropCase>().MoveToNext(this.userStoryUI);
+                EnableRaycastTargetsRecursively(transform);
+                isDragged = false;
+            } else {
+                transform.SetParent(parentAfterDrag);
+                transform.parent.GetComponent<DropCase>().userStoryUI = this.userStoryUI;
+                EnableRaycastTargetsRecursively(transform);
+                isDragged = false;
+            }
+            EventManager.movingUS = false;
         }
     }
     private void DisableRaycastTargetsRecursively(Transform parent)

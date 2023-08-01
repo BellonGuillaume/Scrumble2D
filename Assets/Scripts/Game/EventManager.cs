@@ -5,6 +5,7 @@ using UnityEngine;
 public class EventManager : MonoBehaviour
 {
     public static bool animate = false;
+    public static bool movingUS = false;
     public static bool handleCards = false;
     public static bool handleSingleCard = false;
     public static bool handleSimpleAction = false;
