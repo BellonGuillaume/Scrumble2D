@@ -35,7 +35,7 @@ public class StateManager : MonoBehaviour
     public static int totalTasks = 0;
     public static int loosedTasks = 0;
     public enum GameState{
-        MENU, POKER_PLANNING, CUSTOM_POKER_PLANNING, INITIALISATION, BEGIN_GAME, TDTD, BEGIN_DAY, PICK_DAILY, PLAYER_TURN, END_OF_DAY, REVIEW, REVIEW_CARDS, SUMMARY, RETROSPECTIVE, END_OF_SPRINT, END_OF_GAME
+        MENU, POKER_PLANNING, CUSTOM_POKER_PLANNING, INITIALISATION, BEGIN_GAME, TDTD, BEGIN_DAY, PICK_DAILY, PLAYER_TURN, WANT_TO_PASS, END_OF_DAY, REVIEW, REVIEW_CARDS, SUMMARY, RETROSPECTIVE, END_OF_SPRINT, END_OF_GAME
     }
     
     public static int currentDebt;
@@ -59,7 +59,7 @@ public class StateManager : MonoBehaviour
     #endregion
     #region Turn State
     public enum TurnState{
-        BEGIN_TURN, CHOICE, ROLL, RESULT, PROBLEM, END_OF_TURN
+        BEGIN_TURN, CHOICE, ROLL, RESULT, PROBLEM, NEW_US_ADDED, WANT_TO_PASS, END_OF_TURN,
     }
     public static Player currentPlayer;
     public static string firstTaskOrDebtChoice;

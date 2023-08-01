@@ -70,6 +70,7 @@ public class CardPicker : MonoBehaviour
         animationManager.AddPermanentCard(this.choosenCard, permanentCardLocation);
         yield return new WaitUntil(() => EventManager.animate == false);
         this.choosenCard.SetActive(false);
+        this.choosenCard.GetComponent<UICard>().SetAlpha(255);
         this.choosenCard.GetComponent<UICard>().AddVerso();
         this.choosenCard.GetComponent<UICard>().UnFill();
         this.choosenIndex = -1;

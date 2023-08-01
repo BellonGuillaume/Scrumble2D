@@ -465,6 +465,8 @@ public class CardHandler : MonoBehaviour
                 this.okButton.gameObject.SetActive(false);
                 permanentPlaceholder = permanentCard7.gameObject;
                 StateManager.jinxed = true;
+                StartCoroutine(this.cardPicker.PlacePermanentCard(permanentPlaceholder));
+                yield return new WaitUntil(() => EventManager.animate == false);
                 break;
             }
             case Card.Permanent.NoMoreTestIssues : {
@@ -474,6 +476,8 @@ public class CardHandler : MonoBehaviour
                 this.okButton.gameObject.SetActive(false);
                 permanentPlaceholder = permanentCard1.gameObject;
                 StateManager.noMoreTestIssues = true;
+                StartCoroutine(this.cardPicker.PlacePermanentCard(permanentPlaceholder));
+                yield return new WaitUntil(() => EventManager.animate == false);
                 break;
             }
             case Card.Permanent.OneMoreTaskPerRoll : {
@@ -491,7 +495,11 @@ public class CardHandler : MonoBehaviour
                     yield return new WaitUntil(() => EventManager.action == false);
                     permanentPlaceholder = permanentCard2.gameObject;
                     StateManager.oneMoreTaskPerRoll = true;
+                    StartCoroutine(this.cardPicker.PlacePermanentCard(permanentPlaceholder));
+                    yield return new WaitUntil(() => EventManager.animate == false);
                 } else {
+                    StartCoroutine(this.cardPicker.UnChooseCard());
+                    yield return new WaitUntil(() => EventManager.animate == false);
                     readyToDiscard[card.id + (((int) card.category -1) * 60) - 1] = true;
                 }
                 break;
@@ -503,6 +511,8 @@ public class CardHandler : MonoBehaviour
                 this.okButton.gameObject.SetActive(false);
                 permanentPlaceholder = permanentCard3.gameObject;
                 StateManager.tasksOnBeginSprint = true;
+                StartCoroutine(this.cardPicker.PlacePermanentCard(permanentPlaceholder));
+                yield return new WaitUntil(() => EventManager.animate == false);
                 break;
             }
             case Card.Permanent.TwoMoreTasksPerRoll : {
@@ -520,8 +530,12 @@ public class CardHandler : MonoBehaviour
                     yield return new WaitUntil(() => EventManager.action == false);
                     permanentPlaceholder = permanentCard4.gameObject;
                     StateManager.currentPlayer.twoMoreTasksPerRoll = true;
+                    StartCoroutine(this.cardPicker.PlacePermanentCard(permanentPlaceholder));
+                    yield return new WaitUntil(() => EventManager.animate == false);
                 } else {
                     readyToDiscard[card.id + (((int) card.category -1) * 60) - 1] = true;
+                    StartCoroutine(this.cardPicker.UnChooseCard());
+                    yield return new WaitUntil(() => EventManager.animate == false);
                 }
                 break;
             }
@@ -532,6 +546,8 @@ public class CardHandler : MonoBehaviour
                 this.okButton.gameObject.SetActive(false);
                 permanentPlaceholder = permanentCard5.gameObject;
                 StateManager.maxUserStoryLowered = true;
+                StartCoroutine(this.cardPicker.PlacePermanentCard(permanentPlaceholder));
+                yield return new WaitUntil(() => EventManager.animate == false);
                 break;
             }
             case Card.Permanent.DecreaseDebtPerTurn : {
@@ -547,10 +563,14 @@ public class CardHandler : MonoBehaviour
                     EventManager.action = true;
                     StartCoroutine(HandleAtomicAction(Card.Action.CurrentPlayerPassATurn, 3));
                     yield return new WaitUntil(() => EventManager.action == false);
-                permanentPlaceholder = permanentCard6.gameObject;
+                    permanentPlaceholder = permanentCard6.gameObject;
                     StateManager.currentPlayer.decreaseDebtPerTurn = true;
+                    StartCoroutine(this.cardPicker.PlacePermanentCard(permanentPlaceholder));
+                    yield return new WaitUntil(() => EventManager.animate == false);
                 } else {
                     readyToDiscard[card.id + (((int) card.category -1) * 60) - 1] = true;
+                    StartCoroutine(this.cardPicker.UnChooseCard());
+                    yield return new WaitUntil(() => EventManager.animate == false);
                 }
                 break;
             }
@@ -561,13 +581,13 @@ public class CardHandler : MonoBehaviour
                 this.okButton.gameObject.SetActive(false);
                 permanentPlaceholder = permanentCard8.gameObject;
                 StateManager.oneTaskPerDay = true;
+                StartCoroutine(this.cardPicker.PlacePermanentCard(permanentPlaceholder));
+                yield return new WaitUntil(() => EventManager.animate == false);
                 break;
             }
             default :
                 break;
         }
-        StartCoroutine(this.cardPicker.PlacePermanentCard(permanentPlaceholder));
-        yield return new WaitUntil(() => EventManager.animate == false);
         EventManager.handlePermanentAction = false;
         yield break;
     }

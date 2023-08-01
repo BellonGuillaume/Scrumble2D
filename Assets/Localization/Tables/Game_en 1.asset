@@ -126,6 +126,17 @@ MonoBehaviour:
     m_Localized: Task Validation
     m_Metadata:
       m_Items: []
+  - m_Id: 2159220923867136
+    m_Localized: You have completed all the tasks in this sprint. Do you want to
+      add new user stories to the sprint or continue while reducing the technical
+      debt ?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2165750163349504
+    m_Localized: You have completed all the user stories. Do you want to finish the
+      sprint or continue while reducing the technical debt?
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

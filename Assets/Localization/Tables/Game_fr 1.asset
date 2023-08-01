@@ -127,6 +127,17 @@ MonoBehaviour:
     m_Localized: "Valider les t\xE2ches"
     m_Metadata:
       m_Items: []
+  - m_Id: 2159220923867136
+    m_Localized: "Vous avez compl\xE9t\xE9 toutes les t\xE2ches de ce sprint. Voulez-vous
+      rajouter de nouvelles user stories au sprint ou bien continuer en r\xE9duisant
+      la dette technique ?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2165750163349504
+    m_Localized: "Vous avez compl\xE9t\xE9 toutes les user stories. Voulez-vous terminer
+      le sprint ou bien continuer en r\xE9duisant la dette technique ?"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

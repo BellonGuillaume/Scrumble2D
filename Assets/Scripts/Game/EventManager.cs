@@ -11,8 +11,6 @@ public class EventManager : MonoBehaviour
     public static bool handleSimpleAction = false;
     public static bool handleMultipleActions = false;
     public static bool handleQuestionActions = false;
-    public static bool handleRollTheDiceAction = false;
-    public static bool handleRollTheHalfDiceAction = false;
     public static bool handlePermanentAction = false;
     public static bool handleChoiceActions = false;
     public static bool handleInformationAction = false;
@@ -33,4 +31,6 @@ public class EventManager : MonoBehaviour
     public static bool rolled = false;
     public static int usToShift = 0;
     public static bool usResized = false;
+    public static bool allFilledChoiceMade = false;
+    public static bool onlyDebt = false;
 }

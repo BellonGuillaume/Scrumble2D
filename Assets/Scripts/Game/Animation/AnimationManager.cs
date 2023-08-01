@@ -358,13 +358,14 @@ public class AnimationManager : MonoBehaviour
         );
     }
 
-    public void ShowTDDD(){
+    public void ShowTDDD(bool withPopUp = true){
         EventManager.animate = true;
         byte startBlur = 0;
         byte endBlur = this.blurValue;
         Vector2 startScale = new Vector2(0f, 0f);
         Vector2 endScale = this.popUpScale;
-        this.popUp.SetActive(true);
+        if(withPopUp)
+            this.popUp.SetActive(true);
         this.tdddPopUp.SetActive(true);
         animationCoroutine = this.CreateAnimationRoutine(
             popUpInDuration,
@@ -374,8 +375,10 @@ public class AnimationManager : MonoBehaviour
                 byte blur = (byte) Mathf.Lerp(startBlur, endBlur, easedProgress);
                 Color32 temp = backgroundPopUp.GetComponent<Image>().color;
                 temp.a = blur;
-                backgroundPopUp.GetComponent<Image>().color = temp;
-                windowPopUp.transform.localScale = scale;
+                if(withPopUp)
+                    backgroundPopUp.GetComponent<Image>().color = temp;
+                if(withPopUp)
+                    windowPopUp.transform.localScale = scale;
                 tdddPopUp.transform.localScale = scale;
             },
             delegate{
@@ -385,7 +388,7 @@ public class AnimationManager : MonoBehaviour
 
     }
 
-    public void HideTDDD(){
+    public void HideTDDD(bool withPopUp = true){
         EventManager.animate = true;
         byte startBlur = this.blurValue;
         byte endBlur = 0;
@@ -399,12 +402,15 @@ public class AnimationManager : MonoBehaviour
                 byte blur = (byte) Mathf.Lerp(startBlur, endBlur, easedProgress);
                 Color32 temp = backgroundPopUp.GetComponent<Image>().color;
                 temp.a = blur;
-                backgroundPopUp.GetComponent<Image>().color = temp;
-                windowPopUp.transform.localScale = scale;
+                if(withPopUp)
+                    backgroundPopUp.GetComponent<Image>().color = temp;
+                if(withPopUp)
+                    windowPopUp.transform.localScale = scale;
                 tdddPopUp.transform.localScale = scale;
             },
             delegate{
-                this.popUp.SetActive(false);
+                if(withPopUp)
+                    this.popUp.SetActive(false);
                 this.tdddPopUp.SetActive(false);
                 EventManager.animate = false;
             }
@@ -938,6 +944,58 @@ public class AnimationManager : MonoBehaviour
                 permanentCard.SetActive(true);
                 card.GetComponent<UICard>().SetAlpha(0);
                 card.transform.position = startPos;
+                EventManager.animate = false;
+            }
+        );
+    }
+
+    public void ShowFilledChoice(GameObject filledChoice){
+        EventManager.animate = true;
+        byte startBlur = 0;
+        byte endBlur = this.blurValue;
+        Vector2 startScale = new Vector2(0f, 0f);
+        Vector2 endScale = this.popUpScale;
+        this.popUp.SetActive(true);
+        filledChoice.SetActive(true);
+        animationCoroutine = this.CreateAnimationRoutine(
+            popUpInDuration,
+            delegate(float progress){
+                float easedProgress = Easing.easeInExpo(0, 1, progress);
+                Vector2 scale = Vector2.Lerp(startScale, endScale, easedProgress);
+                byte blur = (byte) Mathf.Lerp(startBlur, endBlur, easedProgress);
+                Color32 temp = backgroundPopUp.GetComponent<Image>().color;
+                temp.a = blur;
+                backgroundPopUp.GetComponent<Image>().color = temp;
+                windowPopUp.transform.localScale = scale;
+                filledChoice.transform.localScale = scale;
+            },
+            delegate{
+                EventManager.animate = false;
+            }
+        );
+    }
+
+    public void HideFilledChoice(GameObject filledChoice){
+        EventManager.animate = true;
+        byte startBlur = 0;
+        byte endBlur = this.blurValue;
+        Vector2 startScale = new Vector2(0f, 0f);
+        Vector2 endScale = this.popUpScale;
+        animationCoroutine = this.CreateAnimationRoutine(
+            popUpInDuration,
+            delegate(float progress){
+                float easedProgress = Easing.easeInExpo(0, 1, progress);
+                Vector2 scale = Vector2.Lerp(endScale, startScale, easedProgress);
+                byte blur = (byte) Mathf.Lerp(endBlur, startBlur, easedProgress);
+                Color32 temp = backgroundPopUp.GetComponent<Image>().color;
+                temp.a = blur;
+                backgroundPopUp.GetComponent<Image>().color = temp;
+                windowPopUp.transform.localScale = scale;
+                filledChoice.transform.localScale = scale;
+            },
+            delegate{
+                this.popUp.SetActive(false);
+                filledChoice.SetActive(false);
                 EventManager.animate = false;
             }
         );

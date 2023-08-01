@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject turn;
     [SerializeField] GameObject roll;
     [SerializeField] GameObject results;
+    [SerializeField] FilledChoiceHandler filledChoice;
     [SerializeField] GameObject tddd;
     [SerializeField] Transform placeHolders;
     [SerializeField] GameObject userStoryUIPrefab;
@@ -132,11 +133,13 @@ public class GameManager : MonoBehaviour
             StartCoroutine(AddTasks(5));
             yield return new WaitUntil(() => EventManager.handleAddingTask == false);
         }
-        for (int j = 1; j <= 3; j++){
+        for (int j = 1; j <= 9; j++){
             StateManager.gameState = StateManager.GameState.BEGIN_DAY;
             StateManager.currentDay = j;
             StartCoroutine(BeginDay(j));
-            yield return new WaitUntil(() => StateManager.gameState == StateManager.GameState.END_OF_DAY);
+            yield return new WaitUntil(() => StateManager.gameState == StateManager.GameState.END_OF_DAY || StateManager.gameState == StateManager.GameState.WANT_TO_PASS);
+            if (StateManager.gameState == StateManager.GameState.WANT_TO_PASS)
+                break;
         }
         StateManager.gameState = StateManager.GameState.REVIEW;
         animationManager.StartDayAnimation(10);
@@ -157,14 +160,14 @@ public class GameManager : MonoBehaviour
         StateManager.gameState = StateManager.GameState.END_OF_SPRINT;
     }
 
-    IEnumerator ChooseToDoToDoing(){
+    public IEnumerator ChooseToDoToDoing(bool withPopUp = true){
         yield return new WaitUntil(() => StateManager.gameState == StateManager.GameState.TDTD);
-        animationManager.ShowTDDD();
+        animationManager.ShowTDDD(withPopUp);
         yield return new WaitUntil(() => this.popUpAnimator.GetBool("TDTD") == true);
         this.popUpAnimator.ResetTrigger("TDTD");
 
         AddDoingToWorking();
-        animationManager.HideTDDD();
+        animationManager.HideTDDD(withPopUp);
         yield return new WaitUntil(() => EventManager.animate == false);
         StateManager.gameState = StateManager.GameState.BEGIN_DAY;
     }
@@ -215,8 +218,15 @@ public class GameManager : MonoBehaviour
         foreach (Player player in StateManager.players){
             StateManager.turnState = StateManager.TurnState.BEGIN_TURN;
             StartCoroutine(BeginTurn(player));
-            yield return new WaitUntil(() => StateManager.turnState == StateManager.TurnState.END_OF_TURN);
+            yield return new WaitUntil(() => StateManager.turnState == StateManager.TurnState.END_OF_TURN || StateManager.turnState == StateManager.TurnState.NEW_US_ADDED || StateManager.turnState == StateManager.TurnState.WANT_TO_PASS);
+            Debug.Log($"Day turned ready to clear");
             ClearTurn();
+            if (StateManager.turnState == StateManager.TurnState.NEW_US_ADDED)
+                break;
+            if (StateManager.turnState == StateManager.TurnState.WANT_TO_PASS){
+                StateManager.gameState = StateManager.GameState.WANT_TO_PASS;
+                yield break;
+            }
         }
         StateManager.gameState = StateManager.GameState.END_OF_DAY;
     }
@@ -237,15 +247,23 @@ public class GameManager : MonoBehaviour
         animationManager.StartTurnAnimation(player);
         yield return new WaitUntil(() => EventManager.animate == false);
         StateManager.turnState = StateManager.TurnState.CHOICE;
+        Debug.Log($"Attempting to choice");
         StartCoroutine(StartChoiceTaskDebt());
         yield return new WaitUntil(() => StateManager.turnState == StateManager.TurnState.ROLL);
+        Debug.Log($"Attempting to roll");
         StartCoroutine(StartRollDice());
         yield return new WaitUntil(() => StateManager.turnState == StateManager.TurnState.RESULT);
+        Debug.Log($"Attempting to handle result");
         StartCoroutine(StartShowResult());
     }
     IEnumerator StartChoiceTaskDebt(){
         yield return new WaitUntil(() => StateManager.turnState == StateManager.TurnState.CHOICE);
         
+        if (EventManager.onlyDebt == true)
+            turn.transform.GetChild(1).gameObject.SetActive(false);
+        else
+            turn.transform.GetChild(1).gameObject.SetActive(true);
+
         animationManager.ShowChoice();
         yield return new WaitUntil(() => EventManager.animate == false);
 
@@ -421,8 +439,38 @@ public class GameManager : MonoBehaviour
             animationManager.UpdateDebtScrollBar(this.debtSlider.value - 1);
             yield return new WaitUntil(() => EventManager.animate == false);
         }
-        yield return new WaitForSeconds(2);
-        StateManager.turnState = StateManager.TurnState.END_OF_TURN;
+        yield return new WaitForSeconds(1);
+
+        bool isFinished = true;
+        foreach (GameObject aus in doingAUS){
+            if (aus.GetComponent<UserStoryUI>().userStory.state != UserStory.State.DONE)
+                isFinished = false;
+        }
+        if (isFinished && EventManager.allFilledChoiceMade == false){
+            StartCoroutine(filledChoice.HandleFilledChoice());
+            yield return new WaitUntil(() => EventManager.allFilledChoiceMade == true);
+            if (filledChoice.debtClicked){
+                yield return new WaitForSeconds(1);
+                StateManager.turnState = StateManager.TurnState.END_OF_TURN;
+            }
+            else if (filledChoice.moreUSClicked){
+                EventManager.allFilledChoiceMade = false;
+                yield return new WaitForSeconds(1);
+                StateManager.turnState = StateManager.TurnState.NEW_US_ADDED;
+            }
+            else if (filledChoice.endSprintClicked){
+                EventManager.allFilledChoiceMade = false;
+                yield return new WaitForSeconds(1);
+                StateManager.turnState = StateManager.TurnState.WANT_TO_PASS;
+            }
+        } else {
+            if (!isFinished){
+                EventManager.allFilledChoiceMade = false;
+                EventManager.onlyDebt = false;
+            }
+            yield return new WaitForSeconds(1);
+            StateManager.turnState = StateManager.TurnState.END_OF_TURN;
+        }
     }
     #endregion
     
@@ -458,8 +506,8 @@ public class GameManager : MonoBehaviour
     }
 
     public IEnumerator AddTasks(int n){
-        // if (n>0)
-        //     n = 100*n;
+        if (n>0)
+            n = 100*n;
         this.taskValidation.gameObject.SetActive(true);
         EventManager.taskToAdd = n;
         EventManager.taskAdded = false;
@@ -525,6 +573,8 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(() => EventManager.taskAdded == true);
         this.taskValidation.gameObject.SetActive(false);
         if (n < 0){
+            EventManager.allFilledChoiceMade = false;
+            EventManager.onlyDebt = false;
             StateManager.loosedTasks -= n - EventManager.taskToAdd;
             StateManager.sprintLoosedTasks -= n - EventManager.taskToAdd;
             burndownChartManager.currentSprint.currentDay.AddTasks(n + EventManager.taskToAdd);
