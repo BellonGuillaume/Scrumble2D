@@ -202,6 +202,8 @@ public class GameManager : MonoBehaviour
     IEnumerator BeginDay(int n){
         yield return new WaitUntil(() => StateManager.gameState == StateManager.GameState.BEGIN_DAY);
         animationManager.StartDayAnimation(n);
+        if(EventManager.updateBurndownChart == true)
+            burndownChartManager.UpdateBurndownChart();
         burndownChartManager.currentSprint.NewDay(n);
         yield return new WaitUntil(() => EventManager.animate == false);
         if (StateManager.oneTaskPerDay == true){
@@ -616,7 +618,7 @@ public class GameManager : MonoBehaviour
             EventManager.onlyDebt = false;
             StateManager.loosedTasks -= n - EventManager.taskToAdd;
             StateManager.sprintLoosedTasks -= n - EventManager.taskToAdd;
-            burndownChartManager.currentSprint.currentDay.AddTasks(n + EventManager.taskToAdd);
+            burndownChartManager.currentSprint.currentDay.AddTasks(n - EventManager.taskToAdd);
         }
         else if (n > 0){
             StateManager.totalTasks += n - EventManager.taskToAdd;

@@ -36,4 +36,5 @@ public class EventManager : MonoBehaviour
     public static bool permanentCardShowned = true;
     public static bool readyToHidePermanent = false;
     public static bool permanentCardHidden = false;
+    public static bool updateBurndownChart = false;
 }

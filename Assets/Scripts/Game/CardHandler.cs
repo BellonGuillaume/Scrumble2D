@@ -61,13 +61,9 @@ public class CardHandler : MonoBehaviour
         while (EventManager.cardsToPick > 0 || this.cardPicker.choosenCard.GetComponent<UICard>().card != null){
             yield return new WaitUntil(() => this.cardPicker.choosenCard.GetComponent<UICard>().card != null);
             yield return new WaitForSeconds(2);
-            Debug.Log($"Handle Card : {this.cardPicker.choosenCard.GetComponent<UICard>().card.ToString()}");
             EventManager.handleSingleCard = true;
             StartCoroutine(HandleSingleCard(this.cardPicker.choosenCard.GetComponent<UICard>().card));
             yield return new WaitUntil(() => EventManager.handleSingleCard == false);
-        }
-        foreach (var kvp in readyToDiscard){
-            Debug.Log($"(Key, Value) : ({kvp.Key}, {kvp.Value})");
         }
         ReDeckUnflippedCards();
         DiscardCards();
@@ -93,7 +89,6 @@ public class CardHandler : MonoBehaviour
         }
         this.pickedCards.RemoveAll(card => card.flipped == false);
         foreach (int id in cardIds){
-            Debug.Log("Remove the unflipped card : " + id.ToString());
             this.readyToDiscard.Remove(id-1);
         }
     }
@@ -112,7 +107,6 @@ public class CardHandler : MonoBehaviour
         this.pickedCards.RemoveAll(card => readyToDiscard[card.id + (((int) card.category -1) * 60) - 1] == true);
         var keyValuePairsToRemove = readyToDiscard.Where(kvp => kvp.Value == true).ToList();
         foreach (var kvp in keyValuePairsToRemove){
-            Debug.Log("Remove the flipped card : " + (kvp.Key + 1).ToString());
             readyToDiscard.Remove(kvp.Key);
         }
     }

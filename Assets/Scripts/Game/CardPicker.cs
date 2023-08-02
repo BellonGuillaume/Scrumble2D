@@ -31,7 +31,6 @@ public class CardPicker : MonoBehaviour
         if (EventManager.cardsToPick <= 0 || choosenCard.GetComponent<UICard>().card != null){
             return;
         }
-        Debug.Log($"Card ${id} picked : {this.cards[id].ToString()}");
         this.choosenCard.GetComponent<UICard>().Fill(this.cards[id].GetComponent<UICard>().card, this);
         this.choosenIndex = id;
         this.choosenCard.transform.position = this.cards[id].transform.position;

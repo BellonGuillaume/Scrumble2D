@@ -51,6 +51,7 @@ public class FilledChoiceHandler : MonoBehaviour
             StateManager.gameState = StateManager.GameState.TDTD;
             StartCoroutine(gameManager.ChooseToDoToDoing());
             yield return new WaitUntil(() => StateManager.gameState == StateManager.GameState.BEGIN_DAY);
+            EventManager.updateBurndownChart = true;
         }
         else if (endSprintClicked){
             animationManager.HideFilledChoice(filledChoiceUI);
