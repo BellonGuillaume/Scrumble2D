@@ -17,7 +17,7 @@ public class TDDDManager : MonoBehaviour
         foreach (DropCase dropCase in toDoDropContent.cases){
             if(dropCase.transform.childCount != 0){
                 UserStoryUI usUI = dropCase.transform.GetChild(0).GetComponent<UserStoryUI>();
-                if (usUI.userStory.restriction > 0){
+                if (usUI.userStory.restriction > 0 && false){
                     if(StateManager.userStories[usUI.userStory.restriction-1].state == UserStory.State.DEPLOYED)
                         usUI.Activate();
                     else

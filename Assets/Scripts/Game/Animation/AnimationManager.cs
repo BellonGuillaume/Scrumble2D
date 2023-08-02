@@ -1196,6 +1196,42 @@ public class AnimationManager : MonoBehaviour
         );
     }
 
+    public void ShowEndScreen(GameObject endScreen, Image blur){
+        EventManager.animate = true;
+        Color32 startColor = new Color32(0, 0, 0, 0);
+        Color32 endColor = new Color32(0, 0, 0, 255);
+        byte startAlpha = 255;
+        byte endAlpha = 0;
+        coverImage.color = startColor;
+        coverImage.gameObject.SetActive(true);
+        this.animationCoroutine = this.CreateAnimationRoutine(
+            2f,
+            delegate (float progress){
+                float easedProgress = Easing.easeInCirc(0, 1, progress);
+                Color32 color = Color32.Lerp(startColor, endColor, easedProgress);
+                coverImage.color = color;
+            },
+            delegate{
+                endScreen.SetActive(true);
+                coverImage.gameObject.SetActive(false);
+                this.CreateAnimationRoutine(
+                    2f,
+                    delegate (float progress){
+                        float easedProgress = Easing.easeOutCirc(0, 1, progress);
+                        byte alpha = (byte) Mathf.Lerp(startAlpha, endAlpha, easedProgress);
+                        Color32 temp = blur.color;
+                        temp.a = alpha;
+                        blur.color = temp;
+                    },
+                    delegate{
+                        blur.gameObject.SetActive(false);
+                        EventManager.animate = false;
+                    }
+                );
+            }
+        );
+        
+    }
     public string GetString(string tableName, string stringKey){
         return LocalizationSettings.StringDatabase.GetLocalizedString(tableName, stringKey);
     }

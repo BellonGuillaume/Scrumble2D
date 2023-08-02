@@ -544,11 +544,13 @@ public class GameManager : MonoBehaviour
         StateManager.sprintFinishedUS = StateManager.finishedUS;
         StateManager.sprintProblemCards = 0;
         StateManager.sprintLoosedTasks = 0;
+        EventManager.onlyDebt = false;
+        EventManager.allFilledChoiceMade = false;
     }
 
     public IEnumerator AddTasks(int n){
-        // if (n>0)
-        //     n = 100*n;
+        if (n>0)
+            n = 1000*n;
         this.taskValidation.gameObject.SetActive(true);
         EventManager.taskToAdd = n;
         EventManager.taskAdded = false;

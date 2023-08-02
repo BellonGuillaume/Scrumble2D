@@ -10,6 +10,8 @@ using System.IO;
 public class EndScreenManager : MonoBehaviour
 {
     [SerializeField] AnimationManager animationManager;
+    [SerializeField] GameObject endscreenUI;
+    [SerializeField] Image blur;
     [SerializeField] TMP_Text header;
     [SerializeField] TMP_Text difficulty;
     [SerializeField] TMP_Text userStoryUsed;
@@ -59,7 +61,7 @@ public class EndScreenManager : MonoBehaviour
         problemCards.text = StateManager.problemCards.ToString();
         totalTasks.text = StateManager.totalTasks.ToString();
         loosedTasks.text = StateManager.loosedTasks.ToString();
-        ShowFinalScreen();
+        StartCoroutine(ShowFinalScreen());
         yield break;
     }
 
@@ -132,8 +134,9 @@ public class EndScreenManager : MonoBehaviour
     public void OnDownloadClick(){
 
     }
-    private void ShowFinalScreen(){
-        this.gameObject.SetActive(true);
+    IEnumerator ShowFinalScreen(){
+        animationManager.ShowEndScreen(endscreenUI, blur);
+        yield break;
     }
     public string GetString(string stringKey){
         return LocalizationSettings.StringDatabase.GetLocalizedString("EndGame", stringKey);
