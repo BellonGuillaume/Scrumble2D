@@ -127,7 +127,7 @@ public class EndScreenManager : MonoBehaviour
     }
     public void OnScreenShotClick(){
         string path = Directory.GetCurrentDirectory() + "/Screenshots/";
-        ScreenCapture.CaptureScreenshot("Scrumble Result.png");
+        ScreenCapture.CaptureScreenshot(path + "Scrumble Result_ " + System.DateTime.Now.ToString("dd-MM-yyyy-HH-mm-ss") + ".png");
     }
     public void OnDownloadClick(){
 

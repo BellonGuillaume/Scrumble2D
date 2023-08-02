@@ -605,23 +605,23 @@ public class AnimationManager : MonoBehaviour
 
     }
 
-    public void ShowScrumboard(){
+    public void ShowScrumboard(GameObject scrumBoard){
         EventManager.animate = true;
-        Vector2 startScale = this.scrumboard.transform.localScale;
+        Vector2 startScale = scrumBoard.transform.localScale;
         Vector2 endScale = Vector2.one;
         this.animationCoroutine = this.CreateAnimationRoutine(
             0.2f,
             delegate(float progress){
                 float easedProgress = Easing.easeInCubic(0, 1, progress);
                 Vector2 scale = Vector2.Lerp(startScale, endScale, easedProgress);
-                this.scrumboard.transform.localScale = scale;
+                scrumBoard.transform.localScale = scale;
             },
             delegate{
                 EventManager.animate = false;
             }
         );
     }
-    public void HideScrumboard(){
+    public void HideScrumboard(GameObject scrumBoard){
         EventManager.animate = true;
         Vector2 startScale = Vector2.one;
         Vector2 endScale = new Vector2(0.33f, 0.33f);
@@ -630,7 +630,7 @@ public class AnimationManager : MonoBehaviour
             delegate(float progress){
                 float easedProgress = Easing.easeInCubic(0, 1, progress);
                 Vector2 scale = Vector2.Lerp(startScale, endScale, easedProgress);
-                this.scrumboard.transform.localScale = scale;
+                scrumBoard.transform.localScale = scale;
             },
             delegate{
                 EventManager.animate = false;
@@ -996,6 +996,151 @@ public class AnimationManager : MonoBehaviour
             delegate{
                 this.popUp.SetActive(false);
                 filledChoice.SetActive(false);
+                EventManager.animate = false;
+            }
+        );
+    }
+
+    public void ShowSideMenu(GameObject sideMenu, GameObject elements, GameObject background){
+        EventManager.animate = true;
+        Vector2 startPos = elements.transform.position;
+        Vector2 endPos = new Vector2(0, startPos.y);
+        byte startBlur = 0;
+        byte endBlur = this.blurValue;
+        sideMenu.SetActive(true);
+        animationCoroutine = this.CreateAnimationRoutine(
+            0.5f,
+            delegate(float progress){
+                float easedProgress = Easing.easeOutCubic(0, 1, progress);
+                Vector2 pos = Vector2.Lerp(startPos, endPos, easedProgress);
+                byte blur = (byte) Mathf.Lerp(startBlur, endBlur, easedProgress);
+                Color32 temp = background.GetComponent<Image>().color;
+                temp.a = blur;
+                background.GetComponent<Image>().color = temp;
+                elements.transform.position = pos;
+            },
+            delegate{
+                EventManager.animate = false;
+            }
+        );
+    }
+
+    public void HideSideMenu(GameObject sideMenu, GameObject elements, GameObject background){
+        EventManager.animate = true;
+        Vector2 startPos = elements.transform.position;
+        Vector2 endPos = new Vector2(-1280, startPos.y);
+        byte startBlur = this.blurValue;
+        byte endBlur = 0;
+        animationCoroutine = this.CreateAnimationRoutine(
+            0.5f,
+            delegate(float progress){
+                float easedProgress = Easing.easeInCubic(0, 1, progress);
+                Vector2 pos = Vector2.Lerp(startPos, endPos, easedProgress);
+                byte blur = (byte) Mathf.Lerp(startBlur, endBlur, easedProgress);
+                Color32 temp = background.GetComponent<Image>().color;
+                temp.a = blur;
+                background.GetComponent<Image>().color = temp;
+                elements.transform.position = pos;
+            },
+            delegate{
+                sideMenu.SetActive(false);
+                EventManager.animate = false;
+            }
+        );
+    }
+
+    public void ShowSummary(GameObject summary, GameObject elements, GameObject background){
+        EventManager.animate = true;
+        Vector2 startPos = elements.transform.position;
+        Vector2 endPos = new Vector2(1920, startPos.y);
+        byte startBlur = 0;
+        byte endBlur = this.blurValue;
+        summary.SetActive(true);
+        animationCoroutine = this.CreateAnimationRoutine(
+            0.5f,
+            delegate(float progress){
+                float easedProgress = Easing.easeOutCubic(0, 1, progress);
+                Vector2 pos = Vector2.Lerp(startPos, endPos, easedProgress);
+                byte blur = (byte) Mathf.Lerp(startBlur, endBlur, easedProgress);
+                Color32 temp = background.GetComponent<Image>().color;
+                temp.a = blur;
+                background.GetComponent<Image>().color = temp;
+                elements.transform.position = pos;
+            },
+            delegate{
+                EventManager.animate = false;
+            }
+        );
+    }
+
+    public void HideSummary(GameObject summary, GameObject elements, GameObject background){
+        EventManager.animate = true;
+        Vector2 startPos = elements.transform.position;
+        Vector2 endPos = new Vector2(3200, startPos.y);
+        byte startBlur = this.blurValue;
+        byte endBlur = 0;
+        animationCoroutine = this.CreateAnimationRoutine(
+            0.5f,
+            delegate(float progress){
+                float easedProgress = Easing.easeInCubic(0, 1, progress);
+                Vector2 pos = Vector2.Lerp(startPos, endPos, easedProgress);
+                byte blur = (byte) Mathf.Lerp(startBlur, endBlur, easedProgress);
+                Color32 temp = background.GetComponent<Image>().color;
+                temp.a = blur;
+                background.GetComponent<Image>().color = temp;
+                elements.transform.position = pos;
+            },
+            delegate{
+                summary.SetActive(false);
+                EventManager.animate = false;
+            }
+        );
+    }
+
+    public void ShowRetrospective(GameObject retrospective, GameObject elements, GameObject background){
+        EventManager.animate = true;
+        Vector2 startScale = Vector2.zero;
+        Vector2 endScale = Vector2.one;
+        byte startBlur = 0;
+        byte endBlur = this.blurValue;
+        retrospective.SetActive(true);
+        animationCoroutine = this.CreateAnimationRoutine(
+            0.5f,
+            delegate(float progress){
+                float easedProgress = Easing.easeOutCubic(0, 1, progress);
+                Vector2 scale = Vector2.Lerp(startScale, endScale, easedProgress);
+                byte blur = (byte) Mathf.Lerp(startBlur, endBlur, easedProgress);
+                Color32 temp = background.GetComponent<Image>().color;
+                temp.a = blur;
+                background.GetComponent<Image>().color = temp;
+                elements.transform.localScale = scale;
+            },
+            delegate{
+                EventManager.animate = false;
+            }
+        );
+    }
+
+    public void HideRetrospective(GameObject retrospective, GameObject elements, GameObject background){
+        EventManager.animate = true;
+        Vector2 startScale = Vector2.one;
+        Vector2 endScale = Vector2.zero;
+        byte startBlur = this.blurValue;
+        byte endBlur = 0;
+        animationCoroutine = this.CreateAnimationRoutine(
+            0.5f,
+            delegate(float progress){
+                float easedProgress = Easing.easeInCubic(0, 1, progress);
+                Vector2 scale = Vector2.Lerp(startScale, endScale, easedProgress);
+                byte blur = (byte) Mathf.Lerp(startBlur, endBlur, easedProgress);
+                Color32 temp = background.GetComponent<Image>().color;
+                temp.a = blur;
+                background.GetComponent<Image>().color = temp;
+                elements.transform.localScale = scale;
+            },
+            delegate{
+                retrospective.SetActive(false);
+                retrospective.transform.localScale = Vector2.one;
                 EventManager.animate = false;
             }
         );

@@ -134,7 +134,15 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 2165750163349504
     m_Localized: You have completed all the user stories. Do you want to finish the
-      sprint or continue while reducing the technical debt?
+      sprint or continue while reducing the technical debt ?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2467055046008832
+    m_Localized: Take your time to discuss about the completed sprint.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2467708300468224
+    m_Localized: End the retrospective
     m_Metadata:
       m_Items: []
   references:

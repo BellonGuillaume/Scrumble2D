@@ -138,6 +138,14 @@ MonoBehaviour:
       le sprint ou bien continuer en r\xE9duisant la dette technique ?"
     m_Metadata:
       m_Items: []
+  - m_Id: 2467055046008832
+    m_Localized: "Prenez votre temps pour discuter du sprint achev\xE9."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2467708300468224
+    m_Localized: "Finir la r\xE9trospective"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

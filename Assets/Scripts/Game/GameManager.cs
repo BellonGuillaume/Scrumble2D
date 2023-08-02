@@ -20,7 +20,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] FilledChoiceHandler filledChoice;
     [SerializeField] GameObject tddd;
     [SerializeField] Transform placeHolders;
-    [SerializeField] GameObject userStoryUIPrefab;
     [SerializeField] GameObject littleArrowUSPrefab;
     [SerializeField] Image infoTxt;
 
@@ -29,11 +28,14 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] Button taskValidation;
 
-    [SerializeField] ScrumboardManager scrumboardManager;
     [SerializeField] ReviewManager reviewManager;
     [SerializeField] SummaryManager summaryManager;
     [SerializeField] EndScreenManager endScreenManager;
     [SerializeField] BurndownChartManager burndownChartManager;
+
+    [SerializeField] ScrumboardManager sideScrumManager;
+    [SerializeField] ScrumboardManager summaryScrumManager;
+    [SerializeField] RetrospectiveManager retrospectiveManager;
 
     Animator popUpAnimator;
 
@@ -58,9 +60,10 @@ public class GameManager : MonoBehaviour
         this.cardHandler.CreateDailyCards();
         this.cardHandler.CreateProblemCards();
         this.cardHandler.CreateReviewCards();
-        this.scrumboardManager.CreateScrumboard();
         this.choosePlayer.CreateDailyPlayers();
         this.cardHandler.InitPermanentCard();
+        this.sideScrumManager.CreateScrumboard();
+        this.summaryScrumManager.CreateScrumboard();
         workingOn = new List<UserStory>();
         doingAUS = new List<GameObject>();
         switch (StateManager.difficulty){
@@ -133,7 +136,7 @@ public class GameManager : MonoBehaviour
             StartCoroutine(AddTasks(5));
             yield return new WaitUntil(() => EventManager.handleAddingTask == false);
         }
-        for (int j = 1; j <= 9; j++){
+        for (int j = 1; j <= 1; j++){
             StateManager.gameState = StateManager.GameState.BEGIN_DAY;
             StateManager.currentDay = j;
             StartCoroutine(BeginDay(j));
@@ -154,10 +157,8 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(() => StateManager.gameState == StateManager.GameState.RETROSPECTIVE);
         animationManager.StartDayAnimation(11);
         yield return new WaitUntil(() => EventManager.animate == false);
-        animationManager.ShowInfo(GetString("Game", "RetrospectivePhase"));
-        yield return new WaitUntil(() => EventManager.animate == false);
-        // BeginRetrospective();
-        StateManager.gameState = StateManager.GameState.END_OF_SPRINT;
+        StartCoroutine(retrospectiveManager.HandleRetrospective());
+        yield return new WaitUntil(() => StateManager.gameState == StateManager.GameState.END_OF_SPRINT);
     }
 
     public IEnumerator ChooseToDoToDoing(bool withPopUp = true){
@@ -592,15 +593,6 @@ public class GameManager : MonoBehaviour
 
     public void OnTaskValidationClick(){
         EventManager.taskAdded = true;
-    }
-
-    public void OnSideClick(){
-        this.sidePopUp.SetActive(true);
-        this.scrumboardManager.Refresh();
-    }
-
-    public void OnOutClick(){
-        this.sidePopUp.SetActive(false);
     }
 
     public string GetString(string tableName, string stringKey){

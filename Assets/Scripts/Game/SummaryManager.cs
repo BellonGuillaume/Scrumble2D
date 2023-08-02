@@ -23,6 +23,13 @@ public class SummaryManager : MonoBehaviour
     [SerializeField] TMP_Text problemCardsSprint;
     [SerializeField] TMP_Text loosedTasksSprint;
     [SerializeField] Button nextButton;
+    [SerializeField] ScrumboardManager scrumboardManager;
+    [SerializeField] GameObject outsideClick;
+    [SerializeField] GameObject scrumboard;
+
+    [SerializeField] GameObject summaryUI;
+    [SerializeField] GameObject backUI;
+    [SerializeField] GameObject outclickUI;
 
 
     Color RED = new Color32(214, 71, 71, 255);      // #d64747
@@ -69,11 +76,17 @@ public class SummaryManager : MonoBehaviour
     }
 
     public void ShowSummary(){
-        this.gameObject.SetActive(true);
+        animationManager.ShowSummary(summaryUI, backUI, outclickUI);
+        scrumboardManager.Refresh();
+    }
+
+    IEnumerator HideSummary(){
+        animationManager.HideSummary(summaryUI, backUI, outclickUI);
+        yield return new WaitUntil(() => EventManager.animate == false);
+        StateManager.gameState = StateManager.GameState.RETROSPECTIVE;
     }
 
     public void OnNextClick(){
-        this.gameObject.SetActive(false);
         nextButton.gameObject.SetActive(false);
         starsArrow.gameObject.SetActive(false);
         debtArrow.gameObject.SetActive(false);
@@ -81,7 +94,17 @@ public class SummaryManager : MonoBehaviour
         starsNew.gameObject.SetActive(false);
         debtNew.gameObject.SetActive(false);
         finishedUSNew.gameObject.SetActive(false);
-        StateManager.gameState = StateManager.GameState.RETROSPECTIVE;
+        StartCoroutine(HideSummary());
+    }
+
+    public void ScrumboardClick(){
+        outsideClick.gameObject.SetActive(true);
+        animationManager.ShowScrumboard(scrumboard);
+    }
+    public void OnOutClick(){
+        outsideClick.gameObject.SetActive(false);
+        Debug.Log("OutClicked");
+        animationManager.HideScrumboard(scrumboard);
     }
 
     public string GetString(string stringKey){

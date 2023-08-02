@@ -8,13 +8,18 @@ using UnityEngine.UI;
 public class SideMenuManager : MonoBehaviour
 {
     public bool scrumboardShowed = false;
-    public bool burndownChartShowed = false;
 
     [SerializeField] AnimationManager animationManager;
     [SerializeField] TMP_Text timeOut;
     [SerializeField] TMP_Text starsOut;
     [SerializeField] TMP_Text sprintOut;
     [SerializeField] Button outsideButton;
+    [SerializeField] GameObject sideMenuUI;
+    [SerializeField] GameObject backUI;
+    [SerializeField] GameObject outclick;
+    [SerializeField] GameObject scrumBoard;
+    [SerializeField] ScrumboardManager scrumboardManager;
+
     void Update(){
         TimeSpan interval = DateTime.Now - StateManager.startTime;
         this.timeOut.text = interval.ToString(@"hh\:mm\:ss");
@@ -24,33 +29,27 @@ public class SideMenuManager : MonoBehaviour
 
     public void ScrumboardClick(){
         Debug.Log("Clicked on scrumboard");
-        if (scrumboardShowed == true || burndownChartShowed == true)
-            return;
         scrumboardShowed = true;
         outsideButton.gameObject.SetActive(true);
-        animationManager.ShowScrumboard();
+        animationManager.ShowScrumboard(scrumBoard);
         Debug.Log("Show scrumboard");
     }
-    public void BurndownChartClick(){
-        if (scrumboardShowed == true || burndownChartShowed == true)
-            return;
-        burndownChartShowed = true;
-        outsideButton.gameObject.SetActive(true);
-        animationManager.ShowBurndownChart();
-        Debug.Log("Show burndownchart");
-    }
     public void OnOutClick(){
-        if (scrumboardShowed == false && burndownChartShowed == false)
+        if (!scrumboardShowed)
             return;
-        if (scrumboardShowed == true){
+        else {
             Debug.Log("Hide scrumboard");
-            animationManager.HideScrumboard();
+            animationManager.HideScrumboard(scrumBoard);
             scrumboardShowed = false;
-        } else if (burndownChartShowed == true){
-            Debug.Log("Hide burndownchart");
-            animationManager.HideBurndownChart();
-            burndownChartShowed = false;
         }
         outsideButton.gameObject.SetActive(false);
+    }
+
+    public void ShowSideMenu(){
+        animationManager.ShowSideMenu(this.sideMenuUI, this.backUI, this.outclick);
+        scrumboardManager.Refresh();
+    }
+    public void HideSideMenu(){
+        animationManager.HideSideMenu(this.sideMenuUI, this.backUI, this.outclick);
     }
 }
