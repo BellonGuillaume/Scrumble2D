@@ -131,12 +131,18 @@ public class GameManager : MonoBehaviour
         }
         burndownChartManager.NewSprint(n, userStories);
         if(StateManager.tasksOnBeginSprint == true){
-            // Show Permanent Card
+            EventManager.permanentCardShowned = false;
+            this.cardHandler.ShowTasksOnBeginSprintPermanent();
+            yield return new WaitUntil(() => EventManager.permanentCardShowned == true);
+            yield return new WaitForSeconds(1f);
+            EventManager.readyToHidePermanent = true;
+            yield return new WaitUntil(() => EventManager.permanentCardHidden == true);
+            EventManager.permanentCardHidden = false;
             EventManager.handleAddingTask = true;
             StartCoroutine(AddTasks(5));
             yield return new WaitUntil(() => EventManager.handleAddingTask == false);
         }
-        for (int j = 1; j <= 1; j++){
+        for (int j = 1; j <= 9; j++){
             StateManager.gameState = StateManager.GameState.BEGIN_DAY;
             StateManager.currentDay = j;
             StartCoroutine(BeginDay(j));
@@ -199,7 +205,13 @@ public class GameManager : MonoBehaviour
         burndownChartManager.currentSprint.NewDay(n);
         yield return new WaitUntil(() => EventManager.animate == false);
         if (StateManager.oneTaskPerDay == true){
-            // Show permanent card
+            EventManager.permanentCardShowned = false;
+            this.cardHandler.ShowOneTaskPerDayPermanent();
+            yield return new WaitUntil(() => EventManager.permanentCardShowned == true);
+            yield return new WaitForSeconds(1f);
+            EventManager.readyToHidePermanent = true;
+            yield return new WaitUntil(() => EventManager.permanentCardHidden == true);
+            EventManager.permanentCardHidden = false;
             EventManager.handleAddingTask = true;
             StartCoroutine(AddTasks(1));
             yield return new WaitUntil(() => EventManager.handleAddingTask == false);
@@ -314,6 +326,17 @@ public class GameManager : MonoBehaviour
         else {
             StateManager.secondDiceResult = result;
         }
+        
+        bool jinx =  StateManager.jinxed && (StateManager.firstDiceResult == 5 || StateManager.secondDiceResult == 5);
+        if (jinx){
+            EventManager.permanentCardShowned = false;
+            this.cardHandler.ShowJinxPermanent();
+            yield return new WaitUntil(() => EventManager.permanentCardShowned == true);
+            yield return new WaitForSeconds(1f);
+            EventManager.readyToHidePermanent = true;
+            yield return new WaitUntil(() => EventManager.permanentCardHidden == true);
+            EventManager.permanentCardHidden = false;
+        }
 
         
         animationManager.ZoomOutPopUp(this.roll);
@@ -338,9 +361,6 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(() => EventManager.animate == false);
         bool jinx =  StateManager.jinxed && (StateManager.firstDiceResult == 5 || StateManager.secondDiceResult == 5);
         if (StateManager.firstDiceResult == 6 || StateManager.secondDiceResult == 6 || jinx) {
-            if (jinx == true){
-                // show permanent card
-            }
             // animationManager.ProblemAnimation();
             // yield return new WaitUntil(() => EventManager.animate == false);
             animationManager.ShowInfo(GetString("Game", "ProblemCard"));
@@ -418,7 +438,13 @@ public class GameManager : MonoBehaviour
             yield return new WaitUntil(() => EventManager.handleAddingTask == false);
         }
         if (StateManager.oneMoreTaskPerRoll == true){
-            // Show permanent card
+            EventManager.permanentCardShowned = false;
+            this.cardHandler.ShowOneMoreTaskPerRollPermanent();
+            yield return new WaitUntil(() => EventManager.permanentCardShowned == true);
+            yield return new WaitForSeconds(1f);
+            EventManager.readyToHidePermanent = true;
+            yield return new WaitUntil(() => EventManager.permanentCardHidden == true);
+            EventManager.permanentCardHidden = false;
             int bonusTasks = 1;
             if(StateManager.alreadyReRoll)
                 bonusTasks++;
@@ -427,7 +453,13 @@ public class GameManager : MonoBehaviour
             yield return new WaitUntil(() => EventManager.handleAddingTask == false);
         }
         if (StateManager.currentPlayer.twoMoreTasksPerRoll == true){
-            // Show permanent card
+            EventManager.permanentCardShowned = false;
+            this.cardHandler.ShowTwoMoreTasksPerRollPermanent();
+            yield return new WaitUntil(() => EventManager.permanentCardShowned == true);
+            yield return new WaitForSeconds(1f);
+            EventManager.readyToHidePermanent = true;
+            yield return new WaitUntil(() => EventManager.permanentCardHidden == true);
+            EventManager.permanentCardHidden = false;
             int bonusTasks = 1;
             if(StateManager.alreadyReRoll)
                 bonusTasks++;
@@ -436,7 +468,13 @@ public class GameManager : MonoBehaviour
             yield return new WaitUntil(() => EventManager.handleAddingTask == false);
         }
         if (StateManager.currentPlayer.decreaseDebtPerTurn == true){
-            // Show permanent card
+            EventManager.permanentCardShowned = false;
+            this.cardHandler.ShowDecreaseDebtPerTurnPermanent();
+            yield return new WaitUntil(() => EventManager.permanentCardShowned == true);
+            yield return new WaitForSeconds(1f);
+            EventManager.readyToHidePermanent = true;
+            yield return new WaitUntil(() => EventManager.permanentCardHidden == true);
+            EventManager.permanentCardHidden = false;
             animationManager.UpdateDebtScrollBar(this.debtSlider.value - 1);
             yield return new WaitUntil(() => EventManager.animate == false);
         }
@@ -507,8 +545,8 @@ public class GameManager : MonoBehaviour
     }
 
     public IEnumerator AddTasks(int n){
-        if (n>0)
-            n = 100*n;
+        // if (n>0)
+        //     n = 100*n;
         this.taskValidation.gameObject.SetActive(true);
         EventManager.taskToAdd = n;
         EventManager.taskAdded = false;

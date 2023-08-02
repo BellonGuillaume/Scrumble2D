@@ -99,6 +99,7 @@
      <Compile Include="Assets\Scripts\Menu\Menu.cs" />
      <Compile Include="Assets\Scripts\Game\SummaryManager.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
+     <Compile Include="Assets\Scripts\Game\RetrospectiveManager.cs" />
      <Compile Include="Assets\Scripts\Menu\Local.cs" />
      <Compile Include="Assets\Scripts\Menu\Lobby.cs" />
      <Compile Include="Assets\Scripts\Ressources\CustomUserStoryUI.cs" />
@@ -120,7 +121,6 @@
      <Compile Include="Assets\Scripts\Game\Animation\Easing.cs" />
      <Compile Include="Assets\Scripts\Game\BurndownChartManager.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
-     <Compile Include="Assets\Scripts\Game\RetrospectiveManager.cs" />
      <None Include="Assets\Packages\System.Globalization.4.3.0\ThirdPartyNotices.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\Packages\System.Threading.4.3.0\dotnet_library_license.txt" />

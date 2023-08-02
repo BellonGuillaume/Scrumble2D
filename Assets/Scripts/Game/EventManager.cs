@@ -33,4 +33,7 @@ public class EventManager : MonoBehaviour
     public static bool usResized = false;
     public static bool allFilledChoiceMade = false;
     public static bool onlyDebt = false;
+    public static bool permanentCardShowned = true;
+    public static bool readyToHidePermanent = false;
+    public static bool permanentCardHidden = false;
 }

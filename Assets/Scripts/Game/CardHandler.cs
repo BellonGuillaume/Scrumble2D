@@ -120,14 +120,26 @@ public class CardHandler : MonoBehaviour
     IEnumerator HandleSingleCard(Card card){
         int doubleValue = 1;
         if (StateManager.skipProblemOrDoubleDaily > 0 && card.category == Card.CategoryOfCard.DAILY && card.positive == true){
+            EventManager.permanentCardShowned = false;
+            this.ShowSkipProblemOrDoubleDailyPermanent();
+            yield return new WaitUntil(() => EventManager.permanentCardShowned == true);
+            yield return new WaitForSeconds(1f);
+            EventManager.readyToHidePermanent = true;
+            yield return new WaitUntil(() => EventManager.permanentCardHidden == true);
+            EventManager.permanentCardHidden = false;
             StateManager.skipProblemOrDoubleDaily--;
             doubleValue = 2;
         }
         if(StateManager.noMoreTestIssues == true && card.category == Card.CategoryOfCard.PROBLEM && card.test == true){
-            // montrer la carte permanente
+            EventManager.permanentCardShowned = false;
+            this.ShowNoMoreTestIssuesPermanent();
+            yield return new WaitUntil(() => EventManager.permanentCardShowned == true);
             this.okButton.gameObject.SetActive(true);
             yield return new WaitUntil(() => EventManager.okPressed == true);
             EventManager.okPressed = false;
+            EventManager.readyToHidePermanent = true;
+            yield return new WaitUntil(() => EventManager.permanentCardHidden == true);
+            EventManager.permanentCardHidden = false;
             this.okButton.gameObject.SetActive(false);
             StartCoroutine(this.cardPicker.UnChooseCard());
             yield return new WaitUntil(() => EventManager.animate == false);
@@ -780,6 +792,11 @@ public class CardHandler : MonoBehaviour
         // this.pickedCards.Add(customPickedCard);
         // this.remainingProblemCards.Remove(customPickedCard);
         // this.readyToDiscard.Add(customPickedCard.id + (((int) customPickedCard.category -1) * 60) -1, false);
+        // Card customPickedCard2 = this.problemCards[36];
+        // this.cardPicker.AddCart(customPickedCard2);
+        // this.pickedCards.Add(customPickedCard2);
+        // this.remainingProblemCards.Remove(customPickedCard2);
+        // this.readyToDiscard.Add(customPickedCard2.id + (((int) customPickedCard2.category -1) * 60) -1, false);
         for (int i = 0; i < 3; i++){
             if (this.remainingProblemCards.Count <= 0){
                 this.remainingProblemCards.AddRange(this.discardedProblemCards);
@@ -892,6 +909,51 @@ public class CardHandler : MonoBehaviour
     }
     public void OnDeclineClick(){
         EventManager.declinePressed = true;
+    }
+    #endregion
+
+    #region Permanent Animations
+    public void ShowNoMoreTestIssuesPermanent(){
+        StartCoroutine(ShowPermanentCard(permanentCard1));
+    }
+    public void ShowOneMoreTaskPerRollPermanent(){
+        StartCoroutine(ShowPermanentCard(permanentCard2));
+    }
+    public void ShowTasksOnBeginSprintPermanent(){
+        StartCoroutine(ShowPermanentCard(permanentCard3));
+    }
+    public void ShowTwoMoreTasksPerRollPermanent(){
+        StartCoroutine(ShowPermanentCard(permanentCard4));
+    }
+    public void ShowMaxUserStoriesLoweredPermanent(){
+        StartCoroutine(ShowPermanentCard(permanentCard5));
+    }
+    public void ShowDecreaseDebtPerTurnPermanent(){
+        StartCoroutine(ShowPermanentCard(permanentCard6));
+    }
+    public void ShowJinxPermanent(){
+        StartCoroutine(ShowPermanentCard(permanentCard7));
+    }
+    public void ShowSkipProblemOrDoubleDailyPermanent(){
+        StartCoroutine(ShowPermanentCard(permanentCard8));
+    }
+    public void ShowOneTaskPerDayPermanent(){
+        StartCoroutine(ShowPermanentCard(permanentCard9));
+    }
+    public IEnumerator ShowPermanentCard(UICard permanentCard){
+        Transform initParent = permanentCard.transform.parent;
+        int initIndex = permanentCard.transform.GetSiblingIndex();
+        Vector3 initPos = permanentCard.transform.position;
+        Vector3 initScale = permanentCard.transform.localScale;
+        animationManager.ShowPermanentCard(permanentCard.gameObject);
+        yield return new WaitUntil(() => EventManager.animate == false);
+        EventManager.permanentCardShowned = true;
+        yield return new WaitUntil(() => EventManager.readyToHidePermanent == true);
+        EventManager.permanentCardShowned = false;
+        EventManager.readyToHidePermanent = false;
+        animationManager.HidePermanentCard(permanentCard.gameObject, initParent, initIndex, initPos, initScale);
+        yield return new WaitUntil(() => EventManager.animate == false);
+        EventManager.permanentCardHidden = true;
     }
     #endregion
 }

@@ -1146,6 +1146,56 @@ public class AnimationManager : MonoBehaviour
         );
     }
 
+    public void ShowPermanentCard(GameObject permanentCard){
+        EventManager.animate = true;
+        Vector3 newPos = new Vector3(1440, 540, 0);
+        Vector3 startScale = Vector3.one;
+        Vector3 endScale = new Vector3(1.2f, 1.2f, 1f);
+        float startAlpha = 0;
+        float endAlpha = 255;
+        permanentCard.GetComponent<UICard>().SetAlpha(0);
+        permanentCard.transform.position = newPos;
+        permanentCard.transform.localScale = startScale;
+        permanentCard.transform.SetParent(popUp.transform);
+        this.animationCoroutine = this.CreateAnimationRoutine(
+            0.5f,
+            delegate (float progress){
+                float easedProgress = Easing.easeInQuint(0, 1, progress);
+                Vector3 scale = Vector3.Lerp(startScale, endScale, easedProgress);
+                float alpha = Mathf.Lerp(startAlpha, endAlpha, easedProgress);
+                permanentCard.transform.localScale = scale;
+                permanentCard.GetComponent<UICard>().SetAlpha(alpha);
+            },
+            delegate{
+                EventManager.animate = false;
+            }
+        );
+    }
+
+    public void HidePermanentCard(GameObject permanentCard, Transform initParent, int initIndex, Vector3 initPos, Vector3 initScale){
+        EventManager.animate = true;
+        float startAlpha = 255;
+        float endAlpha = 0;
+        this.animationCoroutine = this.CreateAnimationRoutine(
+            0.5f,
+            delegate (float progress){
+                float easedProgress = Easing.easeOutQuint(0, 1, progress);
+                float alpha = Mathf.Lerp(startAlpha, endAlpha, easedProgress);
+                permanentCard.GetComponent<UICard>().SetAlpha(alpha);
+                Debug.Log($"Putting the alpha to {alpha}");
+                Debug.Log($"Here is the alpha value of the card : {permanentCard.GetComponent<UICard>().GetComponentsInChildren<Image>()[0].color.a}");
+            },
+            delegate{
+                permanentCard.transform.SetParent(initParent);
+                permanentCard.transform.SetSiblingIndex(initIndex);
+                permanentCard.transform.position = initPos;
+                permanentCard.transform.localScale = initScale;
+                permanentCard.GetComponent<UICard>().SetAlpha(255);
+                EventManager.animate = false;
+            }
+        );
+    }
+
     public string GetString(string tableName, string stringKey){
         return LocalizationSettings.StringDatabase.GetLocalizedString(tableName, stringKey);
     }
