@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using CsvHelper;
 using System.IO;
-using CsvHelper.Configuration;
 using System.Globalization;
 using CsvHelper.Configuration.Attributes;
 using System;
+using UnityEditor;
+using UnityEngine.Localization.Settings;
+using SFB;
 
 public class BurndownChartManager : MonoBehaviour
 {
@@ -14,7 +15,10 @@ public class BurndownChartManager : MonoBehaviour
     public Sprint currentSprint;
 
     public void WriteCSV(){
-        string filePath = Directory.GetCurrentDirectory() + "/BurndownChart/burn_down_chart.csv";
+        string selectedPath = ShowFolderPannel();
+        if (string.IsNullOrEmpty(selectedPath))
+            return;
+        string filePath = Path.Combine(selectedPath, "burn_down_chart.csv");
         for (int i = 0; i < sprints.Count; i++){
             TextWriter tw = new StreamWriter(filePath, false);
             tw.WriteLine($"Sprint N°{sprints[i].sprintNumber}");
@@ -49,6 +53,18 @@ public class BurndownChartManager : MonoBehaviour
         }
         Debug.Log($"Rajout de {count} tasks pour un ideal remaining et un real remaining de : {this.currentSprint.currentIdealRemainingTasks}, {this.currentSprint.currentRemainingTasks}");
         EventManager.updateBurndownChart = false;
+    }
+
+    public string GetString(string stringKey){
+        return LocalizationSettings.StringDatabase.GetLocalizedString("BurndownChart", stringKey);
+    }
+
+    private string ShowFolderPannel(){
+        var dialogResult = StandaloneFileBrowser.OpenFolderPanel("", "", false);
+        if (dialogResult.Length > 0){
+            return dialogResult[0];
+        }
+        return null;
     }
 
 }

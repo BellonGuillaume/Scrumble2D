@@ -42,17 +42,23 @@
      <Compile Include="Assets\Scripts\Game\CardHandler.cs" />
      <Compile Include="Assets\Scripts\Game\ChoosePlayer.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
+     <Compile Include="Assets\StandaloneFileBrowser\Sample\BasicSample.cs" />
+     <Compile Include="Assets\StandaloneFileBrowser\StandaloneFileBrowserWindows.cs" />
      <Compile Include="Assets\Scripts\Game\UICard.cs" />
+     <Compile Include="Assets\StandaloneFileBrowser\Sample\CanvasSampleOpenFileTextMultiple.cs" />
+     <Compile Include="Assets\StandaloneFileBrowser\IStandaloneFileBrowser.cs" />
      <Compile Include="Assets\Scripts\Ressources\FlexibleGridLayout.cs" />
      <Compile Include="Assets\Scripts\PokerPlanning\CustomPokerPlanningManager.cs" />
      <Compile Include="Assets\Scripts\SideMenu\ScrumboardManager.cs" />
      <Compile Include="Assets\Scripts\Ressources\Content.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
+     <Compile Include="Assets\StandaloneFileBrowser\Sample\CanvasSampleOpenFileText.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
      <Compile Include="Assets\Scripts\Game\Animation\AnimationManager.cs" />
      <Compile Include="Assets\Scripts\Ressources\AutoSizeScrollView.cs" />
      <Compile Include="Assets\Scripts\Game\ExitButton.cs" />
      <Compile Include="Assets\Scripts\Game\Results.cs" />
+     <Compile Include="Assets\StandaloneFileBrowser\Sample\CanvasSampleSaveFileText.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
      <Compile Include="Assets\Scripts\Ressources\ArrowedUS.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
@@ -63,6 +69,7 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
      <Compile Include="Assets\Scripts\SideMenu\SideMenuManager.cs" />
      <Compile Include="Assets\Scripts\Ressources\DropContent.cs" />
+     <Compile Include="Assets\StandaloneFileBrowser\Sample\CanvasSampleOpenFileImage.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
      <Compile Include="Assets\Scripts\Game\DebtSlider.cs" />
@@ -86,17 +93,21 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
      <Compile Include="Assets\Scripts\Game\EndScreenManager.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
+     <Compile Include="Assets\StandaloneFileBrowser\StandaloneFileBrowserEditor.cs" />
      <Compile Include="Assets\Scripts\Ressources\DaySlider.cs" />
      <Compile Include="Assets\Scripts\Ressources\RectTransformExtension.cs" />
      <Compile Include="Assets\Scripts\Ressources\AutoSizeText.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
      <Compile Include="Assets\Scripts\Ressources\DraggableItem.cs" />
+     <Compile Include="Assets\StandaloneFileBrowser\StandaloneFileBrowser.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
      <Compile Include="Assets\Scripts\Game\Player.cs" />
      <Compile Include="Assets\Scripts\Game\UIDice.cs" />
+     <Compile Include="Assets\StandaloneFileBrowser\StandaloneFileBrowserLinux.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
      <Compile Include="Assets\Scripts\Menu\Menu.cs" />
+     <Compile Include="Assets\StandaloneFileBrowser\Sample\CanvasSampleSaveFileImage.cs" />
      <Compile Include="Assets\Scripts\Game\SummaryManager.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
      <Compile Include="Assets\Scripts\Game\RetrospectiveManager.cs" />
@@ -108,6 +119,7 @@
      <Compile Include="Assets\Scripts\Ressources\UserStory.cs" />
      <Compile Include="Assets\Scripts\Ressources\HighlightScore.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
+     <Compile Include="Assets\StandaloneFileBrowser\StandaloneFileBrowserMac.cs" />
      <Compile Include="Assets\Scripts\PokerPlanning\PokerPlanningManager.cs" />
      <Compile Include="Assets\Scripts\Game\Animation\Scrolling.cs" />
      <Compile Include="Assets\Scripts\Game\ReviewManager.cs" />
@@ -458,6 +470,9 @@
     <Reference Include="System.Reflection.TypeExtensions">
         <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Assets\Packages\System.Reflection.TypeExtensions.4.3.0\lib\netstandard1.5\System.Reflection.TypeExtensions.dll</HintPath>
     </Reference>
+    <Reference Include="Ookii.Dialogs">
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Assets\StandaloneFileBrowser\Plugins\Ookii.Dialogs.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Burst.Cecil.Mdb">
         <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.burst@1.8.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
     </Reference>
@@ -472,6 +487,9 @@
     </Reference>
     <Reference Include="Newtonsoft.Json">
         <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Assets\StandaloneFileBrowser\Plugins\System.Windows.Forms.dll</HintPath>
     </Reference>
     <Reference Include="CsvHelper">
         <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Assets\Packages\CsvHelper.30.0.1\lib\netstandard2.1\CsvHelper.dll</HintPath>

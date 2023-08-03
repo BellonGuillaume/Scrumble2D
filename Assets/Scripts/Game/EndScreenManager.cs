@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using System.IO;
+using SFB;
 
 public class EndScreenManager : MonoBehaviour
 {
@@ -128,15 +129,24 @@ public class EndScreenManager : MonoBehaviour
             return GetString("Default");
     }
     public void OnScreenShotClick(){
-        string path = Directory.GetCurrentDirectory() + "/Screenshots/";
-        ScreenCapture.CaptureScreenshot(path + "Scrumble Result_ " + System.DateTime.Now.ToString("dd-MM-yyyy-HH-mm-ss") + ".png");
-    }
-    public void OnDownloadClick(){
-
+        string selectedPath = ShowFolderPannel();
+        if (string.IsNullOrEmpty(selectedPath))
+            return;
+        string filePath = "Scrumble Result_" + System.DateTime.Now.ToString("dd-MM-yyyy-HH-mm-ss") + ".png";
+        string completePath = Path.Combine(selectedPath, filePath);
+        ScreenCapture.CaptureScreenshot(completePath);
     }
     IEnumerator ShowFinalScreen(){
         animationManager.ShowEndScreen(endscreenUI, blur);
         yield break;
+    }
+
+    private string ShowFolderPannel(){
+        var dialogResult = StandaloneFileBrowser.OpenFolderPanel("", "", false);
+        if (dialogResult.Length > 0){
+            return dialogResult[0];
+        }
+        return null;
     }
     public string GetString(string stringKey){
         return LocalizationSettings.StringDatabase.GetLocalizedString("EndGame", stringKey);
