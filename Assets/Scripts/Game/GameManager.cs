@@ -226,6 +226,40 @@ public class GameManager : MonoBehaviour
             animationManager.ZoomOutPopUp(this.cardPick);
             this.popUpGO.SetActive(false);
             yield return new WaitUntil(() => EventManager.animate == false);
+
+            bool isFinished = true;
+            foreach (GameObject aus in doingAUS){
+                if (aus.GetComponent<UserStoryUI>().userStory.state != UserStory.State.DONE)
+                    isFinished = false;
+            }
+            if (isFinished && EventManager.allFilledChoiceMade == false){
+                StartCoroutine(filledChoice.HandleFilledChoice());
+                yield return new WaitUntil(() => EventManager.allFilledChoiceMade == true);
+                if (filledChoice.debtClicked){
+                    yield return new WaitForSeconds(1);
+                }
+                else if (filledChoice.moreUSClicked){
+                    EventManager.allFilledChoiceMade = false;
+                    yield return new WaitForSeconds(1);
+                    StateManager.turnState = StateManager.TurnState.NEW_US_ADDED;
+                    StateManager.gameState = StateManager.GameState.END_OF_DAY;
+                    yield break;
+                }
+                else if (filledChoice.endSprintClicked){
+                    EventManager.allFilledChoiceMade = false;
+                    yield return new WaitForSeconds(1);
+                    StateManager.turnState = StateManager.TurnState.WANT_TO_PASS;
+                    StateManager.gameState = StateManager.GameState.WANT_TO_PASS;
+                    yield break;
+                }
+            } else {
+                if (!isFinished){
+                    EventManager.allFilledChoiceMade = false;
+                    EventManager.onlyDebt = false;
+                }
+                yield return new WaitForSeconds(1);
+                StateManager.turnState = StateManager.TurnState.END_OF_TURN;
+            }
         } else {
             StateManager.gameState = StateManager.GameState.PLAYER_TURN;
         }
@@ -549,8 +583,8 @@ public class GameManager : MonoBehaviour
     }
 
     public IEnumerator AddTasks(int n){
-        if (n>0)
-            n = 1000*n;
+        // if (n>0)
+        //     n = 1000*n;
         this.taskValidation.gameObject.SetActive(true);
         EventManager.taskToAdd = n;
         EventManager.taskAdded = false;

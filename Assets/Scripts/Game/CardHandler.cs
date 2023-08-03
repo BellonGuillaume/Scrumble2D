@@ -804,11 +804,11 @@ public class CardHandler : MonoBehaviour
             StateManager.gameState = StateManager.GameState.SUMMARY;
             yield break;
         }
-        Card customPickedCard = this.reviewCards[10];
-        this.cardPicker.AddCart(customPickedCard);
-        this.remainingDailyCards.Remove(customPickedCard);
+        // Card customPickedCard = this.reviewCards[10];
+        // this.cardPicker.AddCart(customPickedCard);
+        // this.remainingDailyCards.Remove(customPickedCard);
         EventManager.cardsToPick = n;
-        for (int i = 0; i < n-1; i++){
+        for (int i = 0; i < n; i++){
             if (this.remainingReviewCards.Count < 1){
                 this.remainingReviewCards.AddRange(this.discardedReviewCards);
                 this.discardedReviewCards = new List<Card>();
