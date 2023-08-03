@@ -31,6 +31,8 @@ public class UICard : MonoBehaviour
     public int id;
     public static int count = 0;
     public Vector2 positionBeforeMove;
+    public bool flipped = false;
+    public bool readyToDiscard = false;
 
     public void Fill(Card card, CardPicker cardPicker){
         this.card = card;
@@ -78,11 +80,11 @@ public class UICard : MonoBehaviour
     }
     public void RemoveVerso(){
         this.verso.gameObject.SetActive(false);
-        this.card.flipped = true;
+        this.flipped = true;
     }
     public void AddVerso(){
         this.verso.gameObject.SetActive(true);
-        this.card.flipped = false;
+        this.flipped = false;
     }
 
     public void Disable(){

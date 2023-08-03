@@ -172,18 +172,16 @@
         "category" : "DAILY",
         "description" : "You are working in Pair Programming today.",
         "result" : "The next Problem will be skipped or the next positive Daily will be doubled!",
-        "typeOfCard" : "Simple",
-        "firstAction" : "SkipProblemOrDoubleDaily",
-        "positive" : true
+        "typeOfCard" : "Permanent",
+        "permanent" : "SkipProblemOrDoubleDaily"
     },
     {
         "id" : 20,
         "category" : "DAILY",
         "description" : "You are working in Pair Programming today.",
         "result" : "The next Problem will be skipped or the next positive Daily will be doubled!",
-        "typeOfCard" : "Simple",
-        "firstAction" : "SkipProblemOrDoubleDaily",
-        "positive" : true
+        "typeOfCard" : "Permanent",
+        "permanent" : "SkipProblemOrDoubleDaily"
     },
     {
         "id" : 21,

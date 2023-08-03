@@ -40,8 +40,6 @@ public class Card
     [JsonConverter(typeof(StringEnumConverter))]
     public enum Permanent{
         None,
-        [EnumMember(Value = "Jinx")]
-        Jinx,
         [EnumMember(Value = "NoMoreTestIssues")]
         NoMoreTestIssues,
         [EnumMember(Value = "OneMoreTaskPerRoll")]
@@ -54,6 +52,10 @@ public class Card
         MaxUserStoriesLowered,
         [EnumMember(Value = "DecreaseDebtPerTurn")]
         DecreaseDebtPerTurn,
+        [EnumMember(Value = "Jinx")]
+        Jinx,
+        [EnumMember(Value = "SkipProblemOrDoubleDaily")]
+        SkipProblemOrDoubleDaily,
         [EnumMember(Value = "OneTaskPerDay")]
         OneTaskPerDay,
     }
@@ -113,8 +115,6 @@ public class Card
         PickProblemCardsPerRoll,
         [EnumMember(Value = "GetRidOfJinxCard")]
         GetRidOfJinxCard,
-        [EnumMember(Value = "SkipProblemOrDoubleDaily")]
-        SkipProblemOrDoubleDaily,
         [EnumMember(Value = "DecreaseMaxTaskNextSprint")]
         DecreaseMaxTaskNextSprint,
         [EnumMember(Value = "IncreaseTaskNextSprint")]
@@ -126,7 +126,6 @@ public class Card
     public string description;
     public string result;
     public Sprite verso;
-    public bool flipped;
 
     public TypeOfCard typeOfCard;
     public Action firstAction;
@@ -151,7 +150,6 @@ public class Card
         this.description = description;
         this.result = result;
         this.typeOfCard = typeOfCard;
-        this.flipped = false;
         this.firstAction = firstAction;
         this.firstValue = firstValue;
         this.secondAction = secondAction;

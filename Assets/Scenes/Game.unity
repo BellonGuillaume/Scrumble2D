@@ -26939,11 +26939,9 @@ MonoBehaviour:
   cardUIPrefab: {fileID: 4323008430428288815, guid: 9f54ec39c514cc84696f74c6ea802913, type: 3}
   animationManager: {fileID: 1132953499}
   content: {fileID: 1740879941}
-  typeOfCard: 0
   cards: []
-  initialized: 0
-  choosenCard: {fileID: 354379992}
-  choosenIndex: 0
+  centralCard: {fileID: 354379992}
+  choosenCard: {fileID: 0}
 --- !u!1 &1783774956
 GameObject:
   m_ObjectHideFlags: 0
