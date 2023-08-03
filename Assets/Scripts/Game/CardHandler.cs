@@ -67,7 +67,9 @@ public class CardHandler : MonoBehaviour
         this.cardPicker.RemoveCards();
         yield return new WaitUntil(() => EventManager.cardToRemove <= 0);
         this.cardPicker.Reset();
-        this.cardPicker.gameObject.SetActive(false);
+        if (cardPicker.gameObject.activeSelf == true)
+            animationManager.HideCardPick();
+        yield return new WaitUntil(() => EventManager.animate == false);
         EventManager.handleCards = false;
     }
 
@@ -126,22 +128,25 @@ public class CardHandler : MonoBehaviour
             EventManager.permanentCardHidden = false;
             this.okButton.gameObject.SetActive(false);
             StartCoroutine(this.cardPicker.UnChooseCard());
+            uiCard.readyToDiscard = true;
             yield return new WaitUntil(() => EventManager.animate == false);
             animationManager.HideCardPick();
             yield return new WaitUntil(() => EventManager.animate == false);
-            EventManager.handleSimpleAction = false;
         } else if (StateManager.skipProblemOrDoubleDaily > 0 && uiCard.card.category == Card.CategoryOfCard.PROBLEM){
             StateManager.skipProblemOrDoubleDaily--;
-            // animate end of card
+            EventManager.permanentCardShowned = false;
+            this.ShowSkipProblemOrDoubleDailyPermanent();
+            yield return new WaitUntil(() => EventManager.permanentCardShowned == true);
             this.okButton.gameObject.SetActive(true);
             yield return new WaitUntil(() => EventManager.okPressed == true);
             EventManager.okPressed = false;
             this.okButton.gameObject.SetActive(false);
+            EventManager.readyToHidePermanent = true;
+            yield return new WaitUntil(() => EventManager.permanentCardHidden == true);
+            EventManager.permanentCardHidden = false;
             StartCoroutine(this.cardPicker.UnChooseCard());
+            uiCard.readyToDiscard = true;
             yield return new WaitUntil(() => EventManager.animate == false);
-            animationManager.HideCardPick();
-            yield return new WaitUntil(() => EventManager.animate == false);
-            EventManager.handleSimpleAction = false;
         } else {
             switch (uiCard.card.typeOfCard){
                 case Card.TypeOfCard.Simple :
@@ -189,7 +194,7 @@ public class CardHandler : MonoBehaviour
                     break;
             }
         }
-        if (EventManager.cardsToPick != 0){
+        if (EventManager.cardsToPick > 0 && cardPicker.gameObject.activeSelf == false){
             animationManager.ShowCardPick();
             yield return new WaitUntil(() => EventManager.animate == false);
         }
@@ -747,7 +752,6 @@ public class CardHandler : MonoBehaviour
         // this.cardPicker.AddCart(customPickedCard);
         // this.pickedCards.Add(customPickedCard);
         // this.remainingDailyCards.Remove(customPickedCard);
-        // this.readyToDiscard.Add(customPickedCard.id + (((int) customPickedCard.category -1) * 60) -1, false);
         for (int i = 0; i < 3; i++){
             if (this.remainingDailyCards.Count < 1){
                 this.remainingDailyCards.AddRange(this.discardedDailyCards);
@@ -774,12 +778,10 @@ public class CardHandler : MonoBehaviour
         // this.cardPicker.AddCart(customPickedCard);
         // this.pickedCards.Add(customPickedCard);
         // this.remainingProblemCards.Remove(customPickedCard);
-        // this.readyToDiscard.Add(customPickedCard.id + (((int) customPickedCard.category -1) * 60) -1, false);
         // Card customPickedCard2 = this.problemCards[36];
         // this.cardPicker.AddCart(customPickedCard2);
         // this.pickedCards.Add(customPickedCard2);
         // this.remainingProblemCards.Remove(customPickedCard2);
-        // this.readyToDiscard.Add(customPickedCard2.id + (((int) customPickedCard2.category -1) * 60) -1, false);
         for (int i = 0; i < 3; i++){
             if (this.remainingProblemCards.Count <= 0){
                 this.remainingProblemCards.AddRange(this.discardedProblemCards);
@@ -802,8 +804,11 @@ public class CardHandler : MonoBehaviour
             StateManager.gameState = StateManager.GameState.SUMMARY;
             yield break;
         }
+        Card customPickedCard = this.reviewCards[10];
+        this.cardPicker.AddCart(customPickedCard);
+        this.remainingDailyCards.Remove(customPickedCard);
         EventManager.cardsToPick = n;
-        for (int i = 0; i < n; i++){
+        for (int i = 0; i < n-1; i++){
             if (this.remainingReviewCards.Count < 1){
                 this.remainingReviewCards.AddRange(this.discardedReviewCards);
                 this.discardedReviewCards = new List<Card>();
@@ -814,7 +819,7 @@ public class CardHandler : MonoBehaviour
             this.remainingReviewCards.Remove(choosenCard);
         }
         EventManager.handleCards = true;
-        EventManager.firstCard = true;
+        EventManager.firstCard = false;
         StartCoroutine(HandleCards());
         yield return new WaitUntil(() => EventManager.handleCards == false);
         StateManager.gameState = StateManager.GameState.SUMMARY;
