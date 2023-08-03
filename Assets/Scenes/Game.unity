@@ -28108,6 +28108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 58451857}
+  burndownChartManager: {fileID: 48913542}
   cardPicker: {fileID: 1770712065}
   animationManager: {fileID: 1132953499}
   debtSlider: {fileID: 519452435}

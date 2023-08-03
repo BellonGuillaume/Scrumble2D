@@ -11,6 +11,7 @@ using UnityEngine.UI;
 public class CardHandler : MonoBehaviour
 {
     [SerializeField] GameManager gameManager;
+    [SerializeField] BurndownChartManager burndownChartManager;
 
     public List<Card> dailyCards;
     public List<Card> problemCards;
@@ -114,6 +115,10 @@ public class CardHandler : MonoBehaviour
             yield return new WaitUntil(() => EventManager.permanentCardHidden == true);
             EventManager.permanentCardHidden = false;
             StateManager.skipProblemOrDoubleDaily--;
+            if (StateManager.skipProblemOrDoubleDaily <= 0){
+                DiscardPermanentCard(this.permanentCard8);
+                yield return new WaitUntil(() => EventManager.animate == false);
+            }
             doubleValue = 2;
         }
         if(StateManager.noMoreTestIssues == true && uiCard.card.category == Card.CategoryOfCard.PROBLEM && uiCard.card.test == true){
@@ -130,10 +135,7 @@ public class CardHandler : MonoBehaviour
             StartCoroutine(this.cardPicker.UnChooseCard());
             uiCard.readyToDiscard = true;
             yield return new WaitUntil(() => EventManager.animate == false);
-            animationManager.HideCardPick();
-            yield return new WaitUntil(() => EventManager.animate == false);
         } else if (StateManager.skipProblemOrDoubleDaily > 0 && uiCard.card.category == Card.CategoryOfCard.PROBLEM){
-            StateManager.skipProblemOrDoubleDaily--;
             EventManager.permanentCardShowned = false;
             this.ShowSkipProblemOrDoubleDailyPermanent();
             yield return new WaitUntil(() => EventManager.permanentCardShowned == true);
@@ -144,6 +146,11 @@ public class CardHandler : MonoBehaviour
             EventManager.readyToHidePermanent = true;
             yield return new WaitUntil(() => EventManager.permanentCardHidden == true);
             EventManager.permanentCardHidden = false;
+            StateManager.skipProblemOrDoubleDaily--;
+            if (StateManager.skipProblemOrDoubleDaily <= 0){
+                DiscardPermanentCard(this.permanentCard8);
+                yield return new WaitUntil(() => EventManager.animate == false);
+            }
             StartCoroutine(this.cardPicker.UnChooseCard());
             uiCard.readyToDiscard = true;
             yield return new WaitUntil(() => EventManager.animate == false);
@@ -480,7 +487,7 @@ public class CardHandler : MonoBehaviour
                     StartCoroutine(HandleAtomicAction(Card.Action.CurrentPlayerPassATurn, 4));
                     yield return new WaitUntil(() => EventManager.action == false);
                     permanentPlaceholder = permanentCard2.gameObject;
-                    StateManager.oneMoreTaskPerRoll = true;
+                    StateManager.currentPlayer.oneMoreTaskPerRoll = true;
                     StartCoroutine(this.cardPicker.PlacePermanentCard(permanentPlaceholder));
                     yield return new WaitUntil(() => EventManager.animate == false);
                 } else {
@@ -525,14 +532,22 @@ public class CardHandler : MonoBehaviour
                 }
                 break;
             }
-            case Card.Permanent.MaxUserStoriesLowered : { // TODO : handle la carte
+            case Card.Permanent.MaxUserStoriesLowered : {
                 this.okButton.gameObject.SetActive(true);
                 yield return new WaitUntil(() => EventManager.okPressed == true);
                 EventManager.okPressed = false;
                 this.okButton.gameObject.SetActive(false);
                 permanentPlaceholder = permanentCard5.gameObject;
-                StateManager.maxUserStoryLowered = true;
                 StartCoroutine(this.cardPicker.PlacePermanentCard(permanentPlaceholder));
+                StateManager.maxUserStoryLowered = true;
+                UpdateCurrentUS();
+                int newCurrentRemainingTasks = 0;
+                float newInitialRemainingTasks = burndownChartManager.currentSprint.currentDay.plannedRemainingTasks + burndownChartManager.currentSprint.currentDay.plannedTasks;
+                foreach (GameObject arrowedUS in gameManager.doingAUS){
+                    newInitialRemainingTasks -= 3;
+                    newCurrentRemainingTasks += (arrowedUS.GetComponent<ArrowedUS>().userStory.maxTask - arrowedUS.GetComponent<ArrowedUS>().userStory.currentTask);
+                }
+                burndownChartManager.currentSprint.currentDay.Update(newInitialRemainingTasks, newCurrentRemainingTasks);
                 yield return new WaitUntil(() => EventManager.animate == false);
                 break;
             }
@@ -633,7 +648,7 @@ public class CardHandler : MonoBehaviour
     }
     IEnumerator CurrentPlayerPassATurn(int n){
         yield return new WaitUntil(() => EventManager.action == true);
-        StateManager.players[StateManager.currentPlayer.playerNumber-1].turnToPass = n;
+        StateManager.currentPlayer.turnToPass = n;
         EventManager.action = false;
         yield break;
     }
@@ -748,10 +763,9 @@ public class CardHandler : MonoBehaviour
     public IEnumerator FirstPickDailyCard(){
         yield return new WaitUntil(() => StateManager.gameState == StateManager.GameState.PICK_DAILY);
         EventManager.cardsToPick = 1;
-        // Card customPickedCard = this.dailyCards[1];
-        // this.cardPicker.AddCart(customPickedCard);
-        // this.pickedCards.Add(customPickedCard);
-        // this.remainingDailyCards.Remove(customPickedCard);
+        Card customPickedCard = this.dailyCards[31];
+        this.cardPicker.AddCart(customPickedCard);
+        this.remainingDailyCards.Remove(customPickedCard);
         for (int i = 0; i < 3; i++){
             if (this.remainingDailyCards.Count < 1){
                 this.remainingDailyCards.AddRange(this.discardedDailyCards);
@@ -823,6 +837,19 @@ public class CardHandler : MonoBehaviour
         StartCoroutine(HandleCards());
         yield return new WaitUntil(() => EventManager.handleCards == false);
         StateManager.gameState = StateManager.GameState.SUMMARY;
+    }
+
+    public void UpdateCurrentUS(){
+        foreach (GameObject aus in gameManager.doingAUS){
+            int newMax = aus.GetComponent<ArrowedUS>().userStory.maxTask - 3;
+            int newCurrent = Mathf.Min(aus.GetComponent<ArrowedUS>().userStory.currentTask, newMax);
+            Debug.Log($"Nouveau max et nouveau courant : {newMax}, {newCurrent}");
+            aus.GetComponent<ArrowedUS>().userStory.currentTask = newCurrent;
+            aus.GetComponent<ArrowedUS>().userStory.maxTask = newMax;
+            aus.GetComponent<ArrowedUS>().UpdateColor(aus.GetComponent<ArrowedUS>().userStory.currentTask);
+            if (newMax == newCurrent)
+                aus.GetComponent<ArrowedUS>().userStory.state = UserStory.State.DONE;
+        }
     }
     #endregion
     #endregion

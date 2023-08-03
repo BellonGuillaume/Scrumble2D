@@ -77,10 +77,13 @@ public class TDDDManager : MonoBehaviour
 
     public void OnClick(){
         List<UserStory> doingUS = doingDropContent.GetNewUserStories();
+        int maxLowered = 0;
+        if (StateManager.maxUserStoryLowered)
+            maxLowered = 3;
         foreach (UserStory userStory in doingUS){
             if(StateManager.userStories[userStory.id-1].state == UserStory.State.PRODUCT_BACKLOG){
                 StateManager.userStories[userStory.id-1].state = UserStory.State.SPRINT_BACKLOG;
-                StateManager.userStories[userStory.id-1].maxTask = StateManager.debtFactor * StateManager.players.Count * (int) userStory.size;
+                StateManager.userStories[userStory.id-1].maxTask = (StateManager.debtFactor * StateManager.players.Count * (int) userStory.size) - maxLowered;
                 GameManager.workingOn.Add(StateManager.userStories[userStory.id-1]);
             }
         }

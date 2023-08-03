@@ -909,7 +909,7 @@ public class AnimationManager : MonoBehaviour
     public void DiscardCard(GameObject card){
         EventManager.animate = true;
         Vector2 startPos = card.transform.position;
-        Vector2 endPos = new Vector2(startPos.x, 1300);
+        Vector2 endPos = new Vector2(startPos.x, 2000);
         this.animationCoroutine = this.CreateAnimationRoutine(
             0.5f,
             delegate(float progress){

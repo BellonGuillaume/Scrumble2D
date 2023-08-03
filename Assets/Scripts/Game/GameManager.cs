@@ -285,9 +285,11 @@ public class GameManager : MonoBehaviour
     // void BeginTurn(Player player){
     IEnumerator BeginTurn(Player player){
         yield return new WaitUntil(() => StateManager.turnState == StateManager.TurnState.BEGIN_TURN);
-        if (StateManager.players[player.playerNumber-1].turnToPass > 0){
+        if (player.turnToPass > 0){
             animationManager.ShowInfo($"{player.userName}" + " " + GetString("Game", "PassHisTurn"));
-            StateManager.players[player.playerNumber-1].turnToPass--;
+            player.turnToPass--;
+            if (player.turnToPass <= 0 && player.oneMoreTaskPerRoll)
+                StateManager.oneMoreTaskPerRoll = true;
             yield return new WaitUntil(() => EventManager.animate == false);
             StateManager.turnState = StateManager.TurnState.END_OF_TURN;
             yield break;

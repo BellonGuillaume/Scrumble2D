@@ -106,6 +106,16 @@ public class Day{
         this.realTasks = 0;
     }
 
+    public void Update(float newCurrentIdealRemainingTasks, int newCurrentRemainingTasks){
+        this.sprint.currentIdealRemainingTasks = newCurrentIdealRemainingTasks;
+        this.sprint.currentRemainingTasks = newCurrentRemainingTasks;
+        this.plannedTasks = (float) Math.Round((newCurrentIdealRemainingTasks / ((9 - dayNumber) + 1)), 2);
+        this.plannedRemainingTasks = newCurrentIdealRemainingTasks - plannedTasks;
+        this.sprint.currentIdealRemainingTasks -= plannedTasks;
+        this.realRemainingTasks = newCurrentRemainingTasks;
+        this.realTasks = 0;
+    }
+
     public void AddTasks(int tasks){
         Debug.Log($"Adding {tasks} tasks to day {dayNumber}");
         this.realTasks += tasks;

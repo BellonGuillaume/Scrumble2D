@@ -11,6 +11,7 @@ public class Player
     public int turnToPass;
     public bool twoMoreTasksPerRoll;
     public bool decreaseDebtPerTurn;
+    public bool oneMoreTaskPerRoll = false;
 
     public Player(string userName, int playerNumber, int nextPlayerNumber)
     {
