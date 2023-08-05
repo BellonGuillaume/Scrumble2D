@@ -16,6 +16,7 @@ public class Content : MonoBehaviour
             GameObject go = Instantiate(casePrefab);
             go.transform.SetParent(content);
             go.AddComponent<DropCase>();
+            go.transform.localScale = Vector3.one;
             cases.Add(go.GetComponent<DropCase>());
         }
     }

@@ -56,13 +56,13 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
      <Compile Include="Assets\Scripts\Game\Animation\AnimationManager.cs" />
      <Compile Include="Assets\Scripts\Ressources\AutoSizeScrollView.cs" />
-     <Compile Include="Assets\Scripts\Game\ExitButton.cs" />
      <Compile Include="Assets\Scripts\Game\Results.cs" />
      <Compile Include="Assets\StandaloneFileBrowser\Sample\CanvasSampleSaveFileText.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
      <Compile Include="Assets\Scripts\Ressources\ArrowedUS.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
      <Compile Include="Assets\Scripts\Menu\UIPlayer.cs" />
+     <Compile Include="Assets\Scripts\Game\ExitManager.cs" />
      <Compile Include="Assets\Scripts\Game\CardPicker.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
      <Compile Include="Assets\Scripts\Ressources\DropDownController.cs" />

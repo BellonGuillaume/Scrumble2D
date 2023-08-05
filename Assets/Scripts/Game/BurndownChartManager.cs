@@ -19,20 +19,18 @@ public class BurndownChartManager : MonoBehaviour
         if (string.IsNullOrEmpty(selectedPath))
             return;
         string filePath = Path.Combine(selectedPath, "burn_down_chart.csv");
+        TextWriter tw = new StreamWriter(filePath, false);
         for (int i = 0; i < sprints.Count; i++){
-            TextWriter tw = new StreamWriter(filePath, false);
             tw.WriteLine($"Sprint N°{sprints[i].sprintNumber}");
             tw.WriteLine("Cases, Planned Tasks, Planned Burndown, Real Tasks, Real Burndown");
-            tw.Close();
-            tw = new StreamWriter(filePath, true);
             tw.WriteLine($"Initial values, {sprints[i].initialTotalTasks}, {sprints[i].initialTotalTasks}, {sprints[i].initialTotalTasks}, {sprints[i].initialTotalTasks}");
 
             for (int j = 0; j < sprints[i].days.Count; j++){
                 tw.WriteLine($"Day {sprints[i].days[j].dayNumber}, {sprints[i].days[j].plannedTasks}, {sprints[i].days[j].plannedRemainingTasks}, {sprints[i].days[j].realTasks}, {sprints[i].days[j].realRemainingTasks}");
             }
             tw.WriteLine();
-            tw.Close();
         }
+        tw.Close();
     }
 
     public void NewSprint(int sprintNumber, List<UserStory> userStories){
@@ -81,7 +79,7 @@ public class Sprint{
         this.sprintNumber = sprintNumber;
         this.userStories = userStories;
         foreach (UserStory userStory in userStories){
-            initialTotalTasks += userStory.maxTask;
+            initialTotalTasks += userStory.maxTask - userStory.currentTask;
         }
         this.currentRemainingTasks = this.initialTotalTasks;
         this.currentIdealRemainingTasks = this.initialTotalTasks;
@@ -116,7 +114,11 @@ public class Day{
         this.dayNumber = dayNumber;
         this.sprint = sprint;
         this.plannedTasks = (float) Math.Round((currentIdealRemainingTasks / ((9 - dayNumber) + 1)), 2);
-        this.plannedRemainingTasks = currentIdealRemainingTasks - plannedTasks;
+        this.plannedRemainingTasks = (float) Math.Round(currentIdealRemainingTasks - plannedTasks, 2);
+        if (this.plannedTasks < 0.01)
+            this.plannedTasks = 0;
+        if (this.plannedRemainingTasks < 0.01)
+            this.plannedRemainingTasks = 0;
         this.sprint.currentIdealRemainingTasks -= plannedTasks;
         this.realRemainingTasks = currentRemainingTasks;
         this.realTasks = 0;
@@ -126,7 +128,11 @@ public class Day{
         this.sprint.currentIdealRemainingTasks = newCurrentIdealRemainingTasks;
         this.sprint.currentRemainingTasks = newCurrentRemainingTasks;
         this.plannedTasks = (float) Math.Round((newCurrentIdealRemainingTasks / ((9 - dayNumber) + 1)), 2);
-        this.plannedRemainingTasks = newCurrentIdealRemainingTasks - plannedTasks;
+        this.plannedRemainingTasks = (float) Math.Round(newCurrentIdealRemainingTasks - plannedTasks, 2);
+        if (this.plannedTasks < 0.01)
+            this.plannedTasks = 0;
+        if (this.plannedRemainingTasks < 0.01)
+            this.plannedRemainingTasks = 0;
         this.sprint.currentIdealRemainingTasks -= plannedTasks;
         this.realRemainingTasks = newCurrentRemainingTasks;
         this.realTasks = 0;

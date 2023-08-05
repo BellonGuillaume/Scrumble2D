@@ -525,7 +525,7 @@ public class AnimationManager : MonoBehaviour
         EventManager.animate = true;
         card.GetComponent<UICard>().positionBeforeMove = card.transform.position;
         Vector2 startPos = card.GetComponent<UICard>().positionBeforeMove;
-        Vector2 endPos = new Vector2(960f, 540f);
+        Vector2 endPos =  new Vector2(Screen.width*0.5f, Screen.height*0.5f);
         Vector2 startScale = card.transform.localScale;
         Vector2 endScale = new Vector2(1.2f, 1.2f);
         this.animationCoroutine = this.CreateAnimationRoutine(
@@ -545,7 +545,7 @@ public class AnimationManager : MonoBehaviour
 
     public void UncenterCard(GameObject card){
         EventManager.animate = true;
-        Vector2 startPos = new Vector2(960f, 540f);
+        Vector2 startPos = card.transform.position;
         Vector2 endPos = card.GetComponent<UICard>().positionBeforeMove;
         Vector2 startScale = card.transform.localScale;
         Vector2 endScale = Vector2.one;
@@ -803,7 +803,7 @@ public class AnimationManager : MonoBehaviour
     {
         EventManager.animate = true;
         Vector2 startPos = arrowedUS.transform.position;
-        Vector2 endPos = new Vector2(2220f, 540f);
+        Vector2 endPos = new Vector2(Screen.width + 200f, Screen.height*0.5f);
         this.animationCoroutine = this.CreateAnimationRoutine(
             0.5f,
             delegate(float progress){
@@ -820,7 +820,7 @@ public class AnimationManager : MonoBehaviour
 
     public void ShiftUsToRight(GameObject arrowedUS){
         Vector2 startPos = arrowedUS.transform.position;
-        Vector2 endPos = new Vector2(arrowedUS.transform.position.x + 960f, arrowedUS.transform.position.y);
+        Vector2 endPos = new Vector2(arrowedUS.transform.position.x + (Screen.width*0.5f), arrowedUS.transform.position.y);
         this.animationCoroutine = this.CreateAnimationRoutine(
             0.5f,
             delegate(float progress){
@@ -909,7 +909,7 @@ public class AnimationManager : MonoBehaviour
     public void DiscardCard(GameObject card){
         EventManager.animate = true;
         Vector2 startPos = card.transform.position;
-        Vector2 endPos = new Vector2(startPos.x, 2000);
+        Vector2 endPos = new Vector2(startPos.x, Screen.height + 300f);
         this.animationCoroutine = this.CreateAnimationRoutine(
             0.5f,
             delegate(float progress){
@@ -942,8 +942,11 @@ public class AnimationManager : MonoBehaviour
             },
             delegate{
                 permanentCard.SetActive(true);
-                card.GetComponent<UICard>().SetAlpha(0);
+                card.SetActive(false);
                 card.transform.position = startPos;
+                card.GetComponent<UICard>().AddVerso();
+                card.GetComponent<UICard>().SetAlpha(255);
+                card.GetComponent<UICard>().UnFill();
                 EventManager.animate = false;
             }
         );
@@ -1051,8 +1054,9 @@ public class AnimationManager : MonoBehaviour
 
     public void ShowSummary(GameObject summary, GameObject elements, GameObject background){
         EventManager.animate = true;
+        RectTransform rectTransform = elements.GetComponent<RectTransform>();
         Vector2 startPos = elements.transform.position;
-        Vector2 endPos = new Vector2(1920, startPos.y);
+        Vector2 endPos = new Vector2(startPos.x - rectTransform.rect.width, startPos.y);
         byte startBlur = 0;
         byte endBlur = this.blurValue;
         summary.SetActive(true);
@@ -1075,8 +1079,9 @@ public class AnimationManager : MonoBehaviour
 
     public void HideSummary(GameObject summary, GameObject elements, GameObject background){
         EventManager.animate = true;
+        RectTransform rectTransform = elements.GetComponent<RectTransform>();
         Vector2 startPos = elements.transform.position;
-        Vector2 endPos = new Vector2(3200, startPos.y);
+        Vector2 endPos = new Vector2(startPos.x + rectTransform.rect.width, startPos.y);
         byte startBlur = this.blurValue;
         byte endBlur = 0;
         animationCoroutine = this.CreateAnimationRoutine(
@@ -1146,9 +1151,50 @@ public class AnimationManager : MonoBehaviour
         );
     }
 
-    public void ShowPermanentCard(GameObject permanentCard){
+    public void ShowPermanentCardWithoutPopUp(GameObject permanentCard){
         EventManager.animate = true;
-        Vector3 newPos = new Vector3(1440, 540, 0);
+        Vector3 startPos = permanentCard.transform.position;
+        Vector3 endPos = new Vector3(Screen.width*0.75f, Screen.height*0.5f, 0);
+        Vector3 startScale = permanentCard.transform.localScale;
+        Vector3 endScale = new Vector3(1.2f, 1.2f, 1f);
+        // permanentCard.transform.SetParent(popUp.transform);
+        this.animationCoroutine = this.CreateAnimationRoutine(
+            0.5f,
+            delegate (float progress){
+                float easedProgress = Easing.easeInQuint(0, 1, progress);
+                Vector3 scale = Vector3.Lerp(startScale, endScale, easedProgress);
+                Vector3 pos = Vector3.Lerp(startPos, endPos, easedProgress);
+                permanentCard.transform.localScale = scale;
+                permanentCard.transform.position = pos;
+            },
+            delegate{
+                EventManager.animate = false;
+            }
+        );
+    }
+
+    public void HidePermanentCardWithoutPopUp(GameObject permanentCard, Transform initParent, int initIndex, Vector3 initPos, Vector3 initScale){
+        EventManager.animate = true;
+        Vector3 startPos = permanentCard.transform.position;
+        Vector3 startScale = permanentCard.transform.localScale;
+        this.animationCoroutine = this.CreateAnimationRoutine(
+            0.5f,
+            delegate (float progress){
+                float easedProgress = Easing.easeOutQuint(0, 1, progress);
+                Vector3 pos = Vector3.Lerp(startPos, initPos, easedProgress);
+                Vector3 scale = Vector3.Lerp(startScale, initScale, easedProgress);
+                permanentCard.transform.position = pos;
+                permanentCard.transform.localScale = scale;
+            },
+            delegate{
+                EventManager.animate = false;
+            }
+        );
+    }
+
+    public void ShowPermanentCardPopUp(GameObject permanentCard){
+        EventManager.animate = true;
+        Vector3 newPos = new Vector3(Screen.width*0.75f, Screen.height*0.5f, 0);
         Vector3 startScale = Vector3.one;
         Vector3 endScale = new Vector3(1.2f, 1.2f, 1f);
         float startAlpha = 0;
@@ -1172,7 +1218,7 @@ public class AnimationManager : MonoBehaviour
         );
     }
 
-    public void HidePermanentCard(GameObject permanentCard, Transform initParent, int initIndex, Vector3 initPos, Vector3 initScale){
+    public void HidePermanentCardPopUp(GameObject permanentCard, Transform initParent, int initIndex, Vector3 initPos, Vector3 initScale){
         EventManager.animate = true;
         float startAlpha = 255;
         float endAlpha = 0;
@@ -1182,8 +1228,6 @@ public class AnimationManager : MonoBehaviour
                 float easedProgress = Easing.easeOutQuint(0, 1, progress);
                 float alpha = Mathf.Lerp(startAlpha, endAlpha, easedProgress);
                 permanentCard.GetComponent<UICard>().SetAlpha(alpha);
-                Debug.Log($"Putting the alpha to {alpha}");
-                Debug.Log($"Here is the alpha value of the card : {permanentCard.GetComponent<UICard>().GetComponentsInChildren<Image>()[0].color.a}");
             },
             delegate{
                 permanentCard.transform.SetParent(initParent);
@@ -1231,6 +1275,53 @@ public class AnimationManager : MonoBehaviour
             }
         );
         
+    }
+
+    public void ShowExitPannel(GameObject exitPannel, GameObject elementsBack, GameObject blurBack){
+        elementsBack.transform.localScale = Vector2.zero;
+        Color32 temp = blurBack.GetComponent<Image>().color;
+        temp.a = 0;
+        blurBack.GetComponent<Image>().color = temp;
+        Vector2 startScale = Vector2.zero;
+        Vector2 endScale = Vector2.one;
+        byte startAlpha = 0;
+        byte endAlpha = blurValue;
+        exitPannel.SetActive(true);
+        this.animationCoroutine = this.CreateAnimationRoutine(
+            0.5f,
+            delegate (float progress){
+                float easedProgress = Easing.easeInCubic(0, 1, progress);
+                Vector2 scale = Vector2.Lerp(startScale, endScale, easedProgress);
+                byte alpha = (byte) Mathf.Lerp(startAlpha, endAlpha, easedProgress);
+                Color32 temp = blurBack.GetComponent<Image>().color;
+                temp.a = alpha;
+                elementsBack.transform.localScale = scale;
+                blurBack.GetComponent<Image>().color = temp;
+            }
+        );
+    }
+
+    public void HideExitPannel(GameObject exitPannel, GameObject elementsBack, GameObject blurBack){
+        Vector2 startScale = Vector2.one;
+        Vector2 endScale = Vector2.zero;
+        byte startAlpha = blurValue;
+        byte endAlpha = 0;
+        exitPannel.SetActive(true);
+        this.animationCoroutine = this.CreateAnimationRoutine(
+            0.5f,
+            delegate (float progress){
+                float easedProgress = Easing.easeInCubic(0, 1, progress);
+                Vector2 scale = Vector2.Lerp(startScale, endScale, easedProgress);
+                byte alpha = (byte) Mathf.Lerp(startAlpha, endAlpha, easedProgress);
+                Color32 temp = blurBack.GetComponent<Image>().color;
+                temp.a = alpha;
+                elementsBack.transform.localScale = scale;
+                blurBack.GetComponent<Image>().color = temp;
+            },
+            delegate{
+                exitPannel.SetActive(false);
+            }
+        );
     }
     public string GetString(string tableName, string stringKey){
         return LocalizationSettings.StringDatabase.GetLocalizedString(tableName, stringKey);

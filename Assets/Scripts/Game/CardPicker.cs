@@ -68,10 +68,6 @@ public class CardPicker : MonoBehaviour
     public IEnumerator PlacePermanentCard(GameObject permanentCardLocation){
         animationManager.AddPermanentCard(this.centralCard, permanentCardLocation);
         yield return new WaitUntil(() => EventManager.animate == false);
-        this.centralCard.SetActive(false);
-        this.centralCard.GetComponent<UICard>().SetAlpha(255);
-        this.centralCard.GetComponent<UICard>().AddVerso();
-        this.centralCard.GetComponent<UICard>().UnFill();
     }
 
     public void RemoveCards(){

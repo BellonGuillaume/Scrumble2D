@@ -48,7 +48,7 @@ public class ReviewManager : MonoBehaviour
             go.GetComponent<UserStoryUI>().Fill(arrowedUS.GetComponent<UserStoryUI>().userStory);
             go.GetComponent<ArrowedUS>().SetUserStory(arrowedUS.GetComponent<UserStoryUI>().userStory);
             go.transform.SetParent(container);
-            go.transform.position = new Vector3((arrowedUSes.Count * (-960f)) + 960f, 540f, 0f);
+            go.transform.position = new Vector3((arrowedUSes.Count * (-(Screen.width*0.5f))) + (Screen.width*0.5f), Screen.height*0.5f, 0f);
             go.transform.localScale = Vector3.one;
             go.SetActive(true);
             arrowedUSes.Add(go);
@@ -73,7 +73,6 @@ public class ReviewManager : MonoBehaviour
         // animate the score
         yield return new WaitForSeconds(1);
         if (arrowedUS.GetComponent<UserStoryUI>().userStory.currentTask >= arrowedUS.GetComponent<UserStoryUI>().userStory.maxTask){
-            Debug.Log($"Ready to deploy UserStory n°{arrowedUS.GetComponent<UserStoryUI>().userStory.id.ToString()}");
             arrowedUS.GetComponent<UserStoryUI>().userStory.state = UserStory.State.DEPLOYED;
             StateManager.starsNumber += arrowedUS.GetComponent<UserStoryUI>().userStory.stars;
             StateManager.finishedUS++;
@@ -86,8 +85,7 @@ public class ReviewManager : MonoBehaviour
         } else {
             int remainingTasks = arrowedUS.GetComponent<UserStoryUI>().userStory.maxTask - arrowedUS.GetComponent<UserStoryUI>().userStory.currentTask;
             this.debtToAdd += remainingTasks / 5;
-            Debug.Log($"Remaining tasks and debt increase : {remainingTasks.ToString()}, {(remainingTasks / 5).ToString()}");
-            indication.text = GetString("RemainingTasks") + " " + remainingTasks.ToString() + $"\n" + GetString("DebtRaised") + " " + debtToAdd.ToString();
+            indication.text = GetString("RemainingTasks") + " " + remainingTasks.ToString() + $"\n" + GetString("DebtRaised") + " " + (remainingTasks / 5).ToString();
             indication.gameObject.transform.parent.gameObject.SetActive(true);
             yield return new WaitForSeconds(1.5f);
             EventManager.usResized = false;
@@ -99,6 +97,7 @@ public class ReviewManager : MonoBehaviour
             go.GetComponent<ArrowedUS>().HideArrows();
             go.transform.SetParent(workStation.transform.GetChild(caseToReplace));
             go.transform.localPosition = Vector3.zero;
+            go.transform.localScale = Vector3.one;
             gameManager.doingAUS.Add(go);
             caseToReplace++;
             indication.gameObject.transform.parent.gameObject.SetActive(false);

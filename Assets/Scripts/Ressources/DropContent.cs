@@ -17,6 +17,7 @@ public class DropContent : MonoBehaviour, IDropHandler
             go.transform.SetParent(content);
             go.AddComponent<DropCase>();
             go.GetComponent<DropCase>().dropContent = this;
+            go.transform.localScale = Vector3.one;
             cases.Add(go.GetComponent<DropCase>());
             if(i == 0){
                 go.GetComponent<DropCase>().previousDropCase = null;
@@ -73,6 +74,8 @@ public class DropContent : MonoBehaviour, IDropHandler
             go1.GetComponent<DropCase>().nextDropCase = go2.GetComponent<DropCase>();
             go2.GetComponent<DropCase>().previousDropCase = go1.GetComponent<DropCase>();
             go2.GetComponent<DropCase>().nextDropCase = null;
+            go1.transform.localScale = Vector3.one;
+            go2.transform.localScale = Vector3.one;
             cases.Add(go1.GetComponent<DropCase>());
             cases.Add(go2.GetComponent<DropCase>());
             go1.GetComponent<DropCase>().OnDrop(eventData);

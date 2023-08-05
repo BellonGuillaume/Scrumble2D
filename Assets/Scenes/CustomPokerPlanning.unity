@@ -1323,7 +1323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e2a332174e4655458152cfbdf2919eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  userStoryPrefab: {fileID: 8801162080858401776, guid: 13378ad18c5fdc94cade46c7a98c4db0, type: 3}
+  userStoryPrefab: {fileID: 8801162080858401776, guid: e565ddbc00339d9498e6363dc9f968d9, type: 3}
   scrollPannel: {fileID: 227534431}
   leftUS: {fileID: 695596654}
   centralUS: {fileID: 40980148}

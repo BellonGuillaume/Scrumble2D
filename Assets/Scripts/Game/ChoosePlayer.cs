@@ -24,8 +24,8 @@ public class ChoosePlayer : MonoBehaviour
         for (int i = 0; i < StateManager.players.Count; i++){
             GameObject go = Instantiate(dailyPlayerPrefab);
             go.GetComponent<DailyPlayer>().Fill(StateManager.players[i], this);
-            go.transform.localScale = Vector3.one;
             go.transform.SetParent(container);
+            go.transform.localScale = Vector3.one;
         }
     }
 

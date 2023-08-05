@@ -148,6 +148,7 @@ public class CustomPokerPlanningManager : MonoBehaviour
         go.GetComponent<UserStoryUI>().Connect(this);
         go.GetComponent<UserStoryUI>().Fill(userStory);
         go.GetComponent<UserStoryUI>().ChangeOutlineColor(UserStory.OutlineColor.RED);
+        go.transform.localScale = Vector3.one;
         this.userStoriesUI.Add(go);
     }
     public void UpdateUserStoryUI(int id){

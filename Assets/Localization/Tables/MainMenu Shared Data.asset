@@ -119,6 +119,10 @@ MonoBehaviour:
     m_Key: USKnowledgeManagement
     m_Metadata:
       m_Items: []
+  - m_Id: 7998112990273536
+    m_Key: USEmpty
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -120,7 +120,7 @@ public class GameManager : MonoBehaviour
         StateManager.gameState = StateManager.GameState.TDTD;
         StateManager.currentDay = 0;
         if (n > 1){
-            animationManager.StartDayAnimation(0);
+            animationManager.StartDayAnimation(11);
             yield return new WaitUntil(() => EventManager.animate == false);
         }
         StartCoroutine(ChooseToDoToDoing());
@@ -151,7 +151,7 @@ public class GameManager : MonoBehaviour
                 break;
         }
         StateManager.gameState = StateManager.GameState.REVIEW;
-        animationManager.StartDayAnimation(10);
+        animationManager.StartDayAnimation(9);
         yield return new WaitUntil(() => EventManager.animate == false);
         animationManager.ShowInfo(GetString("Game", "ReviewPhase"));
         yield return new WaitUntil(() => EventManager.animate == false);
@@ -161,7 +161,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(() => StateManager.gameState == StateManager.GameState.SUMMARY);
         StartCoroutine(summaryManager.HandleSummary());
         yield return new WaitUntil(() => StateManager.gameState == StateManager.GameState.RETROSPECTIVE);
-        animationManager.StartDayAnimation(11);
+        animationManager.StartDayAnimation(10);
         yield return new WaitUntil(() => EventManager.animate == false);
         StartCoroutine(retrospectiveManager.HandleRetrospective());
         yield return new WaitUntil(() => StateManager.gameState == StateManager.GameState.END_OF_SPRINT);
@@ -189,6 +189,7 @@ public class GameManager : MonoBehaviour
                     go.GetComponent<ArrowedUS>().HideArrows();
                     go.transform.SetParent(child.transform);
                     go.transform.localPosition = Vector3.zero;
+                    go.transform.localScale = Vector3.one;
                     this.doingAUS.Add(go);
                     break;
                 }
@@ -201,7 +202,7 @@ public class GameManager : MonoBehaviour
     #region --------------------------------- Day ---------------------------------
     IEnumerator BeginDay(int n){
         yield return new WaitUntil(() => StateManager.gameState == StateManager.GameState.BEGIN_DAY);
-        animationManager.StartDayAnimation(n);
+        animationManager.StartDayAnimation(n-1);
         if(EventManager.updateBurndownChart == true)
             burndownChartManager.UpdateBurndownChart();
         burndownChartManager.currentSprint.NewDay(n);
@@ -563,8 +564,8 @@ public class GameManager : MonoBehaviour
         StateManager.category = StateManager.Category.GIFT_SHOP;
         StateManager.gameName = "";
         StateManager.pokerPlanning = false;
-        // StateManager.CreatePlayers(new List<string>{"Alice"});
-        StateManager.CreatePlayers(new List<string>{"Alice", "Bob", "Charles"});
+        StateManager.CreatePlayers(new List<string>{"Alice"});
+        // StateManager.CreatePlayers(new List<string>{"Alice", "Bob", "Charles"});
         StateManager.CreateUserStories(StateManager.Category.GIFT_SHOP);
         foreach (UserStory userStory in StateManager.userStories){
             userStory.size = userStory.defaultSize;

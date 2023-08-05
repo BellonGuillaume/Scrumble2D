@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class FlexibleGridLayout : LayoutGroup
 {
     public enum FitType{
-        Uniform, Width, Height, FixedRows, FixedColumns
+        Uniform, Width, Height, FixedRows, FixedColumns, FixedBoth
     }
     public int rows;
     public int columns;
@@ -31,6 +31,9 @@ public class FlexibleGridLayout : LayoutGroup
         }
         else if (this.fitType == FitType.Height || this.fitType == FitType.FixedRows){
             columns = Mathf.CeilToInt(transform.childCount / (float) rows);
+        }
+        else if (this.fitType == FitType.FixedBoth){
+            
         }
 
         float parentWidth = rectTransform.rect.width;

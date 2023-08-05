@@ -28,6 +28,7 @@ public class UIDice : MonoBehaviour
     }
 
     public IEnumerator RollDice(){
+        this.clicked = false;
         yield return new WaitUntil(() => this.clicked == true);
         this.clicked = false;
         int diceValue;

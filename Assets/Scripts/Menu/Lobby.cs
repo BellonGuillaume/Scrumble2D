@@ -112,6 +112,7 @@ public class Lobby : MonoBehaviour
     public void AddPlayer(){
         GameObject player = Instantiate(playerUIPrefab) as GameObject;
         player.transform.SetParent(gridLayout.transform);
+        player.transform.localScale = Vector3.one;
         playersUI.Add(player);
 
         UIPlayer playerUI = player.GetComponent<UIPlayer>();

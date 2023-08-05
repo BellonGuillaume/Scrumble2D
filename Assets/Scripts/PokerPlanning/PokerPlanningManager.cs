@@ -51,6 +51,7 @@ public class PokerPlanningManager : MonoBehaviour
             go.transform.SetParent(scrollPannel.transform);
             go.GetComponent<UserStoryUI>().Connect(this);
             go.GetComponent<UserStoryUI>().ChangeOutlineColor(UserStory.OutlineColor.RED);
+            go.transform.localScale = Vector3.one;
             userStoriesUI.Add(go);
             ready.Add(false);
         }

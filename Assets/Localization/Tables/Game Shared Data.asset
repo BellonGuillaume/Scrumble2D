@@ -139,6 +139,22 @@ MonoBehaviour:
     m_Key: PassButton
     m_Metadata:
       m_Items: []
+  - m_Id: 3171119417303040
+    m_Key: WantToLeave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3171278763106304
+    m_Key: Yes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3171309381525504
+    m_Key: No
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3556518505521152
+    m_Key: Choice1
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

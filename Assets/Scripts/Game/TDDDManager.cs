@@ -72,6 +72,7 @@ public class TDDDManager : MonoBehaviour
         go.AddComponent<DraggableItem>();
         go.GetComponent<DraggableItem>().userStory = userStory;
         go.GetComponent<DraggableItem>().userStoryUI = go.GetComponent<UserStoryUI>();
+        go.transform.localScale = Vector3.one;
         return go;
     }
 

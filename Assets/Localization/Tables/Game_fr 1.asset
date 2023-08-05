@@ -146,6 +146,22 @@ MonoBehaviour:
     m_Localized: "Finir la r\xE9trospective"
     m_Metadata:
       m_Items: []
+  - m_Id: 3171119417303040
+    m_Localized: "\xCAtes-vous s\xFBr de vouloir quitter la partie ?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3171278763106304
+    m_Localized: Oui
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3171309381525504
+    m_Localized: Non
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3556518505521152
+    m_Localized: 'Option '
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

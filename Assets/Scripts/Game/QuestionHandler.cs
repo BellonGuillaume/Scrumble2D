@@ -151,7 +151,15 @@ public class QuestionHandler : MonoBehaviour
             value = 3;
         } else {
             buttonPressed.image.color = Color.red;
-            buttonPressed.interactable = false;
+            if (answer1.GetComponentInChildren<TMP_Text>().text == "3")
+                answer1.image.color = Color.green;
+            else if (answer2.GetComponentInChildren<TMP_Text>().text == "3")
+                answer2.image.color = Color.green;
+            else if (answer3.GetComponentInChildren<TMP_Text>().text == "3")
+                answer3.image.color = Color.green;
+            else if (answer4.GetComponentInChildren<TMP_Text>().text == "3")
+                answer4.image.color = Color.green;
+            buttonPressed.enabled = false;
         }
     }
 
@@ -163,6 +171,14 @@ public class QuestionHandler : MonoBehaviour
             rightAnswerIsFound = true;
         } else {
             buttonPressed.image.color = Color.red;
+            if (answer1.GetComponentInChildren<TMP_Text>().text == "DevelopmentTeam")
+                answer1.image.color = Color.green;
+            else if (answer2.GetComponentInChildren<TMP_Text>().text == "DevelopmentTeam")
+                answer2.image.color = Color.green;
+            else if (answer3.GetComponentInChildren<TMP_Text>().text == "DevelopmentTeam")
+                answer3.image.color = Color.green;
+            else if (answer4.GetComponentInChildren<TMP_Text>().text == "DevelopmentTeam")
+                answer4.image.color = Color.green;
             wrongAnswerIsFound = true;
         }
         DeactivateButtons();
@@ -170,10 +186,18 @@ public class QuestionHandler : MonoBehaviour
     public void HandleQuestion3(Card card, string answer, Button buttonPressed){
         if (answer == GetString("DidYesterday") || answer == GetString("DoToday") || answer == GetString("Obstacles")){
             buttonPressed.image.color = Color.green;
-            buttonPressed.interactable = false;
+            buttonPressed.enabled = false;
             remainingRightAnswers--;
         } else {
             buttonPressed.image.color = Color.red;
+            if (answer1.GetComponentInChildren<TMP_Text>().text == "DidYesterday" || answer1.GetComponentInChildren<TMP_Text>().text == "DoToday" || answer1.GetComponentInChildren<TMP_Text>().text == "Obstacles")
+                answer1.image.color = Color.green;
+            else if (answer2.GetComponentInChildren<TMP_Text>().text == "DidYesterday" || answer2.GetComponentInChildren<TMP_Text>().text == "DoToday" || answer2.GetComponentInChildren<TMP_Text>().text == "Obstacles")
+                answer2.image.color = Color.green;
+            else if (answer3.GetComponentInChildren<TMP_Text>().text == "DidYesterday" || answer3.GetComponentInChildren<TMP_Text>().text == "DoToday" || answer3.GetComponentInChildren<TMP_Text>().text == "Obstacles")
+                answer3.image.color = Color.green;
+            else if (answer4.GetComponentInChildren<TMP_Text>().text == "DidYesterday" || answer4.GetComponentInChildren<TMP_Text>().text == "DoToday" || answer4.GetComponentInChildren<TMP_Text>().text == "Obstacles")
+                answer4.image.color = Color.green;
             failedAction = Card.Action.IncreaseDebt;
             value = 5;
             wrongAnswerIsFound = true;
@@ -192,6 +216,14 @@ public class QuestionHandler : MonoBehaviour
             rightAnswerIsFound = true;
         } else {
             buttonPressed.image.color = Color.red;
+            if (answer1.GetComponentInChildren<TMP_Text>().text == "4")
+                answer1.image.color = Color.green;
+            else if (answer2.GetComponentInChildren<TMP_Text>().text == "4")
+                answer2.image.color = Color.green;
+            else if (answer3.GetComponentInChildren<TMP_Text>().text == "4")
+                answer3.image.color = Color.green;
+            else if (answer4.GetComponentInChildren<TMP_Text>().text == "4")
+                answer4.image.color = Color.green;
             wrongAnswerIsFound = true;
         }
         DeactivateButtons();
@@ -204,6 +236,14 @@ public class QuestionHandler : MonoBehaviour
             rightAnswerIsFound = true;
         } else {
             buttonPressed.image.color = Color.red;
+            if (answer1.GetComponentInChildren<TMP_Text>().text == "2")
+                answer1.image.color = Color.green;
+            else if (answer2.GetComponentInChildren<TMP_Text>().text == "2")
+                answer2.image.color = Color.green;
+            else if (answer3.GetComponentInChildren<TMP_Text>().text == "2")
+                answer3.image.color = Color.green;
+            else if (answer4.GetComponentInChildren<TMP_Text>().text == "2")
+                answer4.image.color = Color.green;
             wrongAnswerIsFound = true;
         }
         DeactivateButtons();
@@ -216,6 +256,14 @@ public class QuestionHandler : MonoBehaviour
             rightAnswerIsFound = true;
         } else {
             buttonPressed.image.color = Color.red;
+            if (answer1.GetComponentInChildren<TMP_Text>().text == "3")
+                answer1.image.color = Color.green;
+            else if (answer2.GetComponentInChildren<TMP_Text>().text == "3")
+                answer2.image.color = Color.green;
+            else if (answer3.GetComponentInChildren<TMP_Text>().text == "3")
+                answer3.image.color = Color.green;
+            else if (answer4.GetComponentInChildren<TMP_Text>().text == "3")
+                answer4.image.color = Color.green;
             wrongAnswerIsFound = true;
         }
         DeactivateButtons();
@@ -228,23 +276,31 @@ public class QuestionHandler : MonoBehaviour
             rightAnswerIsFound = true;
         } else {
             buttonPressed.image.color = Color.red;
+            if (answer1.GetComponentInChildren<TMP_Text>().text == "8")
+                answer1.image.color = Color.green;
+            else if (answer2.GetComponentInChildren<TMP_Text>().text == "8")
+                answer2.image.color = Color.green;
+            else if (answer3.GetComponentInChildren<TMP_Text>().text == "8")
+                answer3.image.color = Color.green;
+            else if (answer4.GetComponentInChildren<TMP_Text>().text == "8")
+                answer4.image.color = Color.green;
             wrongAnswerIsFound = true;
         }
         DeactivateButtons();
     }
 
     public void DeactivateButtons(){
-        answer1.interactable = false;
-        answer2.interactable = false;
-        answer3.interactable = false;
-        answer4.interactable = false;
+        answer1.enabled = false;
+        answer2.enabled = false;
+        answer3.enabled = false;
+        answer4.enabled = false;
     }
 
     public void ActivateButtons(){
-        answer1.interactable = true;
-        answer2.interactable = true;
-        answer3.interactable = true;
-        answer4.interactable = true;
+        answer1.enabled = true;
+        answer2.enabled = true;
+        answer3.enabled = true;
+        answer4.enabled = true;
     }
     public void ResetQuestionHandler(){
         buttonsDictionary[0] = "";
