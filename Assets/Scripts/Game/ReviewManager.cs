@@ -87,7 +87,7 @@ public class ReviewManager : MonoBehaviour
             this.debtToAdd += remainingTasks / 5;
             indication.text = GetString("RemainingTasks") + " " + remainingTasks.ToString() + $"\n" + GetString("DebtRaised") + " " + (remainingTasks / 5).ToString();
             indication.gameObject.transform.parent.gameObject.SetActive(true);
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(2.5f);
             EventManager.usResized = false;
             StartCoroutine(MoveToFirstWorkingCase(arrowedUS));
             yield return new WaitUntil(() => EventManager.usResized == true);

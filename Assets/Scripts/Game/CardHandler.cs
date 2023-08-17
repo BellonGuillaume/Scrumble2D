@@ -189,7 +189,7 @@ public class CardHandler : MonoBehaviour
                     break;
                 case Card.TypeOfCard.Question :
                     EventManager.handleQuestionActions = true;
-                    StartCoroutine(HandleQuestionActions(uiCard.card));
+                    StartCoroutine(HandleQuestionActions(uiCard.card, doubleValue));
                     yield return new WaitUntil(() => EventManager.handleQuestionActions == false);
                     uiCard.readyToDiscard = true;
                     break;
@@ -441,9 +441,9 @@ public class CardHandler : MonoBehaviour
         }
         EventManager.handleChoiceActions = false;
     }
-    IEnumerator HandleQuestionActions(Card card){
+    IEnumerator HandleQuestionActions(Card card, int doubleValue){
         EventManager.questionHandled = false;
-        StartCoroutine(questionHandler.HandleQuestion(card));
+        StartCoroutine(questionHandler.HandleQuestion(card, doubleValue));
         yield return new WaitUntil(() => EventManager.questionHandled == true);
         EventManager.questionHandled = false;
         if (questionHandler.rightAnswerIsFound == true){

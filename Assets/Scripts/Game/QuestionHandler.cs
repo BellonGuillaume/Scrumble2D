@@ -31,13 +31,13 @@ public class QuestionHandler : MonoBehaviour
     public Card.Action successAction = Card.Action.None;
     public Card.Action failedAction = Card.Action.None;
     public int value;
-    public IEnumerator HandleQuestion(Card card){
+    public IEnumerator HandleQuestion(Card card, int doubleValue){
         ApplyAnswersToButtons(card);
         ShowQuestionHandler();
         rightAnswerIsFound = false;
         while (!rightAnswerIsFound && !wrongAnswerIsFound){
             yield return new WaitUntil(() => button1Pressed || button2Pressed || button3Pressed || button4Pressed);
-            HandleAnswer(card);
+            HandleAnswer(card, doubleValue);
             button1Pressed = false;
             button2Pressed = false;
             button3Pressed = false;
@@ -95,7 +95,7 @@ public class QuestionHandler : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
-    public void HandleAnswer(Card card){
+    public void HandleAnswer(Card card, int doubleValue){
         string choosenAnswer;
         Button buttonPressed;
         
@@ -117,38 +117,38 @@ public class QuestionHandler : MonoBehaviour
         }
         switch (card.questionId){
             case 1 :
-                HandleQuestion1(card, choosenAnswer, buttonPressed);
+                HandleQuestion1(card, doubleValue, choosenAnswer, buttonPressed);
                 break;
             case 2 :
-                HandleQuestion2(card, choosenAnswer, buttonPressed);
+                HandleQuestion2(card, doubleValue, choosenAnswer, buttonPressed);
                 break;
             case 3 :
-                HandleQuestion3(card, choosenAnswer, buttonPressed);
+                HandleQuestion3(card, doubleValue, choosenAnswer, buttonPressed);
                 break;
             case 4 :
-                HandleQuestion4(card, choosenAnswer, buttonPressed);
+                HandleQuestion4(card, doubleValue, choosenAnswer, buttonPressed);
                 break;
             case 5 :
-                HandleQuestion5(card, choosenAnswer, buttonPressed);
+                HandleQuestion5(card, doubleValue, choosenAnswer, buttonPressed);
                 break;
             case 6 :
-                HandleQuestion6(card, choosenAnswer, buttonPressed);
+                HandleQuestion6(card, doubleValue, choosenAnswer, buttonPressed);
                 break;
             case 7 :
-                HandleQuestion7(card, choosenAnswer, buttonPressed);
+                HandleQuestion7(card, doubleValue, choosenAnswer, buttonPressed);
                 break;
             default :
                 break;
         }
     }
 
-    public void HandleQuestion1(Card card, string answer, Button buttonPressed){
+    public void HandleQuestion1(Card card, int doubleValue, string answer, Button buttonPressed){
         if (answer == "3"){
             buttonPressed.image.color = Color.green;
             rightAnswerIsFound = true;
             DeactivateButtons();
             successAction = Card.Action.IncreaseTask;
-            value = 3;
+            value = 3 * doubleValue;
         } else {
             buttonPressed.image.color = Color.red;
             if (answer1.GetComponentInChildren<TMP_Text>().text == "3")
@@ -163,11 +163,11 @@ public class QuestionHandler : MonoBehaviour
         }
     }
 
-    public void HandleQuestion2(Card card, string answer, Button buttonPressed){
+    public void HandleQuestion2(Card card, int doubleValue, string answer, Button buttonPressed){
         if (answer == GetString("DevelopmentTeam")){
             buttonPressed.image.color = Color.green;
             successAction = Card.Action.DecreaseDebt;
-            value = 3;
+            value = 3 * doubleValue;
             rightAnswerIsFound = true;
         } else {
             buttonPressed.image.color = Color.red;
@@ -183,7 +183,7 @@ public class QuestionHandler : MonoBehaviour
         }
         DeactivateButtons();
     }
-    public void HandleQuestion3(Card card, string answer, Button buttonPressed){
+    public void HandleQuestion3(Card card, int doubleValue, string answer, Button buttonPressed){
         if (answer == GetString("DidYesterday") || answer == GetString("DoToday") || answer == GetString("Obstacles")){
             buttonPressed.image.color = Color.green;
             buttonPressed.enabled = false;
@@ -208,11 +208,11 @@ public class QuestionHandler : MonoBehaviour
             DeactivateButtons();
         }
     }
-    public void HandleQuestion4(Card card, string answer, Button buttonPressed){
+    public void HandleQuestion4(Card card, int doubleValue, string answer, Button buttonPressed){
         if (answer == "4"){
             buttonPressed.image.color = Color.green;
             successAction = Card.Action.DecreaseDebt;
-            value = 4;
+            value = 4 * doubleValue;
             rightAnswerIsFound = true;
         } else {
             buttonPressed.image.color = Color.red;
@@ -228,11 +228,11 @@ public class QuestionHandler : MonoBehaviour
         }
         DeactivateButtons();
     }
-    public void HandleQuestion5(Card card, string answer, Button buttonPressed){
+    public void HandleQuestion5(Card card, int doubleValue, string answer, Button buttonPressed){
         if (answer == "2"){
             buttonPressed.image.color = Color.green;
             successAction = Card.Action.DecreaseDebt;
-            value = 2;
+            value = 2 * doubleValue;
             rightAnswerIsFound = true;
         } else {
             buttonPressed.image.color = Color.red;
@@ -248,11 +248,11 @@ public class QuestionHandler : MonoBehaviour
         }
         DeactivateButtons();
     }
-    public void HandleQuestion6(Card card, string answer, Button buttonPressed){
+    public void HandleQuestion6(Card card, int doubleValue, string answer, Button buttonPressed){
         if (answer == "3"){
             buttonPressed.image.color = Color.green;
             successAction = Card.Action.DecreaseDebt;
-            value = 3;
+            value = 3 * doubleValue;
             rightAnswerIsFound = true;
         } else {
             buttonPressed.image.color = Color.red;
@@ -268,11 +268,11 @@ public class QuestionHandler : MonoBehaviour
         }
         DeactivateButtons();
     }
-    public void HandleQuestion7(Card card, string answer, Button buttonPressed){
+    public void HandleQuestion7(Card card, int doubleValue, string answer, Button buttonPressed){
         if (answer == "8"){
             buttonPressed.image.color = Color.green;
             successAction = Card.Action.IncreaseTask;
-            value = 8;
+            value = 8 * doubleValue;
             rightAnswerIsFound = true;
         } else {
             buttonPressed.image.color = Color.red;
