@@ -63,9 +63,9 @@ public class CardHandler : MonoBehaviour
             StartCoroutine(HandleSingleCard(this.cardPicker.choosenCard.GetComponent<UICard>()));
             yield return new WaitUntil(() => EventManager.handleSingleCard == false);
         }
+        this.cardPicker.RemoveCards();
         ReDeckUnflippedCards();
         DiscardCards();
-        this.cardPicker.RemoveCards();
         yield return new WaitUntil(() => EventManager.cardToRemove <= 0);
         this.cardPicker.Reset();
         if (cardPicker.gameObject.activeSelf == true){
@@ -111,7 +111,7 @@ public class CardHandler : MonoBehaviour
             EventManager.permanentCardShowned = false;
             this.ShowSkipProblemOrDoubleDailyPermanent();
             yield return new WaitUntil(() => EventManager.permanentCardShowned == true);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
             EventManager.readyToHidePermanent = true;
             yield return new WaitUntil(() => EventManager.permanentCardHidden == true);
             EventManager.permanentCardHidden = false;
@@ -715,6 +715,9 @@ public class CardHandler : MonoBehaviour
         EventManager.cardsToPick += n;
         // animate updeck
         yield return new WaitUntil(() => EventManager.animate == false);
+        // Card customPickedCard = this.dailyCards[21];
+        // this.cardPicker.AddCart(customPickedCard);
+        // this.remainingDailyCards.Remove(customPickedCard);
         for (int i = 0; i < n; i++){
             if (this.remainingDailyCards.Count < 1){
                 this.remainingDailyCards.AddRange(this.discardedDailyCards);
@@ -764,7 +767,7 @@ public class CardHandler : MonoBehaviour
     public IEnumerator FirstPickDailyCard(){
         yield return new WaitUntil(() => StateManager.gameState == StateManager.GameState.PICK_DAILY);
         EventManager.cardsToPick = 1;
-        // Card customPickedCard = this.dailyCards[19];
+        // Card customPickedCard = this.dailyCards[32];
         // this.cardPicker.AddCart(customPickedCard);
         // this.remainingDailyCards.Remove(customPickedCard);
         for (int i = 0; i < 3; i++){

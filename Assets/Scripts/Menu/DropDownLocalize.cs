@@ -13,7 +13,7 @@ public class DropDownLocalize : MonoBehaviour
 
     private Locale language;
     void Start(){
-        language = LocalizationSettings.SelectedLocale;
+        language = LocalizationSettings.AvailableLocales.GetLocale("en");
     }
 
     void Update(){

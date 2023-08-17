@@ -10,6 +10,6 @@ public class DebtSlider : MonoBehaviour
     [SerializeField] TMP_Text counter;
 
     public void OnValueChanged(Single single){
-        counter.text = Mathf.FloorToInt(single).ToString();
+        counter.text = Mathf.RoundToInt(single).ToString();
     }
 }

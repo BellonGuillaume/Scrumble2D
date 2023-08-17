@@ -126,6 +126,18 @@ MonoBehaviour:
     m_Localized: ' '
     m_Metadata:
       m_Items: []
+  - m_Id: 9155331362430976
+    m_Localized: Select language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9163908324040704
+    m_Localized: Show instructions
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11386297648717824
+    m_Localized: Original game developed by Pyxis Technologies
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

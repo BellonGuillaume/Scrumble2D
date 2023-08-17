@@ -1054,9 +1054,8 @@ public class AnimationManager : MonoBehaviour
 
     public void ShowSummary(GameObject summary, GameObject elements, GameObject background){
         EventManager.animate = true;
-        RectTransform rectTransform = elements.GetComponent<RectTransform>();
         Vector2 startPos = elements.transform.position;
-        Vector2 endPos = new Vector2(startPos.x - rectTransform.rect.width, startPos.y);
+        Vector2 endPos = new Vector2(Screen.width * 0.333f, startPos.y);
         byte startBlur = 0;
         byte endBlur = this.blurValue;
         summary.SetActive(true);
@@ -1081,7 +1080,7 @@ public class AnimationManager : MonoBehaviour
         EventManager.animate = true;
         RectTransform rectTransform = elements.GetComponent<RectTransform>();
         Vector2 startPos = elements.transform.position;
-        Vector2 endPos = new Vector2(startPos.x + rectTransform.rect.width, startPos.y);
+        Vector2 endPos = new Vector2(Screen.width, startPos.y);
         byte startBlur = this.blurValue;
         byte endBlur = 0;
         animationCoroutine = this.CreateAnimationRoutine(

@@ -10,6 +10,7 @@ using System;
 public class StateManager : MonoBehaviour
 {
     #region Menu
+    
     public static Locale language;
     public enum Difficulty{
         EASY, NORMAL, HARD

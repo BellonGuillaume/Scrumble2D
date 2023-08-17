@@ -37,6 +37,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] ScrumboardManager summaryScrumManager;
     [SerializeField] RetrospectiveManager retrospectiveManager;
 
+    [SerializeField] TMP_Text turnOfTxt;
+
     Animator popUpAnimator;
 
 
@@ -134,7 +136,7 @@ public class GameManager : MonoBehaviour
             EventManager.permanentCardShowned = false;
             this.cardHandler.ShowTasksOnBeginSprintPermanent();
             yield return new WaitUntil(() => EventManager.permanentCardShowned == true);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
             EventManager.readyToHidePermanent = true;
             yield return new WaitUntil(() => EventManager.permanentCardHidden == true);
             EventManager.permanentCardHidden = false;
@@ -211,7 +213,7 @@ public class GameManager : MonoBehaviour
             EventManager.permanentCardShowned = false;
             this.cardHandler.ShowOneTaskPerDayPermanent();
             yield return new WaitUntil(() => EventManager.permanentCardShowned == true);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
             EventManager.readyToHidePermanent = true;
             yield return new WaitUntil(() => EventManager.permanentCardHidden == true);
             EventManager.permanentCardHidden = false;
@@ -286,6 +288,7 @@ public class GameManager : MonoBehaviour
     // void BeginTurn(Player player){
     IEnumerator BeginTurn(Player player){
         yield return new WaitUntil(() => StateManager.turnState == StateManager.TurnState.BEGIN_TURN);
+        turnOfTxt.text = GetString("Game", "TurnOf") + " " + player.userName;
         if (player.turnToPass > 0){
             animationManager.ShowInfo($"{player.userName}" + " " + GetString("Game", "PassHisTurn"));
             player.turnToPass--;
@@ -371,7 +374,7 @@ public class GameManager : MonoBehaviour
             EventManager.permanentCardShowned = false;
             this.cardHandler.ShowJinxPermanent();
             yield return new WaitUntil(() => EventManager.permanentCardShowned == true);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
             EventManager.readyToHidePermanent = true;
             yield return new WaitUntil(() => EventManager.permanentCardHidden == true);
             EventManager.permanentCardHidden = false;
@@ -480,7 +483,7 @@ public class GameManager : MonoBehaviour
             EventManager.permanentCardShowned = false;
             this.cardHandler.ShowOneMoreTaskPerRollPermanent();
             yield return new WaitUntil(() => EventManager.permanentCardShowned == true);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
             EventManager.readyToHidePermanent = true;
             yield return new WaitUntil(() => EventManager.permanentCardHidden == true);
             EventManager.permanentCardHidden = false;
@@ -495,7 +498,7 @@ public class GameManager : MonoBehaviour
             EventManager.permanentCardShowned = false;
             this.cardHandler.ShowTwoMoreTasksPerRollPermanent();
             yield return new WaitUntil(() => EventManager.permanentCardShowned == true);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
             EventManager.readyToHidePermanent = true;
             yield return new WaitUntil(() => EventManager.permanentCardHidden == true);
             EventManager.permanentCardHidden = false;
@@ -510,7 +513,7 @@ public class GameManager : MonoBehaviour
             EventManager.permanentCardShowned = false;
             this.cardHandler.ShowDecreaseDebtPerTurnPermanent();
             yield return new WaitUntil(() => EventManager.permanentCardShowned == true);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
             EventManager.readyToHidePermanent = true;
             yield return new WaitUntil(() => EventManager.permanentCardHidden == true);
             EventManager.permanentCardHidden = false;
@@ -556,11 +559,12 @@ public class GameManager : MonoBehaviour
         void ClearTurn(){
         StateManager.ClearTurnState();
         this.results.GetComponent<Results>().ChangeText("");
+        this.turnOfTxt.text = "";
     }
 
     void InitState(){
         StateManager.language = LocalizationSettings.SelectedLocale;
-        StateManager.difficulty = StateManager.Difficulty.EASY;
+        StateManager.difficulty = StateManager.Difficulty.HARD;
         StateManager.category = StateManager.Category.GIFT_SHOP;
         StateManager.gameName = "";
         StateManager.pokerPlanning = false;

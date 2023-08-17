@@ -69,6 +69,10 @@ public class Lobby : MonoBehaviour
             removePlayerButton.interactable = true;
             addPlayerButton.interactable = true;
         }
+        if (playersUI.Count >= 3 && playersUI.Count <= 9)
+            playButton.interactable = true;
+        else
+            playButton.interactable = false;
 
         UpdateNames();
         

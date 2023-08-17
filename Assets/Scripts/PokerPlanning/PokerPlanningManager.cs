@@ -28,7 +28,7 @@ public class PokerPlanningManager : MonoBehaviour
         if (StateManager.userStories is null){
             InitState();
         }
-        this.userStoryTitle.text = CatToString(StateManager.category);
+        this.userStoryTitle.text = CatToString(StateManager.category); //TODO : check if language is good
         StateManager.pokerPlanningState = StateManager.PokerPlanningState.GLOBAL;
         FillUserStoriesUI();
     }
