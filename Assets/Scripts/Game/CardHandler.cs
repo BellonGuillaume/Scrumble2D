@@ -649,20 +649,20 @@ public class CardHandler : MonoBehaviour
     }
     IEnumerator CurrentPlayerPassATurn(int n){
         yield return new WaitUntil(() => EventManager.action == true);
-        StateManager.currentPlayer.turnToPass = n;
+        StateManager.currentPlayer.turnToPass += n;
         EventManager.action = false;
         yield break;
     }
     IEnumerator NextPlayerPassATurn(int n){
         yield return new WaitUntil(() => EventManager.action == true);
-        StateManager.players[StateManager.currentPlayer.nextPlayerNumber-1].turnToPass = n;
+        StateManager.players[StateManager.currentPlayer.nextPlayerNumber-1].turnToPass += n;
         EventManager.action = false;
         yield break;
     }
     IEnumerator AllPlayersPassATurn(int n){
         yield return new WaitUntil(() => EventManager.action == true);
         foreach (Player player in StateManager.players){
-            player.turnToPass = n;
+            player.turnToPass += n;
         }
         EventManager.action = false;
         yield break;

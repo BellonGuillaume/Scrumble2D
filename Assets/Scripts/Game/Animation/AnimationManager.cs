@@ -1156,7 +1156,7 @@ public class AnimationManager : MonoBehaviour
         Vector3 endPos = new Vector3(Screen.width*0.75f, Screen.height*0.5f, 0);
         Vector3 startScale = permanentCard.transform.localScale;
         Vector3 endScale = new Vector3(1.2f, 1.2f, 1f);
-        // permanentCard.transform.SetParent(popUp.transform);
+        permanentCard.transform.SetAsLastSibling();
         this.animationCoroutine = this.CreateAnimationRoutine(
             0.5f,
             delegate (float progress){
@@ -1186,6 +1186,7 @@ public class AnimationManager : MonoBehaviour
                 permanentCard.transform.localScale = scale;
             },
             delegate{
+                permanentCard.transform.SetSiblingIndex(initIndex);
                 EventManager.animate = false;
             }
         );
