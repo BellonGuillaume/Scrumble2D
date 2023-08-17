@@ -1,0 +1,131 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Game_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 40f28a1c2bc4c0f4699eaf9ac1dc13f7, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 9662394368
+    m_Localized: Play a turn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 800469053440
+    m_Localized: Choose between raise a task or decrease the debt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025535406080
+    m_Localized: Roll the dice
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099040583680
+    m_Localized: You can reroll the dice
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1252879265792
+    m_Localized: Pick a problem card
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1690093514752
+    m_Localized: Day
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1728932769792
+    m_Localized: This is the turn of
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2306245160960
+    m_Localized: ToDo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2365854609408
+    m_Localized: Doing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2402605101056
+    m_Localized: Done
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1705538717773824
+    m_Localized: Accept
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1705596724998144
+    m_Localized: Decline
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3520072860332032
+    m_Localized: 'Time :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3520141944713216
+    m_Localized: 'Number of stars :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3520212731981824
+    m_Localized: 'Number of sprints :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3877514001543168
+    m_Localized: Choose a player to draw a Daily Card
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4275928723660800
+    m_Localized: Review Phase
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4276063759278080
+    m_Localized: Retrospective Phase
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4276449811406848
+    m_Localized: You won
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4276546934710272
+    m_Localized: You earned
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4276705768808448
+    m_Localized: tasks
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4276764438732800
+    m_Localized: task
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4276808776720384
+    m_Localized: debt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4276850052866048
+    m_Localized: debts
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4277096094932992
+    m_Localized: and
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4310688430858240
+    m_Localized: pass his turn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4315563260682240
+    m_Localized: Task validation
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

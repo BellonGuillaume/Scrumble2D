@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Localization-Assets-Shared
+  m_EditorClassIdentifier: 
+  m_GroupName: Localization-Assets-Shared
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 9214b1c65e19e184981e371af4a49cdf
+  m_SerializeEntries:
+  - m_GUID: ac7114d88eae14f4a90500655aa264d7
+    m_Address: Assets/Localization/Tables/MainMenu Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+  - m_GUID: 8ff3109604f2d77479e51d289d07640e
+    m_Address: Assets/Localization/Tables/PokerPlanning Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+  - m_GUID: bdae53b3f1a91cd41a4563c7ddcac512
+    m_Address: Assets/Localization/Tables/UserStoryPrefab Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+  - m_GUID: 40f28a1c2bc4c0f4699eaf9ac1dc13f7
+    m_Address: Assets/Localization/Tables/Game Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+  - m_GUID: 24d4db9d2e78a414882b97f6506af8c6
+    m_Address: Assets/Localization/Tables/SideMenu Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+  - m_GUID: 23add21837e87a14a8bab3b4e73e3839
+    m_Address: Assets/Localization/Tables/Game Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+  - m_GUID: eb4a3e6a525284844a2d6d8130f64655
+    m_Address: Assets/Localization/Tables/Review Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+  - m_GUID: 64936251c0e2236469fd19b9681ccd46
+    m_Address: Assets/Localization/Tables/Summary Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+  - m_GUID: 4b2f48fe3bdfb034e8b0797ddc6736e1
+    m_Address: Assets/Localization/Tables/Question Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+  - m_GUID: ce97173c22eab014aaac67e1d0403198
+    m_Address: Assets/Localization/Tables/EndGame Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+  - m_GUID: 17286fbff9b101a43b424e260b0c3fdc
+    m_Address: Assets/Localization/Tables/BurndownChart Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+  m_ReadOnly: 1
+  m_Settings: {fileID: 11400000, guid: 26a6664dd23377d4083dc5668f1a2d57, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: ad46a4f8dd93d254185afdda7e9df711, type: 2}
+    - {fileID: 11400000, guid: 82ce74224a97909459a79e1d1ca208f7, type: 2}

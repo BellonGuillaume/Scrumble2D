@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Localization-String-Tables-French (fr)
+  m_EditorClassIdentifier: 
+  m_GroupName: Localization-String-Tables-French (fr)
+  m_Data:
+    m_SerializedData: []
+  m_GUID: e41718a751385124ba4d39847cb6821b
+  m_SerializeEntries:
+  - m_GUID: 74e1b0cc57c8dc24e861daa21d6e52b2
+    m_Address: MainMenu_fr
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-fr
+    - Preload
+  - m_GUID: 6e1c4ec4ace52fd4788ec32722e137d1
+    m_Address: PokerPlanning_fr
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-fr
+    - Preload
+  - m_GUID: 00b723da4537fef45bb2b84291e24529
+    m_Address: UserStoryPrefab_fr
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-fr
+    - Preload
+  - m_GUID: efa7fe43bf42fb044a6335ce493abce2
+    m_Address: Game_fr
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-fr
+    - Preload
+  - m_GUID: ecc3ac84d8e30594291d7b62072bc6cc
+    m_Address: SideMenu_fr
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-fr
+    - Preload
+  - m_GUID: 7d28a8c12def6654aa78ed8162bfeb2f
+    m_Address: Game_fr
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-fr
+    - Preload
+  - m_GUID: 92fe0865e1994c748ba22a4d3c3b8190
+    m_Address: Review_fr
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-fr
+    - Preload
+  - m_GUID: 65c224339eb4f534dbdc75a2670ae925
+    m_Address: Summary_fr
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-fr
+    - Preload
+  - m_GUID: 932b23fd509146042b4b88a3ac562703
+    m_Address: Question_fr
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-fr
+    - Preload
+  - m_GUID: 7fcdd63b104b5154caab855f00408e40
+    m_Address: EndGame_fr
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-fr
+    - Preload
+  - m_GUID: ca253e4fac34b4c48932534cacdd18c4
+    m_Address: BurndownChart_fr
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-fr
+    - Preload
+  m_ReadOnly: 1
+  m_Settings: {fileID: 11400000, guid: 26a6664dd23377d4083dc5668f1a2d57, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: cba735db773f2ba48add576d39ad8efa, type: 2}
+    - {fileID: 11400000, guid: b0c5957b85256374ca8af3ce43bd2c37, type: 2}

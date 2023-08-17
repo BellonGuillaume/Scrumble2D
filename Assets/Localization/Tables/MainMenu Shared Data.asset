@@ -1,0 +1,148 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: MainMenu Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: MainMenu
+  m_TableCollectionNameGuidString: ac7114d88eae14f4a90500655aa264d7
+  m_Entries:
+  - m_Id: 12791345152
+    m_Key: SettingsButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5328060837888
+    m_Key: LocalButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5434206089216
+    m_Key: OnlineButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6242217783296
+    m_Key: LocalTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6709916233728
+    m_Key: BackButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6819614060544
+    m_Key: NextButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7549972410368
+    m_Key: GameNameText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7789630746624
+    m_Key: DifficultyText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7848871096320
+    m_Key: PokerPlanningText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8110062989312
+    m_Key: UserStoryToUseText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8418675683328
+    m_Key: TMP_InputPlaceholder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14112204288000
+    m_Key: DifficultyEasy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19401607507968
+    m_Key: DifficultyNormal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19457496608768
+    m_Key: DifficultyHard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 342681161854976
+    m_Key: USGIftShop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 342776703905792
+    m_Key: USDietCoach
+    m_Metadata:
+      m_Items: []
+  - m_Id: 342873512636416
+    m_Key: USTravelDiary
+    m_Metadata:
+      m_Items: []
+  - m_Id: 343008007188480
+    m_Key: USCustom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 345607284486144
+    m_Key: NumberOfPlayer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 345938319929344
+    m_Key: Play_txt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 346130268057600
+    m_Key: PlayerPrefabPlaceholder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 346254763388928
+    m_Key: AddPlayerButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 346348111818752
+    m_Key: RemovePlayerButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 361077039460352
+    m_Key: Yes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 362031923097600
+    m_Key: No
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3619175728443392
+    m_Key: USKnowledgeManagement
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7998112990273536
+    m_Key: USEmpty
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9155331362430976
+    m_Key: Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9163908324040704
+    m_Key: Manual
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11386297648717824
+    m_Key: HyperLink
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 1431151025369382936
+  references:
+    version: 2
+    RefIds:
+    - rid: 1431151025369382936
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1689237095714

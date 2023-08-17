@@ -1,0 +1,168 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Game Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Game
+  m_TableCollectionNameGuidString: 23add21837e87a14a8bab3b4e73e3839
+  m_Entries:
+  - m_Id: 138104315904
+    m_Key: PlayATurn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 183922892800
+    m_Key: TaskOrDebt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 252977913856
+    m_Key: Roll
+    m_Metadata:
+      m_Items: []
+  - m_Id: 276965138432
+    m_Key: Reroll
+    m_Metadata:
+      m_Items: []
+  - m_Id: 300373549056
+    m_Key: ProblemCard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 306186854400
+    m_Key: Day
+    m_Metadata:
+      m_Items: []
+  - m_Id: 338302640128
+    m_Key: TurnOf
+    m_Metadata:
+      m_Items: []
+  - m_Id: 358389161984
+    m_Key: ToDo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 383328493568
+    m_Key: Doing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 393109610496
+    m_Key: Done
+    m_Metadata:
+      m_Items: []
+  - m_Id: 402282553344
+    m_Key: Accept
+    m_Metadata:
+      m_Items: []
+  - m_Id: 419772801024
+    m_Key: Decline
+    m_Metadata:
+      m_Items: []
+  - m_Id: 447446818816
+    m_Key: Time
+    m_Metadata:
+      m_Items: []
+  - m_Id: 487515004928
+    m_Key: NumberOfStars
+    m_Metadata:
+      m_Items: []
+  - m_Id: 519400103936
+    m_Key: NumberOfSprints
+    m_Metadata:
+      m_Items: []
+  - m_Id: 563851337728
+    m_Key: PlayerToPickDailyCard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 590376116224
+    m_Key: ReviewPhase
+    m_Metadata:
+      m_Items: []
+  - m_Id: 595300229120
+    m_Key: RetrospectivePhase
+    m_Metadata:
+      m_Items: []
+  - m_Id: 627537649664
+    m_Key: YouWon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 640766484480
+    m_Key: YouEarned
+    m_Metadata:
+      m_Items: []
+  - m_Id: 656667090944
+    m_Key: Tasks
+    m_Metadata:
+      m_Items: []
+  - m_Id: 676539703296
+    m_Key: Task
+    m_Metadata:
+      m_Items: []
+  - m_Id: 685486153728
+    m_Key: Debts
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694709428224
+    m_Key: Debt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 714342965248
+    m_Key: And
+    m_Metadata:
+      m_Items: []
+  - m_Id: 726330286080
+    m_Key: PassHisTurn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 766180368384
+    m_Key: TaskValidation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2159220923867136
+    m_Key: AddUSOrDebt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2165750163349504
+    m_Key: EndSprintOrDebt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2467055046008832
+    m_Key: Retrospective
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2467708300468224
+    m_Key: PassButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3171119417303040
+    m_Key: WantToLeave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3171278763106304
+    m_Key: Yes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3171309381525504
+    m_Key: No
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3556518505521152
+    m_Key: Choice1
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 1431151325340499970
+  references:
+    version: 2
+    RefIds:
+    - rid: 1431151325340499970
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1690381375146

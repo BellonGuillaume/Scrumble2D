@@ -1,0 +1,143 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: MainMenu_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: ac7114d88eae14f4a90500655aa264d7, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 12791345152
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5328060837888
+    m_Localized: Local Game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5434206089216
+    m_Localized: Online Game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6242217783296
+    m_Localized: Local Game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6709916233728
+    m_Localized: Back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6819614060544
+    m_Localized: Next
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7549972410368
+    m_Localized: 'Game name :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7789630746624
+    m_Localized: 'Difficulty :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7848871096320
+    m_Localized: 'Poker Planning :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8110062989312
+    m_Localized: 'User story to use :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8418675683328
+    m_Localized: Enter text...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14112204288000
+    m_Localized: Easy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19401607507968
+    m_Localized: Normal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19457496608768
+    m_Localized: Hard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 342681161854976
+    m_Localized: Gift Shop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 342776703905792
+    m_Localized: Diet Coach
+    m_Metadata:
+      m_Items: []
+  - m_Id: 342873512636416
+    m_Localized: Travel Diary
+    m_Metadata:
+      m_Items: []
+  - m_Id: 343008007188480
+    m_Localized: Custom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 345607284486144
+    m_Localized: 'Number of players : '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 345938319929344
+    m_Localized: Play !
+    m_Metadata:
+      m_Items: []
+  - m_Id: 346130268057600
+    m_Localized: Player
+    m_Metadata:
+      m_Items: []
+  - m_Id: 346254763388928
+    m_Localized: Add player
+    m_Metadata:
+      m_Items: []
+  - m_Id: 346348111818752
+    m_Localized: Remove player
+    m_Metadata:
+      m_Items: []
+  - m_Id: 361077039460352
+    m_Localized: Yes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 362031923097600
+    m_Localized: No
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3619175728443392
+    m_Localized: Knowledge Management
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7998112990273536
+    m_Localized: ' '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9155331362430976
+    m_Localized: Select language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9163908324040704
+    m_Localized: Show instructions
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11386297648717824
+    m_Localized: Original game developed by Pyxis Technologies
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

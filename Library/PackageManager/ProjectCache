@@ -1,33 +1,81 @@
 m_ProjectFiles:
   m_ManifestFileStatus:
-    m_FilePath: C:/Users/guill/OneDrive/Bureau/Scrumble2D/Scrumble2D/Packages/manifest.json
+    m_FilePath: C:/Users/guill/Bureau/Memoire - Scrumble/Scrumble2D/Packages/manifest.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638209417068234311
-    m_Hash: 3441409641
+      ticks: 638264157886053981
+    m_Hash: 883982326
   m_LockFileStatus:
-    m_FilePath: C:/Users/guill/OneDrive/Bureau/Scrumble2D/Scrumble2D/Packages/packages-lock.json
+    m_FilePath: C:/Users/guill/Bureau/Memoire - Scrumble/Scrumble2D/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638209417068303833
-    m_Hash: 3207595301
+      ticks: 638264157886093984
+    m_Hash: 3786303025
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
   m_LocalFileStatus: []
-m_ProjectPath: C:/Users/guill/OneDrive/Bureau/Scrumble2D/Scrumble2D/Packages
+m_ProjectPath: C:/Users/guill/Bureau/Memoire - Scrumble/Scrumble2D/Packages
 m_EditorVersion: 2021.3.16f1 (4016570cf34f)
 m_ResolvedPackages:
+- packageId: com.github-glitchenzo.nugetforunity@https://github.com/GlitchEnzo/NuGetForUnity.git?path=/src/NuGetForUnity
+  testable: 0
+  isDirectDependency: 1
+  version: 3.1.3
+  source: 5
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.github-glitchenzo.nugetforunity@65640405ea
+  assetPath: Packages/com.github-glitchenzo.nugetforunity
+  name: com.github-glitchenzo.nugetforunity
+  displayName: NuGetForUnity
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: 
+  description: A NuGet Package Manager for Unity
+  status: 0
+  errors: []
+  versions:
+    all: []
+    compatible: []
+    verified: 
+  dependencies: []
+  resolvedDependencies: []
+  keywords:
+  - nuget
+  - unity
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+  hideInEditor: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 0
+  documentationUrl: https://github.com/GlitchEnzo/NuGetForUnity
+  hasRepository: 0
+  repository:
+    type: 
+    url: 
+    revision: 
+    path: 
+  unityLifecycle:
+    version: 
+    nextVersion: 
 - packageId: com.unity.collab-proxy@1.17.7
   testable: 0
   isDirectDependency: 1
   version: 1.17.7
   source: 1
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.collab-proxy@1.17.7
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.collab-proxy@1.17.7
   assetPath: Packages/com.unity.collab-proxy
   name: com.unity.collab-proxy
   displayName: Version Control
@@ -108,6 +156,8 @@ m_ResolvedPackages:
     - 2.0.1
     - 2.0.3
     - 2.0.4
+    - 2.0.5
+    - 2.0.7
     - 2.1.0-preview.3
     - 2.1.0-preview.5
     - 2.1.0-preview.6
@@ -124,6 +174,8 @@ m_ResolvedPackages:
     - 2.0.1
     - 2.0.3
     - 2.0.4
+    - 2.0.5
+    - 2.0.7
     - 2.1.0-preview.3
     - 2.1.0-preview.5
     - 2.1.0-preview.6
@@ -180,7 +232,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.feature.2d@1.0.0
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.feature.2d@1.0.0
   assetPath: Packages/com.unity.feature.2d
   name: com.unity.feature.2d
   displayName: 2D
@@ -286,7 +338,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 3.0.21
   source: 1
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.ide.rider@3.0.21
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.ide.rider@3.0.21
   assetPath: Packages/com.unity.ide.rider
   name: com.unity.ide.rider
   displayName: JetBrains Rider Editor
@@ -339,13 +391,17 @@ m_ResolvedPackages:
     - 3.0.18
     - 3.0.20
     - 3.0.21
+    - 3.0.22
+    - 3.0.24
     compatible:
     - 3.0.16
     - 3.0.17
     - 3.0.18
     - 3.0.20
     - 3.0.21
-    verified: 3.0.21
+    - 3.0.22
+    - 3.0.24
+    verified: 3.0.24
   dependencies:
   - name: com.unity.ext.nunit
     version: 1.0.6
@@ -379,7 +435,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 2.0.18
   source: 1
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.ide.visualstudio@2.0.18
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.ide.visualstudio@2.0.18
   assetPath: Packages/com.unity.ide.visualstudio
   name: com.unity.ide.visualstudio
   displayName: Visual Studio Editor
@@ -417,11 +473,13 @@ m_ResolvedPackages:
     - 2.0.16
     - 2.0.17
     - 2.0.18
+    - 2.0.20
     compatible:
     - 2.0.16
     - 2.0.17
     - 2.0.18
-    verified: 2.0.18
+    - 2.0.20
+    verified: 2.0.20
   dependencies:
   - name: com.unity.test-framework
     version: 1.1.9
@@ -461,7 +519,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.2.5
   source: 1
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.ide.vscode@1.2.5
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.ide.vscode@1.2.5
   assetPath: Packages/com.unity.ide.vscode
   name: com.unity.ide.vscode
   displayName: Visual Studio Code Editor
@@ -518,12 +576,132 @@ m_ResolvedPackages:
   unityLifecycle:
     version: 1.2.5
     nextVersion: 
+- packageId: com.unity.localization@1.3.2
+  testable: 0
+  isDirectDependency: 1
+  version: 1.3.2
+  source: 1
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.localization@1.3.2
+  assetPath: Packages/com.unity.localization
+  name: com.unity.localization
+  displayName: Localization
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: asset
+  description: "Use the Localization package to easily configure localization settings
+    for your application.\n\nAdd support for multiple languages and regional variants,
+    including:\n\n\u2022 String localization: Set different strings to display based
+    on locale. Use the Smart Strings feature to add logic to automatically replace
+    specific strings, such as placeholders and plurals.\n\u2022 Asset localization:
+    Use a different asset (such as a texture, model, or audio file) based on a locale.\n\u2022
+    Pseudo-localization: Test how your project will adapt to different localizations
+    at an early stage, before adding your translations.\n\u2022 Import and export
+    localization data to XLIFF, CSV and Google Sheets.\n\nAdd localization to your
+    projects using the Localization package to help make your applications more accessible
+    to a wider audience."
+  status: 0
+  errors: []
+  versions:
+    all:
+    - 0.2.1-preview
+    - 0.2.2-preview
+    - 0.2.3-preview
+    - 0.3.1-preview
+    - 0.3.2-preview
+    - 0.4.0-preview
+    - 0.5.0-preview
+    - 0.5.1-preview
+    - 0.6.0-preview
+    - 0.6.1-preview
+    - 0.7.1-preview
+    - 0.8.0-preview
+    - 0.8.1-preview
+    - 0.9.0-preview
+    - 0.10.0-preview
+    - 0.11.0-preview
+    - 0.11.1-preview
+    - 1.0.0-pre.8
+    - 1.0.0-pre.9
+    - 1.0.0-pre.10
+    - 1.0.0
+    - 1.0.1
+    - 1.0.2
+    - 1.0.3
+    - 1.0.4
+    - 1.0.5
+    - 1.1.0
+    - 1.1.1
+    - 1.2.1
+    - 1.3.1
+    - 1.3.2
+    - 1.4.0-exp.1
+    - 1.4.2
+    - 1.4.3
+    - 1.4.4
+    compatible:
+    - 1.3.1
+    - 1.3.2
+    - 1.4.0-exp.1
+    - 1.4.2
+    - 1.4.3
+    - 1.4.4
+    verified: 1.3.2
+  dependencies:
+  - name: com.unity.addressables
+    version: 1.19.19
+  - name: com.unity.nuget.newtonsoft-json
+    version: 2.0.2
+  resolvedDependencies:
+  - name: com.unity.addressables
+    version: 1.19.19
+  - name: com.unity.scriptablebuildpipeline
+    version: 1.20.1
+  - name: com.unity.modules.assetbundle
+    version: 1.0.0
+  - name: com.unity.modules.imageconversion
+    version: 1.0.0
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
+  - name: com.unity.modules.unitywebrequest
+    version: 1.0.0
+  - name: com.unity.modules.unitywebrequestassetbundle
+    version: 1.0.0
+  - name: com.unity.nuget.newtonsoft-json
+    version: 3.0.2
+  keywords:
+  - localization
+  - locale
+  - language
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+  hideInEditor: 0
+  isAssetStorePackage: 0
+  datePublishedTicks: 637903034620000000
+  documentationUrl: 
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.cds.internal.unity3d.com/unity/com.unity.localization.git
+    revision: 160f3ff57b5fca932e885ad83f581a8544955fbf
+    path: 
+  unityLifecycle:
+    version: 1.3.1
+    nextVersion: 
 - packageId: com.unity.render-pipelines.universal@12.1.8
   testable: 0
   isDirectDependency: 1
   version: 12.1.8
   source: 2
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.render-pipelines.universal@12.1.8
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.render-pipelines.universal@12.1.8
   assetPath: Packages/com.unity.render-pipelines.universal
   name: com.unity.render-pipelines.universal
   displayName: Universal RP
@@ -653,7 +831,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.1.33
   source: 1
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.test-framework@1.1.33
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.test-framework@1.1.33
   assetPath: Packages/com.unity.test-framework
   name: com.unity.test-framework
   displayName: Test Framework
@@ -708,6 +886,8 @@ m_ResolvedPackages:
     - 1.3.3
     - 1.3.4
     - 1.3.5
+    - 1.3.7
+    - 1.3.8
     - 2.0.1-exp.1
     - 2.0.1-exp.2
     - 2.0.1-pre.12
@@ -721,6 +901,8 @@ m_ResolvedPackages:
     - 1.3.3
     - 1.3.4
     - 1.3.5
+    - 1.3.7
+    - 1.3.8
     - 2.0.1-exp.1
     - 2.0.1-exp.2
     - 2.0.1-pre.12
@@ -769,7 +951,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 3.0.6
   source: 1
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.textmeshpro@3.0.6
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.textmeshpro@3.0.6
   assetPath: Packages/com.unity.textmeshpro
   name: com.unity.textmeshpro
   displayName: TextMeshPro
@@ -887,6 +1069,7 @@ m_ResolvedPackages:
     - 3.2.0-pre.2
     - 3.2.0-pre.3
     - 3.2.0-pre.4
+    - 3.2.0-pre.5
     - 4.0.0-pre.1
     - 4.0.0-pre.2
     compatible:
@@ -895,6 +1078,7 @@ m_ResolvedPackages:
     - 3.2.0-pre.2
     - 3.2.0-pre.3
     - 3.2.0-pre.4
+    - 3.2.0-pre.5
     verified: 3.0.6
   dependencies:
   - name: com.unity.ugui
@@ -938,7 +1122,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.6.5
   source: 1
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.timeline@1.6.5
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.timeline@1.6.5
   assetPath: Packages/com.unity.timeline
   name: com.unity.timeline
   displayName: Timeline
@@ -1030,9 +1214,12 @@ m_ResolvedPackages:
     - 1.7.2
     - 1.7.3
     - 1.7.4
+    - 1.7.5
     - 1.8.0
     - 1.8.1
     - 1.8.2
+    - 1.8.3
+    - 1.8.4
     compatible:
     - 1.6.4
     - 1.6.5
@@ -1043,9 +1230,12 @@ m_ResolvedPackages:
     - 1.7.2
     - 1.7.3
     - 1.7.4
+    - 1.7.5
     - 1.8.0
     - 1.8.1
     - 1.8.2
+    - 1.8.3
+    - 1.8.4
     verified: 1.6.5
   dependencies:
   - name: com.unity.modules.director
@@ -1097,7 +1287,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.ugui@1.0.0
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.ugui@1.0.0
   assetPath: Packages/com.unity.ugui
   name: com.unity.ugui
   displayName: Unity UI
@@ -1117,6 +1307,7 @@ m_ResolvedPackages:
     all:
     - 1.0.0
     - 3.0.0-exp.1
+    - 3.0.0-exp.3
     compatible:
     - 1.0.0
     verified: 1.0.0
@@ -1161,7 +1352,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.modules.ai@1.0.0
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.modules.ai@1.0.0
   assetPath: Packages/com.unity.modules.ai
   name: com.unity.modules.ai
   displayName: AI
@@ -1210,7 +1401,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.modules.androidjni@1.0.0
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.modules.androidjni@1.0.0
   assetPath: Packages/com.unity.modules.androidjni
   name: com.unity.modules.androidjni
   displayName: Android JNI
@@ -1258,7 +1449,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.modules.animation@1.0.0
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.modules.animation@1.0.0
   assetPath: Packages/com.unity.modules.animation
   name: com.unity.modules.animation
   displayName: Animation
@@ -1307,7 +1498,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.modules.assetbundle@1.0.0
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.modules.assetbundle@1.0.0
   assetPath: Packages/com.unity.modules.assetbundle
   name: com.unity.modules.assetbundle
   displayName: Asset Bundle
@@ -1356,7 +1547,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.modules.audio@1.0.0
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.modules.audio@1.0.0
   assetPath: Packages/com.unity.modules.audio
   name: com.unity.modules.audio
   displayName: Audio
@@ -1405,7 +1596,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.modules.cloth@1.0.0
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.modules.cloth@1.0.0
   assetPath: Packages/com.unity.modules.cloth
   name: com.unity.modules.cloth
   displayName: Cloth
@@ -1458,7 +1649,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.modules.director@1.0.0
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.modules.director@1.0.0
   assetPath: Packages/com.unity.modules.director
   name: com.unity.modules.director
   displayName: Director
@@ -1515,7 +1706,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.modules.imageconversion@1.0.0
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.modules.imageconversion@1.0.0
   assetPath: Packages/com.unity.modules.imageconversion
   name: com.unity.modules.imageconversion
   displayName: Image Conversion
@@ -1565,7 +1756,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.modules.imgui@1.0.0
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.modules.imgui@1.0.0
   assetPath: Packages/com.unity.modules.imgui
   name: com.unity.modules.imgui
   displayName: IMGUI
@@ -1614,7 +1805,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.modules.jsonserialize@1.0.0
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.modules.jsonserialize@1.0.0
   assetPath: Packages/com.unity.modules.jsonserialize
   name: com.unity.modules.jsonserialize
   displayName: JSONSerialize
@@ -1663,7 +1854,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.modules.particlesystem@1.0.0
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.modules.particlesystem@1.0.0
   assetPath: Packages/com.unity.modules.particlesystem
   name: com.unity.modules.particlesystem
   displayName: Particle System
@@ -1712,7 +1903,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.modules.physics@1.0.0
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.modules.physics@1.0.0
   assetPath: Packages/com.unity.modules.physics
   name: com.unity.modules.physics
   displayName: Physics
@@ -1761,7 +1952,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.modules.physics2d@1.0.0
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.modules.physics2d@1.0.0
   assetPath: Packages/com.unity.modules.physics2d
   name: com.unity.modules.physics2d
   displayName: Physics 2D
@@ -1810,7 +2001,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.modules.screencapture@1.0.0
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.modules.screencapture@1.0.0
   assetPath: Packages/com.unity.modules.screencapture
   name: com.unity.modules.screencapture
   displayName: Screen Capture
@@ -1863,7 +2054,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.modules.terrain@1.0.0
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.modules.terrain@1.0.0
   assetPath: Packages/com.unity.modules.terrain
   name: com.unity.modules.terrain
   displayName: Terrain
@@ -1912,7 +2103,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.modules.terrainphysics@1.0.0
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.modules.terrainphysics@1.0.0
   assetPath: Packages/com.unity.modules.terrainphysics
   name: com.unity.modules.terrainphysics
   displayName: Terrain Physics
@@ -1969,7 +2160,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.modules.tilemap@1.0.0
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.modules.tilemap@1.0.0
   assetPath: Packages/com.unity.modules.tilemap
   name: com.unity.modules.tilemap
   displayName: Tilemap
@@ -2021,7 +2212,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.modules.ui@1.0.0
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.modules.ui@1.0.0
   assetPath: Packages/com.unity.modules.ui
   name: com.unity.modules.ui
   displayName: UI
@@ -2070,7 +2261,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.modules.uielements@1.0.0
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.modules.uielements@1.0.0
   assetPath: Packages/com.unity.modules.uielements
   name: com.unity.modules.uielements
   displayName: UIElements
@@ -2135,7 +2326,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.modules.umbra@1.0.0
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.modules.umbra@1.0.0
   assetPath: Packages/com.unity.modules.umbra
   name: com.unity.modules.umbra
   displayName: Umbra
@@ -2184,7 +2375,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.modules.unityanalytics@1.0.0
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.modules.unityanalytics@1.0.0
   assetPath: Packages/com.unity.modules.unityanalytics
   name: com.unity.modules.unityanalytics
   displayName: Unity Analytics
@@ -2241,7 +2432,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.modules.unitywebrequest@1.0.0
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.modules.unitywebrequest@1.0.0
   assetPath: Packages/com.unity.modules.unitywebrequest
   name: com.unity.modules.unitywebrequest
   displayName: Unity Web Request
@@ -2290,7 +2481,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.modules.unitywebrequestassetbundle@1.0.0
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.modules.unitywebrequestassetbundle@1.0.0
   assetPath: Packages/com.unity.modules.unitywebrequestassetbundle
   name: com.unity.modules.unitywebrequestassetbundle
   displayName: Unity Web Request Asset Bundle
@@ -2347,7 +2538,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.modules.unitywebrequestaudio@1.0.0
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.modules.unitywebrequestaudio@1.0.0
   assetPath: Packages/com.unity.modules.unitywebrequestaudio
   name: com.unity.modules.unitywebrequestaudio
   displayName: Unity Web Request Audio
@@ -2404,7 +2595,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.modules.unitywebrequesttexture@1.0.0
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.modules.unitywebrequesttexture@1.0.0
   assetPath: Packages/com.unity.modules.unitywebrequesttexture
   name: com.unity.modules.unitywebrequesttexture
   displayName: Unity Web Request Texture
@@ -2461,7 +2652,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.modules.unitywebrequestwww@1.0.0
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.modules.unitywebrequestwww@1.0.0
   assetPath: Packages/com.unity.modules.unitywebrequestwww
   name: com.unity.modules.unitywebrequestwww
   displayName: Unity Web Request WWW
@@ -2534,7 +2725,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.modules.vehicles@1.0.0
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.modules.vehicles@1.0.0
   assetPath: Packages/com.unity.modules.vehicles
   name: com.unity.modules.vehicles
   displayName: Vehicles
@@ -2587,7 +2778,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.modules.video@1.0.0
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.modules.video@1.0.0
   assetPath: Packages/com.unity.modules.video
   name: com.unity.modules.video
   displayName: Video
@@ -2648,7 +2839,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.modules.vr@1.0.0
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.modules.vr@1.0.0
   assetPath: Packages/com.unity.modules.vr
   name: com.unity.modules.vr
   displayName: VR
@@ -2711,7 +2902,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.modules.wind@1.0.0
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.modules.wind@1.0.0
   assetPath: Packages/com.unity.modules.wind
   name: com.unity.modules.wind
   displayName: Wind
@@ -2760,7 +2951,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.modules.xr@1.0.0
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.modules.xr@1.0.0
   assetPath: Packages/com.unity.modules.xr
   name: com.unity.modules.xr
   displayName: XR
@@ -2821,7 +3012,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 1.0.0
   source: 2
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.modules.subsystems@1.0.0
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.modules.subsystems@1.0.0
   assetPath: Packages/com.unity.modules.subsystems
   name: com.unity.modules.subsystems
   displayName: Subsystems
@@ -2874,7 +3065,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 1.0.0
   source: 2
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.modules.uielementsnative@1.0.0
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.modules.uielementsnative@1.0.0
   assetPath: Packages/com.unity.modules.uielementsnative
   name: com.unity.modules.uielementsnative
   displayName: UIElements Native
@@ -2934,7 +3125,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 1.0.6
   source: 1
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.ext.nunit@1.0.6
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.ext.nunit@1.0.6
   assetPath: Packages/com.unity.ext.nunit
   name: com.unity.ext.nunit
   displayName: Custom NUnit
@@ -2958,10 +3149,14 @@ m_ResolvedPackages:
     - 1.0.6
     - 2.0.2
     - 2.0.3
+    - 2.0.4
+    - 2.0.5
     compatible:
     - 1.0.6
     - 2.0.2
     - 2.0.3
+    - 2.0.4
+    - 2.0.5
     verified: 1.0.6
   dependencies: []
   resolvedDependencies: []
@@ -2995,7 +3190,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 1.2.6
   source: 1
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.mathematics@1.2.6
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.mathematics@1.2.6
   assetPath: Packages/com.unity.mathematics
   name: com.unity.mathematics
   displayName: Mathematics
@@ -3028,8 +3223,10 @@ m_ResolvedPackages:
     - 1.2.4
     - 1.2.5
     - 1.2.6
+    - 1.3.1
     compatible:
     - 1.2.6
+    - 1.3.1
     verified: 1.2.6
   dependencies: []
   resolvedDependencies: []
@@ -3061,7 +3258,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 1.8.2
   source: 1
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.burst@1.8.2
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.burst@1.8.2
   assetPath: Packages/com.unity.burst
   name: com.unity.burst
   displayName: Burst
@@ -3198,6 +3395,7 @@ m_ResolvedPackages:
     - 1.8.2
     - 1.8.3
     - 1.8.4
+    - 1.8.7
     compatible:
     - 1.6.6
     - 1.7.0-pre.1
@@ -3213,6 +3411,7 @@ m_ResolvedPackages:
     - 1.8.2
     - 1.8.3
     - 1.8.4
+    - 1.8.7
     verified: 1.6.6
   dependencies:
   - name: com.unity.mathematics
@@ -3247,7 +3446,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 12.1.8
   source: 2
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.render-pipelines.core@12.1.8
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.render-pipelines.core@12.1.8
   assetPath: Packages/com.unity.render-pipelines.core
   name: com.unity.render-pipelines.core
   displayName: Core RP Library
@@ -3415,7 +3614,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 12.1.8
   source: 2
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.shadergraph@12.1.8
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.shadergraph@12.1.8
   assetPath: Packages/com.unity.shadergraph
   name: com.unity.shadergraph
   displayName: Shader Graph
@@ -3577,12 +3776,290 @@ m_ResolvedPackages:
   unityLifecycle:
     version: 12.1.8
     nextVersion: 
+- packageId: com.unity.addressables@1.19.19
+  testable: 0
+  isDirectDependency: 0
+  version: 1.19.19
+  source: 1
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.addressables@1.19.19
+  assetPath: Packages/com.unity.addressables
+  name: com.unity.addressables
+  displayName: Addressables
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: asset
+  description: 'The Addressable Asset System allows the developer to ask for an asset
+    via its address. Once an asset (e.g. a prefab) is marked "addressable", it generates
+    an address which can be called from anywhere. Wherever the asset resides (local
+    or remote), the system will locate it and its dependencies, then return it.
+
+
+    Use
+    ''Window->Asset Management->Addressables'' to begin working with the system.
+
+
+    Addressables
+    use asynchronous loading to support loading from any location with any collection
+    of dependencies. Whether you have been using direct references, traditional asset
+    bundles, or Resource folders, addressables provide a simpler way to make your
+    game more dynamic. Addressables simultaneously opens up the world of asset bundles
+    while managing all the complexity.
+
+
+    For usage samples, see github.com/Unity-Technologies/Addressables-Sample'
+  status: 0
+  errors: []
+  versions:
+    all:
+    - 0.0.8-preview
+    - 0.0.12-preview
+    - 0.0.15-preview
+    - 0.0.16-preview
+    - 0.0.18-preview
+    - 0.0.22-preview
+    - 0.0.26-preview
+    - 0.0.27-preview
+    - 0.1.2-preview
+    - 0.2.1-preview
+    - 0.2.2-preview
+    - 0.3.5-preview
+    - 0.4.6-preview
+    - 0.4.8-preview
+    - 0.5.2-preview
+    - 0.5.3-preview
+    - 0.6.6-preview
+    - 0.6.7-preview
+    - 0.6.8-preview
+    - 0.7.4-preview
+    - 0.7.5-preview
+    - 0.8.4-preview
+    - 0.8.6-preview
+    - 1.1.3-preview
+    - 1.1.4-preview
+    - 1.1.5
+    - 1.1.7
+    - 1.1.9
+    - 1.1.10
+    - 1.2.2
+    - 1.2.3
+    - 1.2.4
+    - 1.3.3
+    - 1.3.8
+    - 1.4.0
+    - 1.5.0
+    - 1.5.1
+    - 1.6.0
+    - 1.6.2
+    - 1.7.4
+    - 1.7.5
+    - 1.8.3
+    - 1.8.4
+    - 1.8.5
+    - 1.9.2
+    - 1.10.0
+    - 1.11.2
+    - 1.12.0
+    - 1.13.1
+    - 1.14.2
+    - 1.15.1
+    - 1.16.1
+    - 1.16.6
+    - 1.16.7
+    - 1.16.8
+    - 1.16.10
+    - 1.16.12
+    - 1.16.13
+    - 1.16.15
+    - 1.16.16
+    - 1.16.19
+    - 1.17.0-preview
+    - 1.17.2-preview
+    - 1.17.4-preview
+    - 1.17.5-preview
+    - 1.17.6-preview
+    - 1.17.13
+    - 1.17.15
+    - 1.17.17
+    - 1.18.2
+    - 1.18.4
+    - 1.18.9
+    - 1.18.11
+    - 1.18.13
+    - 1.18.15
+    - 1.18.16
+    - 1.18.19
+    - 1.19.4
+    - 1.19.6
+    - 1.19.9
+    - 1.19.11
+    - 1.19.13
+    - 1.19.14
+    - 1.19.15
+    - 1.19.17
+    - 1.19.18
+    - 1.19.19
+    - 1.20.0
+    - 1.20.3
+    - 1.20.5
+    - 1.21.1
+    - 1.21.2
+    - 1.21.3
+    - 1.21.8
+    - 1.21.9
+    - 1.21.10
+    - 1.21.12
+    - 1.21.14
+    compatible:
+    - 1.19.19
+    - 1.20.0
+    - 1.20.3
+    - 1.20.5
+    - 1.21.1
+    - 1.21.2
+    - 1.21.3
+    - 1.21.8
+    - 1.21.9
+    - 1.21.10
+    - 1.21.12
+    - 1.21.14
+    verified: 1.19.19
+  dependencies:
+  - name: com.unity.scriptablebuildpipeline
+    version: 1.19.6
+  - name: com.unity.modules.assetbundle
+    version: 1.0.0
+  - name: com.unity.modules.imageconversion
+    version: 1.0.0
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
+  - name: com.unity.modules.unitywebrequest
+    version: 1.0.0
+  - name: com.unity.modules.unitywebrequestassetbundle
+    version: 1.0.0
+  resolvedDependencies:
+  - name: com.unity.scriptablebuildpipeline
+    version: 1.20.1
+  - name: com.unity.modules.assetbundle
+    version: 1.0.0
+  - name: com.unity.modules.imageconversion
+    version: 1.0.0
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
+  - name: com.unity.modules.unitywebrequest
+    version: 1.0.0
+  - name: com.unity.modules.unitywebrequestassetbundle
+    version: 1.0.0
+  keywords:
+  - asset
+  - resources
+  - bundle
+  - bundles
+  - assetbundles
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+  hideInEditor: 0
+  isAssetStorePackage: 0
+  datePublishedTicks: 637819852270000000
+  documentationUrl: 
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.cds.internal.unity3d.com/unity/Addressables.git
+    revision: 2ac2ed2277c173a9a41ffeafa080525578c38e4f
+    path: 
+  unityLifecycle:
+    version: 1.19.19
+    nextVersion: 
+- packageId: com.unity.nuget.newtonsoft-json@3.0.2
+  testable: 0
+  isDirectDependency: 0
+  version: 3.0.2
+  source: 1
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2
+  assetPath: Packages/com.unity.nuget.newtonsoft-json
+  name: com.unity.nuget.newtonsoft-json
+  displayName: Newtonsoft Json
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: library
+  description: 'Newtonsoft Json for use in Unity projects and Unity packages. Currently
+    synced to version 13.0.1.
+
+
+    This package is used for advanced json serialization
+    and deserialization. Most Unity users will be better suited using the existing
+    json tools built into Unity.
+
+    To avoid assembly clashes, please use this
+    package if you intend to use Newtonsoft Json.'
+  status: 0
+  errors: []
+  versions:
+    all:
+    - 1.0.0-preview.2
+    - 1.0.0-preview.3
+    - 1.0.0-preview.4
+    - 1.0.1-preview.1
+    - 1.1.2
+    - 2.0.0-preview
+    - 2.0.0-preview.1
+    - 2.0.0-preview.2
+    - 2.0.0
+    - 2.0.1-preview.1
+    - 2.0.2
+    - 3.0.1
+    - 3.0.2
+    - 3.1.0
+    - 3.2.0
+    - 3.2.1
+    compatible:
+    - 3.0.2
+    - 3.1.0
+    - 3.2.0
+    - 3.2.1
+    verified: 3.0.2
+  dependencies: []
+  resolvedDependencies: []
+  keywords: []
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+  hideInEditor: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 637846828220000000
+  documentationUrl: 
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.cds.internal.unity3d.com/unity/com.unity.nuget.newtonsoft-json.git
+    revision: 8f66870a71ad3f2cdd46330b5c482dfd138ffc64
+    path: 
+  unityLifecycle:
+    version: 3.0.2
+    nextVersion: 
 - packageId: com.unity.2d.animation@7.0.9
   testable: 0
   isDirectDependency: 0
   version: 7.0.9
   source: 1
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.2d.animation@7.0.9
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.2d.animation@7.0.9
   assetPath: Packages/com.unity.2d.animation
   name: com.unity.2d.animation
   displayName: 2D Animation
@@ -3776,7 +4253,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 5.0.3
   source: 1
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.2d.pixel-perfect@5.0.3
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.2d.pixel-perfect@5.0.3
   assetPath: Packages/com.unity.2d.pixel-perfect
   name: com.unity.2d.pixel-perfect
   displayName: 2D Pixel Perfect
@@ -3853,7 +4330,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 6.0.6
   source: 1
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.2d.psdimporter@6.0.6
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.2d.psdimporter@6.0.6
   assetPath: Packages/com.unity.2d.psdimporter
   name: com.unity.2d.psdimporter
   displayName: 2D PSD Importer
@@ -4005,7 +4482,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 1.0.0
   source: 2
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.2d.sprite@1.0.0
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.2d.sprite@1.0.0
   assetPath: Packages/com.unity.2d.sprite
   name: com.unity.2d.sprite
   displayName: 2D Sprite
@@ -4057,7 +4534,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 7.0.6
   source: 1
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.2d.spriteshape@7.0.6
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.2d.spriteshape@7.0.6
   assetPath: Packages/com.unity.2d.spriteshape
   name: com.unity.2d.spriteshape
   displayName: 2D SpriteShape
@@ -4224,7 +4701,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 1.0.0
   source: 2
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.2d.tilemap@1.0.0
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.2d.tilemap@1.0.0
   assetPath: Packages/com.unity.2d.tilemap
   name: com.unity.2d.tilemap
   displayName: 2D Tilemap Editor
@@ -4275,7 +4752,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 2.2.3
   source: 1
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.2d.tilemap.extras@2.2.3
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.2d.tilemap.extras@2.2.3
   assetPath: Packages/com.unity.2d.tilemap.extras
   name: com.unity.2d.tilemap.extras
   displayName: 2D Tilemap Extras
@@ -4325,11 +4802,13 @@ m_ResolvedPackages:
     - 2.2.3
     - 2.2.4
     - 2.2.5
+    - 2.2.6
     - 3.0.0
     - 3.0.1
     - 3.0.2
     - 3.0.3
     - 3.1.0
+    - 3.1.1
     - 4.0.0-pre.1
     - 4.0.0-pre.2
     - 4.0.0-pre.3
@@ -4339,7 +4818,8 @@ m_ResolvedPackages:
     - 2.2.3
     - 2.2.4
     - 2.2.5
-    verified: 2.2.5
+    - 2.2.6
+    verified: 2.2.6
   dependencies:
   - name: com.unity.modules.tilemap
     version: 1.0.0
@@ -4392,7 +4872,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 1.6.0
   source: 1
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.services.core@1.6.0
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.services.core@1.6.0
   assetPath: Packages/com.unity.services.core
   name: com.unity.services.core
   displayName: Services Core
@@ -4433,6 +4913,7 @@ m_ResolvedPackages:
     - 1.8.1
     - 1.8.2
     - 1.9.0
+    - 1.10.1
     compatible:
     - 1.6.0
     - 1.7.0
@@ -4440,6 +4921,7 @@ m_ResolvedPackages:
     - 1.8.1
     - 1.8.2
     - 1.9.0
+    - 1.10.1
     verified: 1.6.0
   dependencies:
   - name: com.unity.modules.unitywebrequest
@@ -4482,7 +4964,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 4.9.1
   source: 1
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.searcher@4.9.1
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.searcher@4.9.1
   assetPath: Packages/com.unity.searcher
   name: com.unity.searcher
   displayName: Searcher
@@ -4544,12 +5026,132 @@ m_ResolvedPackages:
   unityLifecycle:
     version: 4.9.1
     nextVersion: 
+- packageId: com.unity.scriptablebuildpipeline@1.20.1
+  testable: 0
+  isDirectDependency: 0
+  version: 1.20.1
+  source: 1
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.scriptablebuildpipeline@1.20.1
+  assetPath: Packages/com.unity.scriptablebuildpipeline
+  name: com.unity.scriptablebuildpipeline
+  displayName: Scriptable Build Pipeline
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: asset
+  description: The Scriptable Build Pipeline moves the asset bundle build pipeline
+    to C#.  Use the pre-defined build flows, or create your own using the divided
+    up APIs.  This system improves build time, fixes incremental build, and provides
+    greater flexibility.
+  status: 0
+  errors: []
+  versions:
+    all:
+    - 0.0.5-preview
+    - 0.0.6-preview
+    - 0.0.8-preview
+    - 0.0.9-preview
+    - 0.0.10-preview
+    - 0.0.14-preview
+    - 0.0.15-preview
+    - 0.1.0-preview
+    - 0.2.0-preview
+    - 1.0.1-preview
+    - 1.1.0-preview
+    - 1.1.1-preview
+    - 1.2.1-preview
+    - 1.3.5-preview
+    - 1.4.1-preview
+    - 1.5.0-preview
+    - 1.5.1
+    - 1.5.2
+    - 1.5.4
+    - 1.5.6
+    - 1.5.10
+    - 1.6.3-preview
+    - 1.6.4-preview
+    - 1.6.5-preview
+    - 1.7.2
+    - 1.7.3
+    - 1.8.2
+    - 1.8.4
+    - 1.8.6
+    - 1.9.0
+    - 1.10.0
+    - 1.11.1
+    - 1.11.2
+    - 1.12.0
+    - 1.13.1
+    - 1.14.0
+    - 1.14.1
+    - 1.15.1
+    - 1.15.2
+    - 1.16.1
+    - 1.17.0
+    - 1.18.0
+    - 1.19.0
+    - 1.19.1
+    - 1.19.2
+    - 1.19.3
+    - 1.19.4
+    - 1.19.5
+    - 1.19.6
+    - 1.20.1
+    - 1.20.2
+    - 1.21.0
+    - 1.21.1
+    - 1.21.2
+    - 1.21.3
+    - 1.21.5
+    - 1.21.7
+    compatible:
+    - 1.20.1
+    - 1.20.2
+    - 1.21.0
+    - 1.21.1
+    - 1.21.2
+    - 1.21.3
+    - 1.21.5
+    - 1.21.7
+    verified: 1.20.2
+  dependencies: []
+  resolvedDependencies: []
+  keywords:
+  - build
+  - bundle
+  - bundles
+  - assetbundles
+  - cache
+  - server
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+  hideInEditor: 0
+  isAssetStorePackage: 0
+  datePublishedTicks: 637874640850000000
+  documentationUrl: 
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.cds.internal.unity3d.com/unity/Addressables.git
+    revision: f2d9aac4eb254f268ff4e23f800ccc30c53dbd75
+    path: 
+  unityLifecycle:
+    version: 1.20.1
+    nextVersion: 
 - packageId: com.unity.2d.common@6.0.6
   testable: 0
   isDirectDependency: 0
   version: 6.0.6
   source: 1
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.2d.common@6.0.6
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.2d.common@6.0.6
   assetPath: Packages/com.unity.2d.common
   name: com.unity.2d.common
   displayName: 2D Common
@@ -4671,7 +5273,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 5.0.2
   source: 1
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.2d.path@5.0.2
+  resolvedPath: C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.2d.path@5.0.2
   assetPath: Packages/com.unity.2d.path
   name: com.unity.2d.path
   displayName: 2D Path
@@ -4736,79 +5338,4 @@ m_ResolvedPackages:
     path: 
   unityLifecycle:
     version: 5.0.2
-    nextVersion: 
-- packageId: com.unity.nuget.newtonsoft-json@3.0.2
-  testable: 0
-  isDirectDependency: 0
-  version: 3.0.2
-  source: 1
-  resolvedPath: C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2
-  assetPath: Packages/com.unity.nuget.newtonsoft-json
-  name: com.unity.nuget.newtonsoft-json
-  displayName: Newtonsoft Json
-  author:
-    name: 
-    email: 
-    url: 
-  category: 
-  type: library
-  description: 'Newtonsoft Json for use in Unity projects and Unity packages. Currently
-    synced to version 13.0.1.
-
-
-    This package is used for advanced json serialization
-    and deserialization. Most Unity users will be better suited using the existing
-    json tools built into Unity.
-
-    To avoid assembly clashes, please use this
-    package if you intend to use Newtonsoft Json.'
-  status: 0
-  errors: []
-  versions:
-    all:
-    - 1.0.0-preview.2
-    - 1.0.0-preview.3
-    - 1.0.0-preview.4
-    - 1.0.1-preview.1
-    - 1.1.2
-    - 2.0.0-preview
-    - 2.0.0-preview.1
-    - 2.0.0-preview.2
-    - 2.0.0
-    - 2.0.1-preview.1
-    - 2.0.2
-    - 3.0.1
-    - 3.0.2
-    - 3.1.0
-    - 3.2.0
-    - 3.2.1
-    compatible:
-    - 3.0.2
-    - 3.1.0
-    - 3.2.0
-    - 3.2.1
-    verified: 3.0.2
-  dependencies: []
-  resolvedDependencies: []
-  keywords: []
-  registry:
-    id: main
-    name: 
-    url: https://packages.unity.com
-    scopes: []
-    isDefault: 1
-    capabilities: 7
-    configSource: 0
-  hideInEditor: 1
-  isAssetStorePackage: 0
-  datePublishedTicks: 637846828220000000
-  documentationUrl: 
-  hasRepository: 1
-  repository:
-    type: git
-    url: https://github.cds.internal.unity3d.com/unity/com.unity.nuget.newtonsoft-json.git
-    revision: 8f66870a71ad3f2cdd46330b5c482dfd138ffc64
-    path: 
-  unityLifecycle:
-    version: 3.0.2
     nextVersion: 

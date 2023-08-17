@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Summary_fr
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: fr
+  m_SharedData: {fileID: 11400000, guid: 64936251c0e2236469fd19b9681ccd46, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 18369519616
+    m_Localized: "Revue du sprint n\xB0"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 600765407232
+    m_Localized: "Dur\xE9e du sprint"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 700694700032
+    m_Localized: "\xC9toiles gagn\xE9es :"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 854902480896
+    m_Localized: 'Dette technique :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 914209939456
+    m_Localized: "User stories termin\xE9es :"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1300362731520
+    m_Localized: "Cartes probl\xE8me pioch\xE9es :"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1482311639040
+    m_Localized: "Nombre de t\xE2ches perdues :"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

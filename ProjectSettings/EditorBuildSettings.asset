@@ -9,9 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 823c93d6ec882d24d88fb2de80d69c9c
   - enabled: 1
-    path: Assets/Scenes/Lobby.unity
-    guid: fc676f5cef9d7a345a96cd5ba1740d9c
+    path: Assets/Scenes/PokerPlanning.unity
+    guid: 96a5295b0c18ce14eb16eb7b84b65170
+  - enabled: 1
+    path: Assets/Scenes/CustomPokerPlanning.unity
+    guid: f53bdc57bb7d26a40ae6d556334c6d54
   - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: cb391f2417c3743499b97a7ca1bbf594, type: 2}
+    com.unity.localization.settings: {fileID: 11400000, guid: d7e9244354a69a648837bfac44566266, type: 2}

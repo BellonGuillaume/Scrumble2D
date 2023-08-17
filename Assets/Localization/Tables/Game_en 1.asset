@@ -1,0 +1,166 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Game_en 1
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 23add21837e87a14a8bab3b4e73e3839, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 138104315904
+    m_Localized: Play a turn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 183922892800
+    m_Localized: Choose between raise a task or decrease the debt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 252977913856
+    m_Localized: Roll the dice
+    m_Metadata:
+      m_Items: []
+  - m_Id: 276965138432
+    m_Localized: You can reroll the dice
+    m_Metadata:
+      m_Items: []
+  - m_Id: 300373549056
+    m_Localized: Pick a problem card
+    m_Metadata:
+      m_Items: []
+  - m_Id: 306186854400
+    m_Localized: Day
+    m_Metadata:
+      m_Items: []
+  - m_Id: 338302640128
+    m_Localized: This is the turn of
+    m_Metadata:
+      m_Items: []
+  - m_Id: 358389161984
+    m_Localized: ToDo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 383328493568
+    m_Localized: Doing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 393109610496
+    m_Localized: Done
+    m_Metadata:
+      m_Items: []
+  - m_Id: 402282553344
+    m_Localized: Accept
+    m_Metadata:
+      m_Items: []
+  - m_Id: 419772801024
+    m_Localized: Decline
+    m_Metadata:
+      m_Items: []
+  - m_Id: 447446818816
+    m_Localized: 'Time :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 487515004928
+    m_Localized: 'Number of stars :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 519400103936
+    m_Localized: 'Number of sprints :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 563851337728
+    m_Localized: Choose a player to draw a Daily Card
+    m_Metadata:
+      m_Items: []
+  - m_Id: 590376116224
+    m_Localized: Review Phase
+    m_Metadata:
+      m_Items: []
+  - m_Id: 595300229120
+    m_Localized: Retrospective Phase
+    m_Metadata:
+      m_Items: []
+  - m_Id: 627537649664
+    m_Localized: You won
+    m_Metadata:
+      m_Items: []
+  - m_Id: 640766484480
+    m_Localized: You earned
+    m_Metadata:
+      m_Items: []
+  - m_Id: 656667090944
+    m_Localized: tasks
+    m_Metadata:
+      m_Items: []
+  - m_Id: 676539703296
+    m_Localized: task
+    m_Metadata:
+      m_Items: []
+  - m_Id: 685486153728
+    m_Localized: debts
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694709428224
+    m_Localized: debt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 714342965248
+    m_Localized: and
+    m_Metadata:
+      m_Items: []
+  - m_Id: 726330286080
+    m_Localized: pass a turn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 766180368384
+    m_Localized: Task Validation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2159220923867136
+    m_Localized: You have completed all the tasks in this sprint. Do you want to
+      add new user stories to the sprint or continue while reducing the technical
+      debt ?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2165750163349504
+    m_Localized: You have completed all the user stories. Do you want to finish the
+      sprint or continue while reducing the technical debt ?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2467055046008832
+    m_Localized: Take your time to discuss about the completed sprint.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2467708300468224
+    m_Localized: End the retrospective
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3171119417303040
+    m_Localized: Are you sure you want to leave the game ?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3171278763106304
+    m_Localized: Yes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3171309381525504
+    m_Localized: No
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3556518505521152
+    m_Localized: Option 1
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

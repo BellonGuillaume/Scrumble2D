@@ -36,92 +36,190 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Old\Player.cs" />
+     <Compile Include="Assets\Scripts\Game\EventManager.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
+     <Compile Include="Assets\Scripts\Ressources\DropCase.cs" />
+     <Compile Include="Assets\Scripts\Game\CardHandler.cs" />
+     <Compile Include="Assets\Scripts\Game\ChoosePlayer.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
-     <Compile Include="Assets\Scripts\Old\HostJoinUI.cs" />
+     <Compile Include="Assets\StandaloneFileBrowser\Sample\BasicSample.cs" />
+     <Compile Include="Assets\StandaloneFileBrowser\StandaloneFileBrowserWindows.cs" />
+     <Compile Include="Assets\Scripts\Game\UICard.cs" />
+     <Compile Include="Assets\StandaloneFileBrowser\Sample\CanvasSampleOpenFileTextMultiple.cs" />
+     <Compile Include="Assets\StandaloneFileBrowser\IStandaloneFileBrowser.cs" />
+     <Compile Include="Assets\Scripts\Ressources\FlexibleGridLayout.cs" />
+     <Compile Include="Assets\Scripts\PokerPlanning\CustomPokerPlanningManager.cs" />
+     <Compile Include="Assets\Scripts\SideMenu\ScrumboardManager.cs" />
+     <Compile Include="Assets\Scripts\Ressources\Content.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
+     <Compile Include="Assets\StandaloneFileBrowser\Sample\CanvasSampleOpenFileText.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
-     <Compile Include="Assets\Scripts\Old\BackButtonScript.cs" />
+     <Compile Include="Assets\Scripts\Game\Animation\AnimationManager.cs" />
+     <Compile Include="Assets\Scripts\Ressources\AutoSizeScrollView.cs" />
+     <Compile Include="Assets\Scripts\Game\Results.cs" />
+     <Compile Include="Assets\StandaloneFileBrowser\Sample\CanvasSampleSaveFileText.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
+     <Compile Include="Assets\Scripts\Ressources\ArrowedUS.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
-     <Compile Include="Assets\Scripts\Old\ScrollingManager.cs" />
+     <Compile Include="Assets\Scripts\Menu\UIPlayer.cs" />
+     <Compile Include="Assets\Scripts\Game\ExitManager.cs" />
+     <Compile Include="Assets\Scripts\Game\CardPicker.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
+     <Compile Include="Assets\Scripts\Ressources\DropDownController.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
+     <Compile Include="Assets\Scripts\SideMenu\SideMenuManager.cs" />
+     <Compile Include="Assets\Scripts\Ressources\DropContent.cs" />
+     <Compile Include="Assets\StandaloneFileBrowser\Sample\CanvasSampleOpenFileImage.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
+     <Compile Include="Assets\Scripts\Menu\ExitHandler.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
+     <Compile Include="Assets\Scripts\Game\DebtSlider.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
-     <Compile Include="Assets\Scripts\Old\UILobby.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
+     <Compile Include="Assets\Scripts\Game\QuestionHandler.cs" />
+     <Compile Include="Assets\Scripts\Game\GameManager.cs" />
+     <Compile Include="Assets\Scripts\Menu\TrueFalseScrollbar.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextConsoleSimulator.cs" />
+     <Compile Include="Assets\Scripts\Menu\DropDownLocalize.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
+     <Compile Include="Assets\Scripts\Game\Animation\MonoBehaviourExtensions.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
+     <Compile Include="Assets\Scripts\Game\Card.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
-     <Compile Include="Assets\Scripts\Old\ConnexionManager.cs" />
-     <Compile Include="Assets\Scripts\Old\ExitButton.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
+     <Compile Include="Assets\Scripts\Ressources\UserStoryUI.cs" />
+     <Compile Include="Assets\Scripts\Game\DailyPlayer.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
+     <Compile Include="Assets\Scripts\Game\EndScreenManager.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
+     <Compile Include="Assets\StandaloneFileBrowser\StandaloneFileBrowserEditor.cs" />
+     <Compile Include="Assets\Scripts\Ressources\DaySlider.cs" />
+     <Compile Include="Assets\Scripts\Ressources\RectTransformExtension.cs" />
+     <Compile Include="Assets\Scripts\Ressources\AutoSizeText.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
+     <Compile Include="Assets\Scripts\Ressources\DraggableItem.cs" />
+     <Compile Include="Assets\StandaloneFileBrowser\StandaloneFileBrowser.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
+     <Compile Include="Assets\Scripts\Game\Player.cs" />
+     <Compile Include="Assets\Scripts\Game\UIDice.cs" />
+     <Compile Include="Assets\StandaloneFileBrowser\StandaloneFileBrowserLinux.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
+     <Compile Include="Assets\Scripts\Menu\Menu.cs" />
+     <Compile Include="Assets\StandaloneFileBrowser\Sample\CanvasSampleSaveFileImage.cs" />
+     <Compile Include="Assets\Scripts\Game\SummaryManager.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
+     <Compile Include="Assets\Scripts\Game\RetrospectiveManager.cs" />
+     <Compile Include="Assets\Scripts\Menu\Local.cs" />
+     <Compile Include="Assets\Scripts\Menu\Lobby.cs" />
+     <Compile Include="Assets\Scripts\Ressources\CustomUserStoryUI.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
+     <Compile Include="Assets\Scripts\Game\FilledChoiceHandler.cs" />
+     <Compile Include="Assets\Scripts\Ressources\UserStory.cs" />
+     <Compile Include="Assets\Scripts\Ressources\HighlightScore.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
-     <Compile Include="Assets\Scripts\Old\HexToRGBA.cs" />
+     <Compile Include="Assets\StandaloneFileBrowser\StandaloneFileBrowserMac.cs" />
+     <Compile Include="Assets\Scripts\PokerPlanning\PokerPlanningManager.cs" />
+     <Compile Include="Assets\Scripts\Game\Animation\Scrolling.cs" />
+     <Compile Include="Assets\Scripts\Game\ReviewManager.cs" />
+     <Compile Include="Assets\Scripts\Menu\StateManager.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
-     <Compile Include="Assets\Scripts\Old\AutoHostClient.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
-     <Compile Include="Assets\Scripts\Old\MatchMaker.cs" />
-     <Compile Include="Assets\Scripts\Old\BarScroller.cs" />
+     <Compile Include="Assets\Scripts\Game\TDDDManager.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
-     <Compile Include="Assets\Scripts\Old\PlayButtonScript.cs" />
-     <Compile Include="Assets\Scripts\Old\TextSlider.cs" />
+     <Compile Include="Assets\Scripts\Game\Animation\Easing.cs" />
+     <Compile Include="Assets\Scripts\Game\BurndownChartManager.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
-     <Compile Include="Assets\Scripts\Old\StateNameController.cs" />
+     <None Include="Assets\Packages\System.Globalization.4.3.0\ThirdPartyNotices.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
+     <None Include="Assets\Packages\System.Threading.4.3.0\dotnet_library_license.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
+     <None Include="Assets\Packages\System.IO.4.3.0\dotnet_library_license.txt" />
+     <None Include="Assets\Packages\System.Reflection.TypeExtensions.4.3.0\ThirdPartyNotices.txt" />
+     <None Include="Assets\Packages\System.Resources.ResourceManager.4.3.0\ThirdPartyNotices.txt" />
+     <None Include="Assets\Packages\System.Threading.Tasks.4.3.0\ThirdPartyNotices.txt" />
      <None Include="Assets\ScriptTemplates\51-Mirror__Network Authenticator-NewNetworkAuthenticator.cs.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+     <None Include="Assets\Packages\System.Linq.4.3.0\dotnet_library_license.txt" />
+     <None Include="Assets\Packages\System.Linq.4.3.0\ThirdPartyNotices.txt" />
      <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Oswald-Bold - OFL.txt" />
+     <None Include="Assets\Packages\System.Runtime.Extensions.4.3.0\dotnet_library_license.txt" />
      <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Anton OFL.txt" />
+     <None Include="Assets\Packages\System.Collections.4.3.0\ThirdPartyNotices.txt" />
+     <None Include="Assets\Packages\System.Diagnostics.Debug.4.3.0\ThirdPartyNotices.txt" />
+     <None Include="Assets\Packages\Microsoft.NETCore.Targets.1.1.0\dotnet_library_license.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
+     <None Include="Assets\Packages\System.ObjectModel.4.3.0\ThirdPartyNotices.txt" />
      <None Include="Assets\ScriptTemplates\56-Mirror__Network Discovery-NewNetworkDiscovery.cs.txt" />
+     <None Include="Assets\Packages\System.Reflection.Emit.Lightweight.4.3.0\ThirdPartyNotices.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
+     <None Include="Assets\Packages\System.Reflection.Extensions.4.3.0\ThirdPartyNotices.txt" />
+     <None Include="Assets\Packages\System.Linq.Expressions.4.3.0\ThirdPartyNotices.txt" />
+     <None Include="Assets\Packages\System.Reflection.Extensions.4.3.0\dotnet_library_license.txt" />
+     <None Include="Assets\Packages\System.Dynamic.Runtime.4.3.0\ThirdPartyNotices.txt" />
+     <None Include="Assets\Packages\System.Resources.ResourceManager.4.3.0\dotnet_library_license.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+     <None Include="Assets\Packages\System.IO.4.3.0\ThirdPartyNotices.txt" />
+     <None Include="Assets\Packages\System.Runtime.Extensions.4.3.0\ThirdPartyNotices.txt" />
      <None Include="Assets\Colors\gradient_tiles.txt" />
-     <None Include="Assets\Mirror\Version.txt" />
-     <None Include="Assets\Mirror\Readme.txt" />
+     <None Include="Assets\Packages\CsvHelper.30.0.1\lib\netstandard2.1\CsvHelper.xml" />
+     <None Include="Assets\Packages\System.Reflection.4.3.0\dotnet_library_license.txt" />
+     <None Include="Assets\Packages\System.ObjectModel.4.3.0\dotnet_library_license.txt" />
+     <None Include="Assets\Packages\System.Runtime.InteropServices.4.3.0\ThirdPartyNotices.txt" />
      <None Include="Assets\Font\nightwatcher\fontinfo.txt" />
+     <None Include="Assets\Packages\System.Threading.Tasks.4.3.0\dotnet_library_license.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
+     <None Include="Assets\Packages\System.Globalization.4.3.0\dotnet_library_license.txt" />
      <None Include="Assets\ScriptTemplates\57-Mirror__Network Transform-NewNetworkTransform.cs.txt" />
      <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+     <None Include="Assets\Packages\System.Reflection.Primitives.4.3.0\ThirdPartyNotices.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
      <None Include="Assets\Font\nightwatcher\ffonts.net.txt" />
      <None Include="Assets\ScriptTemplates\52-Mirror__Network Behaviour-NewNetworkBehaviour.cs.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
+     <None Include="Assets\Packages\System.Dynamic.Runtime.4.3.0\dotnet_library_license.txt" />
+     <None Include="Assets\Packages\System.Runtime.4.3.0\ThirdPartyNotices.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
-     <None Include="Assets\Mirror\Notice.txt" />
+     <None Include="Assets\Packages\System.Runtime.InteropServices.4.3.0\dotnet_library_license.txt" />
+     <None Include="Assets\Packages\System.Reflection.Emit.Lightweight.4.3.0\dotnet_library_license.txt" />
+     <None Include="Assets\Packages\System.Threading.4.3.0\ThirdPartyNotices.txt" />
+     <None Include="Assets\Packages\Microsoft.NETCore.Platforms.1.1.0\dotnet_library_license.txt" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
-     <None Include="Assets\Mirror\Plugins\Mono.Cecil\License.txt" />
+     <None Include="Assets\Materials\ColorOnAngle.shader" />
+     <None Include="Assets\Packages\System.Diagnostics.Debug.4.3.0\dotnet_library_license.txt" />
+     <None Include="Assets\Packages\System.Runtime.4.3.0\dotnet_library_license.txt" />
+     <None Include="Assets\Packages\System.Reflection.Emit.ILGeneration.4.3.0\dotnet_library_license.txt" />
+     <None Include="Assets\Packages\System.Collections.4.3.0\dotnet_library_license.txt" />
+     <None Include="Assets\Packages\System.Reflection.Emit.4.3.0\ThirdPartyNotices.txt" />
+     <None Include="Assets\Packages\System.Reflection.Primitives.4.3.0\dotnet_library_license.txt" />
      <None Include="Assets\ScriptTemplates\55-Mirror__Network Room Player-NewNetworkRoomPlayer.cs.txt" />
+     <None Include="Assets\Packages\System.Linq.Expressions.4.3.0\dotnet_library_license.txt" />
+     <None Include="Assets\Packages\System.Text.Encoding.4.3.0\ThirdPartyNotices.txt" />
+     <None Include="Assets\Packages\Microsoft.NETCore.Targets.1.1.0\ThirdPartyNotices.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
+     <None Include="Assets\Packages\System.Reflection.4.3.0\ThirdPartyNotices.txt" />
      <None Include="Assets\ScriptTemplates\53-Mirror__Custom Interest Management-CustomInterestManagement.cs.txt" />
+     <None Include="Assets\Packages\System.Reflection.Emit.4.3.0\dotnet_library_license.txt" />
+     <None Include="Assets\Packages\System.Runtime.Handles.4.3.0\dotnet_library_license.txt" />
+     <None Include="Assets\Packages\System.Runtime.Handles.4.3.0\ThirdPartyNotices.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
      <None Include="Assets\ScriptTemplates\50-Mirror__Network Manager-NewNetworkManager.cs.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
      <None Include="Assets\ScriptTemplates\54-Mirror__Network Room Manager-NewNetworkRoomManager.cs.txt" />
      <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+     <None Include="Assets\Packages\System.Text.Encoding.4.3.0\dotnet_library_license.txt" />
+     <None Include="Assets\Packages\System.Reflection.Emit.ILGeneration.4.3.0\ThirdPartyNotices.txt" />
      <None Include="Assets\Font\nightwatcher\install-a-new-font.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
+     <None Include="Assets\Packages\Microsoft.NETCore.Platforms.1.1.0\ThirdPartyNotices.txt" />
+     <None Include="Assets\Packages\System.Reflection.TypeExtensions.4.3.0\dotnet_library_license.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
      <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Bangers - OFL.txt" />
     <Reference Include="UnityEngine">
@@ -370,32 +468,32 @@
     <Reference Include="UnityEditor.UnityConnectModule">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.16f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
-    <Reference Include="Mono.CecilX.Rocks">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Assets\Mirror\Plugins\Mono.Cecil\Mono.CecilX.Rocks.dll</HintPath>
+    <Reference Include="System.Reflection.TypeExtensions">
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Assets\Packages\System.Reflection.TypeExtensions.4.3.0\lib\netstandard1.5\System.Reflection.TypeExtensions.dll</HintPath>
     </Reference>
-    <Reference Include="Mono.CecilX.Pdb">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Assets\Mirror\Plugins\Mono.Cecil\Mono.CecilX.Pdb.dll</HintPath>
-    </Reference>
-    <Reference Include="Mono.CecilX">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Assets\Mirror\Plugins\Mono.Cecil\Mono.CecilX.dll</HintPath>
+    <Reference Include="Ookii.Dialogs">
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Assets\StandaloneFileBrowser\Plugins\Ookii.Dialogs.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Cecil.Mdb">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.burst@1.8.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.burst@1.8.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Cecil.Pdb">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.burst@1.8.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.Pdb.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.burst@1.8.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.Pdb.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Cecil">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.burst@1.8.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.burst@1.8.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Cecil.Rocks">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.burst@1.8.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.Rocks.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.burst@1.8.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.Rocks.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\Newtonsoft.Json.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Mono.CecilX.Mdb">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Assets\Mirror\Plugins\Mono.Cecil\Mono.CecilX.Mdb.dll</HintPath>
+    <Reference Include="System.Windows.Forms">
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Assets\StandaloneFileBrowser\Plugins\System.Windows.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="CsvHelper">
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Assets\Packages\CsvHelper.30.0.1\lib\netstandard2.1\CsvHelper.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.16f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
@@ -764,188 +862,175 @@
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.16f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="Unity.InternalAPIEngineBridge.001">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\Unity.InternalAPIEngineBridge.001.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.InternalAPIEngineBridge.001.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.PixelPerfect">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\Unity.2D.PixelPerfect.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.2D.PixelPerfect.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Shaders">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.CacheServer">
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\UnityEditor.CacheServer.dll</HintPath>
     </Reference>
     <Reference Include="PsdPlugin">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\PsdPlugin.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\PsdPlugin.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Addressables">
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.Addressables.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Searcher.Editor">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.IK.Editor">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\Unity.2D.IK.Editor.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.2D.IK.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Path.Editor">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\Unity.2D.Path.Editor.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.2D.Path.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.IK.Runtime">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\Unity.2D.IK.Runtime.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.2D.IK.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ShaderGraph.Editor">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Localization.Editor">
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.Localization.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics.Editor">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Addressables.Editor">
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.Addressables.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Common.Editor">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\Unity.2D.Common.Editor.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.2D.Common.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Extras">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\Unity.2D.Tilemap.Extras.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.2D.Tilemap.Extras.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Animation.Editor">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\Unity.2D.Animation.Editor.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.2D.Animation.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\Unity.2D.Tilemap.Editor.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Runtime">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="PPv2URPConverters">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\PPv2URPConverters.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\PPv2URPConverters.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Localization">
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.Localization.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGetForUnity">
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\NuGetForUnity.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Editor">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Psdimporter.Editor">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\Unity.2D.Psdimporter.Editor.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.2D.Psdimporter.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.InternalAPIEditorBridge.001">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\Unity.InternalAPIEditorBridge.001.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.InternalAPIEditorBridge.001.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ResourceManager">
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PlasticSCM.Editor">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Extras.Editor">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\Unity.2D.Tilemap.Extras.Editor.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.2D.Tilemap.Extras.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Services.Core">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\Unity.Services.Core.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.Services.Core.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Services.Core.Analytics">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\Unity.Services.Core.Analytics.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.Services.Core.Analytics.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Editor">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Services.Core.Environments">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\Unity.Services.Core.Environments.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.Services.Core.Environments.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Animation.Runtime">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\Unity.2D.Animation.Runtime.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.2D.Animation.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.PixelPerfect.Editor">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\Unity.2D.PixelPerfect.Editor.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.2D.PixelPerfect.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Common.Runtime">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\Unity.2D.Common.Runtime.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.2D.Common.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ScriptableBuildPipeline">
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.ScriptableBuildPipeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.SpriteShape.Editor">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\Unity.2D.SpriteShape.Editor.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.2D.SpriteShape.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ScriptableBuildPipeline.Editor">
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.ScriptableBuildPipeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Editor">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.SpriteShape.Runtime">
-        <HintPath>C:\Users\guill\OneDrive\Bureau\Scrumble2D\Scrumble2D\Library\ScriptAssemblies\Unity.2D.SpriteShape.Runtime.dll</HintPath>
+        <HintPath>C:\Users\guill\Bureau\Memoire - Scrumble\Scrumble2D\Library\ScriptAssemblies\Unity.2D.SpriteShape.Runtime.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="kcp2k.csproj">
-      <Project>{004dfa13-347b-4b60-8d47-fd5e12195a0f}</Project>
-      <Name>kcp2k</Name>
-    </ProjectReference>
-    <ProjectReference Include="Mirror.Transports.csproj">
-      <Project>{c244d7ce-86a5-952e-de16-0ce533171596}</Project>
-      <Name>Mirror.Transports</Name>
-    </ProjectReference>
-    <ProjectReference Include="Mirror.Editor.csproj">
-      <Project>{78d96b7f-096a-425d-1d47-c21027e036bc}</Project>
-      <Name>Mirror.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Mirror.CompilerSymbols.csproj">
-      <Project>{31f306f3-09f6-c0bf-321f-3ce36bf84555}</Project>
-      <Name>Mirror.CompilerSymbols</Name>
-    </ProjectReference>
-    <ProjectReference Include="Mirror.Authenticators.csproj">
-      <Project>{6da8228c-9428-743f-b5eb-6ef611189dbc}</Project>
-      <Name>Mirror.Authenticators</Name>
-    </ProjectReference>
-    <ProjectReference Include="Telepathy.csproj">
-      <Project>{08edb8ea-f11a-9a36-6afc-94d71642c3a7}</Project>
-      <Name>Telepathy</Name>
-    </ProjectReference>
-    <ProjectReference Include="Mirror.Components.csproj">
-      <Project>{31a0bbab-0562-b75d-445f-dcacfa72c11d}</Project>
-      <Name>Mirror.Components</Name>
-    </ProjectReference>
-    <ProjectReference Include="Mirror.csproj">
-      <Project>{dfa0bfb1-6303-dd74-e748-d39ca9b01e95}</Project>
-      <Name>Mirror</Name>
-    </ProjectReference>
-    <ProjectReference Include="Mirror.Examples.csproj">
-      <Project>{afa0b12d-bb5b-6762-03fe-14fce2cced28}</Project>
-      <Name>Mirror.Examples</Name>
-    </ProjectReference>
-    <ProjectReference Include="SimpleWebTransport.csproj">
-      <Project>{d440350d-623e-b069-6dd0-520ec9fd566e}</Project>
-      <Name>SimpleWebTransport</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
