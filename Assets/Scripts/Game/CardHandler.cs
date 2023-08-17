@@ -342,10 +342,11 @@ public class CardHandler : MonoBehaviour
                 EventManager.action = false;
                 break;
             case Card.Action.DecreaseMaxTaskNextSprint :
+                EventManager.taskNextSprint += (int) value;
                 EventManager.action = false;
                 break;
             case Card.Action.IncreaseTaskNextSprint :
-                // EventManager.taskToAdd(value);
+                EventManager.taskNextSprint += (int) value;
                 EventManager.action = false;
                 break;
             default :
@@ -770,6 +771,9 @@ public class CardHandler : MonoBehaviour
         // Card customPickedCard = this.dailyCards[32];
         // this.cardPicker.AddCart(customPickedCard);
         // this.remainingDailyCards.Remove(customPickedCard);
+        // Card customPickedCard2 = this.dailyCards[34];
+        // this.cardPicker.AddCart(customPickedCard2);
+        // this.remainingDailyCards.Remove(customPickedCard2);
         for (int i = 0; i < 3; i++){
             if (this.remainingDailyCards.Count < 1){
                 this.remainingDailyCards.AddRange(this.discardedDailyCards);

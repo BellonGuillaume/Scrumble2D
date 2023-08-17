@@ -132,6 +132,12 @@ public class GameManager : MonoBehaviour
             userStories.Add(arrowedUS.GetComponent<UserStoryUI>().userStory);
         }
         burndownChartManager.NewSprint(n, userStories);
+        if (EventManager.taskNextSprint > 0){
+            EventManager.handleAddingTask = true;
+            StartCoroutine(AddTasks(EventManager.taskNextSprint));
+            yield return new WaitUntil(() => EventManager.handleAddingTask == false);
+            EventManager.taskNextSprint = 0;
+        }
         if(StateManager.tasksOnBeginSprint == true){
             EventManager.permanentCardShowned = false;
             this.cardHandler.ShowTasksOnBeginSprintPermanent();
@@ -564,7 +570,7 @@ public class GameManager : MonoBehaviour
 
     void InitState(){
         StateManager.language = LocalizationSettings.SelectedLocale;
-        StateManager.difficulty = StateManager.Difficulty.HARD;
+        StateManager.difficulty = StateManager.Difficulty.EASY;
         StateManager.category = StateManager.Category.GIFT_SHOP;
         StateManager.gameName = "";
         StateManager.pokerPlanning = false;
@@ -665,7 +671,10 @@ public class GameManager : MonoBehaviour
         }
         else if (n > 0){
             StateManager.totalTasks += n - EventManager.taskToAdd;
-            burndownChartManager.currentSprint.currentDay.AddTasks(n - EventManager.taskToAdd);
+            if (StateManager.gameState == StateManager.GameState.BEGIN_DAY)
+                burndownChartManager.RefreshBurndownChart();
+            else
+                burndownChartManager.currentSprint.currentDay.AddTasks(n - EventManager.taskToAdd);
         }
         foreach (GameObject doingAUS in this.doingAUS){
             doingAUS.GetComponent<ArrowedUS>().HideArrows();

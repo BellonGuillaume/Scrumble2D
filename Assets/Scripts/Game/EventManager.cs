@@ -20,6 +20,7 @@ public class EventManager : MonoBehaviour
     public static bool handleAddingTask = false;
     public static bool taskAdded = true;
     public static int taskToAdd = 0;
+    public static int taskNextSprint = 0;
     public static int cardToRemove = 0;
     public static bool firstCard = false;
     public static bool okPressed = false;

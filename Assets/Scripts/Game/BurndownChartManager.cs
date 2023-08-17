@@ -41,6 +41,7 @@ public class BurndownChartManager : MonoBehaviour
 
     public void UpdateBurndownChart(){
         int count = 0;
+        this.currentSprint.userStories = new List<UserStory>();
         foreach (UserStory userStory in StateManager.userStories){
             if (userStory.state == UserStory.State.SPRINT_BACKLOG || userStory.state == UserStory.State.IN_PROGRESS){
                 this.currentSprint.currentIdealRemainingTasks += userStory.maxTask;
@@ -51,6 +52,18 @@ public class BurndownChartManager : MonoBehaviour
         }
         Debug.Log($"Rajout de {count} tasks pour un ideal remaining et un real remaining de : {this.currentSprint.currentIdealRemainingTasks}, {this.currentSprint.currentRemainingTasks}");
         EventManager.updateBurndownChart = false;
+    }
+
+    public void RefreshBurndownChart(){
+        int initialTotalTasks = 0;
+        foreach (UserStory userStory in currentSprint.userStories){
+            initialTotalTasks += userStory.maxTask - userStory.currentTask;
+        }
+        this.currentSprint.initialTotalTasks = initialTotalTasks;
+        this.currentSprint.currentIdealRemainingTasks = initialTotalTasks;
+        this.currentSprint.currentRemainingTasks = initialTotalTasks;
+        Debug.Log($"Refresh des tasks pour un ideal remaining et un real remaining de : {this.currentSprint.currentIdealRemainingTasks}, {this.currentSprint.currentRemainingTasks}");
+        
     }
 
     public string GetString(string stringKey){
