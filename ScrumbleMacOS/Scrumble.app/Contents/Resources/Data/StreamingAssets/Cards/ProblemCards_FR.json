@@ -1,0 +1,568 @@
+[
+    {
+        "id" : 1,
+        "category" : "PROBLEM",
+        "description" : "Votre station de travail est tombée en panne... et donc du travail est à refaire !",
+        "result" : "Vous perdez 2 tâches.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 2
+    },
+    {
+        "id" : 2,
+        "category" : "PROBLEM",
+        "description" : "Oups, vous avez cassé le build !",
+        "result" : "Votre équipe perd 1 tâche par membre.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTaskPerPlayer",
+        "firstValue" : 1
+    },
+    {
+        "id" : 3,
+        "category" : "PROBLEM",
+        "description" : "Un test échoue de manière impromptue et nécessite une investigation.",
+        "result" : "Vous perdez 2 tâches.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 2,
+        "test" : true
+    },
+    {
+        "id" : 4,
+        "category" : "PROBLEM",
+        "description" : "Un test échoue de manière impromptue et nécessite une investigation.",
+        "result" : "Vous perdez 2 tâches.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 2,
+        "test" : true
+    },
+    {
+        "id" : 5,
+        "category" : "PROBLEM",
+        "description" : "Un test sensible échoue de manière étrange et répétée. Vous devez investiguer et corriger cela.",
+        "result" : "Vous perdez 3 tâches et accumulez 1 dette.",
+        "typeOfCard" : "Multiple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 3,
+        "secondAction" : "IncreaseDebt",
+        "secondValue" : 1,
+        "test" : true
+    },
+    {
+        "id" : 6,
+        "category" : "PROBLEM",
+        "description" : "Un test critique ne réussit plus sans raison apparente. Un travail minutieux d'inspection est requis.",
+        "result" : "Vous perdez 4 tâches et accumulez 2 dettes.",
+        "typeOfCard" : "Multiple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 4,
+        "secondAction" : "IncreaseDebt",
+        "secondValue" : 2,
+        "test" : true
+    },
+    {
+        "id" : 7,
+        "category" : "PROBLEM",
+        "description" : "Un bug mineur est signalé par l'un des utilisateurs. Rien de bien méchant, mais cela reste un bug !",
+        "result" : "Vous accumulez 2 dettes.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 2
+    },
+    {
+        "id" : 8,
+        "category" : "PROBLEM",
+        "description" : "Dans vos e-mails aujourd'hui, le signalement d'un bug par les utilisateurs ! Mince !",
+        "result" : "Vous accumulez 3 dettes.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 3
+    },
+    {
+        "id" : 9,
+        "category" : "PROBLEM",
+        "description" : "La dette technique, c'est comme la calvitie. Elle s'installe très vite.",
+        "result" : "Vous accumulez 20% de dette supplémentaire ! Prudence !",
+        "typeOfCard" : "Simple",
+        "firstAction" : "MultiplieDebt",
+        "firstValue" : 1.20
+    },
+    {
+        "id" : 10,
+        "category" : "PROBLEM",
+        "description" : "Plus il y a de code, plus il y a de problèmes. Plus il y a de problèmes, moins il y a de fonctionnalités. Attendez...",
+        "result" : "Vous accumulez 20% de dette supplémentaire ! Prudence !",
+        "typeOfCard" : "Simple",
+        "firstAction" : "MultiplieDebt",
+        "firstValue" : 1.20
+    },
+    {
+        "id" : 11,
+        "category" : "PROBLEM",
+        "description" : "Qu'est-ce qui ressemble à un bug, mais qui est plus pénible qu'un bug ? Oui, c'est un très gros bug.",
+        "result" : "Vous accumulez 4 dettes.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 4
+    },
+    {
+        "id" : 12,
+        "category" : "PROBLEM",
+        "description" : "Les tests unitaires automatisés ne fonctionnent plus. Vous devez absolument y jeter un œil et résoudre ce problème.",
+        "result" : "Vous perdez 5 tâches.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 5,
+        "test" : true
+    },
+    {
+        "id" : 13,
+        "category" : "PROBLEM",
+        "description" : "Bien curieusement, tous vos tests de BDD échouent. Vous devez résoudre ce problème en priorité.",
+        "result" : "Vous perdez 3 tâches.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 3,
+        "test" : true
+    },
+    {
+        "id" : 14,
+        "category" : "PROBLEM",
+        "description" : "Après plusieurs échanges dans l'équipe, vous constatez la nécessité de clarifier un point de la définition de Terminé !",
+        "result" : "Vous accumulez 2 dettes.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 2
+    },
+    {
+        "id" : 15,
+        "category" : "PROBLEM",
+        "description" : "De nouveaux standards nécessitent une révision de la définition de Terminé... ainsi que du travail imprévu !",
+        "result" : "Vous accumulez 5 dettes.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 5
+    },
+    {
+        "id" : 16,
+        "category" : "PROBLEM",
+        "description" : "De nouvelles normes majeures impactent fortement votre travail, réalisé jusqu'ici !",
+        "result" : "Vous accumulez 10 dettes.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 10
+    },
+    {
+        "id" : 17,
+        "category" : "PROBLEM",
+        "description" : "Tiens, quelqu'un n'a pas écrit les tests unitaires d'une nouvelle classe !",
+        "result" : "Vous accumulez 2 dettes.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 2
+    },
+    {
+        "id" : 18,
+        "category" : "PROBLEM",
+        "description" : "Les tests unitaires automatisés ne fonctionnent plus. Vous devez absolument y jeter un œil et résoudre ce problème.",
+        "result" : "Vous perdez 5 tâches.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 5,
+        "test" : true
+    },
+    {
+        "id" : 19,
+        "category" : "PROBLEM",
+        "description" : "Vous remarquez l'absence de tests critiques. Souhaitez-vous les écrire ?",
+        "result" : "Si oui, choisissez de perdre 10 tâches. Sinon accumulez 5 dettes.",
+        "typeOfCard" : "Choice",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 10,
+        "secondAction" : "IncreaseDebt",
+        "secondValue" : 5
+    },
+    {
+        "id" : 20,
+        "category" : "PROBLEM",
+        "description" : "Vous remarquez l'absence de tests. Souhaitez-vous les écrire ?",
+        "result" : "Si oui, choisissez de perdre 8 tâches. Sinon accumulez 4 dettes.",
+        "typeOfCard" : "Choice",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 8,
+        "secondAction" : "IncreaseDebt",
+        "secondValue" : 4
+    },
+    {
+        "id" : 21,
+        "category" : "PROBLEM",
+        "description" : "Vous remarquez de sacrées redondances dans le code. Souhaitez-vous le factoriser ?",
+        "result" : "Si oui, choisissez de perdre 5 tâches. Sinon accumulez 3 dettes.",
+        "typeOfCard" : "Choice",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 5,
+        "secondAction" : "IncreaseDebt",
+        "secondValue" : 3
+    },
+    {
+        "id" : 22,
+        "category" : "PROBLEM",
+        "description" : "Une commande rm -f mal exécutée vous fait perdre votre travail sans sauvegarde de secours !",
+        "result" : "Vous perdez 5 tâches.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 5
+    },
+    {
+        "id" : 23,
+        "category" : "PROBLEM",
+        "description" : "De nouvelles tâches techniques mineures sont identifiées. Elles sont indispensables.",
+        "result" : "Vous perdez 2 tâches.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 2
+    },
+    {
+        "id" : 24,
+        "category" : "PROBLEM",
+        "description" : "De nouvelles tâches techniques mineures sont identifiées. Elles sont indispensables.",
+        "result" : "Vous perdez 2 tâches.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 2
+    },
+    {
+        "id" : 25,
+        "category" : "PROBLEM",
+        "description" : "Vous avez vu un bug. Après cinq tentatives pour le reproduire, vous n'y arrivez pas...",
+        "result" : "Cette mésaventure vous fait perdre 1 tâche.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 1
+    },
+    {
+        "id" : 26,
+        "category" : "PROBLEM",
+        "description" : "Votre code devrait être plus commenté et documenté. Souhaitez-vous vous en charger ?",
+        "result" : "Si oui, choisissez de perdre 4 tâches. Sinon accumulez 2 dettes.",
+        "typeOfCard" : "Choice",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 4,
+        "secondAction" : "IncreaseDebt",
+        "secondValue" : 2
+    },
+    {
+        "id" : 27,
+        "category" : "PROBLEM",
+        "description" : "Vous remarquez quelques redondances dans le code. Souhaitez-vous le factoriser ?",
+        "result" : "Si oui, choisissez de perdre 3 tâches. Sinon accumulez 1 dette.",
+        "typeOfCard" : "Choice",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 3,
+        "secondAction" : "IncreaseDebt",
+        "secondValue" : 1
+    },
+    {
+        "id" : 28,
+        "category" : "PROBLEM",
+        "description" : "Vous avez vu un bug. Après cinq tentatives pour le reproduire, vous n'y arrivez pas...",
+        "result" : "Cette mésaventure vous fait perdre 1 tâche.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 1
+    },
+    {
+        "id" : 29,
+        "category" : "PROBLEM",
+        "description" : "De nouvelles tâches techniques s'avèrent nécessaires pour terminer une User Story.",
+        "result" : "Vous perdez 4 tâches.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 4
+    },
+    {
+        "id" : 30,
+        "category" : "PROBLEM",
+        "description" : "De nouvelles tâches techniques s'avèrent nécessaires pour terminer une User Story.",
+        "result" : "Vous perdez 4 tâches.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 4
+    },
+    {
+        "id" : 31,
+        "category" : "PROBLEM",
+        "description" : "Vous avez renversé votre café sur un travail d'analyse... Quelqu'un a une éponge ?",
+        "result" : "Cette maladresse vous fait perdre 1 tâche.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 1
+    },
+    {
+        "id" : 32,
+        "category" : "PROBLEM",
+        "description" : "Vous avez renversé votre thé sur votre clavier... Bravo !",
+        "result" : "Cette maladresse vous fait perdre 2 tâches.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 2
+    },
+    {
+        "id" : 33,
+        "category" : "PROBLEM",
+        "description" : "Vous remarquez quelques redondances dans le code. Souhaitez-vous le factoriser ?",
+        "result" : "Si oui, choisissez de perdre 3 tâches. Sinon accumulez 1 dette.",
+        "typeOfCard" : "Choice",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 3,
+        "secondAction" : "IncreaseDebt",
+        "secondValue" : 1
+    },
+    {
+        "id" : 34,
+        "category" : "PROBLEM",
+        "description" : "Votre code devrait être plus commenté et documenté. Souhaitez-vous vous en charger ?",
+        "result" : "Si oui, choisissez de perdre 4 tâches. Sinon accumulez 2 dettes.",
+        "typeOfCard" : "Choice",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 4,
+        "secondAction" : "IncreaseDebt",
+        "secondValue" : 2
+    },
+    {
+        "id" : 35,
+        "category" : "PROBLEM",
+        "description" : "Un utilisateur vous informe d'un bug, sans communiquer ses observations. Vous le recontactez donc.",
+        "result" : "Cette activité vous fait perdre 1 tâche.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 1
+    },
+    {
+        "id" : 36,
+        "category" : "PROBLEM",
+        "description" : "Un utilisateur vous informe d'un bug, sans communiquer ses observations. Vous le recontactez donc.",
+        "result" : "Cette activité vous fait perdre 1 tâche.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 1
+    },
+    {
+        "id" : 37,
+        "category" : "PROBLEM",
+        "description" : "Vos derniers tests de stress ont échoué.",
+        "result" : "Vous accumulez 4 dettes.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 4,
+        "test" : true
+    },
+    {
+        "id" : 38,
+        "category" : "PROBLEM",
+        "description" : "Vous avez quelque peu négligé la définition de Terminé dernièrement !",
+        "result" : "Lancez le dé et accumulez autant de dette.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebtPerRoll"
+    },
+    {
+        "id" : 39,
+        "category" : "PROBLEM",
+        "description" : "L'un de vos collègues vous demande un peu d'aide aujourd'hui. Vous décidez de le guider pour ne pas créer de dette inutilement.",
+        "result" : "Vous perdez 1 tâche.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 1
+    },
+    {
+        "id" : 40,
+        "category" : "PROBLEM",
+        "description" : "L'un de vos collègues vous demande un peu d'aide aujourd'hui. Vous décidez de le guider pour ne pas créer de dette inutilement.",
+        "result" : "Vous perdez 1 tâche.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 1
+    },
+    {
+        "id" : 41,
+        "category" : "PROBLEM",
+        "description" : "Un de vos coéquipiers est absent pour des raisons de santé aujourd'hui. Bon rétablissement !",
+        "result" : "Le prochain joueur doit passer son tour.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "NextPlayerPassATurn",
+        "firstValue" : 1
+    },
+    {
+        "id" : 42,
+        "category" : "PROBLEM",
+        "description" : "Un utilisateur vous informe d'un bug, sans communiquer ses observations. Vous le recontactez donc.",
+        "result" : "Cette activité vous fait perdre 1 tâche.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 1
+    },
+    {
+        "id" : 43,
+        "category" : "PROBLEM",
+        "description" : "Vous confrontez la fameuse loi de Murphy. Bonne chance !",
+        "result" : "Lancez le dé. Si vous obtenez 3 ou moins, piochez autant de cartes Problème !",
+        "typeOfCard" : "Simple",
+        "firstAction" : "PickProblemCardsPerRoll"
+    },
+    {
+        "id" : 44,
+        "category" : "PROBLEM",
+        "description" : "Un test critique ne réussit plus sans raison apparente. Un travail minutieux d'inspection est requis.",
+        "result" : "Vous perdez 4 tâches et accumulez 2 dettes.",
+        "typeOfCard" : "Multiple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 4,
+        "secondAction" : "IncreaseDebt",
+        "secondValue" : 2,
+        "test" : true
+    },
+    {
+        "id" : 45,
+        "category" : "PROBLEM",
+        "description" : "Le management vous perturbe en vous imposant des réunions hors du cadre Scrum.",
+        "result" : "Votre équipe perd 2 tâches par membre de l'équipe de développement.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTaskPerDevelopper",
+        "firstValue" : 2
+    },
+    {
+        "id" : 46,
+        "category" : "PROBLEM",
+        "description" : "Vous êtes bloqué et devez demander un peu d'aide à vos coéquipiers.",
+        "result" : "Vous perdez 2 tâches.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 2
+    },
+    {
+        "id" : 47,
+        "category" : "PROBLEM",
+        "description" : "Vous êtes bloqué et devez demander un peu d'aide à vos coéquipiers.",
+        "result" : "Vous perdez 2 tâches.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 2
+    },
+    {
+        "id" : 48,
+        "category" : "PROBLEM",
+        "description" : "Un utilisateur grognon vient se plaindre auprès de l'équipe. Cela sape votre moral.",
+        "result" : "Vous perdez 3 tâches.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 3
+    },
+    {
+        "id" : 49,
+        "category" : "PROBLEM",
+        "description" : "Vous remarquez quelques redondances dans le code. Souhaitez-vous le factoriser ?",
+        "result" : "Si oui, choisissez de perdre 3 tâches. Sinon accumulez 1 dette.",
+        "typeOfCard" : "Choice",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 3,
+        "secondAction" : "IncreaseDebt",
+        "secondValue" : 1
+    },
+    {
+        "id" : 50,
+        "category" : "PROBLEM",
+        "description" : "Un plantage de votre machine de travail anéantit une partie de vos efforts !",
+        "result" : "Vous perdez 3 tâches.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 3
+    },
+    {
+        "id" : 51,
+        "category" : "PROBLEM",
+        "description" : "Des ajustements sont nécessaires à la documentation du produit, incomplète.",
+        "result" : "Vous accumulez 2 dettes.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 2
+    },
+    {
+        "id" : 52,
+        "category" : "PROBLEM",
+        "description" : "Vous avez désormais la poisse !",
+        "result" : "Toute l'équipe doit désormais aussi piocher une carte Problème si un 5 tombe aux lancés de dé.",
+        "typeOfCard" : "Permanent",
+        "permanent" : "Jinx"
+    },
+    {
+        "id" : 53,
+        "category" : "PROBLEM",
+        "description" : "Oups, vous avez cassé le build !",
+        "result" : "Votre équipe perd 1 tâche par membre.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTaskPerPlayer",
+        "firstValue" : 1
+    },
+    {
+        "id" : 54,
+        "category" : "PROBLEM",
+        "description" : "Oups, vous avez cassé le build !",
+        "result" : "Votre équipe perd 1 tâche par membre.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTaskPerPlayer",
+        "firstValue" : 1
+    },
+    {
+        "id" : 55,
+        "category" : "PROBLEM",
+        "description" : "Votre Product Backlog doit être retravaillé régulièrement. Vous le clarifiez donc pour les Sprints à venir.",
+        "result" : "Votre équipe perd autant de tâches que le facteur de dette technique.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTaskPerCurrentDebt"
+    },
+    {
+        "id" : 56,
+        "category" : "PROBLEM",
+        "description" : "Votre Product Backlog doit être retravaillé régulièrement. Vous le clarifiez donc pour les Sprints à venir.",
+        "result" : "Votre équipe perd autant de tâches que le facteur de dette technique.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTaskPerCurrentDebt"
+    },
+    {
+        "id" : 57,
+        "category" : "PROBLEM",
+        "description" : "Quelqu'un a 'emprunté' vos post-its ainsi que vos fournitures... Les retrouver vous prend un peu de temps.",
+        "result" : "Vous perdez 1 tâche.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 1
+    },
+    {
+        "id" : 58,
+        "category" : "PROBLEM",
+        "description" : "Oups ! Coupure de courant ! Vous demandez au Scrum Master de pédaler sur la dynamo.",
+        "result" : "Vous perdez 3 tâches.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 3
+    },
+    {
+        "id" : 59,
+        "category" : "PROBLEM",
+        "description" : "Un de vos coéquipiers est absent pour des raisons de santé aujourd'hui. Bon rétablissement !",
+        "result" : "Le prochain joueur doit passer son tour.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "NextPlayerPassATurn",
+        "firstValue" : 1
+    },
+    {
+        "id" : 60,
+        "category" : "PROBLEM",
+        "description" : "La complexité d'un projet est à la fois technique, fonctionnelle et aussi humaine.",
+        "result" : "L'équipe accumule autant de dettes que de développeurs.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebtPerDevelopper",
+        "firstValue" : 1
+    }
+]

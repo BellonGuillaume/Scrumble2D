@@ -1,0 +1,106 @@
+[
+    {
+        "id" : 1,
+        "category" : "DIET COACH",
+        "description" : "As a regular user,\nI want to use the application under an account corresponding to my profile.",
+        "defaultStars" : 1,
+        "defaultSize" : "L"
+    },
+    {
+        "id" : 2,
+        "category" : "DIET COACH",
+        "description" : "As a registered user,\nI want to designate my dietician who will then be my coach for the follow-up.",
+        "defaultStars" : 4,
+        "defaultSize" : "M",
+        "restriction" : 1
+    },
+    {
+        "id" : 3,
+        "category" : "DIET COACH",
+        "description" : "As a registered dietitian,\nI want to see all the informations of a person I follow.",
+        "defaultStars" : 5,
+        "defaultSize" : "L",
+        "restriction" : 2
+    },{
+        "id" : 4,
+        "category" : "DIET COACH",
+        "description" : "As a registered user,\nI want to set custom goals within a given time.",
+        "defaultStars" : 4,
+        "defaultSize" : "M",
+        "restriction" : 1
+    },{
+        "id" : 5,
+        "category" : "DIET COACH",
+        "description" : "As a user,\nI want to see the most popular valid diet plans.",
+        "defaultStars" : 4,
+        "defaultSize" : "S"
+    },{
+        "id" : 6,
+        "category" : "DIET COACH",
+        "description" : "As a user,\nI want to view the nutrient and calorie attributes of any food.",
+        "defaultStars" : 3,
+        "defaultSize" : "S"
+    },{
+        "id" : 7,
+        "category" : "DIET COACH",
+        "description" : "As a registered dietitian,\nI want to convey goals and advice to the users that I follow.",
+        "defaultStars" : 5,
+        "defaultSize" : "L",
+        "restriction" : 2
+    },{
+        "id" : 8,
+        "category" : "DIET COACH",
+        "description" : "As a registered user,\nI want to enter my personal information useful for my follow-up.",
+        "defaultStars" : 3,
+        "defaultSize" : "S",
+        "restriction" : 1
+    },{
+        "id" : 9,
+        "category" : "DIET COACH",
+        "description" : "As a registered user,\nI want to receive regular and personalized offers to improve my health.",
+        "defaultStars" : 3,
+        "defaultSize" : "L",
+        "restriction" : 1
+    },{
+        "id" : 10,
+        "category" : "DIET COACH",
+        "description" : "As a user,\nI want to receive frequent automatic encouragement to motivate me.",
+        "defaultStars" : 2,
+        "defaultSize" : "XS"
+    },{
+        "id" : 11,
+        "category" : "DIET COACH",
+        "description" : "As a user,\nI want to be recommended a new food that benefits my health every day.",
+        "defaultStars" : 1,
+        "defaultSize" : "S"
+    },{
+        "id" : 12,
+        "category" : "DIET COACH",
+        "description" : "As a user,\nI want to be introduced to a new sport and nearby clubs every week.",
+        "defaultStars" : 3,
+        "defaultSize" : "M"
+    },
+    {
+        "id" : 13,
+        "category" : "DIET COACH",
+        "description" : "As a registered user,\nI want to be suggested a nutrition program according to my profile and my goals.",
+        "defaultStars" : 3,
+        "defaultSize" : "XL",
+        "restriction" : 1
+    },
+    {
+        "id" : 14,
+        "category" : "DIET COACH",
+        "description" : "As a user,\nI want to find the best addresses for dietetics in the region.",
+        "defaultStars" : 1,
+        "defaultSize" : "M"
+    },
+    {
+        "id" : 15,
+        "category" : "DIET COACH",
+        "description" : "As a registered user,\nI want to save my meal and activity logs.",
+        "defaultStars" : 3,
+        "defaultSize" : "M",
+        "restriction" : 1
+    }
+]
