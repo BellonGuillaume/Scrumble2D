@@ -1,0 +1,103 @@
+[
+    {
+        "id" : 1,
+        "category" : "KNOWLEDGE MANAGEMENT",
+        "description" : "As a Knowledge Worker,\nI want to use a Moodle system that can store and deploy multimedia content.",
+        "defaultStars" : 5,
+        "defaultSize" : "M",
+        "restriction" : 4
+    },
+    {
+        "id" : 2,
+        "category" : "KNOWLEDGE MANAGEMENT",
+        "description" : "As a External User,\nI want to use a search engine so that I can find the appropriate knowledge.",
+        "defaultStars" : 2,
+        "defaultSize" : "S"
+    },
+    {
+        "id" : 3,
+        "category" : "KNOWLEDGE MANAGEMENT",
+        "description" : "As a Knowledge Manager,\nI want to develop knowledge maps so that I will be able to identify the intellectual capital.",
+        "defaultStars" : 4,
+        "defaultSize" : "XS"
+    },{
+        "id" : 4,
+        "category" : "KNOWLEDGE MANAGEMENT",
+        "description" : "As a Knowledge Architect,\nI want to use a cloud architecture so that the adequate Knowledge System can be available through a web portal.",
+        "defaultStars" : 4,
+        "defaultSize" : "M"
+    },{
+        "id" : 5,
+        "category" : "KNOWLEDGE MANAGEMENT",
+        "description" : "As a Knowledge Base Developer,\nI want to have a Knowledge base so that explicit knowledge stays in the organisation.",
+        "defaultStars" : 3,
+        "defaultSize" : "L",
+        "restriction" : 3
+    },{
+        "id" : 6,
+        "category" : "KNOWLEDGE MANAGEMENT",
+        "description" : "As a Employee,\nI want to use Office 365 integrated to the KM system so that knowledge can be shared.",
+        "defaultStars" : 3,
+        "defaultSize" : "S",
+        "restriction" : 5
+    },{
+        "id" : 7,
+        "category" : "KNOWLEDGE MANAGEMENT",
+        "description" : "As a Data Analyst,\nI want to deploy OLAP knowledge reporting so that the KM strategy can be measured.",
+        "defaultStars" : 2,
+        "defaultSize" : "M"
+    },{
+        "id" : 8,
+        "category" : "KNOWLEDGE MANAGEMENT",
+        "description" : "As a KM Project Manager,\nI want to use MS project directly integrated so that KM projects can be driven and monitored.",
+        "defaultStars" : 1,
+        "defaultSize" : "S"
+    },{
+        "id" : 9,
+        "category" : "KNOWLEDGE MANAGEMENT",
+        "description" : "As a Middle Manager,\nI want to have Odoo KM modules installed so that I can have access to the organizational memory in the ERP.",
+        "defaultStars" : 2,
+        "defaultSize" : "S"
+    },{
+        "id" : 10,
+        "category" : "KNOWLEDGE MANAGEMENT",
+        "description" : "As a Client,\nI want to have access to the organizational knowledge through social networks so that I can disseminate it.",
+        "defaultStars" : 3,
+        "defaultSize" : "M",
+        "restriction" : 5
+    },{
+        "id" : 11,
+        "category" : "KNOWLEDGE MANAGEMENT",
+        "description" : "As a AI Specialist,\nI want to use a dedicated agent expert system so that I can exploit tacit knowledge for decision-making",
+        "defaultStars" : 5,
+        "defaultSize" : "XL",
+        "restriction" : 5
+    },{
+        "id" : 12,
+        "category" : "KNOWLEDGE MANAGEMENT",
+        "description" : "As a Prompt Engineer,\nI want to parametrize GPT-4 so that the reasoning produced is based on your knowledge system.",
+        "defaultStars" : 2,
+        "defaultSize" : "L"
+    },
+    {
+        "id" : 13,
+        "category" : "KNOWLEDGE MANAGEMENT",
+        "description" : "As a Technical Instructor,\nI want to have corporate access to the courses catalog from LinkedIn so that I can organize KM training.",
+        "defaultStars" : 3,
+        "defaultSize" : "S"
+    },
+    {
+        "id" : 14,
+        "category" : "KNOWLEDGE MANAGEMENT",
+        "description" : "As a Chief Knowledge Officer,\nI want to benefit from a knowledge executive dashboard so that I can produce balanced scorecards for KM.",
+        "defaultStars" : 2,
+        "defaultSize" : "M"
+    },
+    {
+        "id" : 15,
+        "category" : "KNOWLEDGE MANAGEMENT",
+        "description" : "As a Information Expert,\nI want to use Data Warehouse so that the Knowledge Base can be compared & consolidated with external ressources.",
+        "defaultStars" : 4,
+        "defaultSize" : "L"
+    }
+]

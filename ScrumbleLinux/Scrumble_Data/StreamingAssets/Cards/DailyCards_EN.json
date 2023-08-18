@@ -1,0 +1,574 @@
+[
+    {
+        "id" : 1,
+        "category" : "DAILY",
+        "description" : "The coffee maker you brought to the office for your team is really useful !",
+        "result" : "Your team wins 1 task per member",
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseTaskPerPlayer",
+        "firstValue" : 1,
+        "positive" : true
+    },
+    {
+        "id" : 2,
+        "category" : "DAILY",
+        "description" : "Your TDD efforts are finally paying off !",
+        "result" : "You are now immune to all invalid test issues in the game from now on.",
+        "typeOfCard" : "Permanent",
+        "permanent" : "NoMoreTestIssues"
+    },
+    {
+        "id" : 3,
+        "category" : "DAILY",
+        "description" : "Would you like to help a colleague with a difficult task ?",
+        "result" : "If yes, skip your next turn while gaining 3 tasks and saving 1 debt.",
+        "typeOfCard" : "Proposition",
+        "firstAction" : "CurrentPlayerPassATurn",
+        "firstValue" : 1,
+        "secondAction" : "IncreaseTask",
+        "secondValue" : 3,
+        "thirdAction" : "DecreaseDebt",
+        "thirdValue" : 1
+    },
+    {
+        "id" : 4,
+        "category" : "DAILY",
+        "description" : "'How many tasks did we complete yesterday ?'",
+        "result" : "Remember, the Daily Scrum informs the team of activities completed since the last meeting.",
+        "typeOfCard" : "Information"
+    },
+    {
+        "id" : 5,
+        "category" : "DAILY",
+        "description" : "'Remember to stock up on post-its for your Scrum board !'",
+        "result" : "Yes, they are leaving faster than you think !",
+        "typeOfCard" : "Information"
+    },
+    {
+        "id" : 6,
+        "category" : "DAILY",
+        "description" : "Only one obstacle is mentioned during the Daily today.",
+        "result" : "Cross your fingers and draw a Problem card.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "PickProblemCards",
+        "firstValue" : 1
+    },
+    {
+        "id" : 7,
+        "category" : "DAILY",
+        "description" : "An involved user approached the Product Owner for an individual product review.",
+        "result" : "Draw a Review card on this occasion.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "PickReviewCards",
+        "firstValue" : 1
+    },
+    {
+        "id" : 8,
+        "category" : "DAILY",
+        "description" : "Your Daily Scrum was clear and fast today ! No need to make it last 15 minutes.",
+        "result" : "This short time saved saves the team 1 task.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseTask",
+        "firstValue" : 1,
+        "positive" : true
+    },
+    {
+        "id" : 9,
+        "category" : "DAILY",
+        "description" : "Today you progressed faster than expected. Choose your progress.",
+        "result" : "Win as many tasks as the result of a dice roll or save 2 debts.",
+        "typeOfCard" : "Choice",
+        "firstAction" : "IncreaseTaskPerRoll",
+        "secondAction" : "DecreaseDebt",
+        "secondValue" : 2,
+        "positive" : true
+    },
+    {
+        "id" : 10,
+        "category" : "DAILY",
+        "description" : "Today you completed your work early enough. Choose an initiative.",
+        "result" : "Win 3 tasks or save 1 debt.",
+        "typeOfCard" : "Choice",
+        "firstAction" : "IncreaseTask",
+        "firstValue" : 3,
+        "secondAction" : "DecreaseDebt",
+        "secondValue" : 1,
+        "positive" : true
+    },
+    {
+        "id" : 11,
+        "category" : "DAILY",
+        "description" : "'Do we have technical debt to pay ? Who can take care of it, and when ?'",
+        "result" : "Don't forget to keep an eye on the indicator !",
+        "typeOfCard" : "Information"
+    },
+    {
+        "id" : 12,
+        "category" : "DAILY",
+        "description" : "'Will we reach the goal of this Sprint ?'",
+        "result" : "A very useful question for your Daily Scrums as the Review approaches.",
+        "typeOfCard" : "Information"
+    },
+    {
+        "id" : 13,
+        "category" : "DAILY",
+        "description" : "'How many tasks could we complete today ?'",
+        "result" : "",
+        "typeOfCard" : "Information"
+    },
+    {
+        "id" : 14,
+        "category" : "DAILY",
+        "description" : "How many roles are there in a Scrum team ? ",
+        "result" : "Win as many tasks as roles. Don't cheat: validate the answer with the Scrum Master.",
+        "typeOfCard" : "Question",
+        "questionId" : 1,
+        "answer1" : "1",
+        "answer2" : "2",
+        "answer3" : "3",
+        "answer4" : "4",
+        "positive" : true
+    },
+    {
+        "id" : 15,
+        "category" : "DAILY",
+        "description" : "Do you want to set up a continuous integration server ?",
+        "result" : "If yes, skip 4 rounds and each member will then earn 1 task per die roll.",
+        "typeOfCard" : "Permanent",
+        "permanent" : "OneMoreTaskPerRoll"
+    },
+    {
+        "id" : 16,
+        "category" : "DAILY",
+        "description" : "You take a minute to list the likely criteria for a definition of Done.",
+        "result" : "You save 3 debts.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseDebt",
+        "firstValue" : 3,
+        "positive" : true
+    },
+    {
+        "id" : 17,
+        "category" : "DAILY",
+        "description" : "The Scrum Master has set up a large table to display and process your post-its.",
+        "result" : "Team wins 2 tasks.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseTask",
+        "firstValue" : 2,
+        "positive" : true
+    },
+    {
+        "id" : 18,
+        "category" : "DAILY",
+        "description" : "The team decides to create and maintain a Burndown graph.",
+        "result" : "You save 2 debts.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseDebt",
+        "firstValue" : 2,
+        "positive" : true
+    },
+    {
+        "id" : 19,
+        "category" : "DAILY",
+        "description" : "You are working in Pair Programming today.",
+        "result" : "The next Problem will be skipped or the next positive Daily will be doubled!",
+        "typeOfCard" : "Permanent",
+        "permanent" : "SkipProblemOrDoubleDaily"
+    },
+    {
+        "id" : 20,
+        "category" : "DAILY",
+        "description" : "You are working in Pair Programming today.",
+        "result" : "The next Problem will be skipped or the next positive Daily will be doubled!",
+        "typeOfCard" : "Permanent",
+        "permanent" : "SkipProblemOrDoubleDaily"
+    },
+    {
+        "id" : 21,
+        "category" : "DAILY",
+        "description" : "Who must be present during the Daily Scrums ?",
+        "result" : "If you answer correctly according to the Scrum Master, then save 3 debts.",
+        "typeOfCard" : "Question",
+        "questionId" : 2,
+        "answer1" : "Scrum Master",
+        "answer2" : "Product Owner",
+        "answer3" : "Development team",
+        "answer4" : "No one",
+        "positive" : true
+    },
+    {
+        "id" : 22,
+        "category" : "DAILY",
+        "description" : "The team decides to schedule all its meetings in the same place, same time. It's efficient !",
+        "result" : "Win 5 tasks to distribute at each start of Sprint.",
+        "typeOfCard" : "Permanent",
+        "permanent" : "TasksOnBeginSprint"
+    },
+    {
+        "id" : 23,
+        "category" : "DAILY",
+        "description" : "This Daily Scrum is the subject of long technical discussions, mobilizing the team for more than 15 minutes.",
+        "result" : "You save 2 debts but in return lose 6 tasks.",
+        "typeOfCard" : "Multiple",
+        "firstAction" : "DecreaseDebt",
+        "firstValue" : 2,
+        "secondAction" : "DecreaseTask",
+        "secondValue" : 6
+    },
+    {
+        "id" : 24,
+        "category" : "DAILY",
+        "description" : "This Daily Scrum prevented two of your teammates from doing the same duplicate work in time.",
+        "result" : "You save 1 debt and gain 3 tasks.",
+        "typeOfCard" : "Multiple",
+        "firstAction" : "DecreaseDebt",
+        "firstValue" : 1,
+        "secondAction" : "IncreaseTask",
+        "secondValue" : 3,
+        "positive" : true
+    },
+    {
+        "id" : 25,
+        "category" : "DAILY",
+        "description" : "This Daily Scrum is the subject of long technical discussions, mobilizing the team for more than 15 minutes.",
+        "result" : "You save 2 debts but in return lose 6 tasks.",
+        "typeOfCard" : "Multiple",
+        "firstAction" : "DecreaseDebt",
+        "firstValue" : 2,
+        "secondAction" : "DecreaseTask",
+        "secondValue" : 6
+    },
+    {
+        "id" : 26,
+        "category" : "DAILY",
+        "description" : "This Daily Scrum prevented two of your teammates from doing the same duplicate work in time.",
+        "result" : "You save 1 debt and gain 3 tasks.",
+        "typeOfCard" : "Multiple",
+        "firstAction" : "DecreaseDebt",
+        "firstValue" : 1,
+        "secondAction" : "IncreaseTask",
+        "secondValue" : 3,
+        "positive" : true
+    },
+    {
+        "id" : 27,
+        "category" : "DAILY",
+        "description" : "This Daily Scrum saw the team reassess the achievement of the Sprint goal and inform the Product Owner.",
+        "result" : "This initiative saves you 2 debts.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseDebt",
+        "firstValue" : 2,
+        "positive" : true
+    },
+    {
+        "id" : 28,
+        "category" : "DAILY",
+        "description" : "You synchronize your next initiatives efficiently during this Daily Scrum.",
+        "result" : "You win 3 tasks.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseTask",
+        "firstValue" : 3,
+        "positive" : true
+    },
+    {
+        "id" : 29,
+        "category" : "DAILY",
+        "description" : "Post-its have strangely disappeared since the last Daily Scrum, without a trace...",
+        "result" : "You lose 1 task.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 1
+    },
+    {
+        "id" : 30,
+        "category" : "DAILY",
+        "description" : "Post-its have strangely disappeared since the last Daily Scrum, without a trace...",
+        "result" : "You lose 1 task.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 1
+    },
+    {
+        "id" : 31,
+        "category" : "DAILY",
+        "description" : "We suggest you take a 5-day Scrum developer training course.",
+        "result" : "If you accept it, skip 5 turns and then gain 2 tasks with each die roll.",
+        "typeOfCard" : "Permanent",
+        "permanent" : "TwoMoreTasksPerRoll"
+    },
+    {
+        "id" : 32,
+        "category" : "DAILY",
+        "description" : "The Product Owner will consolidate his expertise through training.",
+        "result" : "User Stories are now worth 3 less tasks each.",
+        "typeOfCard" : "Permanent",
+        "permanent" : "MaxUserStoriesLowered"
+    },
+    {
+        "id" : 33,
+        "category" : "DAILY",
+        "description" : "You have a lot of information to report today.",
+        "result" : "Draw 3 new Daily cards.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "PickDailyCards",
+        "firstValue" : 3
+    },
+    {
+        "id" : 34,
+        "category" : "DAILY",
+        "description" : "You decide to thoroughly update your Scrum board today.",
+        "result" : "You save 2 debts.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseDebt",
+        "firstValue" : 2,
+        "positive" : true
+    },
+    {
+        "id" : 35,
+        "category" : "DAILY",
+        "description" : "One of your teammates is absent for health reasons today. Get well soon !",
+        "result" : "A player must pass.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "CurrentPlayerPassATurn",
+        "firstValue" : 1
+    },
+    {
+        "id" : 36,
+        "category" : "DAILY",
+        "description" : "A member of the team arrived late. The alarm clock's fault supposedly !",
+        "result" : "You lose 2 tasks.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTask",
+        "firstValue" : 2
+    },
+    {
+        "id" : 37,
+        "category" : "DAILY",
+        "description" : "What are the three usual questions used by the development team in the Daily Scrum ?",
+        "result" : "Answer correctly according to the Scrum Master, otherwise accumulate 5 debts.",
+        "typeOfCard" : "Question",
+        "questionId" : 3,
+        "answer1" : "What did I do yesterday ?",
+        "answer2" : "What am I going to do today ?",
+        "answer3" : "What will I do tomorrow ?",
+        "answer4" : "Do I see any obstacles ?"
+    },
+    {
+        "id" : 38,
+        "category" : "DAILY",
+        "description" : "How many weeks at most does a Sprint last according to Scrum ?",
+        "result" : "Answer just according to the Scrum Master and save as much debt.",
+        "typeOfCard" : "Question",
+        "questionId" : 4,
+        "answer1" : "4",
+        "answer2" : "6",
+        "answer3" : "8",
+        "answer4" : "12",
+        "positive" : true
+    },
+    {
+        "id" : 39,
+        "category" : "DAILY",
+        "description" : "Tomorrow there is a disaster expected. A transport strike, a storm or a zombie invasion. No one knows.",
+        "result" : "Everyone passes their turn !",
+        "typeOfCard" : "Simple",
+        "firstAction" : "AllPlayersPassATurn",
+        "firstValue" : 1
+    },
+    {
+        "id" : 40,
+        "category" : "DAILY",
+        "description" : "Your team participated in a meeting on Agile feedback. Inspiring !",
+        "result" : "You save 3 debts.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseDebt",
+        "firstValue" : 3,
+        "positive" : true
+    },
+    {
+        "id" : 41,
+        "category" : "DAILY",
+        "description" : "The team has been a little too optimistic about current activities. You are therefore reevaluating them.",
+        "result" : "You lose as many tasks as the result of a dice roll.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseTaskPerRoll"
+    },
+    {
+        "id" : 42,
+        "category" : "DAILY",
+        "description" : "The team has been a little too pessimistic about current activities. So you're re-evaluating them.",
+        "result" : "You win as many tasks as the result of a dice roll.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseTaskPerRoll",
+        "positive" : true
+    },
+    {
+        "id" : 43,
+        "category" : "DAILY",
+        "description" : "Your team is participating in a 'brown bag' workshop on new technologies useful to the project.",
+        "result" : "Choose to save 5 debts or earn 5 tasks.",
+        "typeOfCard" : "Choice",
+        "firstAction" : "DecreaseDebt",
+        "firstValue" : 5,
+        "secondAction" : "IncreaseTask",
+        "secondValue" : 5,
+        "positive" : true
+    },
+    {
+        "id" : 44,
+        "category" : "DAILY",
+        "description" : "Today is a dark day. Courage !",
+        "result" : "Roll the dice. If you roll 3 or less, draw that many Problem cards.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "PickProblemCardsPerRoll"
+    },
+    {
+        "id" : 45,
+        "category" : "DAILY",
+        "description" : "Your discussions during the Daily Scrum are particularly fruitful for the team.",
+        "result" : "You save 1 debt per player.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "DecreaseDebtPerPlayer",
+        "firstValue" : 1,
+        "positive" : true
+    },
+    {
+        "id" : 46,
+        "category" : "DAILY",
+        "description" : "Notice someone changed a post-it from 'In Progress' to 'Done' without code review !",
+        "result" : "You accumulate 2 debts.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 2
+    },
+    {
+        "id" : 47,
+        "category" : "DAILY",
+        "description" : "Notice someone changed a post-it from 'In Progress' to 'Done' without code review !",
+        "result" : "You accumulate 2 debts.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseDebt",
+        "firstValue" : 2
+    },
+    {
+        "id" : 48,
+        "category" : "DAILY",
+        "description" : "You saw a user approaching the Product Owner for an unofficial review.",
+        "result" : "Draw a Review card.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "PickReviewCards",
+        "firstValue" : 1
+    },
+    {
+        "id" : 49,
+        "category" : "DAILY",
+        "description" : "A group of users comes your way and congratulates you on your work. It gives you a punch !",
+        "result" : "Team wins 1 task per player.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "IncreaseTaskPerPlayer",
+        "firstValue" : 1,
+        "positive" : true
+    },
+    {
+        "id" : 50,
+        "category" : "DAILY",
+        "description" : "We suggest you take a 3-day Scrum developer training.",
+        "result" : "If you accept it, skip 3 turns and then save 1 debt each turn.",
+        "typeOfCard" : "Permanent",
+        "permanent" : "DecreaseDebtPerTurn"
+    },
+    {
+        "id" : 51,
+        "category" : "DAILY",
+        "description" : "Nothing to report today.",
+        "result" : "So you're going back to your activities. But is everything really going well ?",
+        "typeOfCard" : "Information"
+    },
+    {
+        "id" : 52,
+        "category" : "DAILY",
+        "description" : "Nothing to report today.",
+        "result" : "So you're going back to your activities. But is everything really going well ?",
+        "typeOfCard" : "Information"
+    },
+    {
+        "id" : 53,
+        "category" : "DAILY",
+        "description" : "Your team's luck is running.",
+        "result" : "Get rid of the permanent card 'Jinx' if it is already in your possession.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "GetRidOfJinxCard"
+    },
+    {
+        "id" : 54,
+        "category" : "DAILY",
+        "description" : "Your team's luck is running.",
+        "result" : "Get rid of the permanent card 'Jinx' if it is already in your possession.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "GetRidOfJinxCard"
+    },
+    {
+        "id" : 55,
+        "category" : "DAILY",
+        "description" : "'Is the Daily Scrum a private meeting ?'",
+        "result" : "Have you ever invited people to observe your daily plans and your progress, without intervening ?",
+        "typeOfCard" : "Information"
+    },
+    {
+        "id" : 56,
+        "category" : "DAILY",
+        "description" : "How many hours is the Review of a two-week Sprint at most ?",
+        "result" : "Answer just according to the Scrum Master and save as much debt.",
+        "typeOfCard" : "Question",
+        "questionId" : 5,
+        "answer1" : "1",
+        "answer2" : "2",
+        "answer3" : "3",
+        "answer4" : "4",
+        "positive" : true
+    },
+    {
+        "id" : 57,
+        "category" : "DAILY",
+        "description" : "How many hours maximum does a Monthly Sprint Retrospective take ?",
+        "result" : "Answer just according to the Scrum Master and save as much debt.",
+        "typeOfCard" : "Question",
+        "questionId" : 6,
+        "answer1" : "1",
+        "answer2" : "2",
+        "answer3" : "3",
+        "answer4" : "4",
+        "positive" : true
+    },
+    {
+        "id" : 58,
+        "category" : "DAILY",
+        "description" : "How many hours maximum does the Planning of a monthly Sprint take ?",
+        "result" : "Answer correctly according to the Scrum Master and win as many tasks.",
+        "typeOfCard" : "Question",
+        "questionId" : 7,
+        "answer1" : "4",
+        "answer2" : "6",
+        "answer3" : "8",
+        "answer4" : "12",
+        "positive" : true
+    },
+    {
+        "id" : 59,
+        "category" : "DAILY",
+        "description" : "It's definitely not your day !",
+        "result" : "Draw two Problem cards.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "PickProblemCards",
+        "firstValue" : 2
+    },
+    {
+        "id" : 60,
+        "category" : "DAILY",
+        "description" : "It's definitely not your day !",
+        "result" : "Draw two Problem cards.",
+        "typeOfCard" : "Simple",
+        "firstAction" : "PickProblemCards",
+        "firstValue" : 2
+    }
+]

@@ -23,10 +23,16 @@ public class BurndownChartManager : MonoBehaviour
         for (int i = 0; i < sprints.Count; i++){
             tw.WriteLine($"Sprint N°{sprints[i].sprintNumber}");
             tw.WriteLine("Cases, Planned Tasks, Planned Burndown, Real Tasks, Real Burndown");
-            tw.WriteLine($"Initial values, {sprints[i].initialTotalTasks}, {sprints[i].initialTotalTasks}, {sprints[i].initialTotalTasks}, {sprints[i].initialTotalTasks}");
+            string initialTotalTasks = sprints[i].initialTotalTasks.ToString().Replace(",", ".");
+            tw.WriteLine($"Initial values, {initialTotalTasks}, {initialTotalTasks}, {initialTotalTasks}, {initialTotalTasks}");
 
             for (int j = 0; j < sprints[i].days.Count; j++){
-                tw.WriteLine($"Day {sprints[i].days[j].dayNumber}, {sprints[i].days[j].plannedTasks}, {sprints[i].days[j].plannedRemainingTasks}, {sprints[i].days[j].realTasks}, {sprints[i].days[j].realRemainingTasks}");
+                string dayNumber = sprints[i].days[j].dayNumber.ToString().Replace(",", ".");
+                string plannedTasks = sprints[i].days[j].plannedTasks.ToString().Replace(",", ".");
+                string plannedRemainingTasks = sprints[i].days[j].plannedRemainingTasks.ToString().Replace(",", ".");
+                string realTasks = sprints[i].days[j].realTasks.ToString().Replace(",", ".");
+                string realRemainingTasks = sprints[i].days[j].realRemainingTasks.ToString().Replace(",", ".");
+                tw.WriteLine($"Day {dayNumber}, {plannedTasks}, {plannedRemainingTasks}, {realTasks}, {realRemainingTasks}");
             }
             tw.WriteLine();
         }

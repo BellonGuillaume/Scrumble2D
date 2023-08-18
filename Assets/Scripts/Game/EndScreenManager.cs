@@ -103,11 +103,11 @@ public class EndScreenManager : MonoBehaviour
     }
     private string ComputeDifficulty(){
         if (StateManager.difficulty == StateManager.Difficulty.EASY)
-            return GetString("DifficultyEasy");
+            return GetString("Easy");
         else if (StateManager.difficulty == StateManager.Difficulty.NORMAL)
-            return GetString("DifficultyNormal");
+            return GetString("Normal");
         else
-            return GetString("DifficultyHard");
+            return GetString("Hard");
     }
     private string ComputeUserStoryUsed(){
         if (StateManager.category == StateManager.Category.GIFT_SHOP)

@@ -2522,7 +2522,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1495912592}
         m_TargetAssemblyTypeName: ExitHandler, Assembly-CSharp
         m_MethodName: ExitClick
         m_Mode: 1
